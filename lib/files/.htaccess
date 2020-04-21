@@ -1,0 +1,4 @@
+AuthName "secure"
+AuthType Basic
+AuthUserFile /var/www/web202/html/portfolio/lib/files/.htpasswd
+require valid-user
