@@ -153,7 +153,128 @@
     --color-choose-btn-3-hover-FG: black;
 }
 
+<<<<<<< HEAD
 .dark {
+=======
+.orca {
+    --scrollbar-inactive-thumbBG: rgba(0, 0, 0, 0.4);
+    --scrollbar-thumbBG: #333;
+    --scrollbar-width: 10px;
+
+    --bodyBG: #FCFCFC;
+    --bodyFG: #333;
+    --ci-brand-boxBG: black;
+    --ci-brand-boxFG: white;
+    --ci-brand-captionFG: black;
+    --ci-profilbild-caption-mainFG: rgba(22, 22, 22, 0.9);
+
+    --navbarBG: black;
+    --navlinkFG: #888;
+    --navlink-hover-FG: lime;
+    --navlink-hover-BG: black;
+    --navlink-active-FG: black;
+    --navlink-active-BG: #bbb;
+    --chevron-scroll-icon-stroke: #B629F4;
+    --navlink-dropdownMenuFG: #888;
+    --navlink-dropdownMenuBG: #111;
+    --navlink-dropdownMenu-headerFG: lime;
+    --navlink-dropdownMenu-dropdownItemFG: #888;
+    --navlink-dropdownMenu-dropdownItem-hover-FG: lime;
+    --navlink-dropdownMenu-dropdownItem-hover-BG: #222;
+    --navlink-showFG: lime;
+    --navlink-showBG: transparent;
+    --navlink-dropdown-BxShd: 0 15px 15px 0 rgba(0, 0, 0, .3);
+
+
+
+
+
+    --actionButtonBdCol: dodgerblue;
+    --actionButtonBG: black;
+    --actionButton-FileSizeFG: white;
+    --actionButtonFG: ghostwhite;
+    --actionButtonBG-hover: hsla(206, 76%, 60%, 1);
+    --actionButtonFG-hover: white;
+    --actionButton-icon: dodgerblue;
+
+    --kontext-divBG: yellow;
+    --kontext-divFG: black;
+
+    --collapse-card-titleFG: steelblue;
+    --badge-tagBG: yellow;
+    --badge-tagFG: #555;
+    --collapse-cardBG: ghostwhite;
+    --collapse-cardFG: #41403E;
+    --collapse-badge-hover-tagBG: hotpink;
+    --collapse-badge-hover-tagFG: white;
+    --collapse-card-footerBG: ghostwhite;
+    --collapse-card-footerBdT: rgba(0, 0, 0, .0125);
+    --collapse-card-footer-chevronFG: gainsboro;
+
+
+    --scrollTopFG: lime;
+    --scrollTopBdCol: rgba(0, 0, 0, 0.1);
+    --scrollTop-hover-BdCol: rgba(0, 0, 0, 0.1);
+    --scrollTop-hover-BG: black;
+    --scrollTop-hover-FG: white;
+
+    /* mobile */
+    --mobile-menu-closeFG: indianred;
+    --mobile-menu-closeBG: black;
+    --mobile-menu-close-btnBG: black;
+    --mobile-menu-close-not-disabled-FG: black;
+    --mobile-menu-navbar-navBG: rgba(0, 0, 0, .7);
+    --mobile-menu-navbar-light-togglerBdCol: rgba(0, 0, 0, .1);
+    --mobile-menu-navbar-light-togglerFG: white;
+    --mobile-menu-navbar-togglerBG: black;
+    --mobile-menu-nav-linkFG: lime;
+    --mobile-menu-nav-hover-linkFG: white;
+    --mobile-menu-nav-active-linkFG: black;
+    --mobile-menu-nav-active-linkBG: lime;
+    --mobile-menu-chevron-upFG: white;
+
+    --socialIcons-linkFG: gainsboro;
+    --socialIcons-link-hover-FG: #41403E;
+    --socialIcons-link-active-FG: #B629F4;
+    --socialIcons-link-visited-FG: gainsboro;
+    --copyrightFG: gainsboro;
+
+
+    --color-choose-btn-1-BG: rgba(0, 0, 0, .8);
+    --color-choose-btn-1-FG: gainsboro;
+    --color-choose-btn-1-active-FG: black;
+    --color-choose-btn-1-active-BG: radial-gradient(thistle, transparent);
+    --color-choose-btn-1-hover-BG: black;
+    --color-choose-btn-1-hover-FG: white;
+    --color-choose-btn-2-BG: gainsboro;
+    --color-choose-btn-2-FG: dimgrey;
+    --color-choose-btn-2-active-FG: black;
+    --color-choose-btn-2-active-BG: radial-gradient(thistle, transparent);
+    --color-choose-btn-2-hover-BG: silver;
+    --color-choose-btn-2-hover-FG: black;
+    --color-choose-btn-3-BG: rgba(241, 226, 208, .8);
+    --color-choose-btn-3-FG: dimgrey;
+    --color-choose-btn-3-active-FG: black;
+    --color-choose-btn-3-active-BG: radial-gradient(thistle, transparent);
+    --color-choose-btn-3-hover-BG: #f1e2d0;
+    --color-choose-btn-3-hover-FG: black;
+
+
+    /* form */
+    --inputFocusWithin-BG: #0ad;
+    --inputFocusWithin-BdCol: #00f;
+    --formFG: #495057;
+    --formBG: white;
+    --formBdCol: #ced4da;
+    --form-labelFG: darkgrey;
+
+
+    --subtileCol: gainsboro;
+
+}
+
+.shark {
+>>>>>>> 618403ad3108c23fc6e8d1b69476bd8aa3804011
     --scrollbar-inactive-thumbBG: rgba(0, 0, 0, 0.4);
     --scrollbar-thumbBG: #F2F113;
     --scrollbar-width: 10px;
