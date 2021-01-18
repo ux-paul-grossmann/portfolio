@@ -34,13 +34,23 @@
     --actionButtonFG-hover: #fff;
     --actionButton-icon: #B629F4;
     --actionButton-FileSizeFG: #B629F4;
-    --kontext-divBG: rgb(182, 176, 225);
-    --kontext-divFG: #1D1C1B;
+
+    /* --kontext-divBG: rgb(182, 176, 225);
+    --kontext-divFG: #1D1C1B; */
+
+    --kontext-divBG: #B629F4;
+    --kontext-divFG: #fff;
+
+
     --collapse-card-titleFG: #41403E;
 
-    --badge-tagBG: rgb(182, 176, 225);
+    /* --badge-tagBG: rgb(182, 176, 225);
     --badge-tagFG: #1D1C1B;
     --badge-tag-border: 1px solid rgb(156, 150, 200);
+     */
+    --badge-tagBG: #c34bf6;
+    --badge-tagFG: #fff;
+    --badge-tag-border: 1px solid #a12cd4;
 
     --collapse-badge-hover-tagBG: #d8ff02;
     --collapse-badge-hover-tagFG: #000;
@@ -119,7 +129,7 @@
     --mobile-menu-navbar-navBG: rgba(0, 0, 0, .7);
     --mobile-menu-navbar-light-togglerBdCol: rgba(0, 0, 0, .1);
     --mobile-menu-navbar-light-togglerFG: #1D1C1B;
-    --mobile-menu-navbar-togglerBG: #F2F113;
+    --mobile-menu-navbar-togglerBG: #d8ff02;
     --mobile-menu-nav-linkFG: #fff;
     --mobile-menu-nav-hover-linkFG: white;
     --mobile-menu-nav-active-linkFG: #B629F4;

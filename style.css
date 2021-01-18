@@ -56,7 +56,7 @@
 
 
     transform: scale(1);
-    transition: all 150ms ease-in;
+    transition: all 150ms ease-out;
 
 
 }
@@ -65,12 +65,13 @@
 .glightbox:hover img {
 
     box-shadow: 0px 0px 40px rgba(101, 27, 166, 0.34) !important;
-    transform: scale(1.05);
-    transition: all 200ms ease-out;
+    /* transform: scale(1.05); */
+    transition: all 150ms ease-in-out;
     mix-blend-mode: var(--collapse-card-img-thumbnail-mix-blend-mode);
     border: 1px solid rgba(101, 27, 166, 0.44) !important;
-    margin-top: 50px !important;
-    margin-bottom: 50px !important;
+    /* margin-top: 75px !important;
+    margin-bottom: 75px !important; */
+    /* transform: translateX(10px); */
 
 }
 
