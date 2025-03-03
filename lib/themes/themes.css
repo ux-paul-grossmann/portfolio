@@ -1,342 +1,30 @@
 :root {
     --scrollbar-inactive-thumbBG: rgba(0, 0, 0, 0.4);
-    --scrollbar-thumbBG: #1D1C1B;
+    --scrollbar-thumbBG: #1d1c1b;
     --scrollbar-width: 10px;
     --bodyBG: #fff;
-    --bodyFG: #41403E;
-
-    --ci-brand-boxBG: #d8ff02;
-    --ci-brand-boxFG: #1D1C1B;
-    --ci-brand-captionFG: #1D1C1B;
-    --ci-profilbild-caption-mainFG: #41403E;
-    --ci-profilbild-caption-sublineFG: rgb(140 140 140);
-    --navbarBG: #d8ff02;
-    --navlinkFG: #292826;
-    --navlink-hover-FG: #fff;
-    --navlink-hover-BG: #1D1C1B;
-    --navlink-active-FG: #B629F4;
-    --navlink-active-BG: #fff;
-    --navlink-dropdownMenuFG: #d8ff02;
-    --navlink-dropdownMenuBG: #41403e;
-    --navlink-dropdownMenu-headerFG: #fff;
-    --navlink-dropdownMenu-dropdownItemFG: #d8ff02;
-    --navlink-dropdownMenu-dropdownItem-hover-FG: #fff;
-    --navlink-dropdownMenu-dropdownItem-hover-BG: #B629F4;
-    --navlink-dropdown-BxShd: 0 15px 15px 0 rgba(80, 80, 80, .3);
-    --navlink-showFG: #fff;
-    --navlink-showBG: #1D1C1B;
-    --chevron-scroll-icon-stroke: #B629F4;
-
-    --actionButtonBdCol: chartreuse;
-    --actionButtonFG: #fff;
-    --actionButtonBG: #292826;
-    --actionButtonBG-hover: #292826;
-    --actionButtonFG-hover: #fff;
-    --actionButton-icon: #B629F4;
-    --actionButton-FileSizeFG: #B629F4;
-
-    /* --kontext-divBG: rgb(182, 176, 225);
-    --kontext-divFG: #1D1C1B; */
-
-    --kontext-divBG: #B629F4;
-    --kontext-divFG: #fff;
-
-
-    --collapse-card-titleFG: #41403E;
-
-    /* --badge-tagBG: rgb(182, 176, 225);
-    --badge-tagFG: #1D1C1B;
-    --badge-tag-border: 1px solid rgb(156, 150, 200);
-     */
-    --badge-tagBG: #c34bf6;
-    --badge-tagFG: #fff;
-    --badge-tag-border: 1px solid #a12cd4;
-
-    --collapse-badge-hover-tagBG: #d8ff02;
-    --collapse-badge-hover-tagFG: #000;
-    --badge-tag-border-hover: 1px solid #c1e204;
-
-    --collapse-cardBG: ghostwhite;
-    --collapse-cardFG: #41403E;
-    --collapse-card-img-thumbnail-mix-blend-mode: multiply;
-
-    --collapse-card-footerBG: ghostwhite;
-    --collapse-card-footerBdT: rgba(0, 0, 0, .0125);
-    --collapse-card-footer-collapsed-chevronFG: #292826;
-    --collapse-card-footer-expanded-chevronFG: #B629F4;
-    --collapse-cardBdCol: 1px solid gainsboro;
-
-    /* --collapse-cardBxShd:  0 0 0 0.5px #B629F4; */
-
-    --collapse-cardBxShd: 0 3px 3px rgba(0, 0, 0, .05);
-    --collapse-cardBxShd-hover:
-        0 3.6px 2.2px rgba(0, 0, 0, 0.014),
-        0 8.6px 5.3px rgba(0, 0, 0, 0.02),
-        0 16.3px 10px rgba(0, 0, 0, 0.025),
-        0 29px 17.9px rgba(0, 0, 0, 0.03),
-        0 54.3px 33.4px rgba(0, 0, 0, 0.036),
-        0 130px 80px rgba(0, 0, 0, 0.05);
-
-
-    --collapse-card-body-box-shadow: 0 3px 3px rgba(0, 0, 0, .05);
-
-    --designed-mit-BG: transparent;
-
-
-    --linkFG: #cc62f9;
-    --link-hoverFG: #333;
-    --link-hoverBG: #d8ff02;
-    --link-activeFG: #222;
-    --link-visitedFG: #cc62f9;
-
-
-
-    --carousel-control-FG: #000;
-    --carousel-control-BG: #ddd;
-
-    --video-thumbnail-FG: #888;
-    --video-thumbnail-FG-hover: #777;
-
-
-    --scrollTopFG: #292826;
-    --scrollTopFG-mobile: #292826;
-    --scrollTop-hover-BdCol: rgba(0, 0, 0, 0.1);
-    --scrollTop-hover-BG: #292826;
-    --scrollTop-hover-FG: #fff;
-    --scrollTop-hover-BG-mobile: #292826;
-    --scrollTop-hover-FG-mobile: #fff;
-    --scrollTop-hover-BdCol-mobile: rgba(0, 0, 0, 0.1);
-    --selectionBG: #B629F4;
-    --selectionFG: #fff;
-    /* form */
-    --inputFG: #1D1C1B;
-    --input-fs: 80%;
-    --formFG: #B629F4;
-    --formBG: #fff;
-    --formBdCol: #E4E4E4;
-    --form-labelFG: #41403E;
-    --placeholderFG: #BFBCBC;
-    --form-focusFG: yellow;
-    --form-focusBG: #fff;
-    --form-focusBdCol: #41403E;
-    --form-focusBxShd: #B629F4;
-
-    /* mobile */
-    --mobile-menu-closeFG: #555;
-    --mobile-menu-closeBG: black;
-    --mobile-menu-close-btnBG: #000;
-    --mobile-menu-close-not-disabled-FG: #555;
-    --mobile-menu-navbar-navBG: rgba(0, 0, 0, .7);
-    --mobile-menu-navbar-light-togglerBdCol: rgba(0, 0, 0, .1);
-    --mobile-menu-navbar-light-togglerFG: #1D1C1B;
-    --mobile-menu-navbar-togglerBG: #d8ff02;
-    --mobile-menu-nav-linkFG: #fff;
-    --mobile-menu-nav-hover-linkFG: white;
-    --mobile-menu-nav-active-linkFG: #B629F4;
-    --mobile-menu-nav-active-linkBG: #000;
-    --mobile-menu-chevron-upFG: #1D1C1B;
-
-    --socialIcons-linkFG: gainsboro;
-    --socialIcons-link-hover-FG: #41403E;
-    --socialIcons-link-active-FG: #B629F4;
-    --socialIcons-link-visited-FG: gainsboro;
-    --copyrightFG: gainsboro;
-
-    /* colorChoose Device */
-    --color-choose-btn-1-BG: rgba(0, 0, 0, .8);
-    --color-choose-btn-1-FG: gainsboro;
-    --color-choose-btn-1-active-FG: black;
-    --color-choose-btn-1-active-BG: radial-gradient(#B629F4, transparent);
-    --color-choose-btn-1-hover-BG: black;
-    --color-choose-btn-1-hover-FG: white;
-    --color-choose-btn-2-BG: gainsboro;
-    --color-choose-btn-2-FG: dimgrey;
-    --color-choose-btn-2-active-FG: black;
-    --color-choose-btn-2-active-BG: radial-gradient(#B629F4, transparent);
-    --color-choose-btn-2-hover-BG: silver;
-    --color-choose-btn-2-hover-FG: black;
-    --color-choose-btn-3-BG: rgba(241, 226, 208, .8);
-    --color-choose-btn-3-FG: dimgrey;
-    --color-choose-btn-3-active-FG: black;
-    --color-choose-btn-3-active-BG: radial-gradient(#B629F4, transparent);
-    --color-choose-btn-3-hover-BG: #f1e2d0;
-    --color-choose-btn-3-hover-FG: black;
-}
-
-.dark {
-    --scrollbar-inactive-thumbBG: rgba(0, 0, 0, 0.4);
-    --scrollbar-thumbBG: #F2F113;
-    --scrollbar-width: 10px;
-    --bodyBG: #292826;
-    --bodyFG: #F2F113;
-    --bg: none;
-    --ci-brand-boxBG: #FCFB3A;
-    --ci-brand-boxFG: #1D1C1B;
-    --ci-brand-captionFG: #fff;
-    --ci-profilbild-caption-mainFG: ghostwhite;
-    --ci-profilbild-caption-sublineFG: #CCCB03;
-    --navbarBG: #F2F113;
-    --navlinkFG: #292826;
-    --navlink-hover-FG: #fff;
-    --navlink-hover-BG: #B629F4;
-    --navlink-active-FG: #F2F113;
-    --navlink-active-BG: #1D1C1B;
-    --navlink-showFG: #fff;
-    --navlink-showBG: #B629F4;
-    --chevron-scroll-icon-stroke: #B629F4;
-    --actionButtonBdCol: #1D1C1B;
-    --actionButtonFG: #fff;
-    --actionButtonBG: #B629F4;
-    --actionButtonBG-hover: #B629F4;
-    --actionButtonFG-hover: #fff;
-    --actionButton-icon: #292826;
-    --actionButton-FileSizeFG: #292826;
-    --kontext-divBG: #B629F4;
-    --kontext-divFG: ghostwhite;
-    --collapse-card-titleFG: ghostwhite;
-
-    --badge-tagBG: #B629F4;
-    --badge-tagFG: ghostwhite;
-    --badge-tag-border: 1px solid plum;
-    --badge-tag-border-hover: 1px solid forestgreen;
-
-
-    --collapse-badge-hover-tagBG: chartreuse;
-    --collapse-badge-hover-tagFG: #353432;
-
-
-    --collapse-cardBG: #1D1C1B;
-    --collapse-cardFG: ghostwhite;
-    --collapse-card-img-thumbnail-mix-blend-mode: none;
-
-    --collapse-card-footerBG: #1D1C1B;
-    --collapse-card-footerBdT: rgba(0, 0, 0, .0125);
-    --collapse-card-footer-collapsed-chevronFG: chartreuse;
-    --collapse-card-footer-expanded-chevronFG: #B629F4;
-    --collapse-cardBdCol: 1px solid rgba(0, 0, 0, .125);
-
-    /* --collapse-cardBxShd:  0 0 0 0.5px #B629F4; */
-    --collapse-cardBxShd: none;
-    --collapse-cardBxShd: 0 3px 3px rgba(0, 0, 0, .05);
-    --collapse-cardBxShd-hover:
-        0 3.6px 2.2px rgba(0, 0, 0, 0.014),
-        0 8.6px 5.3px rgba(0, 0, 0, 0.02),
-        0 16.3px 10px rgba(0, 0, 0, 0.025),
-        0 29px 17.9px rgba(0, 0, 0, 0.03),
-        0 54.3px 33.4px rgba(0, 0, 0, 0.036),
-        0 130px 80px rgba(0, 0, 0, 0.05);
-    --collapse-card-body-box-shadow: 0 3px 3px rgba(0, 0, 0, .05);
-
-
-    --designed-mit-BG: #c7c8ca;
-
-
-
-    --linkFG: #cc62f9;
-    --link-hoverFG: #333;
-    --link-hoverBG: #d8ff02;
-    --link-activeFG: #222;
-    --link-visitedFG: #cc62f9;
-
-    --carousel-control-FG: #fff;
-    --carousel-control-BG: #B629F4;
-
-    --video-thumbnail-FG: #444;
-
-
-    --scrollTopFG: #292826;
-    --scrollTop-hover-BdCol: rgba(0, 0, 0, 0.1);
-    --scrollTop-hover-BG: #B629F4;
-    --scrollTop-hover-FG: #fff;
-    --scrollTopFG-mobile: #B629F4;
-    --scrollTop-hover-FG-mobile: #B629F4;
-    --scrollTop-hover-BG-mobile: #292826;
-    --scrollTop-hover-BdCol-mobile: rgba(0, 0, 0, 0.1);
-    --selectionBG: #B629F4;
-    --selectionFG: #fff;
-    /* form */
-    --inputFG: #1D1C1B;
-    --input-fs: 80%;
-    --formFG: #B629F4;
-    --formBG: #fff;
-    --formBdCol: #E4E4E4;
-    --form-labelFG: #41403E;
-    --placeholderFG: #BFBCBC;
-    --form-focusFG: yellow;
-    --form-focusBG: #fff;
-    --form-focusBdCol: #41403E;
-    --form-focusBxShd: #B629F4;
-
-    /* mobile */
-    --mobile-menu-closeFG: indianred;
-    --mobile-menu-closeBG: black;
-    --mobile-menu-close-btn-border-top: 1px solid #222;
-    --mobile-menu-close-btnBG: #000;
-    --mobile-menu-close-not-disabled-FG: indianred;
-    --mobile-menu-navbar-navBG: rgba(0, 0, 0, .7);
-    --mobile-menu-navbar-light-togglerBdCol: rgba(0, 0, 0, .1);
-    --mobile-menu-navbar-light-togglerFG: #1D1C1B;
-    --mobile-menu-navbar-togglerBG: #F2F113;
-    --mobile-menu-nav-linkFG: #fff;
-    --mobile-menu-nav-hover-linkFG: white;
-    --mobile-menu-nav-active-linkFG: #B629F4;
-    --mobile-menu-nav-active-linkBG: #000;
-    --mobile-menu-chevron-upFG: #1D1C1B;
-    --socialIcons-linkFG: #41403E;
-    --socialIcons-link-hover-FG: #B629F4;
-    --socialIcons-link-active-FG: springgreen;
-    --socialIcons-link-visited-FG: #41403E;
-    --copyrightFG: #41403E;
-
-
-    /* colorChoose Device */
-    --color-choose-btn-1-BG: rgba(0, 0, 0, .8);
-    --color-choose-btn-1-FG: gainsboro;
-    --color-choose-btn-1-active-FG: black;
-    --color-choose-btn-1-active-BG: radial-gradient(#B629F4, transparent);
-    --color-choose-btn-1-hover-BG: black;
-    --color-choose-btn-1-hover-FG: white;
-    --color-choose-btn-2-BG: gainsboro;
-    --color-choose-btn-2-FG: dimgrey;
-    --color-choose-btn-2-active-FG: black;
-    --color-choose-btn-2-active-BG: radial-gradient(#B629F4, transparent);
-    --color-choose-btn-2-hover-BG: silver;
-    --color-choose-btn-2-hover-FG: black;
-    --color-choose-btn-3-BG: rgba(241, 226, 208, .8);
-    --color-choose-btn-3-FG: dimgrey;
-    --color-choose-btn-3-active-FG: black;
-    --color-choose-btn-3-active-BG: radial-gradient(#B629F4, transparent);
-    --color-choose-btn-3-hover-BG: #f1e2d0;
-    --color-choose-btn-3-hover-FG: black;
-}
-
-.lightPlus {
-    --scrollbar-inactive-thumbBG: rgba(0, 0, 0, 0.4);
-    --scrollbar-thumbBG: #1D1C1B;
-    --scrollbar-width: 10px;
-    --bodyBG: #fff;
-    --bodyFG: #41403E;
+    --bodyFG: #41403e;
     --ci-brand-boxBG: #ddff02;
-    --ci-brand-boxFG: #1D1C1B;
-    --ci-brand-captionFG: #1D1C1B;
-    --ci-profilbild-caption-mainFG: #41403E;
-    --ci-profilbild-caption-sublineFG: rgb(170, 170, 170);
-    --navbarBG: rgba(240, 240, 240, .7);
+    --ci-brand-boxFG: #1d1c1b;
+    --ci-brand-captionFG: #1d1c1b;
+    --ci-profilbild-caption-mainFG: #41403e;
+    --ci-profilbild-caption-sublineFG: rgb(130, 130, 130);
+    --navbarBG: rgba(240, 240, 240, 0.7);
     --navlinkFG: #292826;
     --navlink-hover-FG: #000;
     --navlink-hover-BG: #ddff02;
     --navlink-active-FG: #fff;
-    --navlink-active-BG: #1D1C1B;
+    --navlink-active-BG: #1d1c1b;
     --navlink-dropdownMenuFG: #ddff02;
-    --navlink-dropdownMenuBG: #1D1C1B;
+    --navlink-dropdownMenuBG: #1d1c1b;
     --navlink-dropdownMenu-headerFG: #fff;
     --navlink-dropdownMenu-dropdownItemFG: #fff;
     --navlink-dropdownMenu-dropdownItem-hover-FG: #000;
     --navlink-dropdownMenu-dropdownItem-hover-BG: #ddff02;
-    --navlink-dropdown-BxShd: 0 15px 15px 0 rgba(80, 80, 80, .3);
+    --navlink-dropdown-BxShd: 0 15px 15px 0 rgba(80, 80, 80, 0.3);
     --navlink-showFG: #fff;
-    --navlink-showBG: #1D1C1B;
-    --chevron-scroll-icon-stroke: #B629F4;
+    --navlink-showBG: #1d1c1b;
+    --chevron-scroll-icon-stroke: #b629f4;
 
     --actionButtonBdCol: none;
     --actionButtonFG: #fff;
@@ -346,11 +34,9 @@
     --actionButton-icon: #ddff02;
     --actionButton-FileSizeFG: #ddff02;
 
-
-
     --kontext-divBG: #f2f113;
     --kontext-divFG: #292826;
-    --collapse-card-titleFG: #41403E;
+    --collapse-card-titleFG: #41403e;
 
     --badge-tagBG: mediumslateblue;
     --badge-tagFG: white;
@@ -361,36 +47,29 @@
     --collapse-badge-hover-tagFG: #000;
 
     --collapse-cardBG: ghostwhite;
-    --collapse-cardFG: #41403E;
+    --collapse-cardFG: #41403e;
     --collapse-card-img-thumbnail-mix-blend-mode: multiply;
     --collapse-card-footerBG: ghostwhite;
-    --collapse-card-footerBdT: rgba(0, 0, 0, .0125);
+    --collapse-card-footerBdT: rgba(0, 0, 0, 0.0125);
     --collapse-card-footer-collapsed-chevronFG: #292826;
-    --collapse-card-footer-expanded-chevronFG: #B629F4;
-    --collapse-cardBdCol: 1px solid rgba(0, 0, 0, .1);
+    --collapse-card-footer-expanded-chevronFG: #b629f4;
+    --collapse-cardBdCol: 1px solid rgba(0, 0, 0, 0.1);
 
     /* --collapse-cardBxShd:  0 0 0 0.5px #B629F4; */
-    --collapse-cardBxShd: 0 3px 3px rgba(0, 0, 0, .05);
+    --collapse-cardBxShd: 0 3px 3px rgba(0, 0, 0, 0.05);
     --collapse-cardBxShd-hover:
-        0 3.6px 2.2px rgba(0, 0, 0, 0.014),
-        0 8.6px 5.3px rgba(0, 0, 0, 0.02),
-        0 16.3px 10px rgba(0, 0, 0, 0.025),
-        0 29px 17.9px rgba(0, 0, 0, 0.03),
-        0 54.3px 33.4px rgba(0, 0, 0, 0.036),
-        0 130px 80px rgba(0, 0, 0, 0.05);
+        0 3.6px 2.2px rgba(0, 0, 0, 0.014), 0 8.6px 5.3px rgba(0, 0, 0, 0.02),
+        0 16.3px 10px rgba(0, 0, 0, 0.025), 0 29px 17.9px rgba(0, 0, 0, 0.03),
+        0 54.3px 33.4px rgba(0, 0, 0, 0.036), 0 130px 80px rgba(0, 0, 0, 0.05);
 
-    --collapse-card-body-box-shadow: 0 3px 3px rgba(0, 0, 0, .05);
+    --collapse-card-body-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.05);
 
     --designed-mit-BG: transparent;
-
 
     --linkFG: mediumslateblue;
     --link-hoverFG: #000;
     --link-activeFG: #ddff02;
     --link-visitedFG: mediumslateblue;
-
-
-
 
     --carousel-control-FG: #fff;
     --carousel-control-BG: transparent;
@@ -405,60 +84,353 @@
     --scrollTop-hover-BG-mobile: #292826;
     --scrollTop-hover-FG-mobile: #555;
     --scrollTop-hover-BdCol-mobile: rgba(0, 0, 0, 0.1);
-    --selectionBG: #B629F4;
+    --selectionBG: #b629f4;
     --selectionFG: #fff;
     /* form */
-    --inputFG: #1D1C1B;
+    --inputFG: #1d1c1b;
     --input-fs: 80%;
-    --formFG: #B629F4;
+    --formFG: #b629f4;
     --formBG: #fff;
-    --formBdCol: #E4E4E4;
-    --form-labelFG: #41403E;
-    --placeholderFG: #BFBCBC;
+    --formBdCol: #e4e4e4;
+    --form-labelFG: #41403e;
+    --placeholderFG: #bfbcbc;
     --form-focusFG: yellow;
     --form-focusBG: #fff;
-    --form-focusBdCol: #41403E;
+    --form-focusBdCol: #41403e;
     --form-focusBxShd: #ddff02;
 
     /* mobile */
     --mobile-menu-closeFG: #555;
     --mobile-menu-closeBG: black;
     --mobile-menu-close-btn-border-top: 1px solid #ddd;
-    --mobile-menu-close-btnBG: rgba(240, 240, 240, .7);
+    --mobile-menu-close-btnBG: rgba(240, 240, 240, 0.7);
     --mobile-menu-close-not-disabled-FG: #555;
-    --mobile-menu-navbar-navBG: rgba(240, 240, 240, .7);
-    --mobile-menu-navbar-light-togglerBdCol: rgba(0, 0, 0, .1);
-    --mobile-menu-navbar-light-togglerFG: #1D1C1B;
-    --mobile-menu-navbar-togglerBG: rgba(240, 240, 240, .7);
+    --mobile-menu-navbar-navBG: rgba(240, 240, 240, 0.7);
+    --mobile-menu-navbar-light-togglerBdCol: rgba(0, 0, 0, 0.1);
+    --mobile-menu-navbar-light-togglerFG: #1d1c1b;
+    --mobile-menu-navbar-togglerBG: rgba(240, 240, 240, 0.7);
     --mobile-menu-nav-linkFG: black;
     --mobile-menu-nav-hover-linkFG: #000;
     --mobile-menu-nav-active-linkFG: #fff;
     --mobile-menu-nav-active-linkBG: #000;
-    --mobile-menu-chevron-upFG: #1D1C1B;
+    --mobile-menu-chevron-upFG: #1d1c1b;
 
     --socialIcons-linkFG: gainsboro;
-    --socialIcons-link-hover-FG: #41403E;
-    --socialIcons-link-active-FG: #B629F4;
+    --socialIcons-link-hover-FG: #41403e;
+    --socialIcons-link-active-FG: #b629f4;
     --socialIcons-link-visited-FG: gainsboro;
     --copyrightFG: gainsboro;
 
     /* colorChoose Device */
-    --color-choose-btn-1-BG: rgba(0, 0, 0, .8);
+    --color-choose-btn-1-BG: rgba(0, 0, 0, 0.8);
     --color-choose-btn-1-FG: gainsboro;
     --color-choose-btn-1-active-FG: black;
-    --color-choose-btn-1-active-BG: radial-gradient(#B629F4, transparent);
+    --color-choose-btn-1-active-BG: radial-gradient(#b629f4, transparent);
     --color-choose-btn-1-hover-BG: black;
     --color-choose-btn-1-hover-FG: white;
     --color-choose-btn-2-BG: gainsboro;
     --color-choose-btn-2-FG: dimgrey;
     --color-choose-btn-2-active-FG: black;
-    --color-choose-btn-2-active-BG: radial-gradient(#B629F4, transparent);
+    --color-choose-btn-2-active-BG: radial-gradient(#b629f4, transparent);
     --color-choose-btn-2-hover-BG: silver;
     --color-choose-btn-2-hover-FG: black;
-    --color-choose-btn-3-BG: rgba(241, 226, 208, .8);
+    --color-choose-btn-3-BG: rgba(241, 226, 208, 0.8);
     --color-choose-btn-3-FG: dimgrey;
     --color-choose-btn-3-active-FG: black;
-    --color-choose-btn-3-active-BG: radial-gradient(#B629F4, transparent);
+    --color-choose-btn-3-active-BG: radial-gradient(#b629f4, transparent);
+    --color-choose-btn-3-hover-BG: #f1e2d0;
+    --color-choose-btn-3-hover-FG: black;
+}
+
+.dark {
+    --scrollbar-inactive-thumbBG: rgba(0, 0, 0, 0.4);
+    --scrollbar-thumbBG: #f2f113;
+    --scrollbar-width: 10px;
+    --bodyBG: #292826;
+    --bodyFG: #f2f113;
+    --bg: none;
+    --ci-brand-boxBG: #fcfb3a;
+    --ci-brand-boxFG: #1d1c1b;
+    --ci-brand-captionFG: #fff;
+    --ci-profilbild-caption-mainFG: ghostwhite;
+    --ci-profilbild-caption-sublineFG: #cccb03;
+    --navbarBG: #f2f113;
+    --navlinkFG: #292826;
+    --navlink-hover-FG: #fff;
+    --navlink-hover-BG: #b629f4;
+    --navlink-active-FG: #f2f113;
+    --navlink-active-BG: #1d1c1b;
+    --navlink-showFG: #fff;
+    --navlink-showBG: #b629f4;
+    --chevron-scroll-icon-stroke: #b629f4;
+    --actionButtonBdCol: #1d1c1b;
+    --actionButtonFG: #fff;
+    --actionButtonBG: #b629f4;
+    --actionButtonBG-hover: #b629f4;
+    --actionButtonFG-hover: #fff;
+    --actionButton-icon: #292826;
+    --actionButton-FileSizeFG: #292826;
+    --kontext-divBG: #b629f4;
+    --kontext-divFG: ghostwhite;
+    --collapse-card-titleFG: ghostwhite;
+
+    --badge-tagBG: #b629f4;
+    --badge-tagFG: ghostwhite;
+    --badge-tag-border: 1px solid plum;
+    --badge-tag-border-hover: 1px solid forestgreen;
+
+    --collapse-badge-hover-tagBG: chartreuse;
+    --collapse-badge-hover-tagFG: #353432;
+
+    --collapse-cardBG: #1d1c1b;
+    --collapse-cardFG: ghostwhite;
+    --collapse-card-img-thumbnail-mix-blend-mode: none;
+
+    --collapse-card-footerBG: #1d1c1b;
+    --collapse-card-footerBdT: rgba(0, 0, 0, 0.0125);
+    --collapse-card-footer-collapsed-chevronFG: chartreuse;
+    --collapse-card-footer-expanded-chevronFG: #b629f4;
+    --collapse-cardBdCol: 1px solid rgba(0, 0, 0, 0.125);
+
+    /* --collapse-cardBxShd:  0 0 0 0.5px #B629F4; */
+    --collapse-cardBxShd: none;
+    --collapse-cardBxShd: 0 3px 3px rgba(0, 0, 0, 0.05);
+    --collapse-cardBxShd-hover:
+        0 3.6px 2.2px rgba(0, 0, 0, 0.014), 0 8.6px 5.3px rgba(0, 0, 0, 0.02),
+        0 16.3px 10px rgba(0, 0, 0, 0.025), 0 29px 17.9px rgba(0, 0, 0, 0.03),
+        0 54.3px 33.4px rgba(0, 0, 0, 0.036), 0 130px 80px rgba(0, 0, 0, 0.05);
+    --collapse-card-body-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.05);
+
+    --designed-mit-BG: #c7c8ca;
+
+    --linkFG: #cc62f9;
+    --link-hoverFG: #333;
+    --link-hoverBG: #d8ff02;
+    --link-activeFG: #222;
+    --link-visitedFG: #cc62f9;
+
+    --carousel-control-FG: #fff;
+    --carousel-control-BG: #b629f4;
+
+    --video-thumbnail-FG: #444;
+
+    --scrollTopFG: #292826;
+    --scrollTop-hover-BdCol: rgba(0, 0, 0, 0.1);
+    --scrollTop-hover-BG: #b629f4;
+    --scrollTop-hover-FG: #fff;
+    --scrollTopFG-mobile: #b629f4;
+    --scrollTop-hover-FG-mobile: #b629f4;
+    --scrollTop-hover-BG-mobile: #292826;
+    --scrollTop-hover-BdCol-mobile: rgba(0, 0, 0, 0.1);
+    --selectionBG: #b629f4;
+    --selectionFG: #fff;
+    /* form */
+    --inputFG: #1d1c1b;
+    --input-fs: 80%;
+    --formFG: #b629f4;
+    --formBG: #fff;
+    --formBdCol: #e4e4e4;
+    --form-labelFG: #41403e;
+    --placeholderFG: #bfbcbc;
+    --form-focusFG: yellow;
+    --form-focusBG: #fff;
+    --form-focusBdCol: #41403e;
+    --form-focusBxShd: #b629f4;
+
+    /* mobile */
+    --mobile-menu-closeFG: indianred;
+    --mobile-menu-closeBG: black;
+    --mobile-menu-close-btn-border-top: 1px solid #222;
+    --mobile-menu-close-btnBG: #000;
+    --mobile-menu-close-not-disabled-FG: indianred;
+    --mobile-menu-navbar-navBG: rgba(0, 0, 0, 0.7);
+    --mobile-menu-navbar-light-togglerBdCol: rgba(0, 0, 0, 0.1);
+    --mobile-menu-navbar-light-togglerFG: #1d1c1b;
+    --mobile-menu-navbar-togglerBG: #f2f113;
+    --mobile-menu-nav-linkFG: #fff;
+    --mobile-menu-nav-hover-linkFG: white;
+    --mobile-menu-nav-active-linkFG: #b629f4;
+    --mobile-menu-nav-active-linkBG: #000;
+    --mobile-menu-chevron-upFG: #1d1c1b;
+    --socialIcons-linkFG: #41403e;
+    --socialIcons-link-hover-FG: #b629f4;
+    --socialIcons-link-active-FG: springgreen;
+    --socialIcons-link-visited-FG: #41403e;
+    --copyrightFG: #41403e;
+
+    /* colorChoose Device */
+    --color-choose-btn-1-BG: rgba(0, 0, 0, 0.8);
+    --color-choose-btn-1-FG: gainsboro;
+    --color-choose-btn-1-active-FG: black;
+    --color-choose-btn-1-active-BG: radial-gradient(#b629f4, transparent);
+    --color-choose-btn-1-hover-BG: black;
+    --color-choose-btn-1-hover-FG: white;
+    --color-choose-btn-2-BG: gainsboro;
+    --color-choose-btn-2-FG: dimgrey;
+    --color-choose-btn-2-active-FG: black;
+    --color-choose-btn-2-active-BG: radial-gradient(#b629f4, transparent);
+    --color-choose-btn-2-hover-BG: silver;
+    --color-choose-btn-2-hover-FG: black;
+    --color-choose-btn-3-BG: rgba(241, 226, 208, 0.8);
+    --color-choose-btn-3-FG: dimgrey;
+    --color-choose-btn-3-active-FG: black;
+    --color-choose-btn-3-active-BG: radial-gradient(#b629f4, transparent);
+    --color-choose-btn-3-hover-BG: #f1e2d0;
+    --color-choose-btn-3-hover-FG: black;
+}
+
+.lightPlus {
+    --scrollbar-inactive-thumbBG: rgba(0, 0, 0, 0.4);
+    --scrollbar-thumbBG: #1d1c1b;
+    --scrollbar-width: 10px;
+    --bodyBG: #fff;
+    --bodyFG: #41403e;
+
+    --ci-brand-boxBG: #d8ff02;
+    --ci-brand-boxFG: #1d1c1b;
+    --ci-brand-captionFG: #1d1c1b;
+    --ci-profilbild-caption-mainFG: #41403e;
+    --ci-profilbild-caption-sublineFG: rgb(140 140 140);
+    --navbarBG: #d8ff02;
+    --navlinkFG: #292826;
+    --navlink-hover-FG: #fff;
+    --navlink-hover-BG: #1d1c1b;
+    --navlink-active-FG: #b629f4;
+    --navlink-active-BG: #fff;
+    --navlink-dropdownMenuFG: #d8ff02;
+    --navlink-dropdownMenuBG: #41403e;
+    --navlink-dropdownMenu-headerFG: #fff;
+    --navlink-dropdownMenu-dropdownItemFG: #d8ff02;
+    --navlink-dropdownMenu-dropdownItem-hover-FG: #fff;
+    --navlink-dropdownMenu-dropdownItem-hover-BG: #b629f4;
+    --navlink-dropdown-BxShd: 0 15px 15px 0 rgba(80, 80, 80, 0.3);
+    --navlink-showFG: #fff;
+    --navlink-showBG: #1d1c1b;
+    --chevron-scroll-icon-stroke: #b629f4;
+
+    --actionButtonBdCol: chartreuse;
+    --actionButtonFG: #fff;
+    --actionButtonBG: #292826;
+    --actionButtonBG-hover: #292826;
+    --actionButtonFG-hover: #fff;
+    --actionButton-icon: #b629f4;
+    --actionButton-FileSizeFG: #b629f4;
+
+    /* --kontext-divBG: rgb(182, 176, 225);
+    --kontext-divFG: #1D1C1B; */
+
+    --kontext-divBG: #b629f4;
+    --kontext-divFG: #fff;
+
+    --collapse-card-titleFG: #41403e;
+
+    /* --badge-tagBG: rgb(182, 176, 225);
+    --badge-tagFG: #1D1C1B;
+    --badge-tag-border: 1px solid rgb(156, 150, 200);
+     */
+    --badge-tagBG: #c34bf6;
+    --badge-tagFG: #fff;
+    --badge-tag-border: 1px solid #a12cd4;
+
+    --collapse-badge-hover-tagBG: #d8ff02;
+    --collapse-badge-hover-tagFG: #000;
+    --badge-tag-border-hover: 1px solid #c1e204;
+
+    --collapse-cardBG: ghostwhite;
+    --collapse-cardFG: #41403e;
+    --collapse-card-img-thumbnail-mix-blend-mode: multiply;
+
+    --collapse-card-footerBG: ghostwhite;
+    --collapse-card-footerBdT: rgba(0, 0, 0, 0.0125);
+    --collapse-card-footer-collapsed-chevronFG: #292826;
+    --collapse-card-footer-expanded-chevronFG: #b629f4;
+    --collapse-cardBdCol: 1px solid gainsboro;
+
+    /* --collapse-cardBxShd:  0 0 0 0.5px #B629F4; */
+
+    --collapse-cardBxShd: 0 3px 3px rgba(0, 0, 0, 0.05);
+    --collapse-cardBxShd-hover:
+        0 3.6px 2.2px rgba(0, 0, 0, 0.014), 0 8.6px 5.3px rgba(0, 0, 0, 0.02),
+        0 16.3px 10px rgba(0, 0, 0, 0.025), 0 29px 17.9px rgba(0, 0, 0, 0.03),
+        0 54.3px 33.4px rgba(0, 0, 0, 0.036), 0 130px 80px rgba(0, 0, 0, 0.05);
+
+    --collapse-card-body-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.05);
+
+    --designed-mit-BG: transparent;
+
+    --linkFG: #cc62f9;
+    --link-hoverFG: #333;
+    --link-hoverBG: #d8ff02;
+    --link-activeFG: #222;
+    --link-visitedFG: #cc62f9;
+
+    --carousel-control-FG: #000;
+    --carousel-control-BG: #ddd;
+
+    --video-thumbnail-FG: #888;
+    --video-thumbnail-FG-hover: #777;
+
+    --scrollTopFG: #292826;
+    --scrollTopFG-mobile: #292826;
+    --scrollTop-hover-BdCol: rgba(0, 0, 0, 0.1);
+    --scrollTop-hover-BG: #292826;
+    --scrollTop-hover-FG: #fff;
+    --scrollTop-hover-BG-mobile: #292826;
+    --scrollTop-hover-FG-mobile: #fff;
+    --scrollTop-hover-BdCol-mobile: rgba(0, 0, 0, 0.1);
+    --selectionBG: #b629f4;
+    --selectionFG: #fff;
+    /* form */
+    --inputFG: #1d1c1b;
+    --input-fs: 80%;
+    --formFG: #b629f4;
+    --formBG: #fff;
+    --formBdCol: #e4e4e4;
+    --form-labelFG: #41403e;
+    --placeholderFG: #bfbcbc;
+    --form-focusFG: yellow;
+    --form-focusBG: #fff;
+    --form-focusBdCol: #41403e;
+    --form-focusBxShd: #b629f4;
+
+    /* mobile */
+    --mobile-menu-closeFG: #555;
+    --mobile-menu-closeBG: black;
+    --mobile-menu-close-btnBG: #000;
+    --mobile-menu-close-not-disabled-FG: #555;
+    --mobile-menu-navbar-navBG: rgba(0, 0, 0, 0.7);
+    --mobile-menu-navbar-light-togglerBdCol: rgba(0, 0, 0, 0.1);
+    --mobile-menu-navbar-light-togglerFG: #1d1c1b;
+    --mobile-menu-navbar-togglerBG: #d8ff02;
+    --mobile-menu-nav-linkFG: #fff;
+    --mobile-menu-nav-hover-linkFG: white;
+    --mobile-menu-nav-active-linkFG: #b629f4;
+    --mobile-menu-nav-active-linkBG: #000;
+    --mobile-menu-chevron-upFG: #1d1c1b;
+
+    --socialIcons-linkFG: gainsboro;
+    --socialIcons-link-hover-FG: #41403e;
+    --socialIcons-link-active-FG: #b629f4;
+    --socialIcons-link-visited-FG: gainsboro;
+    --copyrightFG: gainsboro;
+
+    /* colorChoose Device */
+    --color-choose-btn-1-BG: rgba(0, 0, 0, 0.8);
+    --color-choose-btn-1-FG: gainsboro;
+    --color-choose-btn-1-active-FG: black;
+    --color-choose-btn-1-active-BG: radial-gradient(#b629f4, transparent);
+    --color-choose-btn-1-hover-BG: black;
+    --color-choose-btn-1-hover-FG: white;
+    --color-choose-btn-2-BG: gainsboro;
+    --color-choose-btn-2-FG: dimgrey;
+    --color-choose-btn-2-active-FG: black;
+    --color-choose-btn-2-active-BG: radial-gradient(#b629f4, transparent);
+    --color-choose-btn-2-hover-BG: silver;
+    --color-choose-btn-2-hover-FG: black;
+    --color-choose-btn-3-BG: rgba(241, 226, 208, 0.8);
+    --color-choose-btn-3-FG: dimgrey;
+    --color-choose-btn-3-active-FG: black;
+    --color-choose-btn-3-active-BG: radial-gradient(#b629f4, transparent);
     --color-choose-btn-3-hover-BG: #f1e2d0;
     --color-choose-btn-3-hover-FG: black;
 }
