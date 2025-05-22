@@ -1883,7 +1883,8 @@
         top: auto;
         bottom: 145%;
         margin-top: 0;
-        margin-bottom: 0.125rem;
+        margin-bottom: 0.123rem;
+        z-index: 1;
 
     }
 
