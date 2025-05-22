@@ -1480,15 +1480,15 @@
 
     .thumb-element[aria-expanded=true] .card-footer-thumbnail .fas.fa-chevron-down {
 
-        -ms-transform: rotate(180deg);
-        transform: rotate(180deg);
-        -webkit-transform: rotate(180deg);
-        -o-transition: 800ms all ease;
-        transition: 800ms all ease;
-        -webkit-transition: 800ms all ease;
+        -ms-transform: rotate(-180deg);
+        transform: rotate(-180deg);
+        -webkit-transform: rotate(-180deg);
+        -o-transition: 200ms all ease;
+        transition: 200ms all ease;
+        -webkit-transition: 200ms all ease;
 
         color: var(--collapse-card-footer-expanded-chevronFG);
-        -webkit-animation-name: animationIndikator;
+        /* -webkit-animation-name: animationIndikator;
         animation-name: animationIndikator;
         -webkit-animation-duration: 400ms;
         animation-duration: 400ms;
@@ -1503,7 +1503,7 @@
         -webkit-animation-fill-mode: none;
         animation-fill-mode: none;
         -webkit-animation-play-state: running;
-        animation-play-state: running;
+        animation-play-state: running; */
 
     }
 
@@ -1520,7 +1520,7 @@
     .thumb-element[aria-expanded=false].card-footer-thumbnail .fas.fa-chevron-down:hover {
         color: var(--collapse-card-footer-collapsed-chevronFG);
         box-shadow: -10px 0 1px 10px #000;
-    }
+    } 
 
     a.thumb-element {
         /* color: rgba(30, 30, 30, .5); */
