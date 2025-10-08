@@ -16,7 +16,7 @@
     <link rel="icon" href="./lib/images/icons/favicon/favicon-228.png" sizes="228x228">
 
 
-    <script src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.5/dist/scrollreveal.min.js"></script>
+    <script src="https://unpkg.com/scrollreveal@4.0.9/dist/scrollreveal.min.js"></script>
     <script>
         ScrollReveal({
             reset: true
@@ -83,7 +83,7 @@
                     <a class="nav-link" href="#kontext" data-target="#kontext" title="">Kontext</a>
                 </li>
                 <li class="nav-item no_selection">
-                    <a class="nav-link" href="#projekte" data-target="#projekte" title="">Case Studies</a>
+                    <a class="nav-link" href="#projekte" data-target="#projekte" title="">Projekte</a>
                 </li>
                 <li class="nav-item no_selection">
                     <a class="nav-link" href="#kontakt" data-target="#kontakt" title="">Kontakt</a>
@@ -93,7 +93,7 @@
                             class=" nav-link "
                             id=" dropdownMenuTheme" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="fas fa-fill-drip"></i>
-                    Theme
+                    Farbschema
                     </a>
 
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuTheme">
@@ -123,22 +123,25 @@
         <header class="pl-0" id="profile">
             <h5 class="display-5  " id="ci">
                 <div id="ci-brand-box">
-                    <span id="ci-brand-detail-name">Paul Großmann</span>
+                    
+                    <a href="./index.html" id="ci-brand-detail-name">Paul Großmann</a>
                 </div>
             </h5>
         </header>
-        <div class="font-weight-lighter" id="ci-brand-caption">
+        <div class="d-none" id="ci-brand-caption">
             <span>ugly sketches do the trick</span>
         </div>
         <div id="ci-profilbild" class="row">
             <div class=" col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 pb-4" id="ci-picture-wrapper">
-                <img src="./lib/images/portrait/13.jpg" class="d-block">
+                <img src="./lib/images/portrait/Profile-01.jpg" class="d-block">
             </div>
-            <div class="pl-sm-5 col-12 col-sm-6 col-md-6 col-lg-8 col-xl-8 ">
-                <p class="h4 text-left font-weight-bold  " id="ci-profilbild-caption-main">Ich helfe Unternehmen
-                    profitable, digitale Produkte zu designen.</p>
-                <p class="text-left  " id="ci-profilbild-caption-main-subline">Ich bin spezialisiert auf UX/UI-Design und verfüge über umfassende Kenntnisse in digitaler Kommunikation und Medien, die ich durch mein Studium und praktische Erfahrungen in der IT-Branche erworben habe.
+            <div class="pl-sm-2 pl-md-3 pl-lg-4 pt-lg-4 pt-xl-3 col-12 col-sm-6 col-md-6 col-lg-8 col-xl-8 ">
+                <p class="text-left " id="ci-profilbild-caption-main-subline">Hey, ich bin Paul Großmann, UX- & UI-Designer aus Aachen.</p>
+                <p class="h4 text-left" id="ci-profilbild-caption-main">Ich mache komplexe Anwendungen intuitiv und gestalte Nutzererlebnisse, die begeistern.
                 </p>
+                
+                <button class="mt-2 intro-button" onclick="window.location.href='#projekte'"  id="intro-button">Zu den Arbeitsproben</button>
+                
             </div>
 
         </div>
@@ -185,7 +188,6 @@
                 <div class="p-2">User Research</div>
                 <div class="p-2">Interaktion</div>
                 <div class="p-2">User Flow</div>
-                <div class="p-2">Fitt's Law</div>
                 <div class="p-2">Microinteractions</div>
                 <div class="p-2">Motion Design</div>
                 <div class="p-2">Storyboarding</div>
@@ -196,19 +198,19 @@
         </section>
 
         <section id="projekte" class="">
-            <h1 class="mb-5 text-center text-lg-left d-none d-sm-block">Case Studies</h1>
-            <h2 class="mb-4 text-center d-sm-none">Case Studies</h2>
+            <h1 class="mb-3 text-center text-lg-left d-none d-sm-block">Projekte</h1>
+            <h2 class="mb-3 text-center d-sm-none">Projekte</h2>
 
             <div class="row propalign">
 
                 <div id="firstThumbCollapse" class="  col-12 col-sm-12 col-md-12 col-lg-6 px-md-1 cluster">
                     <a class="thumb-element collapsed" style="max-width: 540px;" data-toggle="collapse"
-                        href="#thumbCollapseSSB" role="button" aria-expanded="false"
-                        aria-controls="thumbCollapseSSB" id="SSBCollapse">
+                        href="#thumbCollapseProj01" role="button" aria-expanded="false"
+                        aria-controls="thumbCollapseProj01" id="SSBCollapse">
                         <div class="card  mb-2">
                             <div class="row no-gutters">
                                 <div class="col-4 col-sm-5 col-md-4   ">
-                                    <div class="thumbnail-pic-ssb" alt="Thumbnail Smart SearchBar"></div>
+                                    <div class="thumbnail-pic-01" alt="Thumbnail Smart SearchBar"></div>
                                 </div>
                                 <div class="col-8 col-sm-7 col-md-8">
                                     <div class="card-body-thumbnail">
@@ -239,7 +241,7 @@
                         <div class="row">
                             <div class="col">
                                 <div class="collapse multi-collapse"
-                                    id="thumbCollapseSSB">
+                                    id="thumbCollapseProj01">
                                     <div class="card card-body">
 
                                         <article>
@@ -471,23 +473,7 @@
 
                                             </section>
 
-                                            <!-- <div class="card-footer d-flex justify-content-center py-475 flex-wrap">
-                                                <a href="./lib/pdf/ssb/paul-grossmann-ssb.pdf"
-                                                    title="Paul-grossmann-ssb"
-                                                    target="blank"
-                                                    class="d-flex align-self-center dl-button mr-sm-2 mb-2 mb-sm-0">
-                                                    <i
-                                                        class="fas fa-download fa-lg mx-2 mr-3 align-self-center"></i>
-
-                                                    <div class="text-left button-label align-self-center">
-                                                        Projektbilder als PDF herunterladen
-                                                    </div>
-                                                    <div class="text-center button-filesize align-self-center px-sm-2">
-                                                        875 KB
-                                                    </div>
-                                                </a>
-
-                                            </div> -->
+                                            
                                         </article>
                                     </div>
                                 </div>
@@ -500,12 +486,12 @@
 
                 <div id="secondThumbCollapse" class="  col-12 col-sm-12 col-md-12 col-lg-6 px-md-1 cluster">
                     <a class="thumb-element collapsed" style="max-width: 540px;max-height:215px;"
-                        data-toggle="collapse" href="#thumbCollapseDigiVerbandbuch" role="button" aria-expanded="false"
-                        aria-controls="thumbCollapseDigiVerbandbuch">
+                        data-toggle="collapse" href="#thumbCollapseProj02" role="button" aria-expanded="false"
+                        aria-controls="thumbCollapseProj02">
                         <div class="card mb-2">
                             <div class="row no-gutters">
                                 <div class="col-4 col-sm-5 col-md-4   ">
-                                    <div class="thumbnail-pic-digiverbandbuch" alt="Digitales Verbandbuch-Thumbnail"></div>
+                                    <div class="thumbnail-pic-02" alt="Digitales Verbandbuch-Thumbnail"></div>
                                 </div>
                                 <div class="col-8 col-sm-7 col-md-8">
                                     <div class="card-body-thumbnail">
@@ -535,7 +521,7 @@
                         <div class="row">
                             <div class="col">
                                 <div class="collapse multi-collapse "
-                                    id="thumbCollapseDigiVerbandbuch">
+                                    id="thumbCollapseProj02">
                                     <div class="card card-body">
 
                                         <article>
@@ -716,24 +702,7 @@
 
                                             </section>
 
-                                            <!-- <div class="card-footer d-flex justify-content-center py-475 flex-wrap">
-
-                                                <a href="./lib/pdf/ip40/paul-grossmann-interdisziplinäres-projekt.pdf"
-                                                    title="paul-grossmann-interdisziplinäres-projekt.pdf"
-                                                    target="blank"
-                                                    class="d-flex align-self-center dl-button mr-sm-2 mb-2 mb-sm-0">
-                                                    <i
-                                                        class="fas fa-download fa-lg mx-2 mr-3 align-self-center"></i>
-
-                                                    <div class="text-left button-label align-self-center">
-                                                        Projektbilder als PDF herunterladen
-                                                    </div>
-                                                    <div class="text-center button-filesize align-self-center px-sm-2">
-                                                        3.2 MB
-                                                    </div>
-                                                </a>
-
-                                            </div> -->
+                                            
                                         </article>
 
                                     </div>
@@ -750,12 +719,12 @@
              <div class="row propalign">
                 <div id="thirdThumbCollapse" class="  col-12 col-sm-12 col-md-12 col-lg-6 px-md-1 cluster">
                     <a class="thumb-element collapsed" style="max-width: 540px;" data-toggle="collapse"
-                        href="#thumbCollapseSprachzwirbel" role="button" aria-expanded="false"
-                        aria-controls="thumbCollapseSprachzwirbel" id="sprachzwirbelCollapse">
+                        href="#thumbCollapseProj03" role="button" aria-expanded="false"
+                        aria-controls="thumbCollapseProj03" id="sprachzwirbelCollapse">
                         <div class="card mb-2">
                             <div class="row no-gutters">
                                 <div class="col-4 col-sm-5 col-md-4   ">
-                                    <div class="thumbnail-pic-sprachzwirbel" alt=""></div>
+                                    <div class="thumbnail-pic-03" alt=""></div>
                                 </div>
                                 <div class="col-8 col-sm-7 col-md-8">
                                     <div class="card-body-thumbnail">
@@ -786,7 +755,7 @@
                         <div class="row">
                             <div class="col">
                                 <div class="collapse multi-collapse "
-                                    id="thumbCollapseSprachzwirbel">
+                                    id="thumbCollapseProj03">
                                     <div class="card card-body">
 
                                         <article>
@@ -1002,23 +971,7 @@
 
                                             </section>
 
-                                            <div class="card-footer d-flex justify-content-center py-475 flex-wrap">
-                                                <a href="./lib/pdf/software-ergonomie/paul-grossmann-software-ergonomie-sprachzwirbel.pdf"
-                                                    title="Paul-grossmann-software-ergonomie-sprachzwirbel.pdf"
-                                                    target="blank"
-                                                    class="d-flex align-self-center dl-button mr-sm-2 mb-2 mb-sm-0">
-                                                    <i
-                                                        class="fas fa-download fa-lg mx-2 mr-3 align-self-center"></i>
-
-                                                    <div class="text-left button-label align-self-center">
-                                                        Projektbilder als PDF herunterladen
-                                                    </div>
-                                                    <div class="text-center button-filesize align-self-center px-sm-2">
-                                                        875 KB
-                                                    </div>
-                                                </a>
-
-                                            </div>
+                                            
                                         </article>
                                     </div>
                                 </div>
@@ -1031,12 +984,12 @@
 
                 <div id="fourthThumbCollapse" class="  col-12 col-sm-12 col-md-12 col-lg-6 px-md-1 cluster">
                     <a class="thumb-element collapsed" style="max-width: 540px;max-height:215px;"
-                        data-toggle="collapse" href="#thumbCollapseIP40" role="button" aria-expanded="false"
-                        aria-controls="thumbCollapseIP40">
+                        data-toggle="collapse" href="#thumbCollapseProj04" role="button" aria-expanded="false"
+                        aria-controls="thumbCollapseProj04">
                         <div class="card  mb-2">
                             <div class="row no-gutters">
                                 <div class="col-4 col-sm-5 col-md-4   ">
-                                    <div class="thumbnail-pic-ip40" alt="Dashboard-Diagram-Thumbnail"></div>
+                                    <div class="thumbnail-pic-04" alt="Dashboard-Diagram-Thumbnail"></div>
                                 </div>
                                 <div class="col-8 col-sm-7 col-md-8">
                                     <div class="card-body-thumbnail">
@@ -1066,7 +1019,7 @@
                         <div class="row">
                             <div class="col">
                                 <div class="collapse multi-collapse "
-                                    id="thumbCollapseIP40">
+                                    id="thumbCollapseProj04">
                                     <div class="card  card-body">
 
                                         <article>
@@ -1351,24 +1304,7 @@
 
                                             </section>
 
-                                            <div class="card-footer d-flex justify-content-center py-475 flex-wrap">
-
-                                                <a href="./lib/pdf/ip40/paul-grossmann-interdisziplinäres-projekt.pdf"
-                                                    title="paul-grossmann-interdisziplinäres-projekt.pdf"
-                                                    target="blank"
-                                                    class="d-flex align-self-center dl-button mr-sm-2 mb-2 mb-sm-0">
-                                                    <i
-                                                        class="fas fa-download fa-lg mx-2 mr-3 align-self-center"></i>
-
-                                                    <div class="text-left button-label align-self-center">
-                                                        Projektbilder als PDF herunterladen
-                                                    </div>
-                                                    <div class="text-center button-filesize align-self-center px-sm-2">
-                                                        3.2 MB
-                                                    </div>
-                                                </a>
-
-                                            </div>
+                                            
                                         </article>
 
                                     </div>
@@ -1386,12 +1322,12 @@
 
                 <div id="fifthThumbCollapse" class="col-12 col-sm-12 col-md-12 col-lg-6 px-md-1 cluster">
                     <a class="thumb-element collapsed" style="max-width: 540px;" data-toggle="collapse"
-                        href="#thumbCollapseSenseering" role="button" aria-expanded="false"
-                        aria-controls="thumbCollapseSenseering">
+                        href="#thumbCollapseProj05" role="button" aria-expanded="false"
+                        aria-controls="thumbCollapseProj05">
                         <div class="card  mb-2">
                             <div class="row no-gutters">
                                 <div class="col-4 col-sm-5 col-md-4   ">
-                                    <div class="thumbnail-pic-senseering" alt="Dashboard-Diagram-Thumbnail"></div>
+                                    <div class="thumbnail-pic-05" alt="Dashboard-Diagram-Thumbnail"></div>
                                 </div>
                                 <div class="col-8 col-sm-7 col-md-8">
                                     <div class="card-body-thumbnail">
@@ -1421,7 +1357,7 @@
                         <div class="row">
                             <div class="col">
                                 <div class="collapse multi-collapse "
-                                    id="thumbCollapseSenseering">
+                                    id="thumbCollapseProj05">
                                     <div class="card  card-body">
 
                                         <article>
@@ -1522,22 +1458,7 @@
 
                                             </section>
 
-                                            <div class="card-footer d-flex justify-content-center py-475 flex-wrap">
-                                                <a href="./lib/pdf/senseering/paul-grossmann-senseering.pdf"
-                                                    title="paul-grossmann-senseering.pdf" target="blank"
-                                                    class="d-flex align-self-center dl-button mr-sm-2 mb-2 mb-sm-0">
-                                                    <i
-                                                        class="fas fa-download fa-lg mx-2 mr-3 align-self-center"></i>
-
-                                                    <div class="text-left button-label align-self-center">
-                                                        Projektbilder als PDF herunterladen
-                                                    </div>
-                                                    <div class="text-center button-filesize align-self-center px-sm-2">
-                                                        3.2 MB
-                                                    </div>
-                                                </a>
-
-                                            </div>
+                                            
                                         </article>
                                     </div>
                                 </div>
@@ -1549,12 +1470,12 @@
                 </div>
                 <div id="sixtThumbCollapse" class="  col-12 col-sm-12 col-md-12 col-lg-6 px-md-1 cluster">
                     <a class="thumb-element collapsed" style="max-width: 540px;" data-toggle="collapse"
-                        href="#thumbCollapseFHaachenMobile" role="button" aria-expanded="false"
-                        aria-controls="thumbCollapseFHaachenMobile">
+                        href="#thumbCollapseProj06" role="button" aria-expanded="false"
+                        aria-controls="thumbCollapseProj06">
                         <div class="card   mb-2">
                             <div class="row no-gutters">
                                 <div class="col-4 col-sm-5 col-md-4   ">
-                                    <div class="thumbnail-pic-fh-aachen-mobile" alt="Dashboard-Diagram-Thumbnail"></div>
+                                    <div class="thumbnail-pic-06" alt="Dashboard-Diagram-Thumbnail"></div>
                                 </div>
                                 <div class="col-8 col-sm-7 col-md-8">
                                     <div class="card-body-thumbnail">
@@ -1587,7 +1508,7 @@
                         <div class="row">
                             <div class="col">
                                 <div class="collapse multi-collapse "
-                                    id="thumbCollapseFHaachenMobile">
+                                    id="thumbCollapseProj06">
                                     <div class="card   card-body">
 
                                         <article>
@@ -1750,23 +1671,7 @@
 
                                             </section>
 
-                                            <div class="card-footer d-flex justify-content-center py-475 flex-wrap">
-
-                                                <a href="./lib/pdf/fhac/paul-grossmann-fh-ac.pdf"
-                                                    title="paul-grossmann-fh-ac.pdf" target="blank"
-                                                    class="d-flex align-self-center dl-button mr-sm-2 mb-2 mb-sm-0">
-                                                    <i
-                                                        class="fas fa-download fa-lg mx-2 mr-3 align-self-center"></i>
-
-                                                    <div class="text-left button-label align-self-center">
-                                                        Projektbilder als PDF herunterladen
-                                                    </div>
-                                                    <div class="text-center button-filesize align-self-center px-sm-2">
-                                                        1.9 MB
-                                                    </div>
-                                                </a>
-
-                                            </div>
+                                           
                                         </article>
                                     </div>
                                 </div>
@@ -1782,15 +1687,13 @@
         </section>
 
 
-        <footer id="kontakt" class="">
+        <footer id="kontakt" class="mt-5">
             <div class="row mb-3">
                 <div class="col-12 col-lg-8">
                     <h1 class="mb-2 text-center text-lg-left d-none d-sm-block">Kontakt</h1>
                     <h2 class="mb-3 text-center d-sm-none">Kontakt</h2>
-                    <h6 id="kontaktCaption" class="mb-3">Wenn Sie meine potentielle Arbeitgeberin,
-                        eine Personalbearbei&shy;terin sind oder einfach jemand, die sich auf ein Kaffee
-                        treffen möchte, um über UX oder weitere spannende Themen zu reden. Ich freue
-                        mich auf Ihre Nachricht!</h6>
+                    <h6 id="kontaktCaption" class="mb-3">Ich freue
+                        mich auf Ihre Nachricht und baldige Zusammenarbeit!</h6>
 
                     <form action="https://submit-form.com/Ng4M69FW" target="_self" class=" mb-5">
                         <input type="hidden" name="_language" value="de" />
@@ -1814,29 +1717,20 @@
 
                         </div>
 
-                        <button type="submit" class="mt-2 submit-button font-weight-bold" value="send" id="btn--kontakt">Kontaktieren</button>
+                        <button type="submit" class="mt-3 submit-button font-weight-bold" value="send" id="btn--kontakt">Abschicken</button>
 
                     </form>
 
                 </div>
-                <div class="d-none d-lg-block col-lg-4">
+                <!-- <div class="d-none d-lg-block col-lg-4">
                     <div class="kontImgWrap load-hidden ">
                         <img src="./lib/images/portrait/12.jpg" class="d-block">
                     </div>
-                </div>
+                </div> -->
             </div>
             <div class="row mt-4">
-                <div class="col-12">
-                    <div id="copyright" class=" text-center small">
-                        &copy;
-                        <script>
-                            let today = new Date();
-                            document.write(today.getFullYear());
-                        </script>
-                        Paul Großmann
-                    </div>
-                </div>
-                <div class="col-12 mb-5 mb-sm-2">
+                
+                <div class="col-12 mb-2 mb-sm-2">
                     <ul class="d-flex flex-row justify-content-center list-unstyled" id="socialIconsWrap">
                         <li>
                             <a href="https://www.pinterest.co.uk/pashka3k/" class=" social" target="_blank">
@@ -1866,7 +1760,16 @@
 
                     </ul>
                 </div>
-
+<div class="col-12">
+                    <div id="copyright" class=" text-center small">
+                        &copy;
+                        <script>
+                            let today = new Date();
+                            document.write(today.getFullYear());
+                        </script>
+                        Paul Großmann
+                    </div>
+                </div>
             </div>
         </footer>
 
@@ -1897,17 +1800,9 @@
 
     <script src="./lib/js/helpers.js"></script>
 
-    <script>
-
-
-
-
-
-
-
-    </script>
+ 
     <script src="./lib/js/scrollreveal-direktiven.js"></script>
-    <div class="scrolltop no_selection">
+    <div class="scrolltop no_selection" onclick="window.location.href='#profile'">
         <div class="scroll icon animated slideInRight">
             Hoch</div>
     </div>

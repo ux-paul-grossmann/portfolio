@@ -2,10 +2,11 @@
     --scrollbar-inactive-thumbBG: rgba(0, 0, 0, 0.4);
     --scrollbar-thumbBG: #1d1c1b;
     --scrollbar-width: 10px;
-    --bodyBG: #fff;
+    --bodyBG: #fefefe;
     --bodyFG: #41403e;
     --ci-brand-boxBG: #ddff02;
     --ci-brand-boxFG: #1d1c1b;
+    --ci-brand-detail-name:#1d1c1b;
     --ci-brand-captionFG: #1d1c1b;
     --ci-profilbild-caption-mainFG: #41403e;
     --ci-profilbild-caption-sublineFG: rgb(130, 130, 130);
@@ -24,13 +25,18 @@
     --navlink-dropdown-BxShd: 0 15px 15px 0 rgba(80, 80, 80, 0.3);
     --navlink-showFG: #fff;
     --navlink-showBG: #1d1c1b;
-    --chevron-scroll-icon-stroke: #b629f4;
+    --chevron-scroll-icon-stroke: #292826;
+   
 
-    --actionButtonBdCol: none;
+   
+    --actionButtonBorderThickness:0px;
+    --actionButtonBorderColor:#000;
+    --actionButtonBorderThicknessHover:0px;
+    --actionButtonBorderColorHover:#111;
     --actionButtonFG: #fff;
     --actionButtonBG: #292826;
-    --actionButtonBG-hover: #292826;
-    --actionButtonFG-hover: #fff;
+    --actionButtonBG-hover: #ddff02;
+    --actionButtonFG-hover: #292826;
     --actionButton-icon: #ddff02;
     --actionButton-FileSizeFG: #ddff02;
 
@@ -38,9 +44,9 @@
     --kontext-divFG: #292826;
     --collapse-card-titleFG: #41403e;
 
-    --badge-tagBG: mediumslateblue;
-    --badge-tagFG: white;
-    --badge-tag-border: 1px solid slateblue;
+    --badge-tagBG: rgb(205, 210, 249);
+    --badge-tagFG: black;
+    --badge-tag-border: 1px solid rgb(205, 210, 249);
     --badge-tag-border-hover: 1px solid #cae903;
 
     --collapse-badge-hover-tagBG: #ddff02;
@@ -68,7 +74,8 @@
 
     --linkFG: mediumslateblue;
     --link-hoverFG: #000;
-    --link-activeFG: #ddff02;
+    --link-hoverBG: #ddff02;
+    --link-activeFG: #000;
     --link-visitedFG: mediumslateblue;
 
     --carousel-control-FG: #fff;
@@ -152,6 +159,7 @@
     --ci-brand-boxBG: #fcfb3a;
     --ci-brand-boxFG: #1d1c1b;
     --ci-brand-captionFG: #fff;
+    --ci-brand-detail-name:#1d1c1b;
     --ci-profilbild-caption-mainFG: ghostwhite;
     --ci-profilbild-caption-sublineFG: #cccb03;
     --navbarBG: #f2f113;
@@ -163,7 +171,12 @@
     --navlink-showFG: #fff;
     --navlink-showBG: #b629f4;
     --chevron-scroll-icon-stroke: #b629f4;
-    --actionButtonBdCol: #1d1c1b;
+
+
+    --actionButtonBorderThickness:1px;
+    --actionButtonBorderColor:#111;
+    --actionButtonBorderThicknessHover:1px;
+    --actionButtonBorderColorHover:#111;
     --actionButtonFG: #fff;
     --actionButtonBG: #b629f4;
     --actionButtonBG-hover: #b629f4;
@@ -289,6 +302,7 @@
     --ci-brand-boxBG: #d8ff02;
     --ci-brand-boxFG: #1d1c1b;
     --ci-brand-captionFG: #1d1c1b;
+    --ci-brand-detail-name:#1d1c1b;
     --ci-profilbild-caption-mainFG: #41403e;
     --ci-profilbild-caption-sublineFG: rgb(140 140 140);
     --navbarBG: #d8ff02;

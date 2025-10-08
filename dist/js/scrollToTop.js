@@ -6,7 +6,7 @@ $(window).scroll(function() {
         $('.scrolltop').stop(true, true).fadeOut();
     }
 });
-$(function(){$(".scroll").click(function(){$("html,body").animate({scrollTop:$(".thetop").offset().top},"3000");return false})})
+/* $(function(){$(".scroll").click(function(){$("html,body").animate({scrollTop:$(".thetop").offset().top},"3000");return false})}) */
 
 // $(window).scroll(function() {
 //     if ($(this).scrollTop() > 150 ) {
