@@ -2644,12 +2644,15 @@ html{
 }
 
 @media only screen and (min-width:1200px) {
+      .introText-wrapper{
+        padding-top: 4rem !important;
+    }
     #ci-profilbild-caption-main {
-        max-width: 32vw;
+        max-width: 40vw;
     }
 
     #ci-profilbild-caption-main-subline {
-        max-width: 30vw !important;
+        max-width: 43vw !important;
 
     }
 
@@ -2765,7 +2768,9 @@ html{
     #ci-profilbild {
         margin-bottom:15vh;
     }
-
+  .introText-wrapper{
+        padding-top: 2rem !important;
+    }
     #ci-profilbild-caption-main {
         max-width: fit-content;
         margin-top: -.5rem;
@@ -2843,7 +2848,9 @@ html{
     #ci-profilbild {
         margin-bottom: 20vh;
     }
-
+  .introText-wrapper{
+        padding-top: 3rem !important;
+    }
     #ci-profilbild-caption-main {
         max-width: 30vw;
         font-size: 200%;
@@ -2909,7 +2916,9 @@ html{
     #ci-profilbild {
         margin-bottom: 25vh;
     }
-
+  .introText-wrapper{
+        padding-top: 3rem !important;
+    }
     #ci-profilbild-caption-main {
         max-width: 24vw;
     }
@@ -2961,10 +2970,14 @@ html{
     #ci-profilbild {
         margin-bottom: 25vh;
     }
+    .introText-wrapper{
+        padding-top: 4rem !important;
+    }
     #ci-profilbild-caption-main {
         max-width: 36vw;
         /* margin-top: -.5vh; */
     }
+
     div#scrollDownChevron {
         display: none !important;
     }
