@@ -524,13 +524,13 @@ html{
         height: 3rem;
         width: inherit;
         transition: 200ms all ease;
-        padding:12px 16px 12px 16px;
+        padding:12px 24px 12px 24px;
 
     }
 
     #intro-button:hover {
         /* box-shadow: 0px 5px 9px 0px rgba(0, 0, 0, 0.3); */
-        transform: translateY(-4px);
+        /* transform: translateY(-4px); */
         transition: 250ms all ease;
         text-decoration: none;
         background: var(--actionButtonBG-hover) !important;
@@ -549,7 +549,7 @@ html{
         border-color: var(--actionButtonBorderColor);
         border-width: var(--actionButtonBorderThickness);
         border-style: solid;
-        padding:12px 16px 12px 16px;
+        padding:12px 24px 12px 24px;
         border-radius: 40px;
         box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
         transition: 200ms all ease;
@@ -2495,7 +2495,7 @@ html{
 
     #intro-button {
         
-        background: var(--actionButtonBG) !important;
+        background: var(--actionButtonBG);
         border-color: var(--actionButtonBorderColor);
         border-width: var(--actionButtonBorderThickness);
         border-style: solid;
@@ -2506,17 +2506,17 @@ html{
         height: 3rem;
         width: auto;
         transition: 200ms all ease;
-        padding:12px 16px 12px 16px;
+        padding:12px 24px 12px 24px;
 
     }
 
     #intro-button:hover {
         /* box-shadow: 0px 5px 9px 0px rgba(0, 0, 0, 0.3); */
-        transform: translateY(-4px);
+        /* transform: translateY(-4px); */
         transition: 250ms all ease;
         text-decoration: none;
-        background: var(--actionButtonBG-hover) !important;
-        color: var(--actionButtonFG-hover) !important;
+        background: var(--actionButtonBG-hover) ;
+        color: var(--actionButtonFG-hover) ;
         border-color: var(--actionButtonBorderColorHover);
         border-width: var(--actionButtonBorderThicknessHover);
         
@@ -2531,7 +2531,7 @@ html{
         border-color: var(--actionButtonBorderColor);
         border-width: var(--actionButtonBorderThickness);
         border-style: solid;
-        padding:12px 16px 12px 16px;
+        padding:12px 24px 12px 24px;
         border-radius: 40px;
         box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
         transition: 200ms all ease;
@@ -2725,7 +2725,9 @@ html{
         max-width: 36vw !important;
 
     }
-
+  .introText-wrapper{
+        padding-top: 1rem !important;
+    }
     .form-control {
         width: 75%;
 
@@ -2823,7 +2825,9 @@ html{
         max-width: 29vw !important;
 
     }
-
+  .introText-wrapper{
+        padding-top: 1rem !important;
+    }
 }
 
 @media only screen and (min-width:1920px) {
@@ -2914,7 +2918,8 @@ html{
     }
 
     #ci-profilbild {
-        margin-bottom: 25vh;
+        margin-top: 27vh;
+        margin-bottom: 23vh;
     }
   .introText-wrapper{
         padding-top: 3rem !important;
@@ -2951,7 +2956,7 @@ html{
     }
 
     div#scrollDownChevron {
-        display: none !important;
+        display: flex !important;
     }
 
 }
@@ -2968,7 +2973,9 @@ html{
     }
 
     #ci-profilbild {
-        margin-bottom: 25vh;
+        margin-bottom: 29vh;
+        margin-top: 34vh;
+        
     }
     .introText-wrapper{
         padding-top: 4rem !important;
@@ -2979,7 +2986,7 @@ html{
     }
 
     div#scrollDownChevron {
-        display: none !important;
+        display: flex !important;
     }
 
 }
