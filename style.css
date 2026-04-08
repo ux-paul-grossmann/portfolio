@@ -10,9 +10,28 @@ html{
     margin: 1rem -2.8rem 1rem -2.8rem;
 }
 
+/* Hide elements immediately so they can fade IN via JS */
+/* #ci-brand-caption, 
+#ci-picture-wrapper img, 
+#ci-profilbild-caption-main, 
+#ci-profilbild-caption-main-subline, 
+#intro-button, 
+.navbar, 
+#scrollDownChevron {
+    opacity: 0;
+} */
 
-
-
+/* Prevent the flash of content and ensure JS has a clean starting point */
+/* #ci-brand-caption, 
+.navbar, 
+#scrollDownChevron, 
+#ci-picture-wrapper img, 
+#ci-profilbild-caption-main-subline, 
+#ci-profilbild-caption-main, 
+#intro-button {
+    opacity: 0;
+    will-change: transform, opacity;
+} */
 
 .carousel-control-next:focus,
 .carousel-control-next:hover,
@@ -451,7 +470,10 @@ html{
         color: var(--ci-brand-captionFG);
         margin-left: 11.5rem;
         top: 15px; */
-        display: none;
+       display: block !important; /* Always in the layout */
+    opacity: 0; 
+    visibility: hidden; /* Tells the browser it's not there, but keeps layout spots */
+    transition: none !important;
     }
 
     article dd,
@@ -525,6 +547,7 @@ html{
         width: inherit;
         transition: 200ms all ease;
         padding:12px 24px 12px 24px;
+        margin-top: 16px;
 
     }
 
@@ -2126,7 +2149,9 @@ html{
         color: var(--ci-brand-captionFG);
         margin-left: 10rem;
         top: 17px;
-        display: inline;
+        display: block;
+        visibility: visible;
+        
         
     }
 
