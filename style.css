@@ -34,10 +34,10 @@ html{
 } */
 
 /* GLOBAL FIX: Navbar immer über dem Content (Akkordeon/Karten) */
-.navbar.fixed-bottom {
+/* .navbar.fixed-bottom {
     z-index: 1060 !important; 
     background-color: var(--mobile-menu-navbar-navBG) !important;
-}
+} */
 
 /* Sicherstellen, dass die Animation den Stacking-Context nicht bricht */
 .collapsing {
@@ -55,7 +55,100 @@ html{
     opacity: .7;
 }
 
+#theme-panel-container {
+    display: none !important;
+    position: fixed !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    z-index: 1040 !important;
+    bottom: 75px !important;
 
+    /* Force Horizontal Pill Layout */
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 10px !important;
+    
+    background: #1a1a1a !important; /* Dark theme from video */
+    border-radius: 50px !important;
+    padding: 6px 15px !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    width: auto !important;
+    white-space: nowrap !important;
+}
+
+/* Fix the buttons inside to be inline and styled like the video */
+#theme-panel-container .dropdown-item {
+    display: inline-block !important;
+    width: auto !important;
+    background: transparent !important;
+    color: #ffffff !important;
+    padding: 6px 14px !important;
+    margin: 0 !important;
+    border-radius: 20px !important;
+    font-size: 13px !important;
+    text-align: center !important;
+    border: none !important;
+}
+
+/* Hover state for the buttons */
+#theme-panel-container .dropdown-item:hover {
+    background: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Mobile Case: Ensure it stays above the menu */
+@media (max-width: 768px) {
+    #theme-panel-container {
+        z-index: 2050 !important;
+        bottom: 110px !important;
+    }
+}
+
+/* Trigger Animation */
+#theme-panel-container.show {
+    display: flex !important;
+    animation: themeSlideUp 0.3s ease-out forwards;
+}
+
+@keyframes themeSlideUp {
+    from { transform: translate(-50%, 15px); opacity: 0; }
+    to { transform: translate(-50%, 0); opacity: 1; }
+}
+/* 
+#custom-theme-panel {
+    position: fixed !important;
+    bottom: 12px;
+    left: 33%;
+    transform: translateX(-50%);
+    z-index: 1040; 
+    display: flex; 
+    flex-direction: row;
+    gap: 15px;
+    padding: 12px 25px;
+    background: #1a1a1a;
+    border-bottom-left-radius: 50px;
+    border-radius: 25px; 
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0;
+    transition: bottom 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.2s;
+    opacity: 0;
+    pointer-events: none;
+}
+
+#custom-theme-panel.theme-panel-show {
+    bottom: 52px; 
+    opacity: 1;
+    pointer-events: auto;
+} */
+
+
+.navbar.fixed-bottom {
+    z-index: 1050 !important;
+}
+@keyframes slideIn {
+    from { transform: translate(-50%, 10px); opacity: 0; }
+    to { transform: translate(-50%, 0); opacity: 1; }
+}
 
 
 .gzoomIn {
@@ -335,9 +428,14 @@ html{
         text-align: center;
     }
 
+
+
     #mobile-list-last {
         margin-bottom: 10px !important;
     }
+
+
+
 
     .dropdown-header {
         display: block;
@@ -2018,6 +2116,26 @@ a.thumb-element:hover .card-img-top {
         height: 55px;
         /* letter-spacing: 1px; */
     }
+
+/* The navbar remains on top */
+.navbar.fixed-bottom {
+    z-index: 1050 !important;
+}
+
+/* The panel is now a separate layer that can sit behind the navbar */
+#theme-panel-container {
+    display: none; /* Controlled by JS toggle */
+    position: fixed;
+    bottom: 60px; /* Adjust this to sit right above your navbar height */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1040; /* Lower than 1050, so it is physically behind */
+}
+
+#theme-panel-container.show {
+    display: block;
+    /* Add your slide-up animation here */
+}
 
     #kontakt {
         margin-bottom: 8vh;
