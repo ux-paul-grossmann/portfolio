@@ -33,6 +33,17 @@ html{
     will-change: transform, opacity;
 } */
 
+/* GLOBAL FIX: Navbar immer über dem Content (Akkordeon/Karten) */
+.navbar.fixed-bottom {
+    z-index: 1060 !important; 
+    background-color: var(--mobile-menu-navbar-navBG) !important;
+}
+
+/* Sicherstellen, dass die Animation den Stacking-Context nicht bricht */
+.collapsing {
+    z-index: 1;
+}
+
 .carousel-control-next:focus,
 .carousel-control-next:hover,
 .carousel-control-prev:focus,
@@ -775,7 +786,7 @@ html{
     .tcon-svgchevron path {
         -webkit-animation: chevron-pulse 3s infinite cubic-bezier(0.4, 0, 0.2, 1);
         animation: chevron-pulse 3s infinite cubic-bezier(0.4, 0, 0.2, 1);
-        fill: transparent;
+        fill: var(--chevron-scroll-icon-fill);
         stroke: var(--chevron-scroll-icon-stroke);
         stroke-width: 5px;
     }
@@ -1051,7 +1062,9 @@ html{
     }
 
     #ci-profilbild #ci-picture-wrapper img {
-        box-shadow: 0 15px 15px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 3.6px 2.2px rgba(0, 0, 0, 0.014), 0 8.6px 5.3px rgba(0, 0, 0, 0.02),
+        0 16.3px 10px rgba(0, 0, 0, 0.025), 0 29px 17.9px rgba(0, 0, 0, 0.03),
+        0 54.3px 33.4px rgba(0, 0, 0, 0.036), 0 130px 80px rgba(0, 0, 0, 0.05);
         /*        border-radius: .5rem;*/
         width: 100%;
         z-index: 10;
@@ -1623,7 +1636,7 @@ html{
 
     }
 
-    a.thumb-element .card {
+    /* a.thumb-element .card {
         transition: all 200ms ease;
         border: var(--collapse-cardBdCol);
         box-shadow: var(--collapse-cardBxShd);
@@ -1631,14 +1644,36 @@ html{
     }
 
     a.thumb-element .card:hover {
-        /* color: rgba(30, 30, 30, .95); */
+        
         box-shadow: var(--collapse-cardBxShd-hover);
         -webkit-transform: translateY(-4px);
         transform: translateY(-4px);
-    }
+    } */
 
 
+/* Basis-Zustand der Karte */
+a.thumb-element .card {
+    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), 
+                box-shadow 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    will-change: transform, box-shadow;
+    border: var(--collapse-cardBdCol);
+}
 
+/* Der "Hero-Style" Elevated Hover */
+a.thumb-element:hover .card {
+    /* Hebt die Karte entlang der Y-Achse an, genau wie ein Hero-Element */
+    transform: translateY(-8px) scale(1.02); 
+    
+    /* Ein weicherer, tieferer Schatten für den Elevation-Effekt */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12), 
+                0 15px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* Optional: Bild-Zoom innerhalb der Karte (falls gewünscht) */
+a.thumb-element:hover .card-img-top {
+    transform: scale(1.05);
+    transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
 
 
     a.thumb-element:active {
@@ -2162,7 +2197,9 @@ html{
     }
 
     #ci-profilbild #ci-picture-wrapper img {
-        box-shadow: 0 15px 15px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 3.6px 2.2px rgba(0, 0, 0, 0.014), 0 8.6px 5.3px rgba(0, 0, 0, 0.02),
+        0 16.3px 10px rgba(0, 0, 0, 0.025), 0 29px 17.9px rgba(0, 0, 0, 0.03),
+        0 54.3px 33.4px rgba(0, 0, 0, 0.036), 0 130px 80px rgba(0, 0, 0, 0.05);
         border-radius: 0.75rem;
         width: 100%;
     }
@@ -2532,7 +2569,6 @@ html{
         width: auto;
         transition: 200ms all ease;
         padding:12px 24px 12px 24px;
-        
 
     }
 
