@@ -68,7 +68,7 @@ html{
     align-items: center !important;
     justify-content: center !important;
     gap: 10px !important;
-    
+    transition: none !important; /* Disables the fade logic */
     background: #1a1a1a !important; /* Dark theme from video */
     border-radius: 50px !important;
     padding: 6px 15px !important;
@@ -104,15 +104,24 @@ html{
     }
 }
 
-/* Trigger Animation */
+
+
+/* 2. Force the Slide */
 #theme-panel-container.show {
     display: flex !important;
-    animation: themeSlideUp 0.3s ease-out forwards;
+    animation: themePhysicalSlide 0.4s cubic-bezier(0.18, 0.89, 0.32, 1.28) forwards !important;
 }
 
-@keyframes themeSlideUp {
-    from { transform: translate(-50%, 15px); opacity: 0; }
-    to { transform: translate(-50%, 0); opacity: 1; }
+@keyframes themePhysicalSlide {
+    0% {
+        /* Start 150px below its resting spot to ensure a visible slide */
+        transform: translate(-50%, 150px) !important;
+        opacity: 0;
+    }
+    100% {
+        transform: translate(-50%, 0) !important;
+        opacity: 1;
+    }
 }
 /* 
 #custom-theme-panel {
