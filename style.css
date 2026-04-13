@@ -570,32 +570,49 @@ html{
 
     } */
 
-/* Base Note & Pin Styling */
-.kontext-wrap div {
+    /* Base Note & Pin Styling */
+/* .kontext-wrap div {
     position: relative;
     opacity: 0;
     padding: 40px 25px 25px;
     margin: 12px 6px;
     min-width: 160px;
     min-height: 90px;
-    border-radius: 2px 2px 2px 2px; /* Slight curl on bottom right */
+    border-radius: 2px 2px 2px 2px;
     box-shadow: 5px 10px 15px rgba(0,0,0,0.15);
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
 }
+ */
+.kontext-wrap {
+    perspective: 1200px !important; /* Higher value = more subtle 3D */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+    padding: 60px 20px;
+}
+
+.kontext-wrap div {
+    opacity: 0;
+    will-change: transform, opacity;
+    transform-style: preserve-3d !important;
+    backface-visibility: hidden;
+    box-shadow: 1px 1px 8px rgba(0,0,0,0.2);
+}
 
 /* Red Pin */
 .kontext-wrap div::after {
     content: "";
     position: absolute;
-    top: 9px;
+    top: -3px;
     left: 50%;
     transform: translateX(-50%);
-    width: 16px;
-    height: 16px;
-    background: radial-gradient(circle at 30% 30%, #fbeff0, #242424);
+    width: 12px;
+    height: 12px;
+    background: radial-gradient(circle at 45% 20%, #fbeff0, #242424);
     border-radius: 50%;
     box-shadow: 2px 4px 6px rgba(0,0,0,0.3);
     z-index: 5;
