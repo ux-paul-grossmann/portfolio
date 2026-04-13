@@ -311,13 +311,13 @@ html{
 
     /* html.sr ,body { overflow-x:hidden; } */
     /* scrollreveal utility class */
-    html.sr .load-hidden {
+.load-hidden {
         visibility: hidden;
     }
 
-    html.sr .kontext-wrap div {
+/*    .kontext-wrap div {
         visibility: hidden;
-    }
+    } */
 
     #socialIconsWrap li a.social {
         color: var(--socialIcons-linkFG) !important;
@@ -556,7 +556,7 @@ html{
         padding-left: 2px;
         padding-right: 2px;
     } */
-
+/* 
     .kontext-wrap div::before {
         content: "";
         display: inline-block;
@@ -568,7 +568,44 @@ html{
         width: 23px;
         height: 20px;
 
-    }
+    } */
+
+/* Base Note & Pin Styling */
+.kontext-wrap div {
+    position: relative;
+    opacity: 0;
+    padding: 40px 25px 25px;
+    margin: 12px 6px;
+    min-width: 160px;
+    min-height: 90px;
+    border-radius: 2px 2px 2px 2px; /* Slight curl on bottom right */
+    box-shadow: 5px 10px 15px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+/* Red Pin */
+.kontext-wrap div::after {
+    content: "";
+    position: absolute;
+    top: 9px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 16px;
+    height: 16px;
+    background: radial-gradient(circle at 30% 30%, #fbeff0, #242424);
+    border-radius: 50%;
+    box-shadow: 2px 4px 6px rgba(0,0,0,0.3);
+    z-index: 5;
+}
+
+/* Intense Pastel Palette */
+.note-yellow  { background-color: #FFF44F !important; }
+.note-blue    { background-color: #7ED6FF !important; }
+.note-magenta { background-color: #FF85FF !important; }
+.note-green   { background-color: #85FF9E !important; }
 
     .card {
         background: var(--collapse-cardBG);
@@ -1090,9 +1127,9 @@ html{
         box-shadow: inset 0 0 2px 2px rgba(255, 255, 255, 0.3), inset 0 0 10px rgba(0, 0, 0, .1), 0 0 4px 0.5px rgba(0, 0, 0, 0.2), 0 16px 16px rgba(100, 100, 100, 0.2) !important;
         transition: 250ms all ease;
     }
-
+/* 
     .kontext-wrap div {
-        /* padding: 0.3rem .5rem!important; */
+        
         background: var(--kontext-divBG);
         color: var(--kontext-divFG);
         margin: 0.5rem;
@@ -1100,7 +1137,7 @@ html{
         box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
         font-weight: 500;
         font-size: 90%;
-    }
+    } */
 
     h5#ci {
         display: inline-flex;
