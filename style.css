@@ -2,7 +2,7 @@
 
 html{
     scroll-behavior: smooth;
-    
+    overflow-x: hidden;
 }
 
 
@@ -578,20 +578,10 @@ html{
 
 
     #ci-brand-caption {
-
-        /* font-family: "Montserrat", sans-serif;
-        font-weight: 500;
-        font-size: 50%;
-        letter-spacing: 0.099rem;
-        line-height: 100%;
-        position: absolute;
-        color: var(--ci-brand-captionFG);
-        margin-left: 11.5rem;
-        top: 15px; */
-       display: block !important; /* Always in the layout */
-    opacity: 0; 
-    visibility: hidden; /* Tells the browser it's not there, but keeps layout spots */
-    transition: none !important;
+       display: inline-block !important;
+       opacity: 1;
+       visibility: visible;
+       transition: none !important;
     }
 
     article dd,
@@ -1113,6 +1103,9 @@ html{
     }
 
     h5#ci {
+        display: inline-flex;
+        align-items: center;
+        gap: 1rem;
         margin-top: -0.7rem;
     }
 
@@ -1527,12 +1520,10 @@ html{
     }
 
     .navbar.nav-bg-black {
-        background: var(--mobile-menu-navbar-navBG);
+        background: none;
         z-index: 30;
 
-        -webkit-backdrop-filter: saturate(180%) blur(5px);
-        -moz-backdrop-filter: saturate(180%) blur(5px);
-        backdrop-filter: saturate(180%) blur(5px);
+
 
 
 
@@ -1541,7 +1532,10 @@ html{
 
     .navbar {
 
-        padding: 0;
+        padding: 1rem 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
         z-index: 30;
     }
 
@@ -1558,7 +1552,7 @@ html{
         width: 100vw;
         letter-spacing: 1px;
         line-height: 1;
-        background: var(--mobile-menu-navbar-togglerBG);
+        background: none;
         border: 1px solid transparent;
         border-radius: 0;
         font-family: 'Inter', sans-serif;
@@ -1572,61 +1566,62 @@ html{
     }
 
     .nav-link {
-        margin-bottom: 1px;
-        border-radius: 0.45rem;
         z-index: 30;
     }
 
     .navbar-light .navbar-nav .nav-link {
 
-        border-radius: 0;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 0.75rem;
         color: var(--mobile-menu-nav-linkFG);
         transition: 350ms all ease;
         letter-spacing: 0.7px;
         z-index: 30;
-
+        padding: 0.5rem 0.85rem;
+        line-height: 1.2;
     }
 
     .navbar-light .navbar-nav .nav-link:hover {
         color: var(--mobile-menu-nav-hover-linkFG);
         transition: 250ms all ease;
         z-index: 30;
-
     }
 
     .navbar-light .navbar-nav .nav-link.active {
         color: var(--mobile-menu-nav-active-linkFG);
         font-weight: 600;
         background: var(--mobile-menu-nav-active-linkBG);
-        /* width:95vw; */
+        border-radius: 0.75rem;
         z-index: 30;
     }
 
     .navbar .navbar-nav {
-        transition: 450ms margin ease;
         padding-bottom: 0;
+        padding-top: 1rem;
         border-bottom: 0 solid transparent;
         margin-bottom: 28px;
         z-index: 30;
+    }
 
+    .collapse.navbar-collapse {
+        margin-top: 1rem;
     }
 
     .collapse.show {
         visibility: visible;
-        display: block;
+        display: block !important;
         z-index: 30;
     }
 
     .collapsing {
         position: relative;
-        height: 0;
-        overflow: hidden;
-        -webkit-transition-property: height, visibility;
-        transition-property: height, visibility;
-        -webkit-transition-duration: 150ms;
-        transition-duration: 150ms;
-        -webkit-transition-timing-function: ease;
-        transition-timing-function: ease;
+        display: block !important;
+        height: auto !important;
+        overflow: visible !important;
+        -webkit-transition-property: none;
+        transition-property: none;
         z-index: 30;
     }
 
@@ -1854,7 +1849,7 @@ a.thumb-element:hover .card-img-top {
         position: fixed;
         bottom: 0;
         right: 0;
-        z-index: 150;
+        z-index: 1100 !important;
     }
 
     .scroll {
@@ -2025,7 +2020,7 @@ a.thumb-element:hover .card-img-top {
         position: fixed;
         bottom: 0;
         right: 0;
-        z-index: 150;
+        z-index: 1100 !important;
     }
 
     .scroll {
@@ -2300,21 +2295,16 @@ a.thumb-element:hover .card-img-top {
     } */
 
     #ci-brand-caption {
-
-
         font-family: "Montserrat", sans-serif;
         font-weight: 500;
         font-size: 50%;
         letter-spacing: 0.1rem;
         line-height: 100%;
-        position: absolute;
+        display: inline-block !important;
+        vertical-align: middle;
+        margin-left: 1rem;
         color: var(--ci-brand-captionFG);
-        margin-left: 10rem;
-        top: 17px;
-        display: block;
         visibility: visible;
-        
-        
     }
 
     #ci-picture-wrapper {
@@ -2371,16 +2361,28 @@ a.thumb-element:hover .card-img-top {
         border-radius: 0.45rem;
     }
 
-    .navbar {
+    /* Do not zero fixed-bottom bar padding — it must keep vertical rhythm (see nav.navbar.fixed-bottom sm+ rules). */
+    .navbar:not(.fixed-bottom) {
         padding: 0 0 !important;
         font-size: 70%;
         line-height: 170%;
     }
 
-    .navbar .navbar-nav {
+    .navbar.fixed-bottom {
+        font-size: 70%;
+        line-height: 1.35;
+    }
+
+    .navbar:not(.fixed-bottom) .navbar-nav {
         margin-left: 0 !important;
         margin-bottom: 0;
+        align-items: center;
+    }
 
+    .navbar.fixed-bottom .navbar-nav {
+        margin-left: 0 !important;
+        margin-bottom: 0;
+        align-items: center;
     }
 
     .navbar-light .navbar-nav .nav-link.active {
@@ -2388,19 +2390,21 @@ a.thumb-element:hover .card-img-top {
         background: var(--navlink-active-BG) !important;
         box-shadow: none;
         font-weight: 700;
+        border-radius: 0.75rem;
     }
 
     .navbar-light .navbar-nav .nav-link {
-        border-radius: 0;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 0.75rem;
         margin-top: 0;
         margin-right: 0.2rem;
         box-shadow: inset 0 0 0 0 currentColor;
         color: var(--navlinkFG) !important;
         transition: 350ms color ease;
-        padding: 0.2rem 0.45rem;
+        padding: 0.35rem 0.75rem;
         font-weight: 600;
-        /* shark */
-        border-radius: 0.75rem;
     }
 
     .navbar-light .navbar-nav .nav-link:hover {
@@ -2711,8 +2715,7 @@ a.thumb-element:hover .card-img-top {
         
         
     }
-    
-    
+
     .submit-button {
         height: 3rem;
         width: auto;
@@ -2776,11 +2779,11 @@ a.thumb-element:hover .card-img-top {
 }
 
 @media only screen and (min-width:1024px) {
-    .navbar {
+    .navbar:not(.fixed-bottom) {
         padding: 0;
     }
 
-    .navbar .navbar-nav {
+    .navbar:not(.fixed-bottom) .navbar-nav {
         margin-left: 0 !important;
 
     }
@@ -2849,11 +2852,11 @@ a.thumb-element:hover .card-img-top {
         display: flex !important;
     }
 
-    .navbar {
+    .navbar:not(.fixed-bottom) {
         padding: 0;
     }
 
-    .navbar .navbar-nav {
+    .navbar:not(.fixed-bottom) .navbar-nav {
         margin-left: 7rem !important;
 
     }
@@ -2926,11 +2929,11 @@ a.thumb-element:hover .card-img-top {
         width: 76%;
     }
 
-    .navbar {
+    .navbar:not(.fixed-bottom) {
         padding: 0;
     }
 
-    .navbar .navbar-nav {
+    .navbar:not(.fixed-bottom) .navbar-nav {
         margin-left: 5rem !important;
         padding: 2.9rem 0;
     }
@@ -2973,11 +2976,11 @@ a.thumb-element:hover .card-img-top {
 
     }
 
-    .navbar {
+    .navbar:not(.fixed-bottom) {
         padding: 0;
     }
 
-    .navbar .navbar-nav {
+    .navbar:not(.fixed-bottom) .navbar-nav {
         margin-left: 7.6rem !important;
 
     }
@@ -2985,11 +2988,11 @@ a.thumb-element:hover .card-img-top {
 }
 
 @media only screen and (min-width:1600px) {
-    .navbar {
+    .navbar:not(.fixed-bottom) {
         padding: 0;
     }
 
-    .navbar .navbar-nav {
+    .navbar:not(.fixed-bottom) .navbar-nav {
         margin-left: 14.6rem !important;
 
     }
@@ -3020,11 +3023,11 @@ a.thumb-element:hover .card-img-top {
 }
 
 @media only screen and (min-width:1920px) {
-    .navbar {
+    .navbar:not(.fixed-bottom) {
         padding: 0;
     }
 
-    .navbar .navbar-nav {
+    .navbar:not(.fixed-bottom) .navbar-nav {
         margin-left: 22.2rem !important;
 
     }
@@ -3057,11 +3060,11 @@ a.thumb-element:hover .card-img-top {
 }
 
 @media only screen and (min-width:2300px) {
-    .navbar {
+    .navbar:not(.fixed-bottom) {
         padding: 0;
     }
 
-    .navbar .navbar-nav {
+    .navbar:not(.fixed-bottom) .navbar-nav {
         margin-left: 34.7rem !important;
 
     }
@@ -3092,11 +3095,11 @@ a.thumb-element:hover .card-img-top {
 }
 
 @media only screen and (min-width:2560px) {
-    .navbar {
+    .navbar:not(.fixed-bottom) {
         padding: 0;
     }
 
-    .navbar .navbar-nav {
+    .navbar:not(.fixed-bottom) .navbar-nav {
         margin-left: 42.6rem !important;
 
     }
@@ -3150,9 +3153,365 @@ a.thumb-element:hover .card-img-top {
 
 }
 
+/* Clean custom overrides for navbar and top branding */
+nav.navbar.fixed-bottom {
+    width: 100%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 0;
+    display: flex;
+    /* Center the .container block with margin:auto on the child; keep main axis start so inner nav aligns left */
+    justify-content: flex-start;
+    background: transparent;
+    overflow: hidden;
+    box-shadow: none !important;
+    box-sizing: border-box;
+}
+
+/* Translucent “frosted glass” bar; tint follows --navbarBG across themes */
+nav.navbar.fixed-bottom.nav-bg-black {
+    background-color: var(--navbarBG);
+    background-color: color-mix(in srgb, var(--navbarBG) 72%, transparent);
+    -webkit-backdrop-filter: blur(14px) saturate(1.12);
+    backdrop-filter: blur(14px) saturate(1.12);
+}
+
+nav.navbar.fixed-bottom > .container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.75rem;
+    width: 100%;
+    max-width: 100%;
+    padding: 0 1rem;
+    margin: 0 auto;
+    box-sizing: border-box;
+    min-width: 0;
+    overflow: hidden;
+}
+
+nav.navbar.fixed-bottom .navbar-toggler {
+    width: auto !important;
+    max-width: none !important;
+    min-width: 0 !important;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+/* Override Bootstrap collapse animation - force instant toggle */
+.collapse {
+    display: none !important;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.collapse.show {
+    display: block !important;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.collapsing {
+    display: block !important;
+    height: auto !important;
+    transition: none !important;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+nav.navbar.fixed-bottom .navbar-collapse {
+    padding: 0;
+    width: 100%;
+    overflow: visible !important;
+    display: none !important;
+}
+
+nav.navbar.fixed-bottom .navbar-collapse.collapsing {
+    display: flex !important;
+    overflow: visible !important;
+}
+
+nav.navbar.fixed-bottom .navbar-collapse.show {
+    display: flex !important;
+    overflow: visible;
+}
+
+nav.navbar.fixed-bottom .navbar-nav {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 0.75rem;
+    width: auto;
+    max-width: 100%;
+}
+
+nav.navbar.fixed-bottom .navbar-collapse .menu-close {
+    position: static !important;
+    width: auto !important;
+    max-width: none !important;
+    height: auto !important;
+    background: transparent !important;
+    border: none !important;
+    padding: 0.5rem 0.75rem !important;
+    margin: 0.75rem auto 0 !important;
+    align-self: center;
+    font-size: 1.5rem;
+}
+
+@media (max-width: 575.98px) {
+    .navbar-collapse {
+        display: none;
+    }
+
+    .navbar-toggler {
+        display: block;
+    }
+
+    nav.navbar.fixed-bottom .navbar-collapse.collapsing {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    nav.navbar.fixed-bottom > .container {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        max-width: 100%;
+        padding: 0;
+        box-sizing: border-box;
+        overflow: hidden;
+    }
+
+    nav.navbar.fixed-bottom .navbar-toggler {
+        display: inline-flex !important;
+        align-items: center;
+        justify-content: center;
+        width: 100% !important;
+        max-width: 100% !important;
+        border-radius: 0;
+        background-color: var(--mobile-menu-navbar-togglerBG);
+        background-color: color-mix(in srgb, var(--mobile-menu-navbar-togglerBG) 78%, transparent);
+        -webkit-backdrop-filter: blur(12px) saturate(1.1);
+        backdrop-filter: blur(12px) saturate(1.1);
+        border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    nav.navbar.fixed-bottom .navbar-toggler span {
+        width: 100%;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    nav.navbar.fixed-bottom .navbar-collapse.show {
+        position: relative;
+        background-color: var(--mobile-menu-navbar-navBG);
+        background-color: color-mix(in srgb, var(--mobile-menu-navbar-navBG) 78%, transparent);
+        -webkit-backdrop-filter: blur(14px) saturate(1.12);
+        backdrop-filter: blur(14px) saturate(1.12);
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        padding-bottom: 4rem;
+        overflow: hidden;
+        box-sizing: border-box;
+    }
+
+    nav.navbar.fixed-bottom .navbar-nav {
+        justify-content: center;
+        width: 100%;
+        padding: 0.75rem 0;
+        overflow: hidden;
+        box-sizing: border-box;
+        text-align: center;
+    }
+
+    nav.navbar.fixed-bottom .navbar-nav .nav-link {
+        width: 100%;
+        text-align: center;
+        padding: 0.35rem 0.75rem;
+        box-sizing: border-box;
+        overflow: hidden;
+    }
+
+    nav.navbar.fixed-bottom .navbar-collapse .menu-close {
+        position: absolute !important;
+        left: 50%;
+        bottom: 0.5rem;
+        transform: translateX(-50%);
+        display: inline-flex !important;
+        align-items: center;
+        justify-content: center;
+        width: auto !important;
+        min-width: 2.75rem;
+        text-align: center;
+        padding: 0.75rem 1.25rem !important;
+        margin: 0 !important;
+        background: transparent !important;
+        border: none !important;
+    }
+}
+
+@media (min-width: 576px) {
+    nav.navbar.fixed-bottom {
+        justify-content: flex-start !important;
+        /* Defeat any .navbar { padding: 0 !important } elsewhere; keeps links off the viewport bottom */
+        padding-top: 0.625rem !important;
+        padding-bottom: calc(0.625rem + env(safe-area-inset-bottom, 0px)) !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        box-sizing: border-box;
+    }
+
+    nav.navbar.fixed-bottom > .container {
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        max-width: 100%;
+        padding: 0 1.5rem;
+        margin-left: auto;
+        margin-right: auto;
+        box-sizing: border-box;
+        min-width: 0;
+        overflow: hidden;
+    }
+
+    nav.navbar.fixed-bottom.nav-bg-black {
+        border-top: 1px solid rgba(0, 0, 0, 0.06);
+    }
+
+    nav.navbar.fixed-bottom .navbar-toggler,
+    nav.navbar.fixed-bottom .navbar-collapse .menu-close {
+        display: none !important;
+    }
+
+    nav.navbar.fixed-bottom .navbar-collapse {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+        overflow: hidden;
+        background: transparent;
+        padding: 0;
+        width: auto !important;
+        box-sizing: border-box;
+        min-width: 0;
+    }
+
+    nav.navbar.fixed-bottom .navbar-collapse.collapsing {
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+        width: auto !important;
+    }
+
+    nav.navbar.fixed-bottom .navbar-collapse.show {
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+        width: auto !important;
+    }
+
+    nav.navbar.fixed-bottom .navbar-collapse .navbar-nav {
+        align-items: center !important;
+        justify-content: flex-start !important;
+        width: auto !important;
+        margin: 0 !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        gap: 0.75rem;
+        padding: 0;
+        overflow: hidden;
+        box-sizing: border-box;
+        min-width: 0;
+        text-align: left;
+    }
+
+    nav.navbar.fixed-bottom .navbar-nav {
+        width: auto !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        overflow: hidden;
+        box-sizing: border-box;
+        justify-content: flex-start !important;
+        text-align: left;
+    }
+
+    nav.navbar.fixed-bottom .navbar-nav .nav-link {
+        width: auto;
+        padding: 0.5rem 0.75rem;
+        text-align: left;
+        justify-content: flex-start;
+    }
+}
+
+/*
+ * Navbar .container max-width must mirror Bootstrap breakpoints.
+ * Do not stack unbounded min-width rules: a later @media (min-width: 768px) was
+ * overwriting @media (min-width: 1200px), capping the bar at 720px on large screens
+ * so the strip looked centered and misaligned with <main class="container">.
+ */
+@media (min-width: 576px) and (max-width: 767.98px) {
+    nav.navbar.fixed-bottom > .container {
+        max-width: 540px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+    nav.navbar.fixed-bottom > .container {
+        max-width: 720px;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    nav.navbar.fixed-bottom > .container {
+        max-width: 960px;
+    }
+}
+
+@media (min-width: 1200px) {
+    nav.navbar.fixed-bottom > .container {
+        max-width: 1140px;
+    }
+}
+
+nav.navbar.fixed-bottom .navbar-nav .nav-item {
+    margin: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+nav.navbar.fixed-bottom .navbar-nav .nav-link {
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+#ci {
+    display: block;
+}
+
+#ci-brand-group {
+    display: inline-flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+#ci-brand-caption {
+    display: inline-block !important;
+    margin: 0;
+    color: var(--ci-brand-captionFG);
+    white-space: nowrap;
+}
+
 @media only screen and (min-width:3440px) {
 
-    .navbar .navbar-nav {
+    .navbar:not(.fixed-bottom) .navbar-nav {
         margin-left: 70rem !important;
 
     }
@@ -3178,4 +3537,13 @@ a.thumb-element:hover .card-img-top {
         display: flex !important;
     }
 
+}
+
+/* Hero intro column: CTA no longer stretches full Bootstrap col-lg-8 width (footer .col-lg-8 unchanged). */
+@media (min-width: 992px) {
+    .introText-wrapper.col-lg-8 {
+        -ms-flex: 0 0 66.666667%;
+        flex: 0 0 66.666667%;
+        max-width: fit-content;
+    }
 }
