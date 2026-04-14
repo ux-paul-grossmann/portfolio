@@ -311,9 +311,6 @@ html{
 
     /* html.sr ,body { overflow-x:hidden; } */
     /* scrollreveal utility class */
-.load-hidden {
-        visibility: hidden;
-    }
 
 /*    .kontext-wrap div {
         visibility: hidden;
@@ -587,24 +584,37 @@ html{
 }
  */
 .kontext-wrap {
-    perspective: 1200px !important; /* Higher value = more subtle 3D */
+    perspective: 1500px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 25px;
-    padding: 60px 20px;
+    gap: 20px;
 }
 
-.kontext-wrap div {
+.kontext-wrap div[class*="note-"] {
+    position: relative;
+    transform-style: preserve-3d;
+    padding: 25px 15px !important; 
+    min-width: 160px;
+    min-height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pin-svg {
+    position: absolute;
+    /* Removed fixed left:50% to allow JS variance */
+    width: 55px;
+    height: auto;
+    z-index: 20;
     opacity: 0;
+    pointer-events: none;
+    transform-origin: 50px 120px; 
     will-change: transform, opacity;
-    transform-style: preserve-3d !important;
-    backface-visibility: hidden;
-    box-shadow: 1px 1px 8px rgba(0,0,0,0.2);
 }
-
 /* Red Pin */
-.kontext-wrap div::after {
+/* .kontext-wrap div::after {
     content: "";
     position: absolute;
     top: -3px;
@@ -617,7 +627,7 @@ html{
     box-shadow: 2px 4px 6px rgba(0,0,0,0.3);
     z-index: 5;
 }
-
+ */
 /* Intense Pastel Palette */
 .note-yellow  { background-color: #FFF44F !important; }
 .note-blue    { background-color: #7ED6FF !important; }
@@ -664,7 +674,7 @@ html{
     }
 
     .container {
-        overflow-x: hidden;
+        overflow-x: visible;
     }
 
     ::-webkit-input-placeholder {
@@ -1660,7 +1670,7 @@ html{
     }
 
     .collapse.navbar-collapse {
-        margin-top: 1rem;
+        /* margin-top: 1rem; */
     }
 
     .collapse.show {
