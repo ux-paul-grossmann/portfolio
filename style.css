@@ -3978,3 +3978,10 @@ nav.navbar.fixed-bottom .navbar-nav .nav-link {
 .dark #projekte .scroll-to-top-card:hover {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
 }
+
+
+
+/* Add scroll margin to card clusters for better scroll-to behavior */
+#projekte .cluster {
+    scroll-margin-top: 20px;
+}
