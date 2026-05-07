@@ -1,15 +1,35 @@
+/* ============================================================
+   PORTFOLIO – PAUL GROSSMANN
+   Design Tokens & Theming
+   ============================================================ */
+
 :root {
+    /* ============================================
+       1. SCROLLBAR
+       ============================================ */
     --scrollbar-inactive-thumbBG: rgba(0, 0, 0, 0.4);
     --scrollbar-thumbBG: #1d1c1b;
     --scrollbar-width: 10px;
+
+    /* ============================================
+       2. BODY & BASE
+       ============================================ */
     --bodyBG: #fefefe;
     --bodyFG: #41403e;
+
+    /* ============================================
+       3. BRAND & HEADER
+       ============================================ */
     --ci-brand-boxBG: #ddff02;
     --ci-brand-boxFG: #1d1c1b;
-    --ci-brand-detail-name:#1d1c1b;
+    --ci-brand-detail-name: #1d1c1b;
     --ci-brand-captionFG: #1d1c1b;
     --ci-profilbild-caption-mainFG: #41403e;
     --ci-profilbild-caption-sublineFG: rgb(130, 130, 130);
+
+    /* ============================================
+       4. NAVIGATION
+       ============================================ */
     --navbarBG: rgba(240, 240, 240, 0.7);
     --navlinkFG: #292826;
     --navlink-hover-FG: #000;
@@ -27,13 +47,14 @@
     --navlink-showBG: #1d1c1b;
     --chevron-scroll-icon-stroke: rgb(215, 215, 215);
     --chevron-scroll-icon-fill: transparent;
-   
 
-   
-    --actionButtonBorderThickness:0px;
-    --actionButtonBorderColor:#000;
-    --actionButtonBorderThicknessHover:0px;
-    --actionButtonBorderColorHover:#111;
+    /* ============================================
+       5. BUTTONS & ACTIONS
+       ============================================ */
+    --actionButtonBorderThickness: 0px;
+    --actionButtonBorderColor: #000;
+    --actionButtonBorderThicknessHover: 0px;
+    --actionButtonBorderColorHover: #111;
     --actionButtonFG: #fff;
     --actionButtonBG: #292826;
     --actionButtonBG-hover: #ddff02;
@@ -41,19 +62,21 @@
     --actionButton-icon: #ddff02;
     --actionButton-FileSizeFG: #ddff02;
 
+    /* ============================================
+       6. KONTEXT NOTES
+       ============================================ */
     --kontext-divBG: #f2f113;
     --kontext-divFG: #292826;
-    --collapse-card-titleFG: #41403e;
     --note-text-color: #1d1c1b;
+    --note-yellow-bg: #FFF44F;
+    --note-blue-bg: #7ED6FF;
+    --note-magenta-bg: #FF85FF;
+    --note-green-bg: #85FF9E;
 
-    --badge-tagBG: rgb(221 212 235);
-    --badge-tagFG: #722cd7;
-    --badge-tag-border: 1px solid rgb(199 181 225);
-    --badge-tag-border-hover: 1px solid #cae903;
-
-    --collapse-badge-hover-tagBG: #ddff02;
-    --collapse-badge-hover-tagFG: #000;
-
+    /* ============================================
+       7. PROJECT CARDS – CORE
+       ============================================ */
+    --collapse-card-titleFG: #41403e;
     --collapse-cardBG: ghostwhite;
     --collapse-cardFG: #41403e;
     --collapse-card-img-thumbnail-mix-blend-mode: multiply;
@@ -61,30 +84,85 @@
     --collapse-card-footerBdT: rgba(0, 0, 0, 0.0125);
     --collapse-card-footer-collapsed-chevronFG: #292826;
     --collapse-card-footer-expanded-chevronFG: #b629f4;
-    --collapse-cardBdCol: 1px solid rgba(0, 0, 0, 0.1);
-
-    /* --collapse-cardBxShd:  0 0 0 0.5px #B629F4; */
+    --collapse-cardBorderColor: rgba(0, 0, 0, 0.1);
     --collapse-cardBxShd: 0 3px 3px rgba(0, 0, 0, 0.05);
     --collapse-cardBxShd-hover:
-        0 3.6px 2.2px rgba(0, 0, 0, 0.014), 0 8.6px 5.3px rgba(0, 0, 0, 0.02),
-        0 16.3px 10px rgba(0, 0, 0, 0.025), 0 29px 17.9px rgba(0, 0, 0, 0.03),
-        0 54.3px 33.4px rgba(0, 0, 0, 0.036), 0 130px 80px rgba(0, 0, 0, 0.05);
-
+        0 3.6px 2.2px rgba(0, 0, 0, 0.014),
+        0 8.6px 5.3px rgba(0, 0, 0, 0.02),
+        0 16.3px 10px rgba(0, 0, 0, 0.025),
+        0 29px 17.9px rgba(0, 0, 0, 0.03),
+        0 54.3px 33.4px rgba(0, 0, 0, 0.036),
+        0 130px 80px rgba(0, 0, 0, 0.05);
     --collapse-card-body-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.05);
 
-    --designed-mit-BG: transparent;
+    /* ============================================
+       8. PROJECT CARDS – BADGES & TAGS
+       ============================================ */
+    --badge-tagBG: rgb(221 212 235);
+    --badge-tagFG: #722cd7;
+    --badge-tag-border: 1px solid rgb(199 181 225);
+    --badge-tag-border-hover: 1px solid #cae903;
+    --collapse-badge-hover-tagBG: #ddff02;
+    --collapse-badge-hover-tagFG: #000;
 
+    /* ============================================
+       9. PROJECT CARDS – PAPER STACK SHADOWS
+       ============================================ */
+    --shadow-card-rest:
+        0 1px 2px rgba(0,0,0,0.03),
+        0 2px 4px rgba(0,0,0,0.03);
+    --shadow-card-hover:
+        0 2px 4px rgba(0,0,0,0.08),
+        0 4px 8px rgba(0,0,0,0.06),
+        0 8px 12px rgba(0,0,0,0.04);
+    --shadow-stack-bottom-rest:
+        0 1px 3px rgba(0,0,0,0.05),
+        0 2px 6px rgba(0,0,0,0.04),
+        0 4px 8px rgba(0,0,0,0.03);
+    --shadow-stack-bottom-hover:
+        0 3px 6px rgba(0,0,0,0.10),
+        0 5px 10px rgba(0,0,0,0.07),
+        0 8px 12px rgba(0,0,0,0.05);
+    --shadow-stack-middle-rest:
+        0 1px 2px rgba(0,0,0,0.04),
+        0 2px 4px rgba(0,0,0,0.03);
+    --shadow-stack-middle-hover:
+        0 2px 4px rgba(0,0,0,0.08),
+        0 4px 8px rgba(0,0,0,0.05);
+
+    /* ============================================
+       10. PROJECT CARDS – PAPER STACK LAYER COLORS
+       ============================================ */
+    --stack-bottom-bg: #f0f0f0;
+    --stack-bottom-border: 1px solid rgba(0, 0, 0, 0.06);
+    --stack-bottom-hover-bg: #ebebeb;
+
+    --stack-middle-bg: #f5f5f5;
+    --stack-middle-border: 1px solid rgba(0, 0, 0, 0.06);
+    --stack-middle-hover-bg: #f0f0f0;
+
+    --stack-top-bg: #fafafa;
+    --stack-top-border: 1px solid rgba(0, 0, 0, 0.08);
+
+    /* ============================================
+       11. LINKS
+       ============================================ */
     --linkFG: mediumslateblue;
     --link-hoverFG: #000;
     --link-hoverBG: #ddff02;
     --link-activeFG: #000;
     --link-visitedFG: mediumslateblue;
 
+    /* ============================================
+       12. CAROUSEL
+       ============================================ */
     --carousel-control-FG: #fff;
     --carousel-control-BG: transparent;
-
     --video-thumbnail-FG: #444;
 
+    /* ============================================
+       13. SCROLL TO TOP
+       ============================================ */
     --scrollTopFG: #292826;
     --scrollTopFG-mobile: #292826;
     --scrollTop-hover-BdCol: rgba(0, 0, 0, 0.1);
@@ -93,9 +171,16 @@
     --scrollTop-hover-BG-mobile: #292826;
     --scrollTop-hover-FG-mobile: #555;
     --scrollTop-hover-BdCol-mobile: rgba(0, 0, 0, 0.1);
+
+    /* ============================================
+       14. SELECTION
+       ============================================ */
     --selectionBG: #b629f4;
     --selectionFG: #fff;
-    /* form */
+
+    /* ============================================
+       15. FORMS
+       ============================================ */
     --inputFG: #1d1c1b;
     --input-fs: 80%;
     --formFG: #b629f4;
@@ -108,7 +193,9 @@
     --form-focusBdCol: #41403e;
     --form-focusBxShd: #ddff02;
 
-    /* mobile */
+    /* ============================================
+       16. MOBILE MENU
+       ============================================ */
     --mobile-menu-closeFG: #555;
     --mobile-menu-closeBG: black;
     --mobile-menu-close-btn-border-top: 1px solid #ddd;
@@ -124,13 +211,22 @@
     --mobile-menu-nav-active-linkBG: #000;
     --mobile-menu-chevron-upFG: #1d1c1b;
 
+    /* ============================================
+       17. SOCIAL ICONS
+       ============================================ */
     --socialIcons-linkFG: gainsboro;
     --socialIcons-link-hover-FG: #41403e;
     --socialIcons-link-active-FG: #b629f4;
     --socialIcons-link-visited-FG: gainsboro;
+
+    /* ============================================
+       18. COPYRIGHT
+       ============================================ */
     --copyrightFG: gainsboro;
 
-    /* colorChoose Device */
+    /* ============================================
+       19. DEVICE COLOR CHOOSER
+       ============================================ */
     --color-choose-btn-1-BG: rgba(0, 0, 0, 0.8);
     --color-choose-btn-1-FG: gainsboro;
     --color-choose-btn-1-active-FG: black;
@@ -149,26 +245,34 @@
     --color-choose-btn-3-active-BG: radial-gradient(#b629f4, transparent);
     --color-choose-btn-3-hover-BG: #f1e2d0;
     --color-choose-btn-3-hover-FG: black;
+
+    /* ============================================
+       20. MISC
+       ============================================ */
+    --designed-mit-BG: transparent;
 }
 
+/* ============================================================
+   DARK THEME
+   ============================================================ */
 .dark {
-    /* ============================================ */
-    /* 1. SCROLLBAR */
-    /* ============================================ */
+    /* ============================================
+       1. SCROLLBAR
+       ============================================ */
     --scrollbar-inactive-thumbBG: rgba(255, 255, 255, 0.15);
     --scrollbar-thumbBG: #f2f113;
     --scrollbar-width: 10px;
 
-    /* ============================================ */
-    /* 2. BODY & BASE */
-    /* ============================================ */
+    /* ============================================
+       2. BODY & BASE
+       ============================================ */
     --bodyBG: #1a1a1a;
     --bodyFG: #e0e0e0;
     --bg: none;
 
-    /* ============================================ */
-    /* 3. BRAND & HEADER */
-    /* ============================================ */
+    /* ============================================
+       3. BRAND & HEADER
+       ============================================ */
     --ci-brand-boxBG: #fcfb3a;
     --ci-brand-boxFG: #1a1a1a;
     --ci-brand-detail-name: #1a1a1a;
@@ -176,9 +280,9 @@
     --ci-profilbild-caption-mainFG: #f5f5f5;
     --ci-profilbild-caption-sublineFG: #b0b0b0;
 
-    /* ============================================ */
-    /* 4. NAVIGATION */
-    /* ============================================ */
+    /* ============================================
+       4. NAVIGATION
+       ============================================ */
     --navbarBG: rgba(30, 30, 30, 0.85);
     --navlinkFG: #e0e0e0;
     --navlink-hover-FG: #ffffff;
@@ -197,9 +301,9 @@
     --chevron-scroll-icon-stroke: #b629f4;
     --chevron-scroll-icon-fill: transparent;
 
-    /* ============================================ */
-    /* 5. BUTTONS & ACTIONS */
-    /* ============================================ */
+    /* ============================================
+       5. BUTTONS & ACTIONS
+       ============================================ */
     --actionButtonBorderThickness: 1px;
     --actionButtonBorderColor: #444444;
     --actionButtonBorderThicknessHover: 1px;
@@ -211,27 +315,31 @@
     --actionButton-icon: #f2f113;
     --actionButton-FileSizeFG: #b0b0b0;
 
-    /* ============================================ */
-    /* 6. KONTEXT NOTES */
-    /* ============================================ */
+    /* ============================================
+       6. KONTEXT NOTES
+       ============================================ */
     --kontext-divBG: #b629f4;
     --kontext-divFG: #ffffff;
     --note-text-color: #1d1c1b;
+    --note-yellow-bg: #FFF44F;
+    --note-blue-bg: #7ED6FF;
+    --note-magenta-bg: #FF85FF;
+    --note-green-bg: #85FF9E;
 
-    /* ============================================ */
-    /* 7. PROJECT CARDS – CORE */
-    /* ============================================ */
+    /* ============================================
+       7. PROJECT CARDS – CORE
+       ============================================ */
+    --collapse-card-titleFG: #ffffff;
     --collapse-cardBG: #2a2a2a;
     --collapse-cardFG: #e0e0e0;
-    --collapse-card-titleFG: #ffffff;
     --collapse-card-img-thumbnail-mix-blend-mode: normal;
     --collapse-card-footerBG: #2a2a2a;
     --collapse-card-footerBdT: rgba(255, 255, 255, 0.05);
     --collapse-card-footer-collapsed-chevronFG: #b0b0b0;
     --collapse-card-footer-expanded-chevronFG: #b629f4;
-    --collapse-cardBdCol: 1px solid rgba(255, 255, 255, 0.08);
+    --collapse-cardBorderColor: rgba(255, 255, 255, 0.08);
     --collapse-cardBxShd: 0 4px 8px rgba(0, 0, 0, 0.3);
-    --collapse-cardBxShd-hover: 
+    --collapse-cardBxShd-hover:
         0 3.6px 2.2px rgba(0, 0, 0, 0.02),
         0 8.6px 5.3px rgba(0, 0, 0, 0.03),
         0 16.3px 10px rgba(0, 0, 0, 0.04),
@@ -240,9 +348,9 @@
         0 130px 80px rgba(0, 0, 0, 0.08);
     --collapse-card-body-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 
-    /* ============================================ */
-    /* 8. PROJECT CARDS – BADGES & TAGS */
-    /* ============================================ */
+    /* ============================================
+       8. PROJECT CARDS – BADGES & TAGS
+       ============================================ */
     --badge-tagBG: #3a3a3a;
     --badge-tagFG: #d0d0d0;
     --badge-tag-border: 1px solid #555555;
@@ -250,36 +358,64 @@
     --collapse-badge-hover-tagBG: #b629f4;
     --collapse-badge-hover-tagFG: #ffffff;
 
-    /* ============================================ */
-    /* 9. PROJECT CARDS – PAPER STACK LAYERS */
-    /* ============================================ */
-    --card-stack-bottom: #3a3a3a;
-    --card-stack-middle: #333333;
-    --card-stack-top: #2a2a2a;
-    --card-stack-bottom-hover: #444444;
-    --card-stack-middle-hover: #3a3a3a;
-    --card-stack-border: rgba(255, 255, 255, 0.06);
-    --card-stack-shadow: rgba(0, 0, 0, 0.3);
+    /* ============================================
+       9. PROJECT CARDS – PAPER STACK SHADOWS
+       ============================================ */
+    --shadow-card-rest:
+        0 1px 2px rgba(0,0,0,0.15),
+        0 2px 4px rgba(0,0,0,0.15);
+    --shadow-card-hover:
+0 20px 40px rgba(0, 0, 0, 0.12), 
+    0 15px 20px rgba(0, 0, 0, 0.08);
+    --shadow-stack-bottom-rest:
+        0 1px 3px rgba(0,0,0,0.20),
+        0 2px 6px rgba(0,0,0,0.15),
+        0 4px 8px rgba(0,0,0,0.10);
+    --shadow-stack-bottom-hover:
+        0 3px 6px rgba(0,0,0,0.35),
+        0 5px 10px rgba(0,0,0,0.25),
+        0 8px 12px rgba(0,0,0,0.15);
+    --shadow-stack-middle-rest:
+        0 1px 2px rgba(0,0,0,0.15),
+        0 2px 4px rgba(0,0,0,0.10);
+    --shadow-stack-middle-hover:
+        0 2px 4px rgba(0,0,0,0.30),
+        0 4px 8px rgba(0,0,0,0.20);
 
-    /* ============================================ */
-    /* 10. LINKS */
-    /* ============================================ */
+    /* ============================================
+       10. PROJECT CARDS – PAPER STACK LAYER COLORS
+       ============================================ */
+    --stack-bottom-bg: #3a3a3a;
+    --stack-bottom-border: 1px solid transparent;
+    --stack-bottom-hover-bg: #444444;
+
+    --stack-middle-bg: #333333;
+    --stack-middle-border: 1px solid transparent;
+    --stack-middle-hover-bg: #3a3a3a;
+
+    --stack-top-bg: #2a2a2a;
+    --stack-top-border: 1px solid transparent;
+    
+
+    /* ============================================
+       11. LINKS
+       ============================================ */
     --linkFG: #cc62f9;
     --link-hoverFG: #1a1a1a;
     --link-hoverBG: #f2f113;
     --link-activeFG: #ffffff;
     --link-visitedFG: #a855f7;
 
-    /* ============================================ */
-    /* 11. CAROUSEL */
-    /* ============================================ */
+    /* ============================================
+       12. CAROUSEL
+       ============================================ */
     --carousel-control-FG: #ffffff;
     --carousel-control-BG: rgba(182, 41, 244, 0.5);
     --video-thumbnail-FG: #888888;
 
-    /* ============================================ */
-    /* 12. SCROLL TO TOP */
-    /* ============================================ */
+    /* ============================================
+       13. SCROLL TO TOP
+       ============================================ */
     --scrollTopFG: #b0b0b0;
     --scrollTopFG-mobile: #b629f4;
     --scrollTop-hover-BdCol: rgba(255, 255, 255, 0.1);
@@ -289,15 +425,15 @@
     --scrollTop-hover-FG-mobile: #b629f4;
     --scrollTop-hover-BdCol-mobile: rgba(255, 255, 255, 0.1);
 
-    /* ============================================ */
-    /* 13. SELECTION */
-    /* ============================================ */
+    /* ============================================
+       14. SELECTION
+       ============================================ */
     --selectionBG: #b629f4;
     --selectionFG: #ffffff;
 
-    /* ============================================ */
-    /* 14. FORMS */
-    /* ============================================ */
+    /* ============================================
+       15. FORMS
+       ============================================ */
     --inputFG: #e0e0e0;
     --input-fs: 80%;
     --formFG: #b629f4;
@@ -310,9 +446,9 @@
     --form-focusBdCol: #b629f4;
     --form-focusBxShd: rgba(182, 41, 244, 0.25);
 
-    /* ============================================ */
-    /* 15. MOBILE MENU */
-    /* ============================================ */
+    /* ============================================
+       16. MOBILE MENU
+       ============================================ */
     --mobile-menu-closeFG: #ff6b6b;
     --mobile-menu-closeBG: #1a1a1a;
     --mobile-menu-close-btn-border-top: 1px solid #333333;
@@ -328,36 +464,34 @@
     --mobile-menu-nav-active-linkBG: #2a2a2a;
     --mobile-menu-chevron-upFG: #e0e0e0;
 
-    /* ============================================ */
-    /* 16. SOCIAL ICONS */
-    /* ============================================ */
+    /* ============================================
+       17. SOCIAL ICONS
+       ============================================ */
     --socialIcons-linkFG: #555555;
     --socialIcons-link-hover-FG: #b629f4;
     --socialIcons-link-active-FG: #00ff7f;
     --socialIcons-link-visited-FG: #555555;
 
-    /* ============================================ */
-    /* 17. COPYRIGHT */
-    /* ============================================ */
+    /* ============================================
+       18. COPYRIGHT
+       ============================================ */
     --copyrightFG: #666666;
 
-    /* ============================================ */
-    /* 18. DEVICE COLOR CHOOSER */
-    /* ============================================ */
+    /* ============================================
+       19. DEVICE COLOR CHOOSER
+       ============================================ */
     --color-choose-btn-1-BG: rgba(0, 0, 0, 0.9);
     --color-choose-btn-1-FG: #d0d0d0;
     --color-choose-btn-1-active-FG: #1a1a1a;
     --color-choose-btn-1-active-BG: radial-gradient(#b629f4, transparent);
     --color-choose-btn-1-hover-BG: #1a1a1a;
     --color-choose-btn-1-hover-FG: #ffffff;
-    
     --color-choose-btn-2-BG: #d0d0d0;
     --color-choose-btn-2-FG: #4a4a4a;
     --color-choose-btn-2-active-FG: #1a1a1a;
     --color-choose-btn-2-active-BG: radial-gradient(#b629f4, transparent);
     --color-choose-btn-2-hover-BG: #a0a0a0;
     --color-choose-btn-2-hover-FG: #1a1a1a;
-    
     --color-choose-btn-3-BG: rgba(241, 226, 208, 0.9);
     --color-choose-btn-3-FG: #4a4a4a;
     --color-choose-btn-3-active-FG: #1a1a1a;
@@ -365,24 +499,42 @@
     --color-choose-btn-3-hover-BG: #f1e2d0;
     --color-choose-btn-3-hover-FG: #1a1a1a;
 
-    /* ============================================ */
-    /* 19. MISC */
-    /* ============================================ */
+    /* ============================================
+       20. MISC
+       ============================================ */
     --designed-mit-BG: rgba(255, 255, 255, 0.03);
 }
+
+/* ============================================================
+   LIGHTPLUS THEME
+   ============================================================ */
 .lightPlus {
+    /* ============================================
+       1. SCROLLBAR
+       ============================================ */
     --scrollbar-inactive-thumbBG: rgba(0, 0, 0, 0.4);
     --scrollbar-thumbBG: #1d1c1b;
     --scrollbar-width: 10px;
+
+    /* ============================================
+       2. BODY & BASE
+       ============================================ */
     --bodyBG: #fff;
     --bodyFG: #41403e;
 
+    /* ============================================
+       3. BRAND & HEADER
+       ============================================ */
     --ci-brand-boxBG: #d8ff02;
     --ci-brand-boxFG: #1d1c1b;
     --ci-brand-captionFG: #1d1c1b;
-    --ci-brand-detail-name:#1d1c1b;
+    --ci-brand-detail-name: #1d1c1b;
     --ci-profilbild-caption-mainFG: #41403e;
     --ci-profilbild-caption-sublineFG: rgb(140 140 140);
+
+    /* ============================================
+       4. NAVIGATION
+       ============================================ */
     --navbarBG: #d8ff02;
     --navlinkFG: #292826;
     --navlink-hover-FG: #fff;
@@ -400,6 +552,9 @@
     --navlink-showBG: #1d1c1b;
     --chevron-scroll-icon-stroke: #b629f4;
 
+    /* ============================================
+       5. BUTTONS & ACTIONS
+       ============================================ */
     --actionButtonBdCol: chartreuse;
     --actionButtonFG: #fff;
     --actionButtonBG: #292826;
@@ -408,60 +563,112 @@
     --actionButton-icon: #b629f4;
     --actionButton-FileSizeFG: #b629f4;
 
-    /* --kontext-divBG: rgb(182, 176, 225);
-    --kontext-divFG: #1D1C1B; */
-
+    /* ============================================
+       6. KONTEXT NOTES
+       ============================================ */
     --kontext-divBG: #b629f4;
     --kontext-divFG: #fff;
     --note-text-color: #1d1c1b;
+    --note-yellow-bg: #FFF44F;
+    --note-blue-bg: #7ED6FF;
+    --note-magenta-bg: #FF85FF;
+    --note-green-bg: #85FF9E;
+
+    /* ============================================
+       7. PROJECT CARDS – CORE
+       ============================================ */
     --collapse-card-titleFG: #41403e;
-
-    /* --badge-tagBG: rgb(182, 176, 225);
-    --badge-tagFG: #1D1C1B;
-    --badge-tag-border: 1px solid rgb(156, 150, 200);
-     */
-    --badge-tagBG: #c34bf6;
-    --badge-tagFG: #fff;
-    --badge-tag-border: 1px solid #a12cd4;
-
-    --collapse-badge-hover-tagBG: #d8ff02;
-    --collapse-badge-hover-tagFG: #000;
-    --badge-tag-border-hover: 1px solid #c1e204;
-
     --collapse-cardBG: ghostwhite;
     --collapse-cardFG: #41403e;
     --collapse-card-img-thumbnail-mix-blend-mode: multiply;
-
     --collapse-card-footerBG: ghostwhite;
     --collapse-card-footerBdT: rgba(0, 0, 0, 0.0125);
     --collapse-card-footer-collapsed-chevronFG: #292826;
     --collapse-card-footer-expanded-chevronFG: #b629f4;
-    --collapse-cardBdCol: 1px solid gainsboro;
-
-    /* --collapse-cardBxShd:  0 0 0 0.5px #B629F4; */
-
+    --collapse-cardBorderColor: gainsboro;
     --collapse-cardBxShd: 0 3px 3px rgba(0, 0, 0, 0.05);
     --collapse-cardBxShd-hover:
-        0 3.6px 2.2px rgba(0, 0, 0, 0.014), 0 8.6px 5.3px rgba(0, 0, 0, 0.02),
-        0 16.3px 10px rgba(0, 0, 0, 0.025), 0 29px 17.9px rgba(0, 0, 0, 0.03),
-        0 54.3px 33.4px rgba(0, 0, 0, 0.036), 0 130px 80px rgba(0, 0, 0, 0.05);
-
+        0 3.6px 2.2px rgba(0, 0, 0, 0.014),
+        0 8.6px 5.3px rgba(0, 0, 0, 0.02),
+        0 16.3px 10px rgba(0, 0, 0, 0.025),
+        0 29px 17.9px rgba(0, 0, 0, 0.03),
+        0 54.3px 33.4px rgba(0, 0, 0, 0.036),
+        0 130px 80px rgba(0, 0, 0, 0.05);
     --collapse-card-body-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.05);
 
-    --designed-mit-BG: transparent;
+    /* ============================================
+       8. PROJECT CARDS – BADGES & TAGS
+       ============================================ */
+    --badge-tagBG: #c34bf6;
+    --badge-tagFG: #fff;
+    --badge-tag-border: 1px solid #a12cd4;
+    --collapse-badge-hover-tagBG: #d8ff02;
+    --collapse-badge-hover-tagFG: #000;
+    --badge-tag-border-hover: 1px solid #c1e204;
 
+    /* ============================================
+       9. PROJECT CARDS – PAPER STACK SHADOWS
+       ============================================ */
+    --shadow-card-rest:
+        0 1px 2px rgba(0,0,0,0.02),
+        0 2px 4px rgba(0,0,0,0.02);
+    --shadow-card-hover:
+        0 4px 8px rgba(0,0,0,0.06),
+        0 8px 16px rgba(0,0,0,0.05),
+        0 16px 32px rgba(0,0,0,0.04);
+    --shadow-stack-bottom-rest:
+        0 2px 4px rgba(0,0,0,0.04),
+        0 4px 8px rgba(0,0,0,0.04),
+        0 8px 16px rgba(0,0,0,0.03),
+        0 12px 24px rgba(0,0,0,0.03);
+    --shadow-stack-bottom-hover:
+        0 4px 8px rgba(0,0,0,0.08),
+        0 8px 16px rgba(0,0,0,0.06),
+        0 16px 32px rgba(0,0,0,0.05),
+        0 24px 48px rgba(0,0,0,0.04);
+    --shadow-stack-middle-rest:
+        0 1px 2px rgba(0,0,0,0.03),
+        0 2px 4px rgba(0,0,0,0.03),
+        0 4px 8px rgba(0,0,0,0.02);
+    --shadow-stack-middle-hover:
+        0 2px 4px rgba(0,0,0,0.06),
+        0 4px 8px rgba(0,0,0,0.05),
+        0 8px 16px rgba(0,0,0,0.04);
+
+    /* ============================================
+       10. PROJECT CARDS – PAPER STACK LAYER COLORS
+       ============================================ */
+    --stack-bottom-bg: #f0f0f0;
+    --stack-bottom-border: 1px solid rgba(0, 0, 0, 0.06);
+    --stack-bottom-hover-bg: #ebebeb;
+
+    --stack-middle-bg: #f5f5f5;
+    --stack-middle-border: 1px solid rgba(0, 0, 0, 0.06);
+    --stack-middle-hover-bg: #f0f0f0;
+
+    --stack-top-bg: #fafafa;
+    --stack-top-border: 1px solid rgba(0, 0, 0, 0.08);
+
+    /* ============================================
+       11. LINKS
+       ============================================ */
     --linkFG: #cc62f9;
     --link-hoverFG: #333;
     --link-hoverBG: #d8ff02;
     --link-activeFG: #222;
     --link-visitedFG: #cc62f9;
 
+    /* ============================================
+       12. CAROUSEL
+       ============================================ */
     --carousel-control-FG: #000;
     --carousel-control-BG: #ddd;
-
     --video-thumbnail-FG: #888;
     --video-thumbnail-FG-hover: #777;
 
+    /* ============================================
+       13. SCROLL TO TOP
+       ============================================ */
     --scrollTopFG: #292826;
     --scrollTopFG-mobile: #292826;
     --scrollTop-hover-BdCol: rgba(0, 0, 0, 0.1);
@@ -470,9 +677,16 @@
     --scrollTop-hover-BG-mobile: #292826;
     --scrollTop-hover-FG-mobile: #fff;
     --scrollTop-hover-BdCol-mobile: rgba(0, 0, 0, 0.1);
+
+    /* ============================================
+       14. SELECTION
+       ============================================ */
     --selectionBG: #b629f4;
     --selectionFG: #fff;
-    /* form */
+
+    /* ============================================
+       15. FORMS
+       ============================================ */
     --inputFG: #1d1c1b;
     --input-fs: 80%;
     --formFG: #b629f4;
@@ -485,7 +699,9 @@
     --form-focusBdCol: #41403e;
     --form-focusBxShd: #b629f4;
 
-    /* mobile */
+    /* ============================================
+       16. MOBILE MENU
+       ============================================ */
     --mobile-menu-closeFG: #555;
     --mobile-menu-closeBG: black;
     --mobile-menu-close-btnBG: #000;
@@ -500,13 +716,22 @@
     --mobile-menu-nav-active-linkBG: #000;
     --mobile-menu-chevron-upFG: #1d1c1b;
 
+    /* ============================================
+       17. SOCIAL ICONS
+       ============================================ */
     --socialIcons-linkFG: gainsboro;
     --socialIcons-link-hover-FG: #41403e;
     --socialIcons-link-active-FG: #b629f4;
     --socialIcons-link-visited-FG: gainsboro;
+
+    /* ============================================
+       18. COPYRIGHT
+       ============================================ */
     --copyrightFG: gainsboro;
 
-    /* colorChoose Device */
+    /* ============================================
+       19. DEVICE COLOR CHOOSER
+       ============================================ */
     --color-choose-btn-1-BG: rgba(0, 0, 0, 0.8);
     --color-choose-btn-1-FG: gainsboro;
     --color-choose-btn-1-active-FG: black;
@@ -525,4 +750,9 @@
     --color-choose-btn-3-active-BG: radial-gradient(#b629f4, transparent);
     --color-choose-btn-3-hover-BG: #f1e2d0;
     --color-choose-btn-3-hover-FG: black;
+
+    /* ============================================
+       20. MISC
+       ============================================ */
+    --designed-mit-BG: transparent;
 }
