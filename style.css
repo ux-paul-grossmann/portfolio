@@ -2584,8 +2584,144 @@ button.btn.download-section-color:nth-child(3):active {
     }
 }
 
+#nav-back-button {
+    margin-bottom: 1rem;
+    margin-left: 10px;
+}
+.dark #nav-back-button {
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+
 /* ============================================================
-   END OF STYLESHEET
+   MORPHING CARD NAVIGATION
    ============================================================ */
+.nav-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1.25rem;
+}
+
+.morph-card {
+    position: relative;
+    background: var(--collapse-cardBG);
+    border: 1px solid var(--collapse-cardBorderColor);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.3s ease;
+    overflow: hidden;
+}
+
+.morph-card.selected {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 32px rgba(50, 145, 255, 0.2);
+}
+
+.morph-card:hover:not(.selected):not(.expanded) {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+}
+
+.morph-card.morphing {
+    pointer-events: none;
+}
+
+/* Front face */
+.morph-front img {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    margin-bottom: 0.75rem;
+}
+
+.morph-front h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.25rem;
+}
+
+.morph-front span,
+.morph-front p {
+    font-size: 0.85rem;
+    opacity: 0.7;
+}
+
+/* Back face (company level enter button) */
+.morph-back {
+    display: none;
+}
+
+/* Detail (project level) */
+.morph-detail {
+    display: none;
+    padding-top: 1rem;
+    border-top: 1px solid var(--collapse-cardBorderColor);
+}
+
+.morph-card.expanded .morph-detail {
+    display: block;
+}
+
+.morph-card.expanded .morph-front {
+    opacity: 0.5;
+}
+
+.close-detail {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 1.25rem;
+    cursor: pointer;
+    opacity: 0.6;
+}
+
+.close-detail:hover {
+    opacity: 1;
+}
+
+/* Tags */
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    margin-top: 0.75rem;
+}
+
+.tag {
+    font-size: 0.7rem;
+    padding: 0.15rem 0.5rem;
+    border: 1px solid var(--collapse-cardBorderColor);
+    border-radius: 4px;
+    opacity: 0.7;
+}
+
+/* Breadcrumb */
+.nav-breadcrumb {
+    margin-bottom: 1.5rem;
+}
+
+.back-btn {
+    background: none;
+    border: 1px solid var(--collapse-cardBorderColor);
+    padding: 0.4rem 1rem;
+    border-radius: 2rem;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: background 0.2s;
+}
+
+.back-btn:hover {
+    background: rgba(50, 145, 255, 0.08);
+}
+
+.dark .morph-card.selected {
+    box-shadow: 0 8px 32px rgba(92, 176, 255, 0.25);
+}
+
+.dark .back-btn:hover {
+    background: rgba(92, 176, 255, 0.1);
+}
 
 
