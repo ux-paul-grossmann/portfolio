@@ -2952,6 +2952,52 @@ button.btn.download-section-color:nth-child(3):active {
     .pv-detail-wrap {
         padding: 1rem;
     }
+    .pv-strip-wrap {
+        gap: 0.35rem;
+        position: static;
+    }
+    .pv-strip {
+        width: auto;
+        flex: 1;
+        padding: 0.2rem;
+        gap: 0.35rem;
+    }
+    .pv-strip-item {
+        flex: 0 0 80px;
+        height: auto;
+    }
+    .pv-strip .pv-strip-thumb {
+        width: 80px;
+        height: 46px;
+    }
+    .pv-strip-body {
+        position: static;
+        background: none;
+        padding: 0.15rem 0.2rem;
+    }
+    .pv-strip-title {
+        font-size: 0.55rem;
+        color: var(--collapse-card-titleFG);
+        margin-bottom: 0;
+    }
+    .pv-strip-company,
+    .pv-strip-tags,
+    .pv-strip-desc {
+        display: none;
+    }
+    .pv-strip-btn {
+        padding: 0.35rem 0.5rem;
+        font-size: 0.55rem;
+    }
+    .pv-strip-btn i {
+        font-size: 0.45rem;
+    }
+}
+
+@media (min-width: 992px) {
+    .pv-strip-wrap {
+        display: none;
+    }
 }
 
 .pv-detail-inner dt {
