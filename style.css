@@ -1072,6 +1072,24 @@ dd.d-flex.flex-row.align-items-center.flex-wrap.mb-5 {
     box-shadow: inset -5px 0 20px rgba(0, 0, 0, 0.3);
 }
 
+.thumbnail-pic-07 {
+    background: url("./lib/images/thumbs/thumb180-uxanalysis.png") no-repeat;
+    max-width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: top left;
+    box-shadow: inset -5px 0 20px rgba(0, 0, 0, 0.3);
+}
+
+.thumbnail-pic-08 {
+    background: url("./lib/images/thumbs/thumb110-madashboard.png") no-repeat;
+    max-width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: top left;
+    box-shadow: inset -5px 0 20px rgba(0, 0, 0, 0.3);
+}
+
 #projekte .propalign {
     margin-left: -10px;
     margin-right: -10px;
@@ -2329,6 +2347,24 @@ button.btn.download-section-color:nth-child(3):active {
 
     .thumbnail-pic-06 {
         background: url("./lib/images/thumbs/thumb180-fh-mobile-design.png") no-repeat;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: top left;
+        box-shadow: inset -1px 0 0px rgba(0, 0, 0, 0.1);
+    }
+
+    .thumbnail-pic-07 {
+        background: url("./lib/images/thumbs/thumb180-uxanalysis.png") no-repeat;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: top left;
+        box-shadow: inset -1px 0 0px rgba(0, 0, 0, 0.1);
+    }
+
+    .thumbnail-pic-08 {
+        background: url("./lib/images/thumbs/thumb180-madashboard.png") no-repeat;
         width: 100%;
         height: 100%;
         background-size: cover;
