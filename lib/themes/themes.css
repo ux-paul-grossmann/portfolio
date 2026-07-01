@@ -500,9 +500,281 @@
     --color-choose-btn-3-hover-FG: #1a1a1a;
 
     /* ============================================
-       20. MISC
-       ============================================ */
-    --designed-mit-BG: rgba(255, 255, 255, 0.03);
+        20. MISC
+        ============================================ */
+    --designed-mit-BG: transparent;
+}
+
+/* ============================================================
+   MATERIAL THEME (Material Design 3)
+   ============================================================ */
+.material {
+    --md-sys-color-primary: #6750A4;
+    --md-sys-color-on-primary: #FFFFFF;
+    --md-sys-color-primary-container: #EADDFF;
+    --md-sys-color-on-primary-container: #21005D;
+    --md-sys-color-secondary: #625B71;
+    --md-sys-color-on-secondary: #FFFFFF;
+    --md-sys-color-secondary-container: #E8DEF8;
+    --md-sys-color-on-secondary-container: #1D192B;
+    --md-sys-color-tertiary: #7D5260;
+    --md-sys-color-on-tertiary: #FFFFFF;
+    --md-sys-color-tertiary-container: #FFD8E4;
+    --md-sys-color-on-tertiary-container: #31111D;
+    --md-sys-color-error: #B3261E;
+    --md-sys-color-on-error: #FFFFFF;
+    --md-sys-color-surface: #FFFBFE;
+    --md-sys-color-on-surface: #1C1B1F;
+    --md-sys-color-surface-variant: #E7E0EC;
+    --md-sys-color-on-surface-variant: #49454F;
+    --md-sys-color-outline: #79747E;
+    --md-sys-color-outline-variant: #CAC4D0;
+    --md-sys-color-surface-container: #F3EDF7;
+    --md-sys-color-surface-container-high: #ECE6F0;
+    --md-sys-color-surface-container-highest: #E6E0E9;
+
+    --md-sys-elevation-0: 0 0 0 0 transparent;
+    --md-sys-elevation-1: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+    --md-sys-elevation-2: 0 1px 3px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.06);
+    --md-sys-elevation-3: 0 2px 8px rgba(0,0,0,0.08), 0 4px 12px rgba(0,0,0,0.06);
+    --md-sys-elevation-4: 0 4px 16px rgba(0,0,0,0.08), 0 8px 24px rgba(0,0,0,0.06);
+    --md-sys-elevation-5: 0 8px 32px rgba(0,0,0,0.10), 0 16px 48px rgba(0,0,0,0.08);
+
+    --md-sys-shape-xs: 4px;
+    --md-sys-shape-sm: 8px;
+    --md-sys-shape-md: 12px;
+    --md-sys-shape-lg: 16px;
+    --md-sys-shape-xl: 28px;
+
+    /* ============================================
+        1. SCROLLBAR
+        ============================================ */
+    --scrollbar-inactive-thumbBG: var(--md-sys-color-outline-variant);
+    --scrollbar-thumbBG: var(--md-sys-color-outline);
+    --scrollbar-width: 10px;
+
+    /* ============================================
+        2. BODY & BASE
+        ============================================ */
+    --bodyBG: var(--md-sys-color-surface);
+    --bodyFG: var(--md-sys-color-on-surface);
+
+    /* ============================================
+        3. BRAND & HEADER
+        ============================================ */
+    --ci-brand-boxBG: var(--md-sys-color-primary-container);
+    --ci-brand-boxFG: var(--md-sys-color-on-primary-container);
+    --ci-brand-detail-name: var(--md-sys-color-on-surface);
+    --ci-brand-captionFG: var(--md-sys-color-on-surface-variant);
+    --ci-profilbild-caption-mainFG: var(--md-sys-color-on-surface);
+    --ci-profilbild-caption-sublineFG: var(--md-sys-color-on-surface-variant);
+
+    /* ============================================
+        4. NAVIGATION
+        ============================================ */
+    --navbarBG: rgba(243, 237, 247, 0.85);
+    --navlinkFG: var(--md-sys-color-on-surface);
+    --navlink-hover-FG: var(--md-sys-color-on-primary);
+    --navlink-hover-BG: var(--md-sys-color-primary);
+    --navlink-active-FG: var(--md-sys-color-on-primary-container);
+    --navlink-active-BG: var(--md-sys-color-primary-container);
+    --navlink-dropdownMenuFG: var(--md-sys-color-on-primary-container);
+    --navlink-dropdownMenuBG: var(--md-sys-color-primary-container);
+    --navlink-dropdownMenu-headerFG: var(--md-sys-color-primary);
+    --navlink-dropdownMenu-dropdownItemFG: var(--md-sys-color-on-surface);
+    --navlink-dropdownMenu-dropdownItem-hover-FG: var(--md-sys-color-on-primary-container);
+    --navlink-dropdownMenu-dropdownItem-hover-BG: var(--md-sys-color-primary-container);
+    --navlink-dropdown-BxShd: var(--md-sys-elevation-3);
+    --navlink-showFG: var(--md-sys-color-on-primary-container);
+    --navlink-showBG: var(--md-sys-color-primary-container);
+    --chevron-scroll-icon-stroke: var(--md-sys-color-primary);
+    --chevron-scroll-icon-fill: transparent;
+
+    /* ============================================
+        5. BUTTONS & ACTIONS
+        ============================================ */
+    --actionButtonBorderThickness: 0;
+    --actionButtonBorderColor: transparent;
+    --actionButtonBorderThicknessHover: 0;
+    --actionButtonBorderColorHover: transparent;
+    --actionButtonFG: var(--md-sys-color-on-primary);
+    --actionButtonBG: var(--md-sys-color-primary);
+    --actionButtonBG-hover: var(--md-sys-color-secondary);
+    --actionButtonFG-hover: var(--md-sys-color-on-secondary);
+    --actionButton-icon: var(--md-sys-color-on-primary);
+    --actionButton-FileSizeFG: var(--md-sys-color-on-surface-variant);
+
+    /* ============================================
+        6. KONTEXT NOTES
+        ============================================ */
+    --kontext-divBG: var(--md-sys-color-primary-container);
+    --kontext-divFG: var(--md-sys-color-on-primary-container);
+    --note-text-color: var(--md-sys-color-on-surface);
+    --note-yellow-bg: #FFF44F;
+    --note-blue-bg: #7ED6FF;
+    --note-magenta-bg: #FF85FF;
+    --note-green-bg: #85FF9E;
+
+    /* ============================================
+        7. PROJECT CARDS – CORE
+        ============================================ */
+    --collapse-card-titleFG: var(--md-sys-color-on-surface);
+    --collapse-cardBG: var(--md-sys-color-surface-container);
+    --collapse-cardFG: var(--md-sys-color-on-surface-variant);
+    --collapse-card-img-thumbnail-mix-blend-mode: normal;
+    --collapse-card-footerBG: var(--md-sys-color-surface-container);
+    --collapse-card-footerBdT: var(--md-sys-color-outline-variant);
+    --collapse-card-footer-collapsed-chevronFG: var(--md-sys-color-on-surface-variant);
+    --collapse-card-footer-expanded-chevronFG: var(--md-sys-color-primary);
+    --collapse-cardBorderColor: var(--md-sys-color-outline-variant);
+    --collapse-cardBxShd: var(--md-sys-elevation-1);
+    --collapse-cardBxShd-hover: var(--md-sys-elevation-3);
+    --collapse-card-body-box-shadow: var(--md-sys-elevation-1);
+
+    /* ============================================
+        8. PROJECT CARDS – BADGES & TAGS
+        ============================================ */
+    --badge-tagBG: var(--md-sys-color-secondary-container);
+    --badge-tagFG: var(--md-sys-color-on-secondary-container);
+    --badge-tag-border: 1px solid var(--md-sys-color-outline-variant);
+    --badge-tag-border-hover: 1px solid var(--md-sys-color-primary);
+    --collapse-badge-hover-tagBG: var(--md-sys-color-primary);
+    --collapse-badge-hover-tagFG: var(--md-sys-color-on-primary);
+
+    /* ============================================
+        9. PROJECT CARDS – PAPER STACK SHADOWS
+        ============================================ */
+    --shadow-card-rest: var(--md-sys-elevation-1);
+    --shadow-card-hover: var(--md-sys-elevation-4);
+    --shadow-stack-bottom-rest: var(--md-sys-elevation-0);
+    --shadow-stack-bottom-hover: var(--md-sys-elevation-2);
+    --shadow-stack-middle-rest: var(--md-sys-elevation-0);
+    --shadow-stack-middle-hover: var(--md-sys-elevation-1);
+    --shadow-stack-bottom-bg: var(--md-sys-color-surface-container-highest);
+    --shadow-stack-bottom-border: 1px solid var(--md-sys-color-outline-variant);
+    --shadow-stack-bottom-hover-bg: var(--md-sys-color-surface-container-high);
+    --shadow-stack-middle-bg: var(--md-sys-color-surface-container-high);
+    --shadow-stack-middle-border: 1px solid var(--md-sys-color-outline-variant);
+    --shadow-stack-middle-hover-bg: var(--md-sys-color-surface-container);
+
+    /* ============================================
+        10. PROJECT CARDS – PAPER STACK LAYER COLORS
+        ============================================ */
+    --stack-bottom-bg: var(--md-sys-color-surface-container-highest);
+    --stack-bottom-border: 1px solid var(--md-sys-color-outline-variant);
+    --stack-bottom-hover-bg: var(--md-sys-color-surface-container-high);
+    --stack-middle-bg: var(--md-sys-color-surface-container-high);
+    --stack-middle-border: 1px solid var(--md-sys-color-outline-variant);
+    --stack-middle-hover-bg: var(--md-sys-color-surface-container);
+    --stack-top-bg: var(--md-sys-color-surface-container);
+    --stack-top-border: 1px solid var(--md-sys-color-outline-variant);
+
+    /* ============================================
+        11. LINKS
+        ============================================ */
+    --linkFG: var(--md-sys-color-primary);
+    --link-hoverFG: var(--md-sys-color-on-primary);
+    --link-hoverBG: var(--md-sys-color-primary);
+    --link-activeFG: var(--md-sys-color-on-primary-container);
+    --link-visitedFG: var(--md-sys-color-secondary);
+
+    /* ============================================
+        12. CAROUSEL
+        ============================================ */
+    --carousel-control-FG: var(--md-sys-color-on-surface);
+    --carousel-control-BG: transparent;
+    --video-thumbnail-FG: var(--md-sys-color-on-surface-variant);
+
+    /* ============================================
+        13. SCROLL TO TOP
+        ============================================ */
+    --scrollTopFG: var(--md-sys-color-on-surface-variant);
+    --scrollTopFG-mobile: var(--md-sys-color-on-surface-variant);
+    --scrollTop-hover-BdCol: var(--md-sys-color-outline-variant);
+    --scrollTop-hover-BG: var(--md-sys-color-primary);
+    --scrollTop-hover-FG: var(--md-sys-color-on-primary);
+    --scrollTop-hover-BG-mobile: var(--md-sys-color-primary);
+    --scrollTop-hover-FG-mobile: var(--md-sys-color-on-primary);
+    --scrollTop-hover-BdCol-mobile: var(--md-sys-color-outline-variant);
+
+    /* ============================================
+        14. SELECTION
+        ============================================ */
+    --selectionBG: var(--md-sys-color-primary);
+    --selectionFG: var(--md-sys-color-on-primary);
+
+    /* ============================================
+        15. FORMS
+        ============================================ */
+    --inputFG: var(--md-sys-color-on-surface);
+    --input-fs: 80%;
+    --formFG: var(--md-sys-color-primary);
+    --formBG: var(--md-sys-color-surface-container);
+    --formBdCol: var(--md-sys-color-outline);
+    --form-labelFG: var(--md-sys-color-on-surface-variant);
+    --placeholderFG: var(--md-sys-color-outline);
+    --form-focusFG: var(--md-sys-color-on-surface);
+    --form-focusBG: var(--md-sys-color-surface-container);
+    --form-focusBdCol: var(--md-sys-color-primary);
+    --form-focusBxShd: var(--md-sys-color-primary-container);
+
+    /* ============================================
+        16. MOBILE MENU
+        ============================================ */
+    --mobile-menu-closeFG: var(--md-sys-color-on-surface);
+    --mobile-menu-closeBG: var(--md-sys-color-surface);
+    --mobile-menu-close-btn-border-top: 1px solid var(--md-sys-color-outline-variant);
+    --mobile-menu-close-btnBG: var(--md-sys-color-surface-container);
+    --mobile-menu-close-not-disabled-FG: var(--md-sys-color-on-surface);
+    --mobile-menu-navbar-navBG: var(--md-sys-color-surface-container);
+    --mobile-menu-navbar-light-togglerBdCol: var(--md-sys-color-outline-variant);
+    --mobile-menu-navbar-light-togglerFG: var(--md-sys-color-on-surface);
+    --mobile-menu-navbar-togglerBG: var(--md-sys-color-primary-container);
+    --mobile-menu-nav-linkFG: var(--md-sys-color-on-surface);
+    --mobile-menu-nav-hover-linkFG: var(--md-sys-color-on-primary);
+    --mobile-menu-nav-active-linkFG: var(--md-sys-color-on-primary-container);
+    --mobile-menu-nav-active-linkBG: var(--md-sys-color-primary-container);
+    --mobile-menu-chevron-upFG: var(--md-sys-color-on-surface);
+
+    /* ============================================
+        17. SOCIAL ICONS
+        ============================================ */
+    --socialIcons-linkFG: var(--md-sys-color-outline);
+    --socialIcons-link-hover-FG: var(--md-sys-color-primary);
+    --socialIcons-link-active-FG: var(--md-sys-color-tertiary);
+    --socialIcons-link-visited-FG: var(--md-sys-color-outline);
+
+    /* ============================================
+        18. COPYRIGHT
+        ============================================ */
+    --copyrightFG: var(--md-sys-color-outline);
+
+    /* ============================================
+        19. DEVICE COLOR CHOOSER
+        ============================================ */
+    --color-choose-btn-1-BG: rgba(0, 0, 0, 0.8);
+    --color-choose-btn-1-FG: #E6E0E9;
+    --color-choose-btn-1-active-FG: var(--md-sys-color-on-primary);
+    --color-choose-btn-1-active-BG: radial-gradient(var(--md-sys-color-primary), transparent);
+    --color-choose-btn-1-hover-BG: black;
+    --color-choose-btn-1-hover-FG: white;
+    --color-choose-btn-2-BG: #E6E0E9;
+    --color-choose-btn-2-FG: #49454F;
+    --color-choose-btn-2-active-FG: var(--md-sys-color-on-primary);
+    --color-choose-btn-2-active-BG: radial-gradient(var(--md-sys-color-primary), transparent);
+    --color-choose-btn-2-hover-BG: #CAC4D0;
+    --color-choose-btn-2-hover-FG: var(--md-sys-color-on-surface);
+    --color-choose-btn-3-BG: rgba(241, 226, 208, 0.8);
+    --color-choose-btn-3-FG: #49454F;
+    --color-choose-btn-3-active-FG: var(--md-sys-color-on-primary);
+    --color-choose-btn-3-active-BG: radial-gradient(var(--md-sys-color-primary), transparent);
+    --color-choose-btn-3-hover-BG: #F1E2D0;
+    --color-choose-btn-3-hover-FG: var(--md-sys-color-on-surface);
+
+    /* ============================================
+        20. MISC
+        ============================================ */
+    --designed-mit-BG: transparent;
 }
 
 /* ============================================================

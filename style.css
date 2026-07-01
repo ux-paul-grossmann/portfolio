@@ -54,6 +54,22 @@ body {
     line-height: 25px;
 }
 
+body.material {
+    font-family: 'Roboto', 'Inter', sans-serif;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+body.material h1,
+body.material h2,
+body.material h3,
+body.material h4,
+body.material h5,
+body.material h6 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+}
+
 ::selection {
     background: var(--selectionBG);
     color: var(--selectionFG);
@@ -957,6 +973,23 @@ dd.d-flex.flex-row.align-items-center.flex-wrap.mb-5 {
     box-shadow: var(--collapse-card-body-box-shadow);
     border-radius: 0.75rem;
     border: 1px solid var(--collapse-cardBorderColor);
+}
+
+body.material .card {
+    border-radius: var(--md-sys-shape-md, 12px);
+}
+
+body.material .badge-tag {
+    border-radius: var(--md-sys-shape-sm, 8px);
+}
+
+body.material .scroll-to-top-card,
+body.material .submit-button {
+    border-radius: var(--md-sys-shape-xl, 28px);
+}
+
+body.material .navbar-toggler {
+    border-radius: var(--md-sys-shape-sm, 8px);
 }
 
 .card-title {
