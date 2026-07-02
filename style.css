@@ -957,6 +957,18 @@ a#ci-brand-detail-name:hover {
     border-radius: 6px;
 }
 
+.figmaico {
+    background: white;
+    padding: 2px 6px;
+    border-radius: 6px;
+}
+
+.miroico {
+    background: white;
+    padding: 2px 6px;
+    border-radius: 6px;
+}
+
 dd.d-flex.flex-row.align-items-center.flex-wrap.mb-5 {
     background: var(--designed-mit-BG);
     padding: 10px 10px 10px 15px;
