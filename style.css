@@ -931,34 +931,28 @@ a#ci-brand-detail-name:hover {
 }
 
 .iconsizing {
-    width: 30px !important;
-    height: auto;
-    margin-right: 8px;
+    height: 32px;
+    width: auto;
 }
 
 .jqueryico {
-    width: 120px !important;
-    height: auto;
     background: white;
     padding: 2px 6px;
     border-radius: 6px;
 }
 
 .jiraico {
-    width: 150px !important;
     background: white;
     padding: 2px 6px;
     border-radius: 6px;
 }
 
 .invision {
-    width: 120px !important;
     padding: 2px 6px;
     border-radius: 6px;
 }
 
 .figmaico {
-    padding: 2px 6px;
     border-radius: 6px;
 }
 
@@ -973,6 +967,7 @@ dd.d-flex.flex-row.align-items-center.flex-wrap.mb-5 {
     padding: 10px 10px 10px 15px;
     margin-top: 8px;
     border-radius: 6px;
+    gap: 8px;
 }
 
 /* ============================================================
