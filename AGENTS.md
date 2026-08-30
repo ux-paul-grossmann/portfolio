@@ -1,91 +1,82 @@
-# Session Context — Portfolio Projekte
+# Arbeitsregeln (gilt für jede Session, jeden Branch)
 
-## Project Goal
-Restore and branch the Projekte section of a portfolio site for parallel experimentation with two navigation concepts.
+Kleinstmögliche Diffs. Bei Zweifel: nicht anfassen, sondern nachfragen.
 
-## Branches
+1. **Plan zuerst, Code danach.** Vor Änderungen kurz auflisten, welche Dateien
+   betroffen sind und was genau passiert. Bei größeren Änderungen auf Bestätigung
+   warten — bei trivialen 1-Zeilen-Fixes nicht nötig.
+2. **Nur die genannten Dateien/Komponenten anfassen.** Andere Sections, andere
+   Dateien, globale CSS-Klassen: tabu, außer explizit erwähnt.
+3. **Keine Refactors ohne Auftrag.** Kein Umbenennen, kein "Aufräumen", kein
+   Umsortieren, keine Formatierungs-Änderungen an nicht erwähntem Code — auch
+   wenn er unsauber wirkt. Auffälligkeiten kurz erwähnen, nicht selbst ändern.
+4. **Keine neuen Dependencies** ohne Rückfrage.
+5. **Bestehende Texte (Deutsch) nicht umschreiben/"verbessern"** — nur
+   strukturell/technisch ändern, wenn nicht explizit um Text-Überarbeitung gebeten.
+6. **Ein Feature/Fix pro Antwort.** Keine Bonus-Änderungen "während ich eh drin war".
+7. **Keine Dateien löschen/umbenennen** ohne explizite Ansage.
+8. Nach jeder Änderung: kurz zusammenfassen, welche Dateien geändert wurden und warum.
+9. Bei zu vager Aufgabe: 1–2 kurze Rückfragen stellen statt in mehrere Richtungen zu raten.
 
-| Branch | Description | Status |
-|---|---|---|
-| `master` | Original committed version | untouched |
-| `morphing-cards` | Project navigation with morphing-card transitions using `project-navigation.js` | committed |
-| `flanking-cards` | Horizontal 3-card project viewer using `project-viewer.js` | committed |
+### Definition of Done
+- [ ] Nur die angefragte Änderung wurde gemacht
+- [ ] Keine unangeforderten Dateien im Diff
+- [ ] Bestehender Code/Content unverändert, wo nicht explizit gefordert
+- [ ] Kurze Zusammenfassung der Änderung gegeben
 
-## Current Branch
-`flanking-cards`
-
-## Key Files
-
-### Shared
-- `lib/js/projects-data.js` — contains `projectsData` and `projectHierarchy` (used by both nav systems)
-- `lib/js/render-projects.js` — not loaded in either branch
-- `lib/js/helpers.js` — initializes GLightbox (`var glightbox`), lazyLoadInstance, scroll-to-top behavior; loaded globally
-
-### morphing-cards
-- `lib/js/project-navigation.js` — the morphing-card nav JS (tracked/committed)
-- `index.html` loads `<script src="./lib/js/project-navigation.js" defer>` (NOT `render-projects.js`)
-- `style.css` has the morphing-card CSS (~138 lines), starting at the end of the file
-
-### flanking-cards
-- `lib/js/project-viewer.js` — the 3-card horizontal viewer JS (tracked/committed)
-- `index.html` loads `<script src="./lib/js/project-viewer.js" defer>` (NOT `render-projects.js`)
-- `index.html` also loads Plyr CSS/JS preemptively (for glightbox video autoplay)
-- `style.css` has the viewer CSS appended at the end
-
-## Switching Between Experiments
-```bash
-git checkout morphing-cards   # original morphing-card nav
-git checkout flanking-cards   # 3-card horizontal viewer
-```
-
-## Git Workflow Notes
-- `git restore` earlier wiped all uncommitted changes. The morphing-card CSS was recovered from conversation context. Everything else is now properly committed.
-- `project-navigation.js` was previously untracked; now tracked in the `morphing-cards` commit.
+### Ordnerstruktur (wichtig)
+Es gibt nur **einen** aktiven Projektordner (`portfolio`). Experimente laufen
+über Git-Branches (siehe unten), nicht über kopierte Ordner. Falls du auf
+weitere `portfolio*`-Ordner stößt: nicht anfassen, das sind Altlasten, die
+manuell aufgeräumt werden.
 
 ---
 
-## Session 2 — Refinements (May 31, 2026)
+# Repo & Tooling
 
-### What Was Done
+**Statische One-Page-Site** (Portfolio): `index.html` + `style.css` + `lib/` + `dist/`.
+Es gibt KEIN `package.json`, KEIN Build, kein Test-/Lint-Setup. Verifikation = Seite im
+Browser öffnen (CDN-Abhängigkeiten: jQuery 3.3.1, Bootstrap 4.3.1, GLightbox, slick,
+vanilla-lazyload, motion → Internet nötig).
 
-#### 1. Smart Search Bar Content Reordering (Proj01)
-- In `project-viewer.js` `buildDetail()`: for Proj01 only, the MVP demo video section, "Meine Leistung im Team" and "Erreichte Ziele" render **right after the title**, instead of at the bottom.
-- The duplicate achievements/goals at the bottom are skipped for Proj01 via `p.id !== 'Proj01'` guard.
+Syntax-Smoke-Test für die lib/js-Dateien (passt bei allen vier aktuell):
+```bash
+node -e "const fs=require('fs');for(const f of ['lib/js/helpers.js','lib/js/animations.js','lib/js/render-projects.js','lib/js/projects-data.js']){new Function(fs.readFileSync(f,'utf8'));console.log('OK',f)}"
+```
 
-#### 2. Scrolltop Button Position Fix
-- `style.css` line 2249 had an old `.scrolltop` rule with `bottom: 0; width: 100%` that overrode the updated `top: 10px; right: 10px` rule (both inside the same `@media only screen and (min-width: 576px)` query).
-- Fixed by replacing the old rule with the same top-right positioning.
+- `dist/` = vendorisierte Libs (lazysizes, scrollToTop, bootstrap-swipe-carousel, devices.min.css, …) → nicht editieren.
+- `backup-03-05-2026-0233/` = gitignorierte Altlast → nicht anfassen. `lib/images/*.zip` = unbenutzte Asset-Sammlung.
 
-#### 3. Glightbox Video Autoplay
-**Problem:** Video thumbnails opened the lightbox but required manual play button click.
+# JS-Architektur
 
-**Root causes & fixes:**
-- `autoplayVideos: true` was missing at the top level of GLightbox options in `helpers.js` (was only inside a nonexistent `config` object). **Fix:** Added `autoplayVideos: true` at the top level.
-- `muted: true` was at top-level `config` but GLightbox expects it under `plyr.config` (Plyr player config). **Fix:** Moved to `plyr: { config: { muted: true, ratio: '16:9' } }`.
-- `project-viewer.js` was creating a *second* GLightbox instance with the same selector, overwriting the properly configured one from `helpers.js`. **Fix:** Replaced both GLightbox constructor calls in `project-viewer.js` with `window.glightbox.reload()` to refresh the existing instance.
-- **Race condition:** On first video click, Plyr.js (the video player library) hadn't loaded yet from CDN, so by the time the slide animation completed, no player existed for `slidePlayerPlay` to call `play()` on. **Fix:** Preloaded Plyr CSS (`<link>`) and JS (`<script>`) in `index.html` before `helpers.js` runs, so `injectAssets()` finds them in the DOM and calls the Plyr callback immediately.
+- **Ladereihenfolge** in `index.html` (unten): jQuery → Bootstrap → `dist/js/lazysizes.min.js` → `lib/js/projects-data.js` → `lib/js/render-projects.js` → `bootstrap-swipe-carousel` → vanilla-lazyload → GLightbox (CDN) → `lib/js/helpers.js` (zuletzt).
+- `lib/js/animations.js` liegt im `<head>` mit `defer` → läuft VOR jQuery → sein Code MUSS in `$(document).ready(...)` stehen.
+- `projects-data.js` = Daten (`projectsData`), enthält HTML-Strings mit deutschen Texten → nicht umschreiben (Regel 5). `render-projects.js` rendert die Karten in `#projekte`.
+- `helpers.js` erzeugt beim Laden: `var glightbox` (GLightbox), `lazyLoadInstance` (vanilla-lazyload), Theme-Switch, Jahreszahl im Footer.
 
-#### 4. Center Card Max-Width Constrained to Container (Desktop)
-- `.pv-row` now uses `justify-content: center` so the three cards stay balanced.
-- At ≥992px: `.pv-active` has `max-width: 960px` (matching Bootstrap container).
-- At ≥1200px: `.pv-active` has `max-width: 1140px`.
-- Flanking cards remain at `flex: 0 0 15%` — they sit outside the container area on wide screens.
-- On screens where the available space is already ≤ container width, the max-width has no effect.
+# GLightbox – Regeln (hat viel Zeit gekostet)
 
-#### 5. Viewer Architecture (Earlier Session, Reconfirmed)
-- Three cards unified height via `align-items: stretch` on `.pv-row` — no yoyo on content swap.
-- Mobile (≤991px): flanking cards hidden, sticky horizontal project strip with scroll-snap thumbnails.
-- Image slider carousel negative margins overridden inside `.pv-detail-wrap`.
-- `lazyLoadInstance.update()` called after each render to trigger iframe lazy loading.
-- Direct `innerHTML` replacement for all slots (no animation transitions).
-- GLightbox `reload()` called instead of creating new instances.
-- Scroll-to-top at `top: 10px; right: 10px`, shrink-wrapped hitbox.
+- **Nur EINE Instanz**: `helpers.js` (`var glightbox`). `animations.js` erzeugt eine ZWEITE Instanz mit demselben Selektor `.glightbox` → nicht als Vorbild nehmen. Nach DOM-Änderungen immer `window.glightbox.reload()` aufrufen, **niemals** `new GLightbox()` im Render-Code.
+- **Galerie je Karte**: jedes `<a class="glightbox">` braucht ein separates `data-gallery="projXX"` (lowercase-ID). Ein `gallery:`-Key *innerhalb* von `data-glightbox` wird von GLightbox IGNORIERT.
+- Auf Nutzerwunsch sind alle Slider/Carousels entfernt – Projektbilder sind einzelne GLightbox-Anker in `render-projects.js`. Keine Carousels mehr ergänzen.
+- Bildunterschriften: externe Elemente `.glightbox-desc` werden über `data-glightbox="description: .ssb-desc1; ..."` referenziert (Muster in `projects-data.js`).
 
-### Known Issues / Open Items
-- None currently reported.
+# Lazy Loading – zwei Systeme, nicht verwechseln
 
-### Next Session Start
-1. Read this file.
-2. Check `git status` and `git log --oneline -5` for current branch state.
-3. Verify the viewer renders correctly by checking `index.html` in a browser.
-4. If any new feature or fix is requested, review the relevant JS/CSS files above.
+- **Bilder**: `class="lazyload"` + `data-src` → **lazysizes** (`dist/js/lazysizes.min.js`, nur `<img>`).
+- **iframes**: `class="lazy"` + `data-src` + **zusätzlich `src="about:blank"`** → **vanilla-lazyload** (Instanz `lazyLoadInstance` in helpers.js, `elements_selector: ".lazy"`). Ohne `src="about:blank"` lädt der iframe nicht.
+- Nach jedem DOM-Insert: `lazyLoadInstance.update()` (passiert bei Collapse-Öffnung in `animations.js`).
+
+# Themes
+
+- 4 Blöcke in `lib/themes/themes.css`: `:root` (Default hell), `.dark`, `.lightPlus`, `.material`.
+- Umschaltung über `<body>`-Klasse, gesteuert in `helpers.js`, persistiert in `localStorage["theme"]`.
+- Farben NUR als CSS-Variablen je Theme-Block definieren, nie hart kodieren. Hell-/Dunkel-Unterschiede in die Variablen legen (Muster: `--content-img-box-shadow: 0 4px 16px rgba(0,0,0,0.08)` hell vs. `0 4px 16px rgba(0,0,0,0.35)` dunkel).
+- style.css konsumiert Variablen mit Fallback: `var(--content-img-box-shadow, 0 4px 16px rgba(0,0,0,0.08))` (u.a. auf `#projekte .card-body img`, `#projekte .glightbox img`).
+
+# Git & Session-Start
+
+- Experimente laufen über **Branches**, nie über kopierte Ordner. Branches: `master` / `material-theme` (aktuell, gleicher Tip), `morphing-cards` und `flanking-cards` (alternative Nav-Varianten mit eigenen JS-Dateien und index.html-Load-Orders → deren Code nicht ohne expliziten Auftrag übernehmen).
+- **AGENTS.md ist getrackt** → niemals per `git checkout HEAD -- AGENTS.md` oder `git restore` zurücksetzen.
+- **Uncommitted Arbeit geht bei `git restore`/`git checkout` verloren** → vor Branch-Wechsel committen.
+- Session-Start: `git status` → `git log --oneline -5` → Browser-Check (`python3 -m http.server 8000` → http://localhost:8000).

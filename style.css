@@ -1492,6 +1492,17 @@ label {
     transform: translateY(-3px);
 }
 
+/* Consistent box-shadow for ALL project images (content images) */
+#projekte .card-body img,
+#projekte .glightbox img {
+    box-shadow: var(--content-img-box-shadow, 0 4px 16px rgba(0, 0, 0, 0.08));
+    border-radius: 0.75rem;
+}
+
+#projekte .card-body img.border {
+    border: 1px solid var(--collapse-cardBorderColor) !important;
+}
+
 .glightbox-clean .gslide-title,
 .glightbox-modern .gslide-title {
     font-size: 100%;
@@ -1614,6 +1625,46 @@ label {
 #scrollDownChevron {
     display: flex !important;
     margin-bottom: 30vh;
+}
+
+/* Scroll to top card button in expanded project cards */
+#projekte .scroll-to-top-card {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    padding: 0.5rem 1.25rem;
+    background: var(--actionButtonBG);
+    color: var(--actionButtonFG);
+    border-radius: 40px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.2s ease;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+#projekte .scroll-to-top-card:hover {
+    background: var(--actionButtonBG-hover);
+    color: var(--actionButtonFG-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    text-decoration: none;
+}
+
+#projekte .scroll-to-top-card i {
+    margin-right: 8px;
+    font-size: 0.9rem;
+}
+
+#projekte .scroll-to-top-card:focus {
+    outline: 3px solid var(--md-sys-color-primary-container);
+    outline-offset: 3px;
 }
 
 .tcon-svgchevron {
