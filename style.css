@@ -2972,7 +2972,9 @@ button.btn.download-section-color:nth-child(3):active {
     }
     .pv-strip-wrap {
         gap: 0.35rem;
-        position: static;
+        position: sticky;
+        bottom: 84px;
+        z-index: 10;
     }
     .pv-strip {
         width: auto;
