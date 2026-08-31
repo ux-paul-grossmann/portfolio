@@ -1830,6 +1830,34 @@ label {
     }
 }
 
+/* Icon-only light/dark toggle (sun/moon) – no labels */
+#theme-toggle {
+    background: transparent !important;
+    border: 1px solid transparent !important;
+    color: var(--mobile-menu-nav-linkFG);
+    border-radius: 0.75rem;
+    padding: 0.5rem 0.75rem;
+    line-height: 1;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 150ms ease, color 150ms ease;
+}
+#theme-toggle:hover {
+    background: var(--navlink-hover-BG) !important;
+    color: var(--navlink-hover-FG) !important;
+}
+#theme-toggle:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--md-sys-color-primary-container);
+}
+#theme-toggle-icon {
+    font-size: 1.1rem;
+    width: 1em;
+    text-align: center;
+}
+
 /* ============================================================
    18. UTILITIES & STATES
        Collapse behaviour, chevron rotation, active states,

@@ -13,7 +13,18 @@
     <link rel="icon" href="./lib/images/icons/favicon/favicon-228.png" sizes="228x228">
 
 
-<script src="https://cdn.jsdelivr.net/npm/motion@latest/dist/motion.js" defer></script>
+    <script>
+    // Early theme – apply system preference before render to avoid flash
+    (function(){try{
+        var k='theme',s=localStorage.getItem(k);
+        if(s==='material'||s==='lightPlus'||s===':root'){localStorage.removeItem(k);s=null;}
+        var dark= s==='dark' ? true : s==='light' ? false : window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if(dark) document.documentElement.classList.add('dark');
+        // body not yet parsed – will be synced on DOMContentLoaded and by helpers.js
+        document.addEventListener('DOMContentLoaded',function(){if(dark)document.body.classList.add('dark');});
+    }catch(e){}})();
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/motion@latest/dist/motion.js" defer></script>
     <script src="./lib/js/animations.js" defer></script>
 
     <!-- Bootstrap CSS-Framework -->
@@ -56,12 +67,6 @@
 </head>
 
 <body data-spy="scroll" class="thetop">
-<div id="theme-panel-container" class="shadow-lg">
-    <button class="dropdown-item toggle-light" type="button">light(default)</button>
-    <button class="dropdown-item toggle-dark" type="button">dark</button>
-    <button class="dropdown-item toggle-lightPlus" type="button">lightPlus</button>
-    <button class="dropdown-item toggle-material" type="button">material</button>
-</div>
     <nav class="navbar fixed-bottom navbar-light nav-bg-black navbar-expand-sm shadow-sm">
         <div class="container">
             <button class="navbar-toggler font-weight-bold collapsed no_selection" type="button" data-toggle="collapse"
@@ -86,10 +91,10 @@
                     <li class="nav-item no_selection">
                         <a class="nav-link" href="#kontakt" data-target="#kontakt" title="">Kontakt</a>
                     </li>
-                   <li id="mobile-list-last" class="nav-item">
-                        <a class="nav-link theme-trigger" href="#" role="button">
-                            <i class="fas fa-palette mr-1"></i>Theme
-                        </a>
+                   <li class="nav-item" id="theme-toggle-item">
+                        <button class="nav-link theme-toggle" id="theme-toggle" type="button" aria-label="Toggle theme">
+                            <i class="fas fa-moon" id="theme-toggle-icon" aria-hidden="true"></i>
+                        </button>
                    </li>
                 </ul>
                 <button type="button" class="menu-close d-md-none" aria-label="Close menu" data-toggle="collapse"
@@ -144,8 +149,8 @@
         </div>
 
         <section id="kontext" class="">
-            <h1 class="mb-5 text-center text-lg-left d-none d-sm-block">Unser Kontext</h1>
-            <h2 class="mb-4 text-center d-sm-none">Unser Kontext</h2>
+            <h1 class="mb-5 text-center text-lg-left d-none d-sm-block">Kompetenzen &amp; Methoden</h1>
+            <h2 class="mb-4 text-center d-sm-none">Kompetenzen &amp; Methoden</h2>
 
 
             <div class="kontext-wrap d-flex justify-content-center align-items-center align-content-start flex-row flex-wrap mb-3">
