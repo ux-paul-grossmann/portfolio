@@ -1207,16 +1207,19 @@ dd.d-flex.flex-row.align-items-center.flex-wrap.mb-5 {
 }
 
 #projekte .cluster .thumb-element:hover::after {
-    transform: translateY(20px);
+    transform: translateY(20px) scale(1.02);
     background: var(--stack-middle-hover-bg);
     box-shadow: var(--shadow-stack-middle-hover);
 }
 
 #projekte .cluster .thumb-element:hover .card {
     box-shadow: var(--shadow-card-hover);
-    transform: translateY(-8px) scale(1.02); 
+    transform: translateY(-2px) scale(1.05);
+}
 
-
+#projekte .cluster .thumb-element:active .card,
+#projekte .cluster .thumb-element:hover:active .card {
+    transform: translateY(-2px) scale(1.02);
 }
 
 #projekte .cluster .thumb-element::before,
