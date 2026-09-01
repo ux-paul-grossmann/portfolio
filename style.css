@@ -1527,20 +1527,24 @@ label {
     top: 10px;
     right: 10px;
     z-index: 1100 !important;
-    padding: 6px 12px;
+    width: 38px;
+    height: 38px;
+    padding: 0;
     border-radius: 0.75rem;
+    will-change: transform, opacity;
+    background: var(--collapse-cardBG) !important;
+    border: 1px solid var(--collapse-cardBorderColor) !important;
+    color: var(--collapse-card-titleFG);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-card-rest);
+    font-size: 1.1rem;
+    line-height: 1;
 }
 
 .scroll {
-    width: 64px;
-    text-align: center;
-    cursor: pointer;
-    transition: 0.5s;
-    color: var(--scrollTopFG-mobile);
-    animation-duration: 250ms;
-    font-size: 80%;
-    font-weight: bold;
-    text-transform: uppercase;
+    display: none;
 }
 
 .scroll:hover {
@@ -1718,19 +1722,27 @@ label {
     }
 }
 
-/* Icon-only light/dark toggle (sun/moon) – no labels */
+/* Icon-only light/dark toggle – fixed top-right, choreographed with Hoch */
 #theme-toggle {
-    background: transparent !important;
-    border: 1px solid transparent !important;
-    color: var(--mobile-menu-nav-linkFG);
+    position: fixed !important;
+    top: 10px !important;
+    right: 10px !important;
+    z-index: 1101 !important;
+    background: var(--collapse-cardBG) !important;
+    border: 1px solid var(--collapse-cardBorderColor) !important;
+    color: var(--collapse-card-titleFG);
     border-radius: 0.75rem;
-    padding: 0.5rem 0.75rem;
+    width: 38px;
+    height: 38px;
+    padding: 0;
     line-height: 1;
     cursor: pointer;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    transition: background 150ms ease, color 150ms ease;
+    transition: background 150ms ease, color 150ms ease, border-color 150ms ease;
+    box-shadow: var(--shadow-card-rest);
+    will-change: transform;
 }
 #theme-toggle:hover {
     background: var(--navlink-hover-BG) !important;
@@ -1744,6 +1756,13 @@ label {
     font-size: 1.1rem;
     width: 1em;
     text-align: center;
+}
+.scrolltop i {
+    font-size: 1.25rem;
+    width: 1em;
+    text-align: center;
+    /* optical compensation: arrow is linear vs. filled moon */
+}
 }
 
 /* ============================================================
