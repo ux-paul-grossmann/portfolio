@@ -751,7 +751,6 @@ a#ci-brand-detail-name:hover {
     line-height: 100%;
     display: inline-block !important;
     vertical-align: middle;
-    margin-left: 1rem;
     color: var(--ci-brand-captionFG);
     visibility: visible;
     opacity: 1;
@@ -2197,7 +2196,6 @@ button.btn.download-section-color:nth-child(3):active {
         line-height: 100%;
         display: inline-block !important;
         vertical-align: middle;
-        margin-left: 1rem;
         color: var(--ci-brand-captionFG);
         visibility: visible;
     }
