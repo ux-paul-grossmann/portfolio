@@ -85,11 +85,11 @@ main.container {
     padding-right: 16px !important;
     overflow-x: hidden !important;
 }
-main.container .row {
+main.container > .row {
     margin-left: -16px !important;
     margin-right: -16px !important;
 }
-main.container [class*="col-"] {
+main.container > .row > [class*="col-"] {
     padding-left: 16px !important;
     padding-right: 16px !important;
 }
@@ -3254,7 +3254,6 @@ a, button, .btn, .nav-link, .thumb-element, #theme-toggle, .scrolltop, #intro-bu
 
 @media (hover: none), (pointer: coarse) {
   a:hover,
-  #projekte .thumb-element:hover,
   #projekte .thumb-element:hover .card-title,
   #projekte .thumb-element:hover .card-description,
   .navbar-light .navbar-nav .nav-link:hover,
@@ -3263,20 +3262,13 @@ a, button, .btn, .nav-link, .thumb-element, #theme-toggle, .scrolltop, #intro-bu
   a#ci-brand-detail-name:hover,
   #intro-button:hover,
   .submit-button:hover,
-  #projekte .cluster .thumb-element:hover,
-  #projekte .cluster .thumb-element:hover::before,
-  #projekte .cluster .thumb-element:hover::after,
-  #projekte .cluster .thumb-element:hover .card,
-  #projekte .cluster .thumb-element:hover:active .card,
   #projekte .thumb-element:hover .card-text,
   a.thumb-element:hover span.badge.badge-tag,
-  .glightbox:hover img,
   .carousel-control-next:hover,
   .carousel-control-prev:hover,
   .scroll:hover,
   #projekte .scroll-to-top-card:hover,
   #theme-panel-container .dropdown-item:hover,
-  #theme-toggle:hover,
   #projekte .thumb-element:hover h4,
   #projekte .thumb-element:hover h5,
   #projekte .thumb-element:hover h6,
@@ -3297,19 +3289,7 @@ a, button, .btn, .nav-link, .thumb-element, #theme-toggle, .scrolltop, #intro-bu
     color: initial !important;
     border-color: initial !important;
     box-shadow: none !important;
-    transform: none !important;
     opacity: initial !important;
     text-decoration: none !important;
-  }
-  /* Card stack transforms disabled explicitly */
-  #projekte .cluster .thumb-element:hover,
-  #projekte .cluster .thumb-element:hover::before,
-  #projekte .cluster .thumb-element:hover::after,
-  #projekte .cluster .thumb-element:hover .card {
-    transform: none !important;
-    box-shadow: initial !important;
-  }
-  .glightbox:hover img {
-    transform: none !important;
   }
 }
