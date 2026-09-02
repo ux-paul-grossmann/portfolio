@@ -1,0 +1,35 @@
+name: nightly-audit
+
+on:
+  schedule:
+    - cron: '0 21:00 * * *' # 23:00 MESZ (22:00 MEZ Winter → 1h Drift gewollt)
+  workflow_dispatch:
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Verify Pages branch
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "=== Pages source.branch ==="
+          gh api repos/ux-paul-grossmann/portfolio/pages --jq .source.branch 2>&1 || echo "pages API requires auth or not enabled"
+          echo "=== git ls-remote ==="
+          git ls-remote --heads origin
+          echo "=== local branches ==="
+          git branch -a -vv
+
+      - name: Verify live site
+        run: |
+          echo "=== curl live ==="
+          curl -s https://ux-paul-grossmann.github.io/portfolio/ | grep -E "Kompetenzen|theme-toggle" | head -20
+          echo "--- check ---"
+          if curl -s https://ux-paul-grossmann.github.io/portfolio/ | grep -q "Kompetenzen &amp; Methoden"; then echo "OK heading"; else echo "FAIL heading"; exit 1; fi
+          if curl -s https://ux-paul-grossmann.github.io/portfolio/ | grep -q 'id="theme-toggle"'; then echo "OK toggle"; else echo "FAIL toggle"; exit 1; fi
