@@ -110,6 +110,10 @@ main.container [class*="col-"] {
         display: block !important;
         border-radius: 0 !important;
     }
+    #intro-button {
+        width: 100% !important;
+        display: block !important;
+    }
 }
 
 /* ============================================================
