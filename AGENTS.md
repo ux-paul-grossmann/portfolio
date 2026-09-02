@@ -78,7 +78,7 @@ node -e "const fs=require('fs');for(const f of ['lib/js/helpers.js','lib/js/anim
 
 # Git & Session-Start
 
-- Experimente laufen über **Branches**, nie über kopierte Ordner. Branches: `master` = **live** (GitHub Pages + Default-Branch `origin/HEAD -> origin/master`, API-verifiziert), `flanking-cards`/`material-theme`/`morphing-cards` = Experimente (alle `origin/*` verifiziert via `git ls-remote`). Live Pages-Branch wird **nur** via Nightly Audit (`GET /pages` + live `curl`) verifiziert, nicht geraten.
+- Experimente laufen über **Branches**, nie über kopierte Ordner. Branches: `master` = **live** (GitHub Pages + Default-Branch `origin/HEAD -> origin/master`, API-verifiziert), `flanking-cards`/`morphing-cards` = Experimente (beide `origin/*` verifiziert via `git ls-remote`; `material-theme` gelöscht). Live Pages-Branch wird **nur** via Nightly Audit (`GET /pages` + live `curl`) verifiziert, nicht geraten.
 - **AGENTS.md ist getrackt** → nicht ignorieren. Änderungen an `AGENTS.md` werden gepusht und gelten auf allen 3 Macs.
 - **Uncommitted Arbeit geht bei `git restore`/`git checkout` verloren** → vor Branch-Wechsel committen.
 - Session-Start: `git fetch --all` → `git checkout master` → `git pull` → `git status` → `git log --oneline -5` → Browser-Check (`python3 -m http.server 8000` → http://localhost:8000). Vor Sleeping: `git status` clean → `git push`.
