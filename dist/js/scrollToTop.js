@@ -14,56 +14,35 @@ var __origToggleBottom = '68px';
 var __origHochBottom = '116px';
 function isMobile(){ return window.matchMedia('(max-width: 575.98px)').matches; }
 function positionForMenu(open){
-    var toggle = document.getElementById('theme-toggle');
     var hoch = document.querySelector('.scrolltop');
-    var nav = document.querySelector('nav.navbar.fixed-bottom');
-    if (!toggle || !hoch || !nav) return;
-    if (!isMobile()) {
-        toggle.style.bottom = '';
-        hoch.style.bottom = '';
-        return;
-    }
     if (open) {
-        // above expanded menu — avoid overlapping entries (orange line)
-        var navH = nav.offsetHeight;
-        // collapse may still be animating — use its scrollHeight if larger
-        var coll = document.getElementById('navbarToggler');
-        if (coll && coll.classList.contains('show')) navH = Math.max(navH, coll.getBoundingClientRect().height + 56);
-        var gap = 16;
-        var newToggleB = navH + gap;
-        var newHochB = navH + gap + 38 + 10;
-        toggle.style.bottom = newToggleB + 'px';
-        hoch.style.bottom = newHochB + 'px';
-        // force both visible when menu open (regardless of scroll)
-        hoch.style.display = 'flex';
-        hoch.style.opacity = '1';
+        document.body.classList.add('menu-open');
+        if (hoch) { hoch.style.display = 'flex'; hoch.style.opacity = '1'; }
         var m = window.motion || window.Motion;
-        if (m && m.animate) {
-            m.animate(toggle, { y: [16, 0], opacity: [0,1] }, { duration: 0.28, easing: [0.4,0,0.2,1] });
-            m.animate(hoch, { y: [16, 0], opacity: [0,1] }, { duration: 0.30, easing: [0.4,0,0.2,1], delay: 0.06 });
+        var toggle = document.getElementById('theme-toggle');
+        if (m && m.animate && toggle && hoch) {
+            m.animate(toggle, { y: [12, 0], opacity: [0.9,1] }, { duration: 0.28, easing: [0.4,0,0.2,1] });
+            m.animate(hoch, { y: [12, 0], opacity: [0,1] }, { duration: 0.30, easing: [0.4,0,0.2,1], delay: 0.06 });
         }
     } else {
-        toggle.style.bottom = '';
-        hoch.style.bottom = '';
-        // restore scroll logic
-        var shouldShow = $(window).scrollTop() > 150;
-        if (!shouldShow) {
-            var m2 = window.motion || window.Motion;
-            if (m2 && m2.animate) {
-                m2.animate(hoch, { y: [0, 16], opacity: [1, 0] }, { duration: 0.22, easing: [0.4,0,0.2,1] }).finished.then(function(){ if(!__menuOpen) { hoch.style.display='none'; hoch.style.opacity=''; }});
-            } else {
-                $(hoch).stop(true,true).fadeOut();
-            }
-            __scrollChoreo = false;
-        } else {
-            hoch.style.display='flex'; hoch.style.opacity='1';
+        document.body.classList.remove('menu-open');
+        if (hoch) {
+            var shouldShow = $(window).scrollTop() > 150;
+            if (!shouldShow) {
+                var m2 = window.motion || window.Motion;
+                if (m2 && m2.animate) {
+                    m2.animate(hoch, { y: [0, 12], opacity: [1, 0] }, { duration: 0.22, easing: [0.4,0,0.2,1] }).finished.then(function(){ if(!__menuOpen) { hoch.style.display='none'; hoch.style.opacity=''; }});
+                } else { $(hoch).stop(true,true).fadeOut(); }
+                __scrollChoreo = false;
+            } else { hoch.style.display='flex'; hoch.style.opacity='1'; }
         }
     }
 }
-$(document).on('show.bs.collapse', '#navbarToggler', function(){ __menuOpen = true; setTimeout(function(){ positionForMenu(true); }, 10); });
+$(document).on('show.bs.collapse', '#navbarToggler', function(){ __menuOpen = true; positionForMenu(true); });
 $(document).on('shown.bs.collapse', '#navbarToggler', function(){ positionForMenu(true); });
 $(document).on('hide.bs.collapse', '#navbarToggler', function(){ __menuOpen = false; positionForMenu(false); });
-$(window).on('resize', function(){ if(__menuOpen) positionForMenu(true); });
+$(document).on('hidden.bs.collapse', '#navbarToggler', function(){ positionForMenu(false); });
+$(window).on('resize', function(){ if(__menuOpen && isMobile()) positionForMenu(true); else if (!isMobile()) document.body.classList.remove('menu-open'); });
 
 var __scrollChoreo = false;
 $(window).scroll(function() {
