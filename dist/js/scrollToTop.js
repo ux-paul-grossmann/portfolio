@@ -15,30 +15,42 @@ $(window).scroll(function() {
     var toggle = document.getElementById('theme-toggle');
     var hoch = document.querySelector('.scrolltop');
     if (!toggle || !hoch) return;
+    var isMobile = window.matchMedia('(max-width: 575.98px)').matches;
 
     var m = window.motion || window.Motion;
 
     if (shouldShow && !__scrollChoreo) {
         __scrollChoreo = true;
         if (m && m.animate) {
-            // Theme-Toggle slides left – 8px gap to HOCH in end state
-            m.animate(toggle, { x: -46 }, { duration: 0.32, easing: [0.4, 0, 0.2, 1], delay: 0.06 });
-            // HOCH slides up from below into Toggle's old spot
-            hoch.style.display = 'flex';
-            hoch.style.opacity = '0';
-            m.animate(hoch, { y: [40, 0], opacity: [0, 1] }, { duration: 0.34, easing: [0.4, 0, 0.2, 1], delay: 0.16 });
+            if (isMobile) {
+                // Mobile Paper B (2D2-0): stacked bottom-right, no horizontal shift
+                hoch.style.display = 'flex';
+                hoch.style.opacity = '0';
+                m.animate(hoch, { y: [16, 0], opacity: [0, 1] }, { duration: 0.32, easing: [0.4, 0, 0.2, 1], delay: 0.08 });
+            } else {
+                // Desktop: Theme-Toggle slides left – 8px gap to HOCH in end state
+                m.animate(toggle, { x: -46 }, { duration: 0.32, easing: [0.4, 0, 0.2, 1], delay: 0.06 });
+                // HOCH slides up from below into Toggle's old spot
+                hoch.style.display = 'flex';
+                hoch.style.opacity = '0';
+                m.animate(hoch, { y: [40, 0], opacity: [0, 1] }, { duration: 0.34, easing: [0.4, 0, 0.2, 1], delay: 0.16 });
+            }
         } else {
-            toggle.style.transform = 'translateX(-46px)';
-            $(hoch).stop(true, true).fadeIn();
+            if (isMobile) $(hoch).stop(true, true).fadeIn();
+            else { toggle.style.transform = 'translateX(-46px)'; $(hoch).stop(true, true).fadeIn(); }
         }
     } else if (!shouldShow && __scrollChoreo) {
         __scrollChoreo = false;
         if (m && m.animate) {
-            m.animate(toggle, { x: 0 }, { duration: 0.28, easing: [0.4, 0, 0.2, 1] });
-            m.animate(hoch, { y: [0, 40], opacity: [1, 0] }, { duration: 0.24, easing: [0.4, 0, 0.2, 1] }).finished.then(function(){ hoch.style.display = 'none'; hoch.style.opacity = ''; });
+            if (isMobile) {
+                m.animate(hoch, { y: [0, 16], opacity: [1, 0] }, { duration: 0.22, easing: [0.4, 0, 0.2, 1] }).finished.then(function(){ hoch.style.display = 'none'; hoch.style.opacity = ''; });
+            } else {
+                m.animate(toggle, { x: 0 }, { duration: 0.28, easing: [0.4, 0, 0.2, 1] });
+                m.animate(hoch, { y: [0, 40], opacity: [1, 0] }, { duration: 0.24, easing: [0.4, 0, 0.2, 1] }).finished.then(function(){ hoch.style.display = 'none'; hoch.style.opacity = ''; });
+            }
         } else {
-            toggle.style.transform = 'translateX(0)';
-            $(hoch).stop(true, true).fadeOut();
+            if (isMobile) $(hoch).stop(true, true).fadeOut();
+            else { toggle.style.transform = 'translateX(0)'; $(hoch).stop(true, true).fadeOut(); }
         }
     }
 });

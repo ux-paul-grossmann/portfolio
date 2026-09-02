@@ -1796,6 +1796,29 @@ label {
     /* optical compensation: arrow is linear vs. filled moon */
 }
 }
+/* Mobile-Scroll-Top — Paper 2CK-0 / 2D2-0: bottom-right stacked, 38×38, 12px, #E9EFEF/#BEC8C9 */
+@media (max-width: 575.98px) {
+    #theme-toggle {
+        top: auto !important;
+        bottom: 68px !important;
+        right: 10px !important;
+        width: 38px !important; height: 38px !important;
+        border-radius: 12px !important;
+        background: #E9EFEF !important;
+        border: 1px solid #BEC8C9 !important;
+        box-shadow: #0000000F 0px 1px 3px, #0000000A 0px 1px 2px !important;
+    }
+    .scrolltop {
+        top: auto !important;
+        bottom: 116px !important;
+        right: 10px !important;
+        width: 38px !important; height: 38px !important;
+        border-radius: 12px !important;
+        background: #E9EFEF !important;
+        border: 1px solid #BEC8C9 !important;
+        box-shadow: #0000000F 0px 1px 3px, #0000000A 0px 1px 2px !important;
+    }
+}
 
 /* ============================================================
    18. UTILITIES & STATES
