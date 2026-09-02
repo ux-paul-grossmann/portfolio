@@ -37,8 +37,21 @@
    ============================================================ */
 @import './lib/themes/themes.css';
 
+/* Goldener Schnitt – Mitte von #ci-profilbild auf --golden-y (38.2% = 0.3819 * vh) */
+:root { --golden-y: 38.19660113vh; }
+html[data-golden-mode="fixed"] #ci-profilbild {
+    position: fixed !important;
+    top: var(--golden-y) !important;
+    left: 50% !important;
+    right: auto !important;
+    transform: translate(-50%, -50%) !important;
+    margin: 0 !important;
+    width: min(1110px, calc(100% - 30px)) !important;
+    z-index: 10;
+}
+
 /* ============================================================
-   2. BASE & RESET
+    2. BASE & RESET
    ============================================================ */
 html {
     scroll-behavior: smooth;
