@@ -1319,7 +1319,11 @@ dd.d-flex.flex-row.align-items-center.flex-wrap.mb-5 {
     font-weight: 600;
     line-height: 160%;
     text-align: center;
-    white-space: nowrap;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    hyphens: auto;
+    max-width: 100%;
     vertical-align: middle;
     border-radius: 0.25rem;
     letter-spacing: 0.4px;
@@ -1345,6 +1349,10 @@ dd.d-flex.flex-row.align-items-center.flex-wrap.mb-5 {
     background: var(--badge-tagBG);
     color: var(--badge-tagFG);
     border: var(--badge-tag-border);
+    max-width: 100%;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    word-break: break-word;
 }
 
 a.thumb-element:hover span.badge.badge-tag {
