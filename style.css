@@ -1839,7 +1839,7 @@ label {
 @media (max-width: 575.98px) {
     #theme-toggle {
         top: auto !important;
-        bottom: 64px !important;
+        bottom: 56px !important;
         right: 16px !important;
         width: 38px !important; height: 38px !important;
         border-radius: 12px !important;
@@ -1851,7 +1851,7 @@ label {
     }
     .scrolltop {
         top: auto !important;
-        bottom: 112px !important;
+        bottom: 104px !important;
         right: 16px !important;
         width: 38px !important; height: 38px !important;
         border-radius: 12px !important;
@@ -1873,10 +1873,10 @@ label {
     #theme-toggle { display: inline-flex !important; opacity: 1 !important; visibility: visible !important; }
     /* menu expanded — buttons above menu to avoid overlap (orange line) */
     body.menu-open #theme-toggle {
-        bottom: 300px !important;
+        bottom: 292px !important;
     }
     body.menu-open .scrolltop {
-        bottom: 348px !important;
+        bottom: 340px !important;
         display: flex !important;
         opacity: 1 !important;
     }
