@@ -3241,3 +3241,75 @@ button.btn.download-section-color:nth-child(3):active {
 }
 
 
+
+/* ============================================================
+   iOS DOUBLE-TAP FIX — hover styles only on hover-capable devices
+   - touch-action + tap-highlight for instant tap
+   - override hover visuals on touch so first tap = click
+   ============================================================ */
+a, button, .btn, .nav-link, .thumb-element, #theme-toggle, .scrolltop, #intro-button, .submit-button, .social, .dropdown-item, .morph-card, .pv-strip-btn, .pv-strip-item, .close-detail, .back-btn {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media (hover: none), (pointer: coarse) {
+  a:hover,
+  #projekte .thumb-element:hover,
+  #projekte .thumb-element:hover .card-title,
+  #projekte .thumb-element:hover .card-description,
+  .navbar-light .navbar-nav .nav-link:hover,
+  .dropdown-item:hover,
+  .close:not(:disabled):not(.disabled):hover,
+  a#ci-brand-detail-name:hover,
+  #intro-button:hover,
+  .submit-button:hover,
+  #projekte .cluster .thumb-element:hover,
+  #projekte .cluster .thumb-element:hover::before,
+  #projekte .cluster .thumb-element:hover::after,
+  #projekte .cluster .thumb-element:hover .card,
+  #projekte .cluster .thumb-element:hover:active .card,
+  #projekte .thumb-element:hover .card-text,
+  a.thumb-element:hover span.badge.badge-tag,
+  .glightbox:hover img,
+  .carousel-control-next:hover,
+  .carousel-control-prev:hover,
+  .scroll:hover,
+  #projekte .scroll-to-top-card:hover,
+  #theme-panel-container .dropdown-item:hover,
+  #theme-toggle:hover,
+  #projekte .thumb-element:hover h4,
+  #projekte .thumb-element:hover h5,
+  #projekte .thumb-element:hover h6,
+  #socialIconsWrap li a.social:hover,
+  .btn.download-section-color:nth-child(1):hover,
+  .btn.download-section-color:nth-child(2):hover,
+  .btn.download-section-color:nth-child(3):hover,
+  .morph-card:hover:not(.selected):not(.expanded),
+  .close-detail:hover,
+  .back-btn:hover,
+  .dark .back-btn:hover,
+  .pv-strip-btn.pv-strip-prev-muted:hover,
+  .pv-strip-btn:hover,
+  .dark .pv-strip-btn:hover,
+  .dark .pv-strip-btn.pv-strip-prev-muted:hover {
+    background: initial !important;
+    background-color: initial !important;
+    color: initial !important;
+    border-color: initial !important;
+    box-shadow: none !important;
+    transform: none !important;
+    opacity: initial !important;
+    text-decoration: none !important;
+  }
+  /* Card stack transforms disabled explicitly */
+  #projekte .cluster .thumb-element:hover,
+  #projekte .cluster .thumb-element:hover::before,
+  #projekte .cluster .thumb-element:hover::after,
+  #projekte .cluster .thumb-element:hover .card {
+    transform: none !important;
+    box-shadow: initial !important;
+  }
+  .glightbox:hover img {
+    transform: none !important;
+  }
+}
