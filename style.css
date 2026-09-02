@@ -1800,22 +1800,31 @@ label {
     #theme-toggle {
         top: auto !important;
         bottom: 68px !important;
-        right: 10px !important;
+        right: 16px !important;
         width: 38px !important; height: 38px !important;
         border-radius: 12px !important;
         background: #E9EFEF !important;
         border: 1px solid #BEC8C9 !important;
         box-shadow: #0000000F 0px 1px 3px, #0000000A 0px 1px 2px !important;
+        color: #161D1D !important;
     }
     .scrolltop {
         top: auto !important;
         bottom: 116px !important;
-        right: 10px !important;
+        right: 16px !important;
         width: 38px !important; height: 38px !important;
         border-radius: 12px !important;
         background: #E9EFEF !important;
         border: 1px solid #BEC8C9 !important;
         box-shadow: #0000000F 0px 1px 3px, #0000000A 0px 1px 2px !important;
+        color: #161D1D !important;
+    }
+    html.dark #theme-toggle, body.dark #theme-toggle,
+    html.dark .scrolltop, body.dark .scrolltop {
+        background: #2A3333 !important;
+        border-color: #3F4949 !important;
+        color: #E9EFEF !important;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.35), 0 1px 2px rgba(0,0,0,0.30) !important;
     }
 }
 
