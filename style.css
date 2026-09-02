@@ -92,6 +92,22 @@ main.container [class*="col-"] {
     padding-left: 16px !important;
     padding-right: 16px !important;
 }
+@media (max-width: 575.98px) {
+    #ci-profilbild {
+        margin-left: -16px !important;
+        margin-right: -16px !important;
+        width: calc(100% + 32px) !important;
+        max-width: none !important;
+    }
+    #ci-picture-wrapper {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+    #ci-profilbild #ci-picture-wrapper img {
+        width: 100% !important;
+        border-radius: 0 !important;
+    }
+}
 
 /* ============================================================
    3. TYPOGRAPHY & HEADINGS
