@@ -82,6 +82,7 @@ node -e "const fs=require('fs');for(const f of ['lib/js/helpers.js','lib/js/anim
 - **AGENTS.md ist getrackt** → nicht ignorieren. Änderungen an `AGENTS.md` werden gepusht und gelten auf allen 3 Macs.
 - **Uncommitted Arbeit geht bei `git restore`/`git checkout` verloren** → vor Branch-Wechsel committen.
 - Session-Start: `git fetch --all` → `git checkout master` → `git pull` → `git status` → `git log --oneline -5` → Browser-Check (`python3 -m http.server 8000` → http://localhost:8000). Vor Sleeping: `git status` clean → `git push`.
+- **Multi-Branch Sync:** Betrifft ein Fix mehrere Branches (z. B. `AGENTS.md`, `themes.css`), auf allen fälligen Branches ausführen/syncen (sonst Drift) – dabei **vor jedem Wechsel ankündigen** (`Wechsle <von> → <nach>`) und am Ende zurück in den ursprünglichen Branch wechseln + `git status` melden.
 
 # Nightly Audit 23:00 (verifiziert)
 
