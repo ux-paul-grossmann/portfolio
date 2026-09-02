@@ -80,18 +80,24 @@ body {
 .container {
     overflow-x: visible;
 }
+html, body { overflow-x: hidden !important; }
 main.container {
     padding-left: 16px !important;
     padding-right: 16px !important;
+    overflow-x: clip !important;
+    max-width: 100% !important;
 }
 main.container .row {
     margin-left: -16px !important;
     margin-right: -16px !important;
+    max-width: none !important;
 }
 main.container [class*="col-"] {
     padding-left: 16px !important;
     padding-right: 16px !important;
+    max-width: 100%;
 }
+#ci-profilbild img, main.container img { max-width: 100%; height: auto; box-sizing: border-box; }
 
 /* ============================================================
    3. TYPOGRAPHY & HEADINGS
