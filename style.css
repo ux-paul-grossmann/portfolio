@@ -621,11 +621,12 @@ nav.navbar.fixed-bottom .navbar-collapse .menu-close {
     nav.navbar.fixed-bottom .navbar-toggler {
         display: inline-flex !important;
         width: 100% !important;
-        border-radius: 0;
+        border-radius: 12px 12px 0 0;
         background: var(--mobile-menu-navbar-togglerBG);
         -webkit-backdrop-filter: blur(12px) saturate(1.1);
         backdrop-filter: blur(12px) saturate(1.1);
         border-top: 1px solid rgba(255, 255, 255, 0.08);
+        justify-content: center;
     }
 
     nav.navbar.fixed-bottom .navbar-nav {
@@ -636,7 +637,11 @@ nav.navbar.fixed-bottom .navbar-collapse .menu-close {
 
     nav.navbar.fixed-bottom .navbar-nav .nav-link {
         width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         text-align: center;
+        margin: 0 auto;
         padding: 0.35rem 0.75rem;
     }
 
