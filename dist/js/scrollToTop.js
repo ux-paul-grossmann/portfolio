@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function(){
     var m = window.motion || window.Motion;
     if (m && m.animate) {
         t.style.opacity = '0';
-        m.animate(t, { x: [40, 0], opacity: [0, 1] }, { duration: 0.48, easing: [0.4, 0, 0.2, 1], delay: 0.55 });
+        m.animate(t, { x: [60, 0], opacity: [0, 1] }, { duration: 0.30, easing: [0.34, 1.56, 0.64, 1], delay: 0.55 });
     }
 });
 
