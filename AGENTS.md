@@ -78,7 +78,7 @@ node -e "const fs=require('fs');for(const f of ['lib/js/helpers.js','lib/js/anim
 
 # Git & Session-Start
 
-- Experimente laufen über **Branches**, nie über kopierte Ordner. Branches: `master` = **live** (GitHub Pages + Default-Branch `origin/HEAD -> origin/master`, API-verifiziert), `flanking-cards`/`material-theme`/`morphing-cards` = Experimente. `flanking-cards` hat Extra-Ordner `prototypes/proto-ip40` (Duplikat von `lib/prototype/ip40`, 404-Fix) – existiert nicht auf `master`. Live Pages-Branch wird **nur** via Nightly Audit (`GET /pages` + live `curl`) verifiziert, nicht geraten.
+- Experimente laufen über **Branches**, nie über kopierte Ordner. Branches: `master` = **live** (GitHub Pages + Default-Branch `origin/HEAD -> origin/master`, API-verifiziert), `flanking-cards`/`material-theme`/`morphing-cards` = Experimente (alle `origin/*` verifiziert via `git ls-remote`). Live Pages-Branch wird **nur** via Nightly Audit (`GET /pages` + live `curl`) verifiziert, nicht geraten.
 - **AGENTS.md ist getrackt** → nicht ignorieren. Änderungen an `AGENTS.md` werden gepusht und gelten auf allen 3 Macs.
 - **Uncommitted Arbeit geht bei `git restore`/`git checkout` verloren** → vor Branch-Wechsel committen.
 - Session-Start: `git fetch --all` → `git checkout master` → `git pull` → `git status` → `git log --oneline -5` → Browser-Check (`python3 -m http.server 8000` → http://localhost:8000). Vor Sleeping: `git status` clean → `git push`.
@@ -92,4 +92,4 @@ Wird **nicht geraten**, sondern verifiziert via GitHub Action (läuft auch wenn 
   - `GET /repos/ux-paul-grossmann/portfolio/pages` → `source.branch`
   - `git ls-remote --heads origin` → `master`/`flanking-cards` Tips
   - `curl https://ux-paul-grossmann.github.io/portfolio/` → enthält `Kompetenzen &amp; Methoden` + `button#theme-toggle`
-- **Wie:** `actions/checkout`, `gh api ... --jq .source.branch` mit `GITHUB_TOKEN` (auto, kostenlos, public repo = unlimitiert Minuten, Logs public), `git ls-remote`, `curl | grep`. Bei Drift: `AUDIT.md` commit oder Issue. Kein lokaler PAT nötig.
+- **Wie:** `actions/checkout`, `gh api ... --jq .source.branch` mit `GITHUB_TOKEN` (auto), `git ls-remote`, `curl | grep`. Bei Drift: `AUDIT.md` commit oder Issue.
