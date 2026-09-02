@@ -83,6 +83,7 @@ body {
 main.container {
     padding-left: 16px !important;
     padding-right: 16px !important;
+    overflow-x: hidden !important;
 }
 main.container .row {
     margin-left: -16px !important;
