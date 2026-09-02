@@ -104,7 +104,9 @@ main.container [class*="col-"] {
         padding-right: 0 !important;
     }
     #ci-profilbild #ci-picture-wrapper img {
-        width: 100% !important;
+        width: calc(100% + 1px) !important;
+        margin-right: -1px !important;
+        display: block !important;
         border-radius: 0 !important;
     }
 }
