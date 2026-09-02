@@ -1612,6 +1612,8 @@ label {
     justify-content: center;
     box-shadow: var(--shadow-card-rest);
     font-size: 1.1rem;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
     line-height: 1;
 }
 
@@ -1815,10 +1817,14 @@ label {
     transition: background 150ms ease, color 150ms ease, border-color 150ms ease;
     box-shadow: var(--shadow-card-rest);
     will-change: transform;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
 }
+@media (hover: hover) and (pointer: fine) {
 #theme-toggle:hover {
     background: var(--navlink-hover-BG) !important;
     color: var(--navlink-hover-FG) !important;
+}
 }
 #theme-toggle:focus {
     outline: none;
