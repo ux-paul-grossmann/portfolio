@@ -1795,7 +1795,6 @@ label {
     text-align: center;
     /* optical compensation: arrow is linear vs. filled moon */
 }
-}
 /* Mobile-Scroll-Top — Paper 2CK-0 / 2D2-0: bottom-right stacked, 38×38, 12px, #E9EFEF/#BEC8C9 */
 @media (max-width: 575.98px) {
     #theme-toggle {
