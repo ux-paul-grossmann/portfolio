@@ -2,6 +2,8 @@
 document.addEventListener('DOMContentLoaded', function(){
     var t = document.getElementById('theme-toggle');
     if (!t) return;
+    t.style.opacity = '1';
+    t.style.visibility = 'visible';
     var m = window.motion || window.Motion;
     if (m && m.animate) {
         t.style.opacity = '0';

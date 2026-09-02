@@ -1837,6 +1837,9 @@ label {
         color: #E9EFEF !important;
         box-shadow: 0 1px 3px rgba(0,0,0,0.35), 0 1px 2px rgba(0,0,0,0.30) !important;
     }
+    /* Fix DevTools Desktop→Mobile switch: force nav/toggle visible */
+    nav.navbar.fixed-bottom { display: flex !important; visibility: visible !important; }
+    #theme-toggle { display: inline-flex !important; opacity: 1 !important; visibility: visible !important; }
     /* menu expanded — buttons above menu to avoid overlap (orange line) */
     body.menu-open #theme-toggle {
         bottom: 300px !important;
