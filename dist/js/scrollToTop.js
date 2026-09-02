@@ -64,7 +64,7 @@ $(window).scroll(function() {
                 // Mobile Paper B (2D2-0): stacked bottom-right, no horizontal shift
                 hoch.style.display = 'flex';
                 hoch.style.opacity = '0';
-                m.animate(hoch, { y: [16, 0], opacity: [0, 1] }, { duration: 0.32, easing: [0.4, 0, 0.2, 1], delay: 0.08 });
+                m.animate(hoch, { y: [16, 0], opacity: [0, 1] }, { duration: 0.32, easing: [0.4, 0, 0.2, 1], delay: 0 });
             } else {
                 // Desktop: Theme-Toggle slides left – 8px gap to HOCH in end state
                 m.animate(toggle, { x: -46 }, { duration: 0.32, easing: [0.4, 0, 0.2, 1], delay: 0.06 });
@@ -81,7 +81,7 @@ $(window).scroll(function() {
         __scrollChoreo = false;
         if (m && m.animate) {
             if (_isMobile) {
-                m.animate(hoch, { y: [0, 16], opacity: [1, 0] }, { duration: 0.22, easing: [0.4, 0, 0.2, 1] }).finished.then(function(){ hoch.style.display = 'none'; hoch.style.opacity = ''; });
+                m.animate(hoch, { y: [0, 16], opacity: [1, 0] }, { duration: 0.30, easing: [0.34, 1.56, 0.64, 1] }).finished.then(function(){ hoch.style.display = 'none'; hoch.style.opacity = ''; });
             } else {
                 m.animate(toggle, { x: 0 }, { duration: 0.28, easing: [0.4, 0, 0.2, 1] });
                 m.animate(hoch, { y: [0, 40], opacity: [1, 0] }, { duration: 0.24, easing: [0.4, 0, 0.2, 1] }).finished.then(function(){ hoch.style.display = 'none'; hoch.style.opacity = ''; });
