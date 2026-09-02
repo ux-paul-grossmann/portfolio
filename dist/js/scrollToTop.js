@@ -81,7 +81,8 @@ $(window).scroll(function() {
         __scrollChoreo = false;
         if (m && m.animate) {
             if (_isMobile) {
-                m.animate(hoch, { y: [0, 16], opacity: [1, 0] }, { duration: 0.30, easing: [0.34, 1.56, 0.64, 1] }).finished.then(function(){ hoch.style.display = 'none'; hoch.style.opacity = ''; });
+                // Overshoot direkt ohne Anfangs-Bremsen
+                m.animate(hoch, { y: [0, 16], opacity: [1, 0] }, { duration: 0.30, easing: [0.34, 0, 0.64, 1.4] }).finished.then(function(){ hoch.style.display = 'none'; hoch.style.opacity = ''; });
             } else {
                 m.animate(toggle, { x: 0 }, { duration: 0.28, easing: [0.4, 0, 0.2, 1] });
                 m.animate(hoch, { y: [0, 40], opacity: [1, 0] }, { duration: 0.24, easing: [0.4, 0, 0.2, 1] }).finished.then(function(){ hoch.style.display = 'none'; hoch.style.opacity = ''; });
