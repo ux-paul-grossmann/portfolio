@@ -1811,6 +1811,7 @@ label {
         border: 1px solid #BEC8C9 !important;
         box-shadow: #0000000F 0px 1px 3px, #0000000A 0px 1px 2px !important;
         color: #161D1D !important;
+        transition: bottom 0.32s cubic-bezier(0.4,0,0.2,1), transform 0.32s cubic-bezier(0.4,0,0.2,1);
     }
     .scrolltop {
         top: auto !important;
@@ -1822,6 +1823,7 @@ label {
         border: 1px solid #BEC8C9 !important;
         box-shadow: #0000000F 0px 1px 3px, #0000000A 0px 1px 2px !important;
         color: #161D1D !important;
+        transition: bottom 0.32s cubic-bezier(0.4,0,0.2,1), transform 0.32s cubic-bezier(0.4,0,0.2,1), opacity 0.22s ease;
     }
     html.dark #theme-toggle, body.dark #theme-toggle,
     html.dark .scrolltop, body.dark .scrolltop {
