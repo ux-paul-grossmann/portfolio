@@ -39,10 +39,11 @@ Es gibt KEIN `package.json`, KEIN Build, kein Test-/Lint-Setup. Verifikation = S
 Browser öffnen (CDN-Abhängigkeiten: jQuery 3.3.1, Bootstrap 4.3.1, GLightbox, slick,
 vanilla-lazyload, motion → Internet nötig).
 
-Syntax-Smoke-Test für die lib/js-Dateien:
+Syntax-Smoke-Test für die lib/js-Dateien (nur Dateien auf dem aktuellen Branch):
 ```bash
-node -e "const fs=require('fs');for(const f of ['lib/js/helpers.js','lib/js/animations.js','lib/js/render-projects.js','lib/js/projects-data.js','lib/js/project-viewer.js','lib/js/project-navigation.js']){try{new Function(fs.readFileSync(f,'utf8'));console.log('OK',f)}catch(e){console.log('FAIL',f,e.message)}}"
+node -e "const fs=require('fs');for(const f of ['lib/js/helpers.js','lib/js/animations.js','lib/js/render-projects.js','lib/js/projects-data.js']){try{new Function(fs.readFileSync(f,'utf8'));console.log('OK',f)}catch(e){console.log('FAIL',f,e.message)}}"
 ```
+Auf den Experiment-Branches `flanking-cards`/`morphing-cards` zusätzlich `lib/js/project-viewer.js` und `lib/js/project-navigation.js` einfügen.
 
 - `dist/` = vendorisierte Libs (lazysizes, scrollToTop, bootstrap-swipe-carousel, devices.min.css, …) → nicht editieren.
 - `backup-03-05-2026-0233/` = gitignorierte Altlast → nicht anfassen. `lib/images/*.zip` = unbenutzte Asset-Sammlung.
@@ -50,9 +51,9 @@ node -e "const fs=require('fs');for(const f of ['lib/js/helpers.js','lib/js/anim
 # JS-Architektur
 
 - **Early Theme** im `<head>` (`index.html:16`): `matchMedia('(prefers-color-scheme: dark)')` + `localStorage["theme"]` (nur `light`/`dark`, Legacy `material`/`lightPlus`/`:root` wird entfernt) → setzt `html.dark`/`body.dark` vor Render, vermeidet Flash.
-- **Ladereihenfolge** in `index.html` (unten): jQuery → Bootstrap → `dist/js/lazysizes.min.js` → `lib/js/projects-data.js` → `dist/js/bootstrap-swipe-carousel.min.js` → `dist/js/scrollToTop.js` → slick/vanilla-lazyload/transformicon/zooming → GLightbox (CDN) → `lib/js/project-viewer.js` (defer) → `lib/js/helpers.js` (zuletzt, Toggle + `lazyLoadInstance` + GLightbox-Instanz).
+- **Ladereihenfolge** in `index.html` (unten): jQuery → Bootstrap → `dist/js/lazysizes.min.js` → `lib/js/projects-data.js` → `dist/js/bootstrap-swipe-carousel.min.js` → `dist/js/scrollToTop.js` → slick/vanilla-lazyload/transformicon/zooming → GLightbox (CDN) → `lib/js/helpers.js` (zuletzt, Toggle + `lazyLoadInstance` + GLightbox-Instanz).
 - `lib/js/animations.js` liegt im `<head>` mit `defer` → läuft VOR jQuery → sein Code MUSS in `$(document).ready(...)` stehen. Rendert Kontext-Notizen (`.kontext-wrap`) und Scroll-Trigger für `#projekte .cluster`.
-- `projects-data.js` = Daten (`projectsData`), enthält HTML-Strings mit deutschen Texten → nicht umschreiben (Regel 5). `render-projects.js` + `project-viewer.js` + `project-navigation.js` rendern die Karten in `#projekte` (Viewer: 3-Card + bottom strip auf `flanking-cards`).
+- `projects-data.js` = Daten (`projectsData`), enthält HTML-Strings mit deutschen Texten → nicht umschreiben (Regel 5). `render-projects.js` rendert die Karten in `#projekte`. Auf Experiment-Branches `flanking-cards`/`morphing-cards`: zusätzlich `project-viewer.js` + `project-navigation.js` (Viewer: 3-Card + bottom strip).
 - `helpers.js` erzeugt beim Laden: `var glightbox` (GLightbox), `lazyLoadInstance` (vanilla-lazyload, `elements_selector: ".lazy"`), Theme-Switch (top-right), Jahreszahl im Footer.
 
 # GLightbox – Regeln (hat viel Zeit gekostet)
@@ -93,4 +94,4 @@ Wird **nicht geraten**, sondern verifiziert via GitHub Action (läuft auch wenn 
   - `GET /repos/ux-paul-grossmann/portfolio/pages` → `source.branch`
   - `git ls-remote --heads origin` → `master`/`flanking-cards` Tips
   - `curl https://ux-paul-grossmann.github.io/portfolio/` → enthält `Kompetenzen &amp; Methoden` + `button#theme-toggle`
-- **Wie:** `actions/checkout`, `gh api ... --jq .source.branch` mit `GITHUB_TOKEN` (auto), `git ls-remote`, `curl | grep`. Bei Drift: `AUDIT.md` commit oder Issue.
+- **Wie:** `actions/checkout`, `gh api ... --jq .source.branch` mit `GITHUB_TOKEN` (auto), `git ls-remote`, `curl | grep`. Der Workflow gibt die Ergebnisse aus, aber `exit 1` erzwingt er nur bei den beiden Live-Curl-Checks (Heading + Toggle).
