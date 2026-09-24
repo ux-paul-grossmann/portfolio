@@ -20,7 +20,7 @@ Kleinstmögliche Diffs. Bei Zweifel: nicht anfassen, sondern nachfragen.
 
 ### Übernommene Regeln (Chrome-Extensions)
 
-10. **Commits nach grünem Fix erlaubt, Push nur mit Go.** Nach erfolgreichem Fix plus manuellem Browser-Check darf committet werden; Push weiter nur mit explizitem Go des Users.
+10. **Commits jederzeit erlaubt, Push nur mit Go.** Committet werden darf jederzeit; Push weiter nur mit explizitem Go des Users.
 11. **Commits:** Nachrichten mit Präfix `feat/fix/chore/style`; Renames nur im Code, nie in der Nachricht erwähnen.
 12. **Antworten und Rückfragen immer Englisch.** Kommunikation mit dem User auf Englisch, auch bei deutscher Nachricht oder deutschem Handover-Kontext. Deutsch nur wenn explizit aufgefordert, bis zur Stop-Phrase „jetzt wieder in englisch" (case-insensitive). UI-Texte der Seite bleiben Deutsch.
 13. **Jargon immer erklären.** Technische Begriffe (Status-Codes, Fehlermeldungen, Tool-Namen) beim ersten Auftreten in einfachen Worten erklären; nichts als bekannt voraussetzen.
