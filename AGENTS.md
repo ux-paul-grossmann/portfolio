@@ -18,6 +18,19 @@ Kleinstmögliche Diffs. Bei Zweifel: nicht anfassen, sondern nachfragen.
 8. Nach jeder Änderung: kurz zusammenfassen, welche Dateien geändert wurden und warum.
 9. Bei zu vager Aufgabe: 1–2 kurze Rückfragen stellen statt in mehrere Richtungen zu raten.
 
+### Übernommene Regeln (Chrome-Extensions)
+
+10. **Commits nach grünem Fix erlaubt, Push nur mit Go.** Nach erfolgreichem Fix plus manuellem Browser-Check darf committet werden; Push weiter nur mit explizitem Go des Users.
+11. **Commits:** Nachrichten mit Präfix `feat/fix/chore/style`; Renames nur im Code, nie in der Nachricht erwähnen.
+12. **Antworten und Rückfragen immer Englisch.** Kommunikation mit dem User auf Englisch, auch bei deutscher Nachricht oder deutschem Handover-Kontext. Deutsch nur wenn explizit aufgefordert, bis zur Stop-Phrase „jetzt wieder in englisch" (case-insensitive). UI-Texte der Seite bleiben Deutsch.
+13. **Jargon immer erklären.** Technische Begriffe (Status-Codes, Fehlermeldungen, Tool-Namen) beim ersten Auftreten in einfachen Worten erklären; nichts als bekannt voraussetzen.
+14. **Krug-Regel — don't make me think.** Jede Kontrolle und jeder Zustand der Seite muss auf den ersten Blick selbsterklärend sein; keine mehrdeutigen Labels, keine versteckten Affordances, keine Fragezeichen für den User.
+15. **Einen User früh testen.** Jede UX-Änderung erst mit einem manuellen Browser-Durchgang prüfen, bevor verfeinert wird; was verwirrt, fixen, dann wiederholen.
+16. **Nielsen–Norman-Heuristiken.** Die Seite folgt den 10 Usability-Heuristiken — sichtbarer Zustand (Laden/Erfolg/Fehler immer anzeigen), Sprache der echten Welt, Kontrolle beim User (Undo/Schließen/Abbrechen überall), Konsistenz, Fehlervermeidung vor Fehlermeldungen, Wiedererkennen vor Erinnern, minimalistisches Design.
+17. **Fehler müssen zur Lösung führen.** Jeder Fehler nennt was passiert ist und den exakten nächsten Schritt; nie eine Sackgasse.
+18. **Keine Abkürzungen in Antworten.**
+19. **Session Helper Operator.** Der User betreibt parallel eine zweite Session (Datenbank-Forensik, Git-Historie, sessionübergreifende Koordination). Deren Dateiänderungen sind legitime User-Aufträge — nie als Eingriff von außen oder Tooling-Sync darstellen. Bei unbekannter Arbeitsbaum-Änderung den User fragen wer sie gemacht hat statt eine Ursache zu raten, dann nach Antwort fortfahren. Helper-Arbeit steht als `[helper]`-Zeilen in der Handover.md-Session-Notiz — dort zuerst nachsehen; nur bei unmarkierten Änderungen nachfragen.
+
 ### Definition of Done
 - [ ] Nur die angefragte Änderung wurde gemacht
 - [ ] Keine unangeforderten Dateien im Diff
