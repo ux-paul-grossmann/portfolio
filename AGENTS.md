@@ -30,6 +30,7 @@ Kleinstmögliche Diffs. Bei Zweifel: nicht anfassen, sondern nachfragen.
 17. **Fehler müssen zur Lösung führen.** Jeder Fehler nennt was passiert ist und den exakten nächsten Schritt; nie eine Sackgasse.
 18. **Keine Abkürzungen in Antworten.**
 19. **Session Helper Operator.** Der User betreibt parallel eine zweite Session (Datenbank-Forensik, Git-Historie, sessionübergreifende Koordination). Deren Dateiänderungen sind legitime User-Aufträge — nie als Eingriff von außen oder Tooling-Sync darstellen. Bei unbekannter Arbeitsbaum-Änderung den User fragen wer sie gemacht hat statt eine Ursache zu raten, dann nach Antwort fortfahren. Helper-Arbeit steht als `[helper]`-Zeilen in der Handover.md-Session-Notiz — dort zuerst nachsehen; nur bei unmarkierten Änderungen nachfragen.
+20. **Handover-Stand aktuell halten.** Zu Session-Beginn Stand gegen `git status` und `log` prüfen und bei Abweichung sofort richtigstellen; vor jedem Push Stand, fertige und offene Punkte aktualisieren.
 
 ### Definition of Done
 - [ ] Nur die angefragte Änderung wurde gemacht
