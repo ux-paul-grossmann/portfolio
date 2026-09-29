@@ -21,16 +21,19 @@ Kleinstmögliche Diffs. Bei Zweifel: nicht anfassen, sondern nachfragen.
 ### Übernommene Regeln (Chrome-Extensions)
 
 10. **Commits jederzeit erlaubt, Push nur mit Go.** Committet werden darf jederzeit; Push weiter nur mit explizitem Go des Users.
-11. **Commits:** Nachrichten mit Präfix `feat/fix/chore/style`; Renames nur im Code, nie in der Nachricht erwähnen.
+11. **Commits:** Nachrichten auf Englisch mit Präfix `feat/fix/chore/style`; Renames nur im Code, nie in der Nachricht erwähnen.
 12. **Antworten und Rückfragen immer Englisch.** Kommunikation mit dem User auf Englisch, auch bei deutscher Nachricht oder deutschem Handover-Kontext. Deutsch nur wenn explizit aufgefordert, bis zur Stop-Phrase „jetzt wieder in englisch" (case-insensitive). UI-Texte der Seite bleiben Deutsch.
 13. **Jargon immer erklären.** Technische Begriffe (Status-Codes, Fehlermeldungen, Tool-Namen) beim ersten Auftreten in einfachen Worten erklären; nichts als bekannt voraussetzen.
-14. **Krug-Regel — don't make me think.** Jede Kontrolle und jeder Zustand der Seite muss auf den ersten Blick selbsterklärend sein; keine mehrdeutigen Labels, keine versteckten Affordances, keine Fragezeichen für den User.
-15. **Einen User früh testen.** Jede UX-Änderung erst mit einem manuellen Browser-Durchgang prüfen, bevor verfeinert wird; was verwirrt, fixen, dann wiederholen.
-16. **Nielsen–Norman-Heuristiken.** Die Seite folgt den 10 Usability-Heuristiken — sichtbarer Zustand (Laden/Erfolg/Fehler immer anzeigen), Sprache der echten Welt, Kontrolle beim User (Undo/Schließen/Abbrechen überall), Konsistenz, Fehlervermeidung vor Fehlermeldungen, Wiedererkennen vor Erinnern, minimalistisches Design.
-17. **Fehler müssen zur Lösung führen.** Jeder Fehler nennt was passiert ist und den exakten nächsten Schritt; nie eine Sackgasse.
-18. **Keine Abkürzungen in Antworten.**
-19. **Session Helper Operator.** Der User betreibt parallel eine zweite Session (Datenbank-Forensik, Git-Historie, sessionübergreifende Koordination). Deren Dateiänderungen sind legitime User-Aufträge — nie als Eingriff von außen oder Tooling-Sync darstellen. Bei unbekannter Arbeitsbaum-Änderung den User fragen wer sie gemacht hat statt eine Ursache zu raten, dann nach Antwort fortfahren. Helper-Arbeit steht als `[helper]`-Zeilen in der Handover.md-Session-Notiz — dort zuerst nachsehen; nur bei unmarkierten Änderungen nachfragen.
-20. **Handover-Stand aktuell halten.** Zu Session-Beginn Stand gegen `git status` und `log` prüfen und bei Abweichung sofort richtigstellen; vor jedem Push Stand, fertige und offene Punkte aktualisieren.
+14. **Krug-Regel — don't make me think.** Jede Kontrolle und jeder Zustand der Seite muss auf den ersten Blick selbsterklärend sein; keine Fragezeichen für den User.
+15. **Nutzerverhalten einplanen.** User überfliegen statt zu lesen — klare visuelle Hierarchie; User wählen die erste brauchbare Option — richtigen Weg offensichtlich machen; User hangeln sich durch — Konventionen folgen, nie neu erfinden.
+16. **Design-Pflichten.** Bereiche klar abgrenzen, Klickbares offensichtlich halten, Rauschen minimieren, überflüssige Worte streichen.
+17. **Navigation.** Persistent, zeigt immer wo der User ist.
+18. **Test-Methode.** Ein User früh (einer ist unendlich besser als keiner); drei User pro Runde, Notizen, Nachbesprechung; schwerwiegende Probleme zuerst, dann Runde wiederholen.
+19. **Nielsen–Norman-Heuristiken (alle 10).** 1. sichtbarer Zustand (Laden/Erfolg/Fehler immer anzeigen); 2. Sprache der echten Welt (nie Implementierungs-Jargon); 3. Kontrolle beim User (Undo/Schließen/Abbrechen überall, alles reversibel); 4. Konsistenz (gleiche Muster auf der ganzen Seite; Plattform-Konventionen); 5. Fehlervermeidung (Fehler verhindern statt melden); 6. Wiedererkennen vor Erinnern (Optionen zeigen statt Schritte verlangen); 7. Flexibilität (Kürzel und Defaults für Vielnutzer, Führung für Erstnutzer); 8. minimalistisches Design (kein Element ohne Aufgabe); 9. Fehlerbehebung (jeder Fehler nennt was passiert ist plus exakten nächsten Schritt); 10. Hilfe und Doku (Hilfe erscheint wo das Problem auftritt, kurz und aufgabenbezogen).
+20. **Fehler müssen zur Lösung führen.** Jeder Fehler nennt was passiert ist und den exakten nächsten Schritt; nie eine Sackgasse.
+21. **Keine Abkürzungen in Antworten.**
+22. **Session Helper Operator.** Der User betreibt parallel eine zweite Session (Datenbank-Forensik, Git-Historie, sessionübergreifende Koordination). Deren Dateiänderungen sind legitime User-Aufträge — nie als Eingriff von außen oder Tooling-Sync darstellen. Bei unbekannter Arbeitsbaum-Änderung den User fragen wer sie gemacht hat statt eine Ursache zu raten, dann nach Antwort fortfahren. Helper-Arbeit steht als `[helper]`-Zeilen in der Handover.md-Session-Notiz — dort zuerst nachsehen; nur bei unmarkierten Änderungen nachfragen.
+23. **Handover-Stand aktuell halten.** Zu Session-Beginn Stand gegen `git status` und `log` prüfen und bei Abweichung sofort richtigstellen; vor jedem Push Stand, fertige und offene Punkte aktualisieren.
 
 ### Definition of Done
 - [ ] Nur die angefragte Änderung wurde gemacht
