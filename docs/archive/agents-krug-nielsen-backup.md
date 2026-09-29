@@ -1,0 +1,8 @@
+# Backup: Krug plus Nielsen Regeln (aus AGENTS.md entfernt, ersetzt durch ux-heuristics Skill)
+
+14. **Krug-Regel — don't make me think.** Jede Kontrolle und jeder Zustand der Seite muss auf den ersten Blick selbsterklärend sein; keine Fragezeichen für den User.
+15. **Nutzerverhalten einplanen.** User überfliegen statt zu lesen — klare visuelle Hierarchie; User wählen die erste brauchbare Option — richtigen Weg offensichtlich machen; User hangeln sich durch — Konventionen folgen, nie neu erfinden.
+16. **Design-Pflichten.** Bereiche klar abgrenzen, Klickbares offensichtlich halten, Rauschen minimieren, überflüssige Worte streichen.
+17. **Navigation.** Persistent, zeigt immer wo der User ist.
+18. **Test-Methode.** Ein User früh (einer ist unendlich besser als keiner); drei User pro Runde, Notizen, Nachbesprechung; schwerwiegende Probleme zuerst, dann Runde wiederholen.
+19. **Nielsen–Norman-Heuristiken (alle 10).** 1. sichtbarer Zustand (Laden/Erfolg/Fehler immer anzeigen); 2. Sprache der echten Welt (nie Implementierungs-Jargon); 3. Kontrolle beim User (Undo/Schließen/Abbrechen überall, alles reversibel); 4. Konsistenz (gleiche Muster auf der ganzen Seite; Plattform-Konventionen); 5. Fehlervermeidung (Fehler verhindern statt melden); 6. Wiedererkennen vor Erinnern (Optionen zeigen statt Schritte verlangen); 7. Flexibilität (Kürzel und Defaults für Vielnutzer, Führung für Erstnutzer); 8. minimalistisches Design (kein Element ohne Aufgabe); 9. Fehlerbehebung (jeder Fehler nennt was passiert ist plus exakten nächsten Schritt); 10. Hilfe und Doku (Hilfe erscheint wo das Problem auftritt, kurz und aufgabenbezogen).

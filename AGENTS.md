@@ -24,16 +24,10 @@ Kleinstmögliche Diffs. Bei Zweifel: nicht anfassen, sondern nachfragen.
 11. **Commits:** Nachrichten auf Englisch mit Präfix `feat/fix/chore/style`; Renames nur im Code, nie in der Nachricht erwähnen.
 12. **Antworten und Rückfragen immer Englisch.** Kommunikation mit dem User auf Englisch, auch bei deutscher Nachricht oder deutschem Handover-Kontext. Deutsch nur wenn explizit aufgefordert, bis zur Stop-Phrase „jetzt wieder in englisch" (case-insensitive). UI-Texte der Seite bleiben Deutsch.
 13. **Jargon immer erklären.** Technische Begriffe (Status-Codes, Fehlermeldungen, Tool-Namen) beim ersten Auftreten in einfachen Worten erklären; nichts als bekannt voraussetzen.
-14. **Krug-Regel — don't make me think.** Jede Kontrolle und jeder Zustand der Seite muss auf den ersten Blick selbsterklärend sein; keine Fragezeichen für den User.
-15. **Nutzerverhalten einplanen.** User überfliegen statt zu lesen — klare visuelle Hierarchie; User wählen die erste brauchbare Option — richtigen Weg offensichtlich machen; User hangeln sich durch — Konventionen folgen, nie neu erfinden.
-16. **Design-Pflichten.** Bereiche klar abgrenzen, Klickbares offensichtlich halten, Rauschen minimieren, überflüssige Worte streichen.
-17. **Navigation.** Persistent, zeigt immer wo der User ist.
-18. **Test-Methode.** Ein User früh (einer ist unendlich besser als keiner); drei User pro Runde, Notizen, Nachbesprechung; schwerwiegende Probleme zuerst, dann Runde wiederholen.
-19. **Nielsen–Norman-Heuristiken (alle 10).** 1. sichtbarer Zustand (Laden/Erfolg/Fehler immer anzeigen); 2. Sprache der echten Welt (nie Implementierungs-Jargon); 3. Kontrolle beim User (Undo/Schließen/Abbrechen überall, alles reversibel); 4. Konsistenz (gleiche Muster auf der ganzen Seite; Plattform-Konventionen); 5. Fehlervermeidung (Fehler verhindern statt melden); 6. Wiedererkennen vor Erinnern (Optionen zeigen statt Schritte verlangen); 7. Flexibilität (Kürzel und Defaults für Vielnutzer, Führung für Erstnutzer); 8. minimalistisches Design (kein Element ohne Aufgabe); 9. Fehlerbehebung (jeder Fehler nennt was passiert ist plus exakten nächsten Schritt); 10. Hilfe und Doku (Hilfe erscheint wo das Problem auftritt, kurz und aufgabenbezogen).
-20. **Fehler müssen zur Lösung führen.** Jeder Fehler nennt was passiert ist und den exakten nächsten Schritt; nie eine Sackgasse.
-21. **Keine Abkürzungen in Antworten.**
-22. **Re-Read-Pflicht.** „X erneut lesen" heißt die Datei gegen Git-Historie (`log`, `diff`, `status`) plus HANDOVER.md abgleichen — Änderungen von allen melden, nie nur gegen eigenes Session-Gedächtnis vergleichen.
-23. **Handover-Stand aktuell halten.** Zu Session-Beginn Stand gegen `git status` und `log` prüfen und bei Abweichung sofort richtigstellen; vor jedem Push Stand, fertige und offene Punkte aktualisieren.
+14. **Fehler müssen zur Lösung führen.** Jeder Fehler nennt was passiert ist und den exakten nächsten Schritt; nie eine Sackgasse.
+15. **Keine Abkürzungen in Antworten.**
+16. **Re-Read-Pflicht.** „X erneut lesen" heißt die Datei gegen Git-Historie (`log`, `diff`, `status`) plus HANDOVER.md abgleichen — Änderungen von allen melden, nie nur gegen eigenes Session-Gedächtnis vergleichen.
+17. **Handover-Stand aktuell halten.** Zu Session-Beginn Stand gegen `git status` und `log` prüfen und bei Abweichung sofort richtigstellen; vor jedem Push Stand, fertige und offene Punkte aktualisieren.
 Private Regeln (Session Helper Operator, Projekt-Tags) stehen nur in der ignorierten HANDOVER.md.
 
 ### Definition of Done
