@@ -115,7 +115,7 @@ Wird **nicht geraten**, sondern verifiziert via GitHub Action (läuft auch wenn 
 - **Kein Anhang ohne Grund:** Wenn nichts unklar ist, wird nichts angehängt.
 
 # Beweis und Entscheidung — Gates
-Jede Regel hat Auslöser, Pflicht, Nachweis. Ohne Nachweis gilt sie als verletzt. Mechanik = wo opencode erzwingt.
+Jede Regel hat Auslöser, Pflicht, Nachweis. Ohne Nachweis gilt sie als verletzt. Mechanik = wo opencode erzwingt (`opencode.json` ist lokale Konfiguration, gitignoriert — pro Rechner neu anlegen).
 
 1. **Gate Sichtprüfung** (Farb/Layout/Theme)
    Auslöser: Änderung, die visuell wirkt (`style.css`, `index.html`, `lib/js/*`).
