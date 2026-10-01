@@ -107,3 +107,49 @@ Wird **nicht geraten**, sondern verifiziert via GitHub Action (läuft auch wenn 
   - `git ls-remote --heads origin` → `master`/`flanking-cards` Tips
   - `curl https://ux-paul-grossmann.github.io/portfolio/` → enthält `Kompetenzen &amp; Methoden` + `button#theme-toggle`
 - **Wie:** `actions/checkout`, `gh api ... --jq .source.branch` mit `GITHUB_TOKEN` (auto), `git ls-remote`, `curl | grep`. Der Workflow gibt die Ergebnisse aus, aber `exit 1` erzwingt er nur bei den beiden Live-Curl-Checks (Heading + Toggle).
+
+# Antwort-Struktur
+- **Offene Punkte zuerst:** Unbekanntes steht oben, als gelöste Tatsache oder blockierende Frage, nie als Nachtrag am Ende.
+- **Selbst prüfen statt fragen:** Was ich selbst prüfen kann, prüfe ich und melde das Ergebnis, statt es als Zweifel zu listen.
+- **Schluss auf Vorschlag oder Aktion:** Die Nachricht endet mit dem Vorschlag oder der Aktion, kein Caveat-Anhang.
+- **Kein Anhang ohne Grund:** Wenn nichts unklar ist, wird nichts angehängt.
+
+# Beweis und Entscheidung — Gates
+Jede Regel hat Auslöser, Pflicht, Nachweis. Ohne Nachweis gilt sie als verletzt. Mechanik = wo opencode erzwingt.
+
+1. **Gate Sichtprüfung** (Farb/Layout/Theme)
+   Auslöser: Änderung, die visuell wirkt (`style.css`, `index.html`, `lib/js/*`).
+   Pflicht: erst live zeigen, dann User-Ja abwarten, dann schreiben.
+   Nachweis: Kandidat war live zu sehen; Zeile „User-Ja <Datum>".
+   Mechanik: `edit` ask auf diese Dateien (siehe `opencode.json`).
+2. **Gate Ein-Thema**
+   Auslöser: eine Antwort.
+   Pflicht: genau eine Aufgabe, kein fremdes Thema einsortieren.
+   Nachweis: Antwort nennt oben die eine Aufgabe.
+   Mechanik: keine, reine Disziplin.
+3. **Gate Geteilte-Datei**
+   Auslöser: Schreiben in versionierte Quelle.
+   Pflicht: Diff zuerst, Go abwarten.
+   Nachweis: Diff plus Go.
+   Mechanik: `edit` ask (wie Gate 1).
+4. **Gate Ausgelieferter-Stand**
+   Auslöser: Behauptung „funktioniert" für `style.css`/`lib/js/*`.
+   Pflicht: nach Browser Durchgang über lokalen Server prüfen.
+   Nachweis: Lesung nach Reload, nicht die Annahme.
+   Mechanik: keine, Nachweis Pflicht.
+5. **Gate Unentschieden**
+   Auslöser: offene Frage.
+   Pflicht: „ich habe nicht entschieden" sagen.
+   Nachweis: wörtlich im Text.
+   Mechanik: keine, reine Disziplin.
+6. **Gate Tool-Beweis**
+   Auslöser: „erledigt/entfernt/geschrieben".
+   Pflicht: zugehöriger Tool-Aufruf davor.
+   Nachweis: Aufruf in derselben Antwort.
+   Mechanik: keine.
+7. **Gate Push**
+   Auslöser: `git push`.
+   Pflicht: explizites Go.
+   Mechanik: `bash` ask auf `git push*` (siehe `opencode.json`).
+8. **Gate Doom-Loop** (bereits vorhanden)
+   opencode `doom_loop` steht per Default auf ask: derselbe Tool-Aufruf dreimal mit identischem Input löst eine Rückfrage aus. Eingebauter Rabbit-Hole Wächter, keine eigene Regel nötig.
