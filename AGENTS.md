@@ -153,3 +153,13 @@ Jede Regel hat Auslöser, Pflicht, Nachweis. Ohne Nachweis gilt sie als verletzt
    Mechanik: `bash` ask auf `git push*` (siehe `opencode.json`).
 8. **Gate Doom-Loop** (bereits vorhanden)
    opencode `doom_loop` steht per Default auf ask: derselbe Tool-Aufruf dreimal mit identischem Input löst eine Rückfrage aus. Eingebauter Rabbit-Hole Wächter, keine eigene Regel nötig.
+9. **Gate Handeln statt erzählen**
+   Auslöser: ein Schritt, der eine Datei oder eine Änderung braucht.
+   Pflicht: den Tool-Aufruf setzen (read/edit/bash); nie „lass mich lesen/finden/editieren" erzählen ohne den Aufruf im selben Schritt.
+   Nachweis: der Tool-Aufruf folgt dem Plan im selben Schritt.
+   Mechanik: keine, reine Disziplin.
+10. **Gate Schutzschalter (Anti-Schleife)**
+   Auslöser: dieselbe Datei-Stelle oder dasselbe visuelle Ziel dreimal angefasst ohne bestandene Prüfung, ODER zwei Schritte in Folge ohne Tool-Aufruf.
+   Pflicht: stoppen, Blocker und Zähler in einem Satz nennen, dann fragen oder Ansatz wechseln.
+   Nachweis: die Stopp-Meldung nennt Ziel und Zähler.
+   Mechanik: keine; doom_loop fängt nur identische wiederholte Aufrufe.
