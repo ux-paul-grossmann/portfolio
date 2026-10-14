@@ -421,11 +421,11 @@
         <div class="brand-perf-zeile"><span>Memory</span><span id="brandPerfHeap">–</span></div>
         <div class="brand-hint">Live. Frame time is the gap between two frames, 16.7 ms is a healthy 60 fps. Run the ticker, then flip Light chip to compare</div>
 
-        <div class="brand-hint" style="margin-top:10px;">Press ^ to show or hide this panel</div>
+        <div class="brand-hint" style="margin-top:10px;">Press Shift + ° to show or hide this panel</div>
     </aside>
 
     <script>
-    // Brand-Streifen Review: zwei Größen (exklusiv), Laufband mit Tempo, Leistung live
+    // Brand strip review: two sizes, ticker with speed, live performance
     (function () {
         var strips = document.getElementById('brandStrips');
         var strip200 = document.getElementById('brandStrip200');
@@ -443,7 +443,7 @@
 
         var SPEICHER = 'brandLabState';
 
-        // ---------- Segmentgruppen ----------
+        // ---------- Step groups ----------
         function segmentSetzen(wrapId, attr, wert) {
             var wrap = document.getElementById(wrapId);
             if (!wrap || !wert) return;
@@ -467,7 +467,7 @@
             });
         }
 
-        // ---------- Zustand über den Reload retten ----------
+        // ---------- Keep the state across a reload ----------
         function zustandLesen() {
             return {
                 grosse: size200.checked ? '200' : '150',
@@ -503,7 +503,7 @@
             segmentSetzen('brandSpeed', 'data-speed', s.tempo || 'mittel');
         }
 
-        // ---------- Laufband ----------
+        // ---------- Ticker ----------
         var clonesByStrip = {};
 
         function setMoving(strip, on) {
@@ -530,7 +530,7 @@
             }
         }
 
-        // ---------- Rendern ----------
+        // ---------- Render ----------
         function render() {
             var zeige200 = size200.checked;
             strip200.classList.toggle('is-visible', zeige200);
@@ -544,7 +544,7 @@
             strips.setAttribute('data-chip', chip.checked ? '1' : '0');
         }
 
-        // Exklusiv: eine Größe bleibt immer sichtbar
+        // Exclusive: one size stays visible at all times
         size200.addEventListener('change', function () {
             if (size200.checked) size150.checked = false;
             else if (!size150.checked) size200.checked = true;
@@ -566,13 +566,13 @@
         segmentMischen('brandEdge', 'data-edge', 'hauch');
         segmentMischen('brandSpeed', 'data-speed', 'mittel');
 
-        // Der Theme Wechsel kommt von helpers.js, deshalb den Klassenwechsel beobachten
+        // The theme switch comes from helpers.js, so watch for the class change
         if (window.MutationObserver) {
             new MutationObserver(render).observe(document.documentElement,
                 { attributes: true, attributeFilter: ['class'] });
         }
 
-        // ---------- Leistung, Schwellen wie im Bolt Readout der Vorlage ----------
+        // ---------- Performance, thresholds as in the reference Bolt Readout ----------
         var perfLauf = 0, perfLetzter = 0, perfBilder = 0, perfStart = 0, perfSumme = 0;
         var perfLang = [];
 
@@ -581,7 +581,7 @@
                 var jetzt = performance.now();
                 liste.getEntries().forEach(function () { perfLang.push(jetzt); });
             }).observe({ entryTypes: ['longtask'] });
-        } catch (fehler) { /* ohne Lang-Aufgaben-Schnittstelle bleiben die Bildwerte */ }
+        } catch (fehler) { /* without the long task interface the frame values stay */ }
 
         function stufe(wert, gut, mittel) {
             return wert < gut ? '#30D158' : (wert < mittel ? '#FFD60A' : '#FF453A');
@@ -610,7 +610,7 @@
                     ? Math.round(performance.memory.usedJSHeapSize / 1048576) : null;
 
                 setzen('brandPerfFps', fps + ' fps', fps >= 50 ? '#30D158' : (fps >= 30 ? '#FFD60A' : '#FF453A'));
-                // Schwellen passend zur Bildrate: 20 ms sind 50 fps, 34 ms sind etwa 30 fps
+                // Thresholds matching the frame rate: 20 ms is 50 fps, 34 ms is about 30 fps
                 setzen('brandPerfFrame', bildzeit.toFixed(1) + ' ms', stufe(bildzeit, 20, 34));
                 setzen('brandPerfLong', String(lang), lang === 0 ? '#30D158' : (lang === 1 ? '#FFD60A' : '#FF453A'));
                 setzen('brandPerfDom', String(knoten), stufe(knoten, 5000, 10000));
@@ -633,15 +633,15 @@
             perfLauf = 0;
         }
 
-        // ---------- Panel ein- und ausblenden ----------
-        // Standard ist verborgen, sichtbar wird es nur über Shift + °
+        // ---------- Show and hide the panel ----------
+        // Hidden by default, revealed only by Shift + °
         closeBtn.addEventListener('click', function () {
             lab.hidden = true;
             perfStoppen();
         });
 
-        // Taste Shift + °. Deutsche Tastatur: ° ist die Zweitbelegung der toten Taste links der 1,
-        // deshalb greift code "Backquote" zusammen mit shiftKey.
+        // Shift + °. German keyboard: ° is the second assignment of the dead key left of 1,
+        // so code "Backquote" together with shiftKey is what matches.
         function isTextField(target) {
             if (!target) return false;
             if (target.isContentEditable) return true;
@@ -673,7 +673,7 @@
         document.addEventListener('keydown', function (event) {
             if (event.ctrlKey || event.metaKey || event.altKey) return;
             if (isTextField(event.target)) return;
-            // Nur mit Shift, damit ein einzelnes ^ nichts auslöst
+            // Shift only, so a bare ^ does nothing
             if (event.shiftKey && isCaretKey(event)) {
                 event.preventDefault();
                 panelUmschalten();
@@ -681,7 +681,7 @@
         });
 
         // ---------- Start ----------
-        // Das Panel bleibt verborgen, die Messung läuft erst wenn es sichtbar ist
+        // The panel stays hidden, the measurement runs only once it is visible
         anwenden(laden());
         render();
         speichern();
