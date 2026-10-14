@@ -128,6 +128,45 @@
             </div>
 
         </div>
+        <!-- Brand-Streifen: Review-Fassung, zwei Logogrößen, je still oder laufend -->
+        <section id="brandStrips" aria-label="Stationen meiner Berufserfahrung">
+            <div class="brand-strip" id="brandStrip200" data-brand-size="200x120">
+                <div class="brand-panel">
+                    <div class="brand-track">
+                        <div class="brand-cell">
+                            <img class="brand-logo" src="./lib/images/brands/fhac-200x120.svg" alt="FH Aachen">
+                        </div>
+                        <div class="brand-cell">
+                            <img class="brand-logo" src="./lib/images/brands/m3c-200x120.svg" alt="m3connect">
+                        </div>
+                        <div class="brand-cell">
+                            <img class="brand-logo" src="./lib/images/brands/veda-200x120.svg" alt="VEDA">
+                        </div>
+                        <div class="brand-cell">
+                            <img class="brand-logo" src="./lib/images/brands/wzlrwth-200x120.svg" alt="WZL RWTH Aachen">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="brand-strip" id="brandStrip150" data-brand-size="150x90">
+                <div class="brand-panel">
+                    <div class="brand-track">
+                        <div class="brand-cell">
+                            <img class="brand-logo" src="./lib/images/brands/fhac-150x90.svg" alt="FH Aachen">
+                        </div>
+                        <div class="brand-cell">
+                            <img class="brand-logo" src="./lib/images/brands/m3c-150x90.svg" alt="m3connect">
+                        </div>
+                        <div class="brand-cell">
+                            <img class="brand-logo" src="./lib/images/brands/veda-150x90.svg" alt="VEDA">
+                        </div>
+                        <div class="brand-cell">
+                            <img class="brand-logo" src="./lib/images/brands/wzlrwth-150x90.svg" alt="WZL RWTH Aachen">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
         <div class="row d-none d-sm-flex" id="scrollDownChevron">
             <div class="col-12">
                 <div class="d-flex justify-content-center">
@@ -279,6 +318,374 @@
     <div class="scrolltop no_selection" onclick="window.location.href='#profile'" aria-label="Nach oben scrollen">
         <i class="fas fa-arrow-up" aria-hidden="true"></i>
     </div>
+
+    <!-- Review-Panel: Logostreifen, Bauart wie Lab Cards in kleinePreviewZeiger -->
+    <aside id="brandLab" aria-label="Review: logo strips">
+        <div class="brand-lab-header">
+            <span class="brand-lab-title">Review: logo strips</span>
+            <button type="button" class="brand-lab-close" id="brandLabClose" aria-label="Hide panel">&times;</button>
+        </div>
+
+        <div class="brand-lab-row">
+            <label for="brandSize200">Strip 200×120</label>
+            <label class="switch">
+                <input type="checkbox" id="brandSize200" checked>
+                <span class="slider"></span>
+            </label>
+        </div>
+        <div class="brand-hint">Large logos, four stations</div>
+
+        <div class="brand-lab-row">
+            <label for="brandSize150">Strip 150×90</label>
+            <label class="switch">
+                <input type="checkbox" id="brandSize150">
+                <span class="slider"></span>
+            </label>
+        </div>
+        <div class="brand-hint">Small logos, four stations</div>
+
+        <div class="brand-lab-row">
+            <label for="brandMove">Ticker</label>
+            <label class="switch">
+                <input type="checkbox" id="brandMove">
+                <span class="slider"></span>
+            </label>
+        </div>
+        <div class="brand-hint">Moves the visible strip from right to left</div>
+
+        <div class="brand-lab-row" style="margin-top:12px;">
+            <label>Speed</label>
+        </div>
+        <div class="brand-lab-seg" id="brandSpeed">
+            <button type="button" data-speed="sehrlangsam">Slowest</button>
+            <button type="button" data-speed="langsam">Slow</button>
+            <button type="button" data-speed="mittel" class="is-active">Medium</button>
+            <button type="button" data-speed="schnell">Fast</button>
+        </div>
+        <div class="brand-hint">Seconds per round, 60 down to 15. Only while the ticker runs</div>
+
+        <div class="brand-lab-row" style="margin-top:12px;">
+            <label for="brandCells">Own containers</label>
+            <label class="switch">
+                <input type="checkbox" id="brandCells">
+                <span class="slider"></span>
+            </label>
+        </div>
+        <div class="brand-hint">Each logo in its own container, 16px radius, 16px padding</div>
+
+        <div class="brand-lab-row" style="margin-top:12px;">
+            <label for="brandPortrait">Portrait border</label>
+            <label class="switch">
+                <input type="checkbox" id="brandPortrait">
+                <span class="slider"></span>
+            </label>
+        </div>
+        <div class="brand-hint">Thin border around the portrait, to compare against none</div>
+
+        <div class="brand-lab-row" style="margin-top:12px;">
+            <label for="brandFilterFrei">No filter</label>
+            <label class="switch">
+                <input type="checkbox" id="brandFilterFrei">
+                <span class="slider"></span>
+            </label>
+        </div>
+        <div class="brand-hint">Off lightens the logos in dark mode with a CSS filter. On leaves the files untouched</div>
+
+        <div class="brand-lab-row" style="margin-top:12px;">
+            <label>Panel tone (dark)</label>
+        </div>
+        <div class="brand-lab-seg" id="brandTone">
+            <button type="button" data-tone="flach">Flat</button>
+            <button type="button" data-tone="mittel" class="is-active">Medium</button>
+            <button type="button" data-tone="hoch">High</button>
+        </div>
+        <div class="brand-hint">Dark mode only, steps from the theme surface scale</div>
+
+        <div class="brand-lab-row" style="margin-top:12px;">
+            <label>Border</label>
+        </div>
+        <div class="brand-lab-seg" id="brandEdge">
+            <button type="button" data-edge="kein">None</button>
+            <button type="button" data-edge="hauch" class="is-active">Hint</button>
+            <button type="button" data-edge="linie">Line</button>
+        </div>
+        <div class="brand-hint">None matches the portrait, Hint is barely there, Line is a visible edge</div>
+
+        <div class="brand-lab-row" style="margin-top:12px;">
+            <label>Performance</label>
+            <span class="brand-perf-wert" id="brandPerfFps">–</span>
+        </div>
+        <div class="brand-perf-zeile"><span>Frame time</span><span id="brandPerfFrame">–</span></div>
+        <div class="brand-perf-zeile"><span>Long tasks</span><span id="brandPerfLong">–</span></div>
+        <div class="brand-perf-zeile"><span>DOM nodes</span><span id="brandPerfDom">–</span></div>
+        <div class="brand-perf-zeile"><span>Memory</span><span id="brandPerfHeap">–</span></div>
+        <div class="brand-hint">Live. Frame time is the gap between two frames, 16.7 ms is a healthy 60 fps. Run the ticker, then flip No filter to compare</div>
+
+        <div class="brand-hint" style="margin-top:10px;">Press ^ to show or hide this panel</div>
+    </aside>
+
+    <script>
+    // Brand-Streifen Review: zwei Größen (exklusiv), Laufband mit Tempo, Leistung live
+    (function () {
+        var strips = document.getElementById('brandStrips');
+        var strip200 = document.getElementById('brandStrip200');
+        var strip150 = document.getElementById('brandStrip150');
+        var size200 = document.getElementById('brandSize200');
+        var size150 = document.getElementById('brandSize150');
+        var move = document.getElementById('brandMove');
+        var cells = document.getElementById('brandCells');
+        var portraitBorder = document.getElementById('brandPortrait');
+        var filterFrei = document.getElementById('brandFilterFrei');
+        var lab = document.getElementById('brandLab');
+        var closeBtn = document.getElementById('brandLabClose');
+        if (!strips || !strip200 || !strip150 || !size200 || !size150 || !move ||
+            !cells || !lab || !closeBtn) return;
+
+        var SPEICHER = 'brandLabState';
+
+        // ---------- Segmentgruppen ----------
+        function segmentSetzen(wrapId, attr, wert) {
+            var wrap = document.getElementById(wrapId);
+            if (!wrap || !wert) return;
+            var ziel = wrap.querySelector('button[' + attr + '="' + wert + '"]');
+            if (!ziel) return;
+            strips.setAttribute(attr, wert);
+            Array.prototype.slice.call(wrap.querySelectorAll('button')).forEach(function (b) {
+                b.classList.toggle('is-active', b === ziel);
+            });
+        }
+
+        function segmentMischen(wrapId, attr, standard) {
+            var wrap = document.getElementById(wrapId);
+            if (!wrap) return;
+            segmentSetzen(wrapId, attr, strips.getAttribute(attr) || standard);
+            wrap.addEventListener('click', function (event) {
+                var btn = event.target.closest ? event.target.closest('button') : null;
+                if (!btn || !btn.getAttribute(attr)) return;
+                segmentSetzen(wrapId, attr, btn.getAttribute(attr));
+                speichern();
+            });
+        }
+
+        // ---------- Zustand über den Reload retten ----------
+        function zustandLesen() {
+            return {
+                grosse: size200.checked ? '200' : '150',
+                laufband: move.checked,
+                einzel: cells.checked,
+                profilrand: !!(portraitBorder && portraitBorder.checked),
+                filterfrei: !!(filterFrei && filterFrei.checked),
+                ton: strips.getAttribute('data-tone') || 'mittel',
+                rand: strips.getAttribute('data-edge') || 'hauch',
+                tempo: strips.getAttribute('data-speed') || 'mittel'
+            };
+        }
+
+        function speichern() {
+            try { localStorage.setItem(SPEICHER, JSON.stringify(zustandLesen())); } catch (fehler) {}
+        }
+
+        function laden() {
+            try { return JSON.parse(localStorage.getItem(SPEICHER) || 'null'); } catch (fehler) { return null; }
+        }
+
+        function anwenden(s) {
+            if (!s) return;
+            var gross = s.grosse === '150' ? '150' : '200';
+            size200.checked = gross === '200';
+            size150.checked = gross === '150';
+            move.checked = !!s.laufband;
+            cells.checked = !!s.einzel;
+            if (portraitBorder) portraitBorder.checked = !!s.profilrand;
+            if (filterFrei) filterFrei.checked = !!s.filterfrei;
+            segmentSetzen('brandTone', 'data-tone', s.ton || 'mittel');
+            segmentSetzen('brandEdge', 'data-edge', s.rand || 'hauch');
+            segmentSetzen('brandSpeed', 'data-speed', s.tempo || 'mittel');
+        }
+
+        // ---------- Laufband ----------
+        var clonesByStrip = {};
+
+        function setMoving(strip, on) {
+            var track = strip.querySelector('.brand-track');
+            if (!track) return;
+
+            if (on) {
+                if (!clonesByStrip[strip.id]) {
+                    clonesByStrip[strip.id] = Array.prototype.slice.call(track.children).map(function (node) {
+                        var copy = node.cloneNode(true);
+                        copy.setAttribute('aria-hidden', 'true');
+                        return copy;
+                    });
+                }
+                clonesByStrip[strip.id].forEach(function (node) {
+                    if (node.parentNode !== track) track.appendChild(node);
+                });
+                strip.classList.add('is-moving');
+            } else {
+                strip.classList.remove('is-moving');
+                (clonesByStrip[strip.id] || []).forEach(function (node) {
+                    if (node.parentNode === track) track.removeChild(node);
+                });
+            }
+        }
+
+        // ---------- Rendern ----------
+        function render() {
+            var zeige200 = size200.checked;
+            strip200.classList.toggle('is-visible', zeige200);
+            strip150.classList.toggle('is-visible', !zeige200);
+            strip200.classList.toggle('is-cells', cells.checked);
+            strip150.classList.toggle('is-cells', cells.checked);
+            setMoving(strip200, move.checked);
+            setMoving(strip150, move.checked);
+
+            if (portraitBorder) document.body.classList.toggle('has-portrait-border', portraitBorder.checked);
+            if (filterFrei) {
+                var dunkel = document.documentElement.classList.contains('dark');
+                strips.setAttribute('data-filterfrei', filterFrei.checked && dunkel ? '1' : '0');
+            }
+        }
+
+        // Exklusiv: eine Größe bleibt immer sichtbar
+        size200.addEventListener('change', function () {
+            if (size200.checked) size150.checked = false;
+            else if (!size150.checked) size200.checked = true;
+            render(); speichern();
+        });
+
+        size150.addEventListener('change', function () {
+            if (size150.checked) size200.checked = false;
+            else if (!size200.checked) size150.checked = true;
+            render(); speichern();
+        });
+
+        move.addEventListener('change', function () { render(); speichern(); });
+        cells.addEventListener('change', function () { render(); speichern(); });
+        if (portraitBorder) portraitBorder.addEventListener('change', function () { render(); speichern(); });
+        if (filterFrei) filterFrei.addEventListener('change', function () { render(); speichern(); });
+
+        segmentMischen('brandTone', 'data-tone', 'mittel');
+        segmentMischen('brandEdge', 'data-edge', 'hauch');
+        segmentMischen('brandSpeed', 'data-speed', 'mittel');
+
+        // Der Theme Wechsel kommt von helpers.js, deshalb den Klassenwechsel beobachten
+        if (window.MutationObserver) {
+            new MutationObserver(render).observe(document.documentElement,
+                { attributes: true, attributeFilter: ['class'] });
+        }
+
+        // ---------- Leistung, Schwellen wie im Bolt Readout der Vorlage ----------
+        var perfLauf = 0, perfLetzter = 0, perfBilder = 0, perfStart = 0, perfSumme = 0;
+        var perfLang = [];
+
+        try {
+            new PerformanceObserver(function (liste) {
+                var jetzt = performance.now();
+                liste.getEntries().forEach(function () { perfLang.push(jetzt); });
+            }).observe({ entryTypes: ['longtask'] });
+        } catch (fehler) { /* ohne Lang-Aufgaben-Schnittstelle bleiben die Bildwerte */ }
+
+        function stufe(wert, gut, mittel) {
+            return wert < gut ? '#30D158' : (wert < mittel ? '#FFD60A' : '#FF453A');
+        }
+
+        function setzen(id, text, farbe) {
+            var el = document.getElementById(id);
+            if (!el) return;
+            el.textContent = text;
+            if (farbe) el.style.color = farbe;
+        }
+
+        function perfSchleife(jetzt) {
+            if (perfLetzter) { perfSumme += jetzt - perfLetzter; perfBilder++; }
+            perfLetzter = jetzt;
+            if (!perfStart) perfStart = jetzt;
+
+            if (jetzt - perfStart >= 1000) {
+                var dauer = Math.max(1, jetzt - perfStart);
+                var fps = Math.round(perfBilder * 1000 / dauer);
+                var bildzeit = perfSumme / Math.max(1, perfBilder);
+                var knoten = document.getElementsByTagName('*').length;
+                while (perfLang.length && perfLang[0] < jetzt - 1000) perfLang.shift();
+                var lang = perfLang.length;
+                var heap = (performance.memory && performance.memory.usedJSHeapSize)
+                    ? Math.round(performance.memory.usedJSHeapSize / 1048576) : null;
+
+                setzen('brandPerfFps', fps + ' fps', fps >= 50 ? '#30D158' : (fps >= 30 ? '#FFD60A' : '#FF453A'));
+                // Schwellen passend zur Bildrate: 20 ms sind 50 fps, 34 ms sind etwa 30 fps
+                setzen('brandPerfFrame', bildzeit.toFixed(1) + ' ms', stufe(bildzeit, 20, 34));
+                setzen('brandPerfLong', String(lang), lang === 0 ? '#30D158' : (lang === 1 ? '#FFD60A' : '#FF453A'));
+                setzen('brandPerfDom', String(knoten), stufe(knoten, 5000, 10000));
+                setzen('brandPerfHeap', heap === null ? 'unavailable' : heap + ' MB',
+                       heap === null ? '' : stufe(heap, 150, 300));
+
+                perfBilder = 0; perfSumme = 0; perfStart = jetzt;
+            }
+            perfLauf = requestAnimationFrame(perfSchleife);
+        }
+
+        function perfStarten() {
+            if (perfLauf) return;
+            perfLetzter = 0; perfBilder = 0; perfSumme = 0; perfStart = 0;
+            perfLauf = requestAnimationFrame(perfSchleife);
+        }
+
+        function perfStoppen() {
+            if (perfLauf) cancelAnimationFrame(perfLauf);
+            perfLauf = 0;
+        }
+
+        // ---------- Panel ein- und ausblenden ----------
+        closeBtn.addEventListener('click', function () {
+            lab.classList.add('is-hidden');
+            perfStoppen();
+        });
+
+        // Taste ^. Deutsche Tastatur: tote Taste, deshalb greift code "Backquote".
+        // Die Tastatur Ansicht sendet zusätzlich "Dead", "°" und leere Codes.
+        function isTextField(target) {
+            if (!target) return false;
+            if (target.isContentEditable) return true;
+            var tag = (target.tagName || '').toLowerCase();
+            if (tag === 'textarea' || tag === 'select') return true;
+            if (tag === 'input') {
+                var type = (target.getAttribute('type') || 'text').toLowerCase();
+                return ['text', 'search', 'email', 'url', 'tel', 'password', 'number',
+                        'date', 'datetime-local', 'month', 'week', 'time'].indexOf(type) !== -1;
+            }
+            return false;
+        }
+
+        function isCaretKey(event) {
+            var code = event.code || '';
+            var key = event.key || '';
+            if (code === 'Backquote') return true;
+            if (key === '^' || key === '°') return true;
+            if (key === 'Dead' && (code === '' || code === 'Unidentified' || code === 'Backquote')) return true;
+            if (event.shiftKey && key === 'Dead') return true;
+            return false;
+        }
+
+        document.addEventListener('keydown', function (event) {
+            if (event.ctrlKey || event.metaKey || event.altKey) return;
+            if (isTextField(event.target)) return;
+            if (isCaretKey(event)) {
+                event.preventDefault();
+                lab.classList.toggle('is-hidden');
+                if (lab.classList.contains('is-hidden')) perfStoppen();
+                else perfStarten();
+            }
+        });
+
+        // ---------- Start ----------
+        anwenden(laden());
+        render();
+        speichern();
+        perfStarten();
+    })();
+
+    </script>
 
     <!-- #region agent log -->
     <script>
