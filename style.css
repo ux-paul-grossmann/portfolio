@@ -3340,6 +3340,13 @@ a, button, .btn, .nav-link, .thumb-element, #theme-toggle, .scrolltop, #intro-bu
 .dark #brandStrips[data-tone="mittel"] { --brand-panel-bg: var(--md-sys-color-surface-container-high); }
 .dark #brandStrips[data-tone="hoch"] { --brand-panel-bg: var(--md-sys-color-surface-container-highest); }
 
+/* Heller Chip: im Dark Mode liegt eine helle Platte hinter den Logos,
+   damit die Originaltöne der Vorlage unverändert bleiben. Der Ton regelt hier
+   die Helligkeit der Platte statt die Stufe des dunklen Panels. */
+.dark #brandStrips[data-chip="1"][data-tone="flach"]  { --brand-panel-bg: rgb(214 222 222); }
+.dark #brandStrips[data-chip="1"][data-tone="mittel"] { --brand-panel-bg: rgb(236 242 242); }
+.dark #brandStrips[data-chip="1"][data-tone="hoch"]   { --brand-panel-bg: rgb(255 255 255); }
+
 /* Rand-Stufen (Review). Kein Rand behält 1px Platz, damit nichts springt. */
 #brandStrips[data-edge="kein"]  { --brand-panel-border: transparent; }
 #brandStrips[data-edge="hauch"] { --brand-panel-border: rgb(0 0 0 / 0.06); }
@@ -3349,13 +3356,13 @@ a, button, .btn, .nav-link, .thumb-element, #theme-toggle, .scrolltop, #intro-bu
 .dark #brandStrips[data-edge="hauch"] { --brand-panel-border: rgb(255 255 255 / 0.07); }
 .dark #brandStrips[data-edge="linie"] { --brand-panel-border: rgb(255 255 255 / 0.16); }
 
-/* Dunkle Logos müssen auf dem dunklen Panel aufgehellt werden */
+/* Dunkle Logos werden im Dark Mode aufgehellt, wenn kein heller Chip dahinter liegt */
 .dark .brand-logo {
     filter: invert(1) brightness(1.6);
 }
 
-/* Filterfrei: keine Filterung, die Logos bleiben wie in der Vorlage */
-.dark #brandStrips[data-filterfrei="1"] .brand-logo {
+/* Mit hellem Chip bleiben die Logos unangetastet, der Filter faellt weg */
+.dark #brandStrips[data-chip="1"] .brand-logo {
     filter: none;
 }
 
@@ -3467,7 +3474,7 @@ a, button, .btn, .nav-link, .thumb-element, #theme-toggle, .scrolltop, #intro-bu
     font-family: 'Inter', 'Montserrat', sans-serif;
 }
 
-#brandLab.is-hidden {
+#brandLab[hidden] {
     display: none;
 }
 

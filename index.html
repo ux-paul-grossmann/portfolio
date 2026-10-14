@@ -383,23 +383,23 @@
         <div class="brand-hint">Thin border around the portrait, to compare against none</div>
 
         <div class="brand-lab-row" style="margin-top:12px;">
-            <label for="brandFilterFrei">No filter</label>
+            <label for="brandChip">Light chip</label>
             <label class="switch">
-                <input type="checkbox" id="brandFilterFrei">
+                <input type="checkbox" id="brandChip" checked>
                 <span class="slider"></span>
             </label>
         </div>
-        <div class="brand-hint">Off lightens the logos in dark mode with a CSS filter. On leaves the files untouched</div>
+        <div class="brand-hint">On puts a light plate behind the logos in dark mode, so the original tones stay untouched. Off keeps the dark panel and lightens the logos with a CSS filter</div>
 
         <div class="brand-lab-row" style="margin-top:12px;">
-            <label>Panel tone (dark)</label>
+            <label>Tone</label>
         </div>
         <div class="brand-lab-seg" id="brandTone">
             <button type="button" data-tone="flach">Flat</button>
             <button type="button" data-tone="mittel" class="is-active">Medium</button>
             <button type="button" data-tone="hoch">High</button>
         </div>
-        <div class="brand-hint">Dark mode only, steps from the theme surface scale</div>
+        <div class="brand-hint">Dark mode only. Sets how bright the chip plate is, or how far the dark panel lifts when the chip is off</div>
 
         <div class="brand-lab-row" style="margin-top:12px;">
             <label>Border</label>
@@ -435,22 +435,11 @@
         var move = document.getElementById('brandMove');
         var cells = document.getElementById('brandCells');
         var portraitBorder = document.getElementById('brandPortrait');
-        var filterFrei = document.getElementById('brandFilterFrei');
+        var chip = document.getElementById('brandChip');
         var lab = document.getElementById('brandLab');
         var closeBtn = document.getElementById('brandLabClose');
         if (!strips || !strip200 || !strip150 || !size200 || !size150 || !move ||
-            !cells || !lab || !closeBtn) return;
-
-        // Das Panel ist ein Entwicklungswerkzeug und darf nicht öffentlich erscheinen.
-        // Ohne JavaScript bleibt es durch das hidden-Attribut im Markup verborgen.
-        var IST_LOKAL = location.protocol === 'file:' ||
-            /^(localhost|127\.0\.0\.1|::1|\[::1\])$/.test(location.hostname);
-
-        if (IST_LOKAL) {
-            lab.removeAttribute('hidden');
-        } else if (lab.parentNode) {
-            lab.parentNode.removeChild(lab);
-        }
+            !cells || !chip || !lab || !closeBtn) return;
 
         var SPEICHER = 'brandLabState';
 
@@ -485,7 +474,7 @@
                 laufband: move.checked,
                 einzel: cells.checked,
                 profilrand: !!(portraitBorder && portraitBorder.checked),
-                filterfrei: !!(filterFrei && filterFrei.checked),
+                chip: chip.checked,
                 ton: strips.getAttribute('data-tone') || 'mittel',
                 rand: strips.getAttribute('data-edge') || 'hauch',
                 tempo: strips.getAttribute('data-speed') || 'mittel'
@@ -493,12 +482,10 @@
         }
 
         function speichern() {
-            if (!IST_LOKAL) return;
             try { localStorage.setItem(SPEICHER, JSON.stringify(zustandLesen())); } catch (fehler) {}
         }
 
         function laden() {
-            if (!IST_LOKAL) return null;
             try { return JSON.parse(localStorage.getItem(SPEICHER) || 'null'); } catch (fehler) { return null; }
         }
 
@@ -510,7 +497,7 @@
             move.checked = !!s.laufband;
             cells.checked = !!s.einzel;
             if (portraitBorder) portraitBorder.checked = !!s.profilrand;
-            if (filterFrei) filterFrei.checked = !!s.filterfrei;
+            if (s.chip !== undefined) chip.checked = !!s.chip;
             segmentSetzen('brandTone', 'data-tone', s.ton || 'mittel');
             segmentSetzen('brandEdge', 'data-edge', s.rand || 'hauch');
             segmentSetzen('brandSpeed', 'data-speed', s.tempo || 'mittel');
@@ -554,10 +541,7 @@
             setMoving(strip150, move.checked);
 
             if (portraitBorder) document.body.classList.toggle('has-portrait-border', portraitBorder.checked);
-            if (filterFrei) {
-                var dunkel = document.documentElement.classList.contains('dark');
-                strips.setAttribute('data-filterfrei', filterFrei.checked && dunkel ? '1' : '0');
-            }
+            strips.setAttribute('data-chip', chip.checked ? '1' : '0');
         }
 
         // Exklusiv: eine Größe bleibt immer sichtbar
@@ -576,7 +560,7 @@
         move.addEventListener('change', function () { render(); speichern(); });
         cells.addEventListener('change', function () { render(); speichern(); });
         if (portraitBorder) portraitBorder.addEventListener('change', function () { render(); speichern(); });
-        if (filterFrei) filterFrei.addEventListener('change', function () { render(); speichern(); });
+        chip.addEventListener('change', function () { render(); speichern(); });
 
         segmentMischen('brandTone', 'data-tone', 'mittel');
         segmentMischen('brandEdge', 'data-edge', 'hauch');
@@ -639,7 +623,7 @@
         }
 
         function perfStarten() {
-            if (!IST_LOKAL || perfLauf) return;
+            if (perfLauf) return;
             perfLetzter = 0; perfBilder = 0; perfSumme = 0; perfStart = 0;
             perfLauf = requestAnimationFrame(perfSchleife);
         }
@@ -650,15 +634,14 @@
         }
 
         // ---------- Panel ein- und ausblenden ----------
-        if (IST_LOKAL) {
-            closeBtn.addEventListener('click', function () {
-                lab.classList.add('is-hidden');
-                perfStoppen();
-            });
-        }
+        // Standard ist verborgen, sichtbar wird es nur über Shift + °
+        closeBtn.addEventListener('click', function () {
+            lab.hidden = true;
+            perfStoppen();
+        });
 
-        // Taste ^. Deutsche Tastatur: tote Taste, deshalb greift code "Backquote".
-        // Die Tastatur Ansicht sendet zusätzlich "Dead", "°" und leere Codes.
+        // Taste Shift + °. Deutsche Tastatur: ° ist die Zweitbelegung der toten Taste links der 1,
+        // deshalb greift code "Backquote" zusammen mit shiftKey.
         function isTextField(target) {
             if (!target) return false;
             if (target.isContentEditable) return true;
@@ -678,28 +661,30 @@
             if (code === 'Backquote') return true;
             if (key === '^' || key === '°') return true;
             if (key === 'Dead' && (code === '' || code === 'Unidentified' || code === 'Backquote')) return true;
-            if (event.shiftKey && key === 'Dead') return true;
             return false;
         }
 
-        if (IST_LOKAL) {
-            document.addEventListener('keydown', function (event) {
-                if (event.ctrlKey || event.metaKey || event.altKey) return;
-                if (isTextField(event.target)) return;
-                if (isCaretKey(event)) {
-                    event.preventDefault();
-                    lab.classList.toggle('is-hidden');
-                    if (lab.classList.contains('is-hidden')) perfStoppen();
-                    else perfStarten();
-                }
-            });
+        function panelUmschalten() {
+            lab.hidden = !lab.hidden;
+            if (lab.hidden) perfStoppen();
+            else perfStarten();
         }
 
+        document.addEventListener('keydown', function (event) {
+            if (event.ctrlKey || event.metaKey || event.altKey) return;
+            if (isTextField(event.target)) return;
+            // Nur mit Shift, damit ein einzelnes ^ nichts auslöst
+            if (event.shiftKey && isCaretKey(event)) {
+                event.preventDefault();
+                panelUmschalten();
+            }
+        });
+
         // ---------- Start ----------
+        // Das Panel bleibt verborgen, die Messung läuft erst wenn es sichtbar ist
         anwenden(laden());
         render();
         speichern();
-        perfStarten();
     })();
 
     </script>
