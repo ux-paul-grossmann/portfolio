@@ -129,7 +129,7 @@
 
         </div>
         <!-- Brand-Streifen: Review-Fassung, zwei Logogrößen, je still oder laufend -->
-        <section id="brandStrips" aria-label="Stationen meiner Berufserfahrung">
+        <section id="brandStrips" data-tone="mittel" data-edge="hauch" data-speed="mittel" aria-label="Stationen meiner Berufserfahrung">
             <div class="brand-strip" id="brandStrip200" data-brand-size="200x120">
                 <div class="brand-panel">
                     <div class="brand-track">
@@ -320,7 +320,7 @@
     </div>
 
     <!-- Review-Panel: Logostreifen, Bauart wie Lab Cards in kleinePreviewZeiger -->
-    <aside id="brandLab" aria-label="Review: logo strips">
+    <aside id="brandLab" aria-label="Review: logo strips" hidden>
         <div class="brand-lab-header">
             <span class="brand-lab-title">Review: logo strips</span>
             <button type="button" class="brand-lab-close" id="brandLabClose" aria-label="Hide panel">&times;</button>
@@ -441,6 +441,17 @@
         if (!strips || !strip200 || !strip150 || !size200 || !size150 || !move ||
             !cells || !lab || !closeBtn) return;
 
+        // Das Panel ist ein Entwicklungswerkzeug und darf nicht öffentlich erscheinen.
+        // Ohne JavaScript bleibt es durch das hidden-Attribut im Markup verborgen.
+        var IST_LOKAL = location.protocol === 'file:' ||
+            /^(localhost|127\.0\.0\.1|::1|\[::1\])$/.test(location.hostname);
+
+        if (IST_LOKAL) {
+            lab.removeAttribute('hidden');
+        } else if (lab.parentNode) {
+            lab.parentNode.removeChild(lab);
+        }
+
         var SPEICHER = 'brandLabState';
 
         // ---------- Segmentgruppen ----------
@@ -482,10 +493,12 @@
         }
 
         function speichern() {
+            if (!IST_LOKAL) return;
             try { localStorage.setItem(SPEICHER, JSON.stringify(zustandLesen())); } catch (fehler) {}
         }
 
         function laden() {
+            if (!IST_LOKAL) return null;
             try { return JSON.parse(localStorage.getItem(SPEICHER) || 'null'); } catch (fehler) { return null; }
         }
 
@@ -626,7 +639,7 @@
         }
 
         function perfStarten() {
-            if (perfLauf) return;
+            if (!IST_LOKAL || perfLauf) return;
             perfLetzter = 0; perfBilder = 0; perfSumme = 0; perfStart = 0;
             perfLauf = requestAnimationFrame(perfSchleife);
         }
@@ -637,10 +650,12 @@
         }
 
         // ---------- Panel ein- und ausblenden ----------
-        closeBtn.addEventListener('click', function () {
-            lab.classList.add('is-hidden');
-            perfStoppen();
-        });
+        if (IST_LOKAL) {
+            closeBtn.addEventListener('click', function () {
+                lab.classList.add('is-hidden');
+                perfStoppen();
+            });
+        }
 
         // Taste ^. Deutsche Tastatur: tote Taste, deshalb greift code "Backquote".
         // Die Tastatur Ansicht sendet zusätzlich "Dead", "°" und leere Codes.
@@ -667,16 +682,18 @@
             return false;
         }
 
-        document.addEventListener('keydown', function (event) {
-            if (event.ctrlKey || event.metaKey || event.altKey) return;
-            if (isTextField(event.target)) return;
-            if (isCaretKey(event)) {
-                event.preventDefault();
-                lab.classList.toggle('is-hidden');
-                if (lab.classList.contains('is-hidden')) perfStoppen();
-                else perfStarten();
-            }
-        });
+        if (IST_LOKAL) {
+            document.addEventListener('keydown', function (event) {
+                if (event.ctrlKey || event.metaKey || event.altKey) return;
+                if (isTextField(event.target)) return;
+                if (isCaretKey(event)) {
+                    event.preventDefault();
+                    lab.classList.toggle('is-hidden');
+                    if (lab.classList.contains('is-hidden')) perfStoppen();
+                    else perfStarten();
+                }
+            });
+        }
 
         // ---------- Start ----------
         anwenden(laden());
