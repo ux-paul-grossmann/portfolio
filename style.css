@@ -3341,11 +3341,11 @@ a, button, .btn, .nav-link, .thumb-element, #theme-toggle, .scrolltop, #intro-bu
 .dark #brandStrips[data-tone="hoch"] { --brand-panel-bg: var(--md-sys-color-surface-container-highest); }
 
 /* Heller Chip: im Dark Mode liegt eine helle Platte hinter den Logos,
-   damit die Originaltöne der Vorlage unverändert bleiben. Der Ton regelt hier
-   die Helligkeit der Platte statt die Stufe des dunklen Panels. */
-.dark #brandStrips[data-chip="1"][data-tone="flach"]  { --brand-panel-bg: rgb(214 222 222); }
-.dark #brandStrips[data-chip="1"][data-tone="mittel"] { --brand-panel-bg: rgb(236 242 242); }
-.dark #brandStrips[data-chip="1"][data-tone="hoch"]   { --brand-panel-bg: rgb(255 255 255); }
+   damit die Originaltöne der Vorlage unverändert bleiben. Die Helligkeit
+   kommt aus dem Regler als reine Graustufe. */
+.dark #brandStrips[data-chip="1"] {
+    --brand-panel-bg: rgb(var(--brand-chip-l, 236) var(--brand-chip-l, 236) var(--brand-chip-l, 236));
+}
 
 /* Rand-Stufen (Review). Kein Rand behält 1px Platz, damit nichts springt. */
 #brandStrips[data-edge="kein"]  { --brand-panel-border: transparent; }
@@ -3549,6 +3549,12 @@ a, button, .btn, .nav-link, .thumb-element, #theme-toggle, .scrolltop, #intro-bu
 .brand-perf-zeile span:last-child {
     font-family: ui-monospace, Menlo, monospace;
     color: var(--brand-lab-text);
+}
+
+.brand-lab-slider {
+    width: 100%;
+    margin: 2px 0 0;
+    accent-color: var(--md-sys-color-primary);
 }
 
 #brandLab .switch {

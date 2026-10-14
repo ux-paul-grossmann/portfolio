@@ -391,15 +391,26 @@
         </div>
         <div class="brand-hint">On puts a light plate behind the logos in dark mode, so the original tones stay untouched. Off keeps the dark panel and lightens the logos with a CSS filter</div>
 
-        <div class="brand-lab-row" style="margin-top:12px;">
-            <label>Tone</label>
+        <div id="brandChipTonWrap">
+            <div class="brand-lab-row" style="margin-top:12px;">
+                <label for="brandChipTon">Chip lightness</label>
+                <span class="brand-perf-wert" id="brandChipTonWert">236</span>
+            </div>
+            <input type="range" id="brandChipTon" class="brand-lab-slider" min="110" max="255" step="1" value="236">
+            <div class="brand-hint">Dark mode only. Finetunes how bright the plate behind the logos is. 110 is a mid grey, 255 is pure white</div>
         </div>
-        <div class="brand-lab-seg" id="brandTone">
-            <button type="button" data-tone="flach">Flat</button>
-            <button type="button" data-tone="mittel" class="is-active">Medium</button>
-            <button type="button" data-tone="hoch">High</button>
+
+        <div id="brandPanelTonWrap">
+            <div class="brand-lab-row" style="margin-top:12px;">
+                <label>Panel lift</label>
+            </div>
+            <div class="brand-lab-seg" id="brandTone">
+                <button type="button" data-tone="flach">Flat</button>
+                <button type="button" data-tone="mittel" class="is-active">Medium</button>
+                <button type="button" data-tone="hoch">High</button>
+            </div>
+            <div class="brand-hint">Dark mode only. How far the dark panel lifts off the page when the chip is off</div>
         </div>
-        <div class="brand-hint">Dark mode only. Sets how bright the chip plate is, or how far the dark panel lifts when the chip is off</div>
 
         <div class="brand-lab-row" style="margin-top:12px;">
             <label>Border</label>
@@ -436,6 +447,10 @@
         var cells = document.getElementById('brandCells');
         var portraitBorder = document.getElementById('brandPortrait');
         var chip = document.getElementById('brandChip');
+        var chipTon = document.getElementById('brandChipTon');
+        var chipTonWert = document.getElementById('brandChipTonWert');
+        var chipTonWrap = document.getElementById('brandChipTonWrap');
+        var panelTonWrap = document.getElementById('brandPanelTonWrap');
         var lab = document.getElementById('brandLab');
         var closeBtn = document.getElementById('brandLabClose');
         if (!strips || !strip200 || !strip150 || !size200 || !size150 || !move ||
@@ -475,6 +490,7 @@
                 einzel: cells.checked,
                 profilrand: !!(portraitBorder && portraitBorder.checked),
                 chip: chip.checked,
+                chipton: chipTon ? parseInt(chipTon.value, 10) : 236,
                 ton: strips.getAttribute('data-tone') || 'mittel',
                 rand: strips.getAttribute('data-edge') || 'hauch',
                 tempo: strips.getAttribute('data-speed') || 'mittel'
@@ -498,6 +514,7 @@
             cells.checked = !!s.einzel;
             if (portraitBorder) portraitBorder.checked = !!s.profilrand;
             if (s.chip !== undefined) chip.checked = !!s.chip;
+            if (chipTon && s.chipton !== undefined) chipTon.value = s.chipton;
             segmentSetzen('brandTone', 'data-tone', s.ton || 'mittel');
             segmentSetzen('brandEdge', 'data-edge', s.rand || 'hauch');
             segmentSetzen('brandSpeed', 'data-speed', s.tempo || 'mittel');
@@ -542,6 +559,12 @@
 
             if (portraitBorder) document.body.classList.toggle('has-portrait-border', portraitBorder.checked);
             strips.setAttribute('data-chip', chip.checked ? '1' : '0');
+
+            // Nur die Stufe zeigen, die gerade wirkt
+            if (chipTon) strips.style.setProperty('--brand-chip-l', chipTon.value);
+            if (chipTonWert) chipTonWert.textContent = chipTon ? chipTon.value : '';
+            if (chipTonWrap) chipTonWrap.hidden = !chip.checked;
+            if (panelTonWrap) panelTonWrap.hidden = chip.checked;
         }
 
         // Exclusive: one size stays visible at all times
@@ -561,6 +584,10 @@
         cells.addEventListener('change', function () { render(); speichern(); });
         if (portraitBorder) portraitBorder.addEventListener('change', function () { render(); speichern(); });
         chip.addEventListener('change', function () { render(); speichern(); });
+
+        if (chipTon) {
+            chipTon.addEventListener('input', function () { render(); speichern(); });
+        }
 
         segmentMischen('brandTone', 'data-tone', 'mittel');
         segmentMischen('brandEdge', 'data-edge', 'hauch');
