@@ -83,7 +83,7 @@ body {
 main.container {
     padding-left: 16px !important;
     padding-right: 16px !important;
-    overflow-x: hidden !important;
+    overflow-x: visible !important;
 }
 main.container > .row {
     margin-left: -16px !important;
@@ -113,6 +113,12 @@ main.container > .row > [class*="col-"] {
     #intro-button {
         width: 100% !important;
         display: block !important;
+    }
+    /* Nur hier clippen: das Profilbild ragt mit -16px bewusst über den Container
+       hinaus. Ohne hidden entsteht daraus seitliches Ziehen. Ab 576px bleibt
+       visible, damit der Schlagschatten des Bildes nicht abgeschnitten wird. */
+    main.container {
+        overflow-x: hidden !important;
     }
 }
 
