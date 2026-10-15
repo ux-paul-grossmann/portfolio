@@ -1400,6 +1400,27 @@ a.thumb-element:hover span.badge.badge-tag {
     justify-content: center;
 }
 
+/* Mobil: zwei Spalten von der ersten bis zur letzten Notiz. Flex umbricht hier
+   unregelmäßig, weil die Notizen unterschiedlich breit sind, und die letzte
+   Zeile wird durch justify-content: center allein in die Mitte gesetzt. */
+@media (max-width: 575.98px) {
+    .kontext-wrap {
+        /* !important nötig: das Element trägt Bootstraps Klasse d-flex, und
+           .d-flex { display: flex !important } gewinnt sonst dagegen. */
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        justify-items: stretch;
+    }
+    .kontext-wrap div[class*="note-"] {
+        min-width: 0;
+    }
+    /* Nur mobil clippen. Auf größeren Breiten schneidet das den Einflug der
+       Stecknadeln ab, weil sie beim Animieren weiter ausholen. */
+    #kontext {
+        overflow-x: clip;
+    }
+}
+
 .kontext-wrap div[class*="note-"] p {
     color: var(--note-text-color);
     margin: 0;
