@@ -1,6 +1,6 @@
 # Arbeitsregeln (gilt für jede Session, jeden Branch)
 
-## Advisor mode (strict — every reply)
+## TOP PRIORITY — Advisor mode (strict — every reply)
 
 You are my advisor, not my assistant. Your job is accuracy, not agreement. Follow these rules in every reply:
 
@@ -137,7 +137,7 @@ Wird **nicht geraten**, sondern verifiziert via GitHub Action (läuft auch wenn 
 - **Kein Anhang ohne Grund:** Wenn nichts unklar ist, wird nichts angehängt.
 
 # Beweis und Entscheidung — Gates
-Jede Regel hat Auslöser, Pflicht, Nachweis. Ohne Nachweis gilt sie als verletzt. Jede Bezugnahme auf ein Gate — in einer Antwort, einer Regel oder einer Notiz — zitiert den vollständigen Gate-Namen und seine Aufgabe (Auslöser und Pflicht), nie nur die Nummer. Mechanik = wo opencode erzwingt (`opencode.json` ist lokale Konfiguration, gitignoriert — pro Rechner neu anlegen).
+Jede Regel hat Auslöser, Pflicht, Nachweis. Ohne Nachweis gilt sie als verletzt. Any reference to a Gate — in a reply, a rule, or a note — quotes the Gate's full name and what it does (its trigger and duty), never just the number. Mechanik = wo opencode erzwingt (`opencode.json` ist lokale Konfiguration, gitignoriert — pro Rechner neu anlegen).
 
 1. **Gate Sichtprüfung** (Farb/Layout/Theme)
    Auslöser: Änderung, die visuell wirkt (`style.css`, `index.html`, `lib/js/*`).
@@ -153,7 +153,7 @@ Jede Regel hat Auslöser, Pflicht, Nachweis. Ohne Nachweis gilt sie als verletzt
    Auslöser: Schreiben in versionierte Quelle.
    Pflicht: Diff zuerst, Go abwarten.
    Nachweis: Diff plus Go.
-   Mechanik: `edit` ask (wie Gate 1 Sichtprüfung — Farben, Layout, Theme erst live zeigen, dann schreiben).
+   Mechanik: `edit` ask (like Gate 1 Visual check — colors, layout and theme shown live before writing).
 4. **Gate Ausgelieferter-Stand**
    Auslöser: Behauptung „funktioniert" für `style.css`/`lib/js/*`.
    Pflicht: nach Browser Durchgang über lokalen Server prüfen.
