@@ -2949,12 +2949,12 @@ button.btn.download-section-color:nth-child(3):active {
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.04) 18%, rgba(15, 23, 42, 0.82) 58%);
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.04) 18%, rgba(6, 12, 20, 0.82) 58%);
     pointer-events: none;
 }
 
 .pv-strip-item.active::after {
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.04) 18%, rgba(15, 23, 42, 0.86) 62%);
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.04) 18%, rgba(6, 12, 20, 0.86) 62%);
 }
 
 .pv-strip .pv-strip-thumb {
@@ -2968,6 +2968,32 @@ button.btn.download-section-color:nth-child(3):active {
     background-color: #0F172A;
     opacity: 0.92;
     box-shadow: none;
+}
+
+/* Kartenbilder der Leiste: die 180er-Thumbnails wie im Design,
+   nicht die 110er der alten Projektkarten. */
+.pv-strip .thumbnail-pic-01 {
+    background-image: url("./lib/images/thumbs/thumb180-ssb.png");
+}
+
+.pv-strip .thumbnail-pic-02 {
+    background-image: url("./lib/images/thumbs/thumb180-digiverbandbuch2.png");
+}
+
+.pv-strip .thumbnail-pic-03 {
+    background-image: url("./lib/images/thumbs/thumb180-sprachzwirbel.png");
+}
+
+.pv-strip .thumbnail-pic-04 {
+    background-image: url("./lib/images/thumbs/thumb180-ip40.png");
+}
+
+.pv-strip .thumbnail-pic-05 {
+    background-image: url("./lib/images/thumbs/thumb180-senseering.jpg");
+}
+
+.pv-strip .thumbnail-pic-06 {
+    background-image: url("./lib/images/thumbs/thumb180-fh-mobile-design.png");
 }
 
 .pv-strip-body {
@@ -3008,10 +3034,13 @@ button.btn.download-section-color:nth-child(3):active {
     color: rgba(255, 255, 255, 0.72);
 }
 
+.pv-strip-item.active .pv-strip-thumb {
+    opacity: 0.96;
+}
+
 .pv-strip-tags {
     display: flex;
-    flex-wrap: nowrap;
-    overflow: hidden;
+    flex-wrap: wrap;
     gap: 4px;
     margin-top: 2px;
 }
