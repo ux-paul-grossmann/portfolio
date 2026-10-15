@@ -1414,11 +1414,6 @@ a.thumb-element:hover span.badge.badge-tag {
     .kontext-wrap div[class*="note-"] {
         min-width: 0;
     }
-    /* Nur mobil clippen. Auf größeren Breiten schneidet das den Einflug der
-       Stecknadeln ab, weil sie beim Animieren weiter ausholen. */
-    #kontext {
-        overflow-x: clip;
-    }
 }
 
 .kontext-wrap div[class*="note-"] p {
