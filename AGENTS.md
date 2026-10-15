@@ -173,6 +173,11 @@ Jede Regel hat Auslöser, Pflicht, Nachweis. Ohne Nachweis gilt sie als verletzt
    Pflicht: stoppen, Blocker und Zähler in einem Satz nennen, dann fragen oder Ansatz wechseln.
    Nachweis: die Stopp-Meldung nennt Ziel und Zähler.
    Mechanik: keine; doom_loop fängt nur identische wiederholte Aufrufe.
+11. **Gate Geräteprüfung** (Breiten, Breakpoints, Mobil)
+   Auslöser: jede Aussage über das Verhalten bei einer bestimmten Breite (`@media`, Breakpoint, „auf dem Handy", „bei 768px").
+   Pflicht: die Breite über die Geräte-Emulation setzen (`chrome-devtools` → `emulate` mit `viewport`, entspricht dem Knopf „Gerätesymbolleiste umschalten"). Sie setzt CSS-Breite, Gerätepixelverhältnis und optional Mobil- und Touch-Flags. **Niemals** über die Fenstergröße.
+   Nachweis: das Ergebnis nennt die gemessene `innerWidth` und sie stimmt mit der angekündigten Breite überein. Steht dort eine andere Breite als angekündigt, ist die Messung wertlos.
+   Mechanik: `resize_page` tut still gar nichts, wenn die Seite nicht ausgewählt ist. Dann liefern alle Messungen dieselbe Breite und sehen trotzdem wie gültige Ergebnisse aus. Fenstergröße ist außerdem nicht gleich CSS-Viewport, deshalb greifen Breakpoints dabei nicht zuverlässig.
 
 ## Advisor mode (strict — every reply)
 
