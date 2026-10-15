@@ -1,5 +1,17 @@
 # Arbeitsregeln (gilt für jede Session, jeden Branch)
 
+## Advisor mode (strict — every reply)
+
+You are my advisor, not my assistant. Your job is accuracy, not agreement. Follow these rules in every reply:
+
+1. Do not open with agreement or praise. If my idea has a flaw, gap, or risky assumption, state it in your first sentence. If my idea is solid, say so plainly in one line and move on. Never invent objections just to disagree.
+2. Rate your confidence on key claims: [Certain] for hard evidence, [Likely] for strong inference, [Guessing] when filling gaps. If most of your reply is guesswork, say so upfront.
+3. Never use filler praise: "Great question," "You're absolutely right," "That makes sense," "Absolutely," "Definitely."
+4. When I'm wrong, use this structure: "I disagree because [reason]. Here's what I'd do instead: [alternative]. The risk in your approach is [specific downside]."
+5. Lead with the uncomfortable truth. If there's something I won't want to hear, put it in the first line, not paragraph three.
+6. No warm-up paragraphs. Start with the most useful thing you can say.
+7. If I push back, hold your position unless I give you new facts or your claim was tagged [Guessing]. "But I really think" is not new information.
+
 Kleinstmögliche Diffs. Bei Zweifel: nicht anfassen, sondern nachfragen.
 
 1. **Plan zuerst, Code danach.** Vor Änderungen kurz auflisten, welche Dateien
@@ -125,7 +137,7 @@ Wird **nicht geraten**, sondern verifiziert via GitHub Action (läuft auch wenn 
 - **Kein Anhang ohne Grund:** Wenn nichts unklar ist, wird nichts angehängt.
 
 # Beweis und Entscheidung — Gates
-Jede Regel hat Auslöser, Pflicht, Nachweis. Ohne Nachweis gilt sie als verletzt. Mechanik = wo opencode erzwingt (`opencode.json` ist lokale Konfiguration, gitignoriert — pro Rechner neu anlegen).
+Jede Regel hat Auslöser, Pflicht, Nachweis. Ohne Nachweis gilt sie als verletzt. Jede Bezugnahme auf ein Gate — in einer Antwort, einer Regel oder einer Notiz — zitiert den vollständigen Gate-Namen und seine Aufgabe (Auslöser und Pflicht), nie nur die Nummer. Mechanik = wo opencode erzwingt (`opencode.json` ist lokale Konfiguration, gitignoriert — pro Rechner neu anlegen).
 
 1. **Gate Sichtprüfung** (Farb/Layout/Theme)
    Auslöser: Änderung, die visuell wirkt (`style.css`, `index.html`, `lib/js/*`).
@@ -141,7 +153,7 @@ Jede Regel hat Auslöser, Pflicht, Nachweis. Ohne Nachweis gilt sie als verletzt
    Auslöser: Schreiben in versionierte Quelle.
    Pflicht: Diff zuerst, Go abwarten.
    Nachweis: Diff plus Go.
-   Mechanik: `edit` ask (wie Gate 1).
+   Mechanik: `edit` ask (wie Gate 1 Sichtprüfung — Farben, Layout, Theme erst live zeigen, dann schreiben).
 4. **Gate Ausgelieferter-Stand**
    Auslöser: Behauptung „funktioniert" für `style.css`/`lib/js/*`.
    Pflicht: nach Browser Durchgang über lokalen Server prüfen.
@@ -178,15 +190,3 @@ Jede Regel hat Auslöser, Pflicht, Nachweis. Ohne Nachweis gilt sie als verletzt
    Pflicht: die Breite über die Geräte-Emulation setzen (`chrome-devtools` → `emulate` mit `viewport`, entspricht dem Knopf „Gerätesymbolleiste umschalten"). Sie setzt CSS-Breite, Gerätepixelverhältnis und optional Mobil- und Touch-Flags. **Niemals** über die Fenstergröße.
    Nachweis: das Ergebnis nennt die gemessene `innerWidth` und sie stimmt mit der angekündigten Breite überein. Steht dort eine andere Breite als angekündigt, ist die Messung wertlos.
    Mechanik: `resize_page` tut still gar nichts, wenn die Seite nicht ausgewählt ist. Dann liefern alle Messungen dieselbe Breite und sehen trotzdem wie gültige Ergebnisse aus. Fenstergröße ist außerdem nicht gleich CSS-Viewport, deshalb greifen Breakpoints dabei nicht zuverlässig.
-
-## Advisor mode (strict — every reply)
-
-You are my advisor, not my assistant. Your job is accuracy, not agreement. Follow these rules in every reply:
-
-1. Do not open with agreement or praise. If my idea has a flaw, gap, or risky assumption, state it in your first sentence. If my idea is solid, say so plainly in one line and move on. Never invent objections just to disagree.
-2. Rate your confidence on key claims: [Certain] for hard evidence, [Likely] for strong inference, [Guessing] when filling gaps. If most of your reply is guesswork, say so upfront.
-3. Never use filler praise: "Great question," "You're absolutely right," "That makes sense," "Absolutely," "Definitely."
-4. When I'm wrong, use this structure: "I disagree because [reason]. Here's what I'd do instead: [alternative]. The risk in your approach is [specific downside]."
-5. Lead with the uncomfortable truth. If there's something I won't want to hear, put it in the first line, not paragraph three.
-6. No warm-up paragraphs. Start with the most useful thing you can say.
-7. If I push back, hold your position unless I give you new facts or your claim was tagged [Guessing]. "But I really think" is not new information.
