@@ -1,4 +1,4 @@
-# Arbeitsregeln (gilt für jede Session, jeden Branch)
+# Working rules (valid for every session, every branch)
 
 ## TOP PRIORITY — Advisor mode (strict — every reply)
 
@@ -13,89 +13,95 @@ You are my advisor, not my assistant. Your job is accuracy, not agreement. Follo
 7. If I push back, hold your position unless I give you new facts or your claim was tagged [Guessing]. "But I really think" is not new information.
 8. Enumerations go into a list, one item per line — branches, commits, files, options, findings, next steps — never inline in a running sentence.
 
-Kleinstmögliche Diffs. Bei Zweifel: nicht anfassen, sondern nachfragen.
+# Language
 
-1. **Plan zuerst, Code danach.** Vor Änderungen kurz auflisten, welche Dateien
-   betroffen sind und was genau passiert. Bei größeren Änderungen auf Bestätigung
-   warten — bei trivialen 1-Zeilen-Fixes nicht nötig.
-2. **Nur die genannten Dateien/Komponenten anfassen.** Andere Sections, andere
-   Dateien, globale CSS-Klassen: tabu, außer explizit erwähnt.
-3. **Keine Refactors ohne Auftrag.** Kein Umbenennen, kein "Aufräumen", kein
-   Umsortieren, keine Formatierungs-Änderungen an nicht erwähntem Code — auch
-   wenn er unsauber wirkt. Auffälligkeiten kurz erwähnen, nicht selbst ändern.
-4. **Keine neuen Dependencies** ohne Rückfrage.
-5. **Bestehende Texte (Deutsch) nicht umschreiben/"verbessern"** — nur
-   strukturell/technisch ändern, wenn nicht explizit um Text-Überarbeitung gebeten.
-6. **Ein Feature/Fix pro Antwort.** Keine Bonus-Änderungen "während ich eh drin war".
-7. **Keine Dateien löschen/umbenennen** ohne explizite Ansage.
-8. Nach jeder Änderung: kurz zusammenfassen, welche Dateien geändert wurden und warum.
-9. Bei zu vager Aufgabe: 1–2 kurze Rückfragen stellen statt in mehrere Richtungen zu raten.
+- Everything is written in English: rules, rule text, commit messages, branch names, code comments, documentation, and every reply to me.
+- The only exception is the website's own UI texts and content — those stay German.
+
+Smallest possible diffs. When in doubt: do not touch it, ask first.
+
+1. **Plan first, code second.** Before changes, briefly list which files are
+   affected and what exactly happens. Wait for confirmation on larger changes —
+   not necessary for trivial one-line fixes.
+2. **Touch only the named files/components.** Other sections, other files,
+   global CSS classes: off limits, unless explicitly mentioned.
+3. **No refactors without an order.** No renaming, no "cleanup", no reordering,
+   no formatting changes to code that was not mentioned — even if it looks
+   untidy. Mention oddities briefly, do not change them yourself.
+4. **No new dependencies** without asking first.
+5. **Do not rewrite/"improve" existing (German) texts** — change them only
+   structurally or technically, and only when explicitly asked for a text revision.
+6. **One feature/fix per reply.** No bonus changes "while I was in there anyway".
+7. **Do not delete or rename files** without an explicit announcement.
+8. After every change: briefly summarise which files were changed and why.
+9. If the task is too vague: ask 1–2 short questions instead of guessing in
+   several directions.
 
 ### Definition of Done
-- [ ] Nur die angefragte Änderung wurde gemacht
-- [ ] Keine unangeforderten Dateien im Diff
-- [ ] Bestehender Code/Content unverändert, wo nicht explizit gefordert
-- [ ] Kurze Zusammenfassung der Änderung gegeben
+- [ ] Only the requested change was made
+- [ ] No unrequested files in the diff
+- [ ] Existing code/content unchanged where not explicitly required
+- [ ] A short summary of the change was given
 
-### Ordnerstruktur (wichtig)
-Es gibt nur **einen** aktiven Projektordner (`portfolio`). Experimente laufen
-über Git-Branches (siehe unten), nicht über kopierte Ordner. Falls du auf
-weitere `portfolio*`-Ordner stößt: nicht anfassen, das sind Altlasten, die
-manuell aufgeräumt werden.
+### Folder structure (important)
+There is only **one** active project folder (`portfolio`). Experiments run
+through Git branches (see below), not through copied folders. If you run into
+other `portfolio*` folders: do not touch them, they are leftovers that are
+cleaned up by hand.
 
 ---
 
-# Repo & Tooling
+# Repo & tooling
 
-**Statische One-Page-Site** (Portfolio): `index.html` + `style.css` + `lib/` + `dist/`.
-Es gibt KEIN `package.json`, KEIN Build, kein Test-/Lint-Setup. Verifikation = Seite im
-Browser öffnen (CDN-Abhängigkeiten: jQuery 3.3.1, Bootstrap 4.3.1, GLightbox, slick,
-vanilla-lazyload, motion → Internet nötig).
+**Static one-page site** (portfolio): `index.html` + `style.css` + `lib/` + `dist/`.
+There is NO `package.json`, NO build, no test/lint setup. Verification = open the page
+in the browser (CDN dependencies: jQuery 3.3.1, Bootstrap 4.3.1, GLightbox, slick,
+vanilla-lazyload, motion → internet required).
 
-Syntax-Smoke-Test für die lib/js-Dateien:
+Syntax smoke test for the lib/js files:
 ```bash
 node -e "const fs=require('fs');for(const f of ['lib/js/helpers.js','lib/js/animations.js','lib/js/render-projects.js','lib/js/projects-data.js','lib/js/project-viewer.js','lib/js/project-navigation.js']){try{new Function(fs.readFileSync(f,'utf8'));console.log('OK',f)}catch(e){console.log('FAIL',f,e.message)}}"
 ```
 
-- `dist/` = vendorisierte Libs (lazysizes, scrollToTop, bootstrap-swipe-carousel, devices.min.css, …) → nicht editieren.
-- `backup-03-05-2026-0233/` = gitignorierte Altlast → nicht anfassen. `lib/images/*.zip` = unbenutzte Asset-Sammlung.
+- `dist/` = vendored libraries (lazysizes, scrollToTop, bootstrap-swipe-carousel, devices.min.css, …) → do not edit.
+- `backup-03-05-2026-0233/` = gitignored leftover → do not touch. `lib/images/*.zip` = unused asset collection.
 
-# JS-Architektur
+# JS architecture
 
-- **Early Theme** im `<head>` (`index.html:16`): `matchMedia('(prefers-color-scheme: dark)')` + `localStorage["theme"]` (nur `light`/`dark`, Legacy `material`/`lightPlus`/`:root` wird entfernt) → setzt `html.dark`/`body.dark` vor Render, vermeidet Flash.
-- **Ladereihenfolge** in `index.html` (unten): jQuery → Bootstrap → `dist/js/lazysizes.min.js` → `lib/js/projects-data.js` → `dist/js/bootstrap-swipe-carousel.min.js` → `dist/js/scrollToTop.js` → slick/vanilla-lazyload/transformicon/zooming → GLightbox (CDN) → `lib/js/project-viewer.js` (defer) → `lib/js/helpers.js` (zuletzt, Toggle + `lazyLoadInstance` + GLightbox-Instanz).
-- `lib/js/animations.js` liegt im `<head>` mit `defer` → läuft VOR jQuery → sein Code MUSS in `$(document).ready(...)` stehen. Rendert Kontext-Notizen (`.kontext-wrap`) und Scroll-Trigger für `#projekte .cluster`.
-- `projects-data.js` = Daten (`projectsData`), enthält HTML-Strings mit deutschen Texten → nicht umschreiben (Regel 5). `render-projects.js` + `project-viewer.js` + `project-navigation.js` rendern die Karten in `#projekte` (Viewer: 3-Card + bottom strip auf `flanking-cards`).
-- `helpers.js` erzeugt beim Laden: `var glightbox` (GLightbox), `lazyLoadInstance` (vanilla-lazyload, `elements_selector: ".lazy"`), Theme-Switch (top-right), Jahreszahl im Footer.
+- **Early theme** in the `<head>` (`index.html:16`): `matchMedia('(prefers-color-scheme: dark)')` + `localStorage["theme"]` (only `light`/`dark`, legacy `material`/`lightPlus`/`:root` is removed) → sets `html.dark`/`body.dark` before render, avoids a flash.
+- **Load order** in `index.html` (bottom): jQuery → Bootstrap → `dist/js/lazysizes.min.js` → `lib/js/projects-data.js` → `dist/js/bootstrap-swipe-carousel.min.js` → `dist/js/scrollToTop.js` → slick/vanilla-lazyload/transformicon/zooming → GLightbox (CDN) → `lib/js/project-viewer.js` (defer) → `lib/js/helpers.js` (last, toggle + `lazyLoadInstance` + GLightbox instance).
+- `lib/js/animations.js` sits in the `<head>` with `defer` → it runs BEFORE jQuery → its code MUST live inside `$(document).ready(...)`. It renders the context notes (`.kontext-wrap`) and the scroll trigger for `#projekte .cluster`.
+- `projects-data.js` = data (`projectsData`), holds HTML strings with German texts → do not rewrite (rule 5). `render-projects.js` + `project-viewer.js` + `project-navigation.js` render the cards in `#projekte` (viewer: 3-card + bottom strip on `flanking-cards`).
+- `helpers.js` creates on load: `var glightbox` (GLightbox), `lazyLoadInstance` (vanilla-lazyload, `elements_selector: ".lazy"`), theme switch (top-right), year in the footer.
 
-# GLightbox – Regeln (hat viel Zeit gekostet)
+# GLightbox — rules (this cost a lot of time)
 
-- **Nur EINE Instanz**: `helpers.js` (`var glightbox`). `animations.js` erzeugt eine ZWEITE Instanz mit demselben Selektor `.glightbox` → nicht als Vorbild nehmen. Nach DOM-Änderungen immer `window.glightbox.reload()` aufrufen, **niemals** `new GLightbox()` im Render-Code.
-- **Galerie je Karte**: jedes `<a class="glightbox">` braucht ein separates `data-gallery="projXX"` (lowercase-ID). Ein `gallery:`-Key *innerhalb* von `data-glightbox` wird von GLightbox IGNORIERT.
-- Auf Nutzerwunsch sind alle Slider/Carousels entfernt – Projektbilder sind einzelne GLightbox-Anker in `render-projects.js`. Keine Carousels mehr ergänzen.
-- Bildunterschriften: externe Elemente `.glightbox-desc` werden über `data-glightbox="description: .ssb-desc1; ..."` referenziert (Muster in `projects-data.js`).
+- **Only ONE instance**: `helpers.js` (`var glightbox`). `animations.js` creates a SECOND instance with the same `.glightbox` selector → do not follow that example. After DOM changes always call `window.glightbox.reload()`, **never** `new GLightbox()` in render code.
+- **Gallery per card**: every `<a class="glightbox">` needs its own `data-gallery="projXX"` (lowercase id). A `gallery:` key *inside* `data-glightbox` is IGNORED by GLightbox.
+- At the user's request all sliders/carousels were removed — project images are individual GLightbox anchors in `render-projects.js`. Do not add carousels again.
+- Captions: external `.glightbox-desc` elements are referenced via `data-glightbox="description: .ssb-desc1; ..."` (pattern in `projects-data.js`).
 
-# Lazy Loading – zwei Systeme, nicht verwechseln
+# Lazy loading — two systems, do not mix them up
 
-- **Bilder**: `class="lazyload"` + `data-src` → **lazysizes** (`dist/js/lazysizes.min.js`, nur `<img>`).
-- **iframes**: `class="lazy"` + `data-src` + **zusätzlich `src="about:blank"`** → **vanilla-lazyload** (Instanz `lazyLoadInstance` in helpers.js, `elements_selector: ".lazy"`). Ohne `src="about:blank"` lädt der iframe nicht.
-- Nach jedem DOM-Insert: `lazyLoadInstance.update()` (passiert bei Collapse-Öffnung in `animations.js`).
+- **Images**: `class="lazyload"` + `data-src` → **lazysizes** (`dist/js/lazysizes.min.js`, `<img>` only).
+- **iframes**: `class="lazy"` + `data-src` + **additionally `src="about:blank"`** → **vanilla-lazyload** (instance `lazyLoadInstance` in helpers.js, `elements_selector: ".lazy"`). Without `src="about:blank"` the iframe does not load.
+- After every DOM insert: `lazyLoadInstance.update()` (happens on collapse open in `animations.js`).
 
 # Themes
 
-- Aktuell **bluish-teal M3** in `lib/themes/themes.css`: `:root` (light `rgb(244 250 250)`) + `.dark` (dark `rgb(14 20 21)`) – `bluish-teal` aus Theme Builder (`--md-sys-color-primary: rgb(0 105 110)`). Legacy `.material` (`#6750A4`) + `.lightPlus` bleiben als ungenutzte Alt-Blöcke, nicht verwenden.
-- Umschaltung über `html.dark` + `body.dark`, gesteuert in `helpers.js` + Early-Script, persistiert in `localStorage["theme"]` (nur `light`/`dark`). System-Default via `prefers-color-scheme`, folgt `matchMedia('change')` nur wenn kein expliziter User-Wert.
-- Toggle **top-right** `button#theme-toggle` (`index.html:70`, `position:fixed; top:10px; right:10px; z-index:1101`, icon `fa-moon`/`fa-sun`, kein Label), nicht mehr bottom `theme-panel-container`.
-- Farben NUR als CSS-Variablen je Theme-Block definieren, nie hart kodieren. Notizen: `--note-text-color: #1d1c1b` fix (lesbar auf allen Pastell-Notizen, auch im Dark Mode).
-- style.css konsumiert Variablen mit Fallback.
+- Currently **bluish-teal M3** in `lib/themes/themes.css`: `:root` (light `rgb(244 250 250)`) + `.dark` (dark `rgb(14 20 21)`) — `bluish-teal` from Theme Builder (`--md-sys-color-primary: rgb(0 105 110)`). Legacy `.material` (`#6750A4`) + `.lightPlus` remain as unused old blocks, do not use them.
+- Switching through `html.dark` + `body.dark`, controlled in `helpers.js` + early script, persisted in `localStorage["theme"]` (only `light`/`dark`). System default via `prefers-color-scheme`, follows `matchMedia('change')` only when there is no explicit user value.
+- Toggle **top-right** `button#theme-toggle` (`index.html:70`, `position:fixed; top:10px; right:10px; z-index:1101`, icon `fa-moon`/`fa-sun`, no label), no longer bottom `theme-panel-container`.
+- Define colours ONLY as CSS variables per theme block, never hard-coded. Notes: `--note-text-color: #1d1c1b` fixed (readable on all pastel notes, also in dark mode).
+- style.css consumes variables with a fallback.
 
-# Git & Session-Start
+# Git & session start
 
-- Experimente laufen über **Branches**, nie über kopierte Ordner. Branches: `master` = **live** (GitHub Pages + Default-Branch `origin/HEAD -> origin/master`, API-verifiziert), `flanking-cards`/`morphing-cards` = Experimente (beide `origin/*` verifiziert via `git ls-remote`; `material-theme` gelöscht). Live Pages-Branch wird **nur** via Nightly Audit (`GET /pages` + live `curl`) verifiziert, nicht geraten.
-- **AGENTS.md ist getrackt** → nicht ignorieren. Änderungen an `AGENTS.md` werden gepusht und gelten auf allen 3 Macs.
-- **Uncommitted Arbeit geht bei `git restore`/`git checkout` verloren** → vor Branch-Wechsel committen.
-- Session-Start: `git fetch --all` → `git checkout master` → `git pull` → `git status` → `git log --oneline -5` → Browser-Check (`python3 -m http.server 8000` → http://localhost:8000). Vor Sleeping: `git status` clean → `git push`.
-- **Multi-Branch Sync:** Betrifft ein Fix mehrere Branches (z. B. `AGENTS.md`, `themes.css`), auf allen fälligen Branches ausführen/syncen (sonst Drift) – dabei **vor jedem Wechsel ankündigen** (`Wechsle <von> → <nach>`) und am Ende zurück in den ursprünglichen Branch wechseln + `git status` melden.
+- Experiments run through **branches**, never through copied folders. Branches: `master` = **live** (GitHub Pages + default branch `origin/HEAD -> origin/master`, verified via the API), `flanking-cards`/`morphing-cards` = experiments (both `origin/*` verified via `git ls-remote`; `material-theme` deleted). The live Pages branch is verified **only** via the nightly audit (`GET /pages` + live `curl`), never guessed.
+- **AGENTS.md is tracked** → do not ignore it. Changes to `AGENTS.md` are pushed and apply on all 3 Macs.
+- **Uncommitted work is lost on `git restore`/`git checkout`** → commit before switching branches.
+- Session start: `git fetch --all` → `git checkout master` → `git pull` → `git status` → `git log --oneline -5` → browser check (`python3 -m http.server 8000` → http://localhost:8000). Before sleeping: `git status` clean → `git push`.
+- **Multi-branch sync:** if a fix concerns several branches (e.g. `AGENTS.md`, `themes.css`), run/sync it on every affected branch (otherwise drift) — announce every switch beforehand (`Switching <from> → <to>`) and at the end switch back to the original branch + report `git status`.
 
 # Browser tests (mandatory)
 
@@ -108,13 +114,13 @@ node -e "const fs=require('fs');for(const f of ['lib/js/helpers.js','lib/js/anim
 
 - Every Paper design gets a branch of its own: `strip-01-paper`, `strip-02-paper`, `strip-03-paper`, … (incrementing).
 
-# Nightly Audit 23:00 (verifiziert)
+# Nightly audit 23:00 (verified)
 
-Wird **nicht geraten**, sondern verifiziert via GitHub Action (läuft auch wenn alle Macs schlafen). Definition hier, Ausführung in `.github/workflows/nightly-audit.yml`.
+It is **not guessed**, it is verified via a GitHub Action (runs even when all Macs are asleep). Definition here, execution in `.github/workflows/nightly-audit.yml`.
 
-- **Wann:** täglich `21:00 UTC` (=23:00 MESZ, Winter 22:00 UTC → 1h Drift) + manueller `workflow_dispatch`.
-- **Was verifiziert:**
+- **When:** daily `21:00 UTC` (=23:00 CEST, winter 22:00 UTC → 1 hour drift) + manual `workflow_dispatch`.
+- **What is verified:**
   - `GET /repos/ux-paul-grossmann/portfolio/pages` → `source.branch`
-  - `git ls-remote --heads origin` → `master`/`flanking-cards` Tips
-  - `curl https://ux-paul-grossmann.github.io/portfolio/` → enthält `Kompetenzen &amp; Methoden` + `button#theme-toggle`
-- **Wie:** `actions/checkout`, `gh api ... --jq .source.branch` mit `GITHUB_TOKEN` (auto), `git ls-remote`, `curl | grep`. Bei Drift: `AUDIT.md` commit oder Issue.
+  - `git ls-remote --heads origin` → `master`/`flanking-cards` tips
+  - `curl https://ux-paul-grossmann.github.io/portfolio/` → contains `Kompetenzen &amp; Methoden` + `button#theme-toggle`
+- **How:** `actions/checkout`, `gh api ... --jq .source.branch` with `GITHUB_TOKEN` (auto), `git ls-remote`, `curl | grep`. On drift: commit `AUDIT.md` or open an issue.
