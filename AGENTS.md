@@ -104,6 +104,10 @@ node -e "const fs=require('fs');for(const f of ['lib/js/helpers.js','lib/js/anim
 - **Nachweis.** Das Ergebnis nennt die gemessene `innerWidth`; sie muss zur angekündigten Breite passen. Steht dort eine andere Breite, ist die Messung wertlos und wird neu gemacht.
 - **Aufräumen gehört zum Test.** Im selben Schritt, in dem der Test endet: Emulation zurücksetzen (`emulate` ohne `viewport`), Seite nach oben scrollen (`window.scrollTo(0, 0)`), eigenen Tab schließen. Es bleibt keine Emulation, kein Scroll-Stand und kein fremder Tab zurück.
 
+# Branch-Namen für Paper-Entwürfe
+
+- Jeder Paper-Entwurf bekommt einen eigenen Branch: `strip-01-paper`, `strip-02-paper`, `strip-03-paper`, … (fortlaufend hochzählen). Umsetzung dort, nicht auf `flanking-cards` oder `morphing-cards` sammeln.
+
 # Nightly Audit 23:00 (verifiziert)
 
 Wird **nicht geraten**, sondern verifiziert via GitHub Action (läuft auch wenn alle Macs schlafen). Definition hier, Ausführung in `.github/workflows/nightly-audit.yml`.
