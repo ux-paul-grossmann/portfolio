@@ -160,12 +160,12 @@ Jede Regel hat Auslöser, Pflicht, Nachweis. Ohne Nachweis gilt sie als verletzt
 7. **Gate Push**
    Auslöser: `git push`.
    Pflicht: explizites Go.
-   Mechanik: `bash` ask auf `git push*` (siehe `opencode.json`).
+   Mechanik: `shell` ask auf `git push*` (siehe `opencode.json`).
 8. **Gate Doom-Loop** (bereits vorhanden)
    opencode `doom_loop` steht per Default auf ask: derselbe Tool-Aufruf dreimal mit identischem Input löst eine Rückfrage aus. Eingebauter Rabbit-Hole Wächter, keine eigene Regel nötig.
 9. **Gate Handeln statt erzählen**
    Auslöser: ein Schritt, der eine Datei oder eine Änderung braucht.
-   Pflicht: den Tool-Aufruf setzen (read/edit/bash); nie „lass mich lesen/finden/editieren" erzählen ohne den Aufruf im selben Schritt.
+   Pflicht: den Tool-Aufruf setzen (read/edit/shell); nie „lass mich lesen/finden/editieren" erzählen ohne den Aufruf im selben Schritt.
    Nachweis: der Tool-Aufruf folgt dem Plan im selben Schritt.
    Mechanik: keine, reine Disziplin.
 10. **Gate Schutzschalter (Anti-Schleife)**
