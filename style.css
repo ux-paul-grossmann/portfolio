@@ -83,7 +83,7 @@ body {
 main.container {
     padding-left: 16px !important;
     padding-right: 16px !important;
-    overflow-x: hidden !important;
+    overflow-x: visible !important;
 }
 main.container > .row {
     margin-left: -16px !important;
@@ -3434,12 +3434,21 @@ a, button, .btn, .nav-link, .thumb-element, #theme-toggle, .scrolltop, #intro-bu
     height: 120px;
 }
 
-/* Laufband: Kopien hängen hinten an, Verschiebung um die halbe Breite */
+/* Laufband: Kopien hängen hinten an, Verschiebung um die halbe Breite.
+   Der Abstand liegt hier als margin am Element statt als gap am Track.
+   Mit gap wäre die halbe Breite um einen halben Abstand zu kurz, also gäbe
+   es bei jedem Durchlauf einen Sprung. So ist die halbe Breite exakt eine
+   ganze Anzahl Saetze. */
 .brand-strip.is-moving .brand-track {
     flex-wrap: nowrap;
     justify-content: flex-start;
+    gap: 0;
     width: max-content;
     animation: brand-marquee var(--brand-marquee-dauer, 30s) linear infinite;
+}
+
+.brand-strip.is-moving .brand-cell {
+    margin-right: 32px;
 }
 
 /* Tempo-Stufen des Bandes, Dauer einer Runde */

@@ -521,30 +521,58 @@
         }
 
         // ---------- Ticker ----------
-        var clonesByStrip = {};
+        var ABSTAND = 32; // muss zum margin-right in style.css passen
 
+        // Kopien so oft anlegen, dass eine Hälfte des Tracks das Panel füllt.
+        // Sonst läuft der Inhalt während der Verschiebung aus und es entsteht
+        // am Ende eine Lücke, statt dass das erste Logo folgt.
         function setMoving(strip, on) {
             var track = strip.querySelector('.brand-track');
             if (!track) return;
 
-            if (on) {
-                if (!clonesByStrip[strip.id]) {
-                    clonesByStrip[strip.id] = Array.prototype.slice.call(track.children).map(function (node) {
-                        var copy = node.cloneNode(true);
-                        copy.setAttribute('aria-hidden', 'true');
-                        return copy;
-                    });
-                }
-                clonesByStrip[strip.id].forEach(function (node) {
-                    if (node.parentNode !== track) track.appendChild(node);
-                });
-                strip.classList.add('is-moving');
-            } else {
+            function kopien() {
+                return Array.prototype.slice.call(track.querySelectorAll('[data-clone="1"]'));
+            }
+
+            if (!on) {
                 strip.classList.remove('is-moving');
-                (clonesByStrip[strip.id] || []).forEach(function (node) {
-                    if (node.parentNode === track) track.removeChild(node);
+                kopien().forEach(function (n) { track.removeChild(n); });
+                return;
+            }
+
+            strip.classList.add('is-moving');
+
+            var original = Array.prototype.slice.call(track.children)
+                .filter(function (n) { return n.getAttribute('data-clone') !== '1'; });
+            if (!original.length) return;
+
+            function satz() {
+                return original.map(function (node) {
+                    var copy = node.cloneNode(true);
+                    copy.setAttribute('aria-hidden', 'true');
+                    copy.setAttribute('data-clone', '1');
+                    return copy;
                 });
             }
+            function anhaengen(nodes) {
+                nodes.forEach(function (n) { track.appendChild(n); });
+            }
+
+            kopien().forEach(function (n) { track.removeChild(n); });
+
+            // Einen Satz anhängen, um den Versatz eines ganzen Satzes zu messen
+            anhaengen(satz());
+            var links = Array.prototype.slice.call(track.children)
+                .map(function (n) { return n.getBoundingClientRect().left; });
+            var periode = Math.round(links[original.length] - links[0]);
+            if (!periode) return;
+
+            var panel = strip.querySelector('.brand-panel');
+            var sichtbar = panel ? Math.round(panel.getBoundingClientRect().width) : 0;
+            var saetze = Math.max(2, Math.ceil(sichtbar / periode) * 2);
+
+            kopien().forEach(function (n) { track.removeChild(n); });
+            for (var s = 1; s < saetze; s++) anhaengen(satz());
         }
 
         // ---------- Render ----------
@@ -598,6 +626,15 @@
             new MutationObserver(render).observe(document.documentElement,
                 { attributes: true, attributeFilter: ['class'] });
         }
+
+        // Breite des Panels ändert sich mit dem Fenster, also Kopien neu aufbauen
+        var breiteTimer = 0;
+        window.addEventListener('resize', function () {
+            clearTimeout(breiteTimer);
+            breiteTimer = setTimeout(function () {
+                if (move.checked) render();
+            }, 200);
+        });
 
         // ---------- Performance, thresholds as in the reference Bolt Readout ----------
         var perfLauf = 0, perfLetzter = 0, perfBilder = 0, perfStart = 0, perfSumme = 0;
