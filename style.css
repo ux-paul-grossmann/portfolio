@@ -2866,8 +2866,6 @@ button.btn.download-section-color:nth-child(3):active {
     padding: 4px 2px;
     scroll-snap-type: x mandatory;
     scrollbar-width: none;
-    -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 60px), rgba(0, 0, 0, 0.88));
-    mask-image: linear-gradient(to right, #000 calc(100% - 60px), rgba(0, 0, 0, 0.88));
 }
 
 .pv-strip::-webkit-scrollbar {
@@ -2965,35 +2963,53 @@ button.btn.download-section-color:nth-child(3):active {
     height: 100%;
     background-size: cover;
     background-position: center center;
-    background-color: #0F172A;
-    opacity: 0.92;
     box-shadow: none;
 }
 
-/* Kartenbilder der Leiste: die 180er-Thumbnails wie im Design,
-   nicht die 110er der alten Projektkarten. */
+/* Je Karte Bild, Grundton und Deckkraft wie im Design. */
 .pv-strip .thumbnail-pic-01 {
+    background-color: #1E293B;
+    opacity: 0.92;
     background-image: url("./lib/images/thumbs/thumb180-ssb.png");
 }
 
 .pv-strip .thumbnail-pic-02 {
+    background-color: #334155;
+    opacity: 0.92;
     background-image: url("./lib/images/thumbs/thumb180-digiverbandbuch2.png");
 }
 
 .pv-strip .thumbnail-pic-03 {
+    background-color: #475569;
+    opacity: 0.92;
     background-image: url("./lib/images/thumbs/thumb180-sprachzwirbel.png");
 }
 
 .pv-strip .thumbnail-pic-04 {
+    background-color: #0E7490;
+    opacity: 0.96;
     background-image: url("./lib/images/thumbs/thumb180-ip40.png");
 }
 
 .pv-strip .thumbnail-pic-05 {
+    background-color: #1E293B;
+    opacity: 0.88;
     background-image: url("./lib/images/thumbs/thumb180-senseering.jpg");
 }
 
 .pv-strip .thumbnail-pic-06 {
+    background-color: #0F172A;
+    opacity: 0.88;
     background-image: url("./lib/images/thumbs/thumb180-fh-mobile-design.png");
+}
+
+/* Karte 5 und 6 liegen im Design gedimmt am rechten Rand. */
+.pv-strip-item:nth-child(5) {
+    opacity: 0.92;
+}
+
+.pv-strip-item:nth-child(6) {
+    opacity: 0.88;
 }
 
 .pv-strip-body {
@@ -3032,10 +3048,6 @@ button.btn.download-section-color:nth-child(3):active {
 
 .pv-strip-item.active .pv-strip-company {
     color: rgba(255, 255, 255, 0.72);
-}
-
-.pv-strip-item.active .pv-strip-thumb {
-    opacity: 0.96;
 }
 
 .pv-strip-tags {
