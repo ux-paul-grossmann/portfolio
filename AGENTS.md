@@ -97,12 +97,16 @@ node -e "const fs=require('fs');for(const f of ['lib/js/helpers.js','lib/js/anim
 - Session-Start: `git fetch --all` → `git checkout master` → `git pull` → `git status` → `git log --oneline -5` → Browser-Check (`python3 -m http.server 8000` → http://localhost:8000). Vor Sleeping: `git status` clean → `git push`.
 - **Multi-Branch Sync:** Betrifft ein Fix mehrere Branches (z. B. `AGENTS.md`, `themes.css`), auf allen fälligen Branches ausführen/syncen (sonst Drift) – dabei **vor jedem Wechsel ankündigen** (`Wechsle <von> → <nach>`) und am Ende zurück in den ursprünglichen Branch wechseln + `git status` melden.
 
-# Browser-Tests (verbindlich)
+# Browser tests (mandatory)
 
-- **Eigener Tab statt Nutzer-Tab.** Browser-Arbeit läuft in einem eigenen Tab (`browser.tabs.open`), nie im Tab des Users. Fremde Tabs werden nicht navigiert. Der eigene Tab wird am Ende geschlossen.
-- **Geräteemulation statt Fenstergröße.** Breiten werden über `chrome-devtools` → `emulate` mit `viewport` gesetzt (`<Breite>x<Höhe>x<DPR>` plus optional `mobile`/`touch`). Das entspricht dem Knopf „Gerätesymbolleiste umschalten" rechts neben „Inspect": es setzt CSS-Breite, Gerätepixelverhältnis und optional Mobil- und Touch-Flags. Fenstergröße ist **kein** Ersatz — `resize_page` tut still gar nichts, wenn die Seite nicht ausgewählt ist, und Fenstergröße ist nicht der CSS-Viewport.
-- **Nachweis.** Das Ergebnis nennt die gemessene `innerWidth`; sie muss zur angekündigten Breite passen. Steht dort eine andere Breite, ist die Messung wertlos und wird neu gemacht.
-- **Aufräumen gehört zum Test.** Im selben Schritt, in dem der Test endet: Emulation zurücksetzen (`emulate` ohne `viewport`), Seite nach oben scrollen (`window.scrollTo(0, 0)`), eigenen Tab schließen. Es bleibt keine Emulation, kein Scroll-Stand und kein fremder Tab zurück.
+- **Own tab, never the user's tab.** Browser work runs in a tab of its own (`browser.tabs.open`), never in a tab of the user. Foreign tabs are never navigated. My own tab is closed at the end.
+- **Device emulation, not window size.** Widths are set through `chrome-devtools` → `emulate` with `viewport` (`<width>x<height>x<DPR>` plus optional `mobile`/`touch`). That is the equivalent of the "toggle device toolbar" button next to "Inspect": it sets the CSS width, the device pixel ratio and optionally the mobile and touch flags. Window size is **not** a substitute — `resize_page` silently does nothing when the page is not selected, and window size is not the CSS viewport.
+- **Evidence.** The result names the measured `innerWidth`; it has to match the announced width. If it shows a different width, the measurement is worthless and is redone.
+- **Cleanup is part of the test.** In the same step the test ends: reset the emulation (`emulate` without `viewport`), scroll the page back to the top (`window.scrollTo(0, 0)`), close my own tab. No emulation, no scroll position and no foreign tab is left behind.
+
+# Branch names for Paper designs
+
+- Every Paper design gets a branch of its own: `strip-01-paper`, `strip-02-paper`, `strip-03-paper`, … (incrementing).
 
 # Nightly Audit 23:00 (verifiziert)
 
