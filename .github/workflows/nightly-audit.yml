@@ -2,7 +2,7 @@ name: nightly-audit
 
 on:
   schedule:
-    - cron: '0 21:00 * * *' # 23:00 MESZ (22:00 MEZ Winter → 1h Drift gewollt)
+    - cron: '0 21 * * *' # 21:00 UTC = 23:00 CEST (winter: 22:00 CET — 1 hour drift intended)
   workflow_dispatch:
 
 jobs:
