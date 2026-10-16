@@ -132,6 +132,12 @@ On the experiment branches `flanking-cards`/`morphing-cards` add `lib/js/project
 - **Device emulation, not window size.** Widths are set through `chrome-devtools` → `emulate` with `viewport` (`<width>x<height>x<DPR>` plus optional `mobile`/`touch`). That is the equivalent of the "toggle device toolbar" button next to "Inspect": it sets the CSS width, the device pixel ratio and optionally the mobile and touch flags. Window size is **not** a substitute — `resize_page` silently does nothing when the page is not selected, and window size is not the CSS viewport.
 - **Evidence.** The result names the measured `innerWidth`; it has to match the announced width. If it shows a different width, the measurement is worthless and is redone.
 - **Cleanup is part of the test.** In the same step the test ends: reset the emulation (`emulate` without `viewport`), scroll the page back to the top (`window.scrollTo(0, 0)`), close my own tab. No emulation, no scroll position and no foreign tab is left behind.
+- **DevTools first, before any mobile claim.** Every mobile check, measurement or media-query statement starts with DevTools open and the device toolbar switched on:
+  - open DevTools, ⌥⌘I: `osascript -e 'tell application "Google Chrome" to activate' -e 'delay 0.8' -e 'tell application "System Events" to keystroke "i" using {command down, option down}'`
+  - toggle the device toolbar, ⌘⇧M: the same call with `keystroke "m" using {command down, shift down}`
+  - both need Accessibility permission for the process that runs the shell; without it osascript answers "not allowed to send keystrokes (1002)".
+  - then set the width in the toolbar's "Dimensions" control and read it back from the page (`innerWidth`), naming it in the result.
+  - the `chrome-devtools` → `emulate` viewport override is **not** a substitute for this; it renders a different view, and its numbers have been wrong in this project.
 
 # Nightly audit 23:00 (verified)
 
