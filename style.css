@@ -3323,6 +3323,26 @@ a, button, .btn, .nav-link, .thumb-element, #theme-toggle, .scrolltop, #intro-bu
     opacity: initial !important;
     text-decoration: none !important;
   }
+  /* Card stack: the 40px hover lift and the shifted stack layers stuck on
+     touch, because the block above only resets colour, border and shadow.
+     Here they are explicitly returned to the rest state. */
+  #projekte .cluster .thumb-element:hover {
+    transform: none !important;
+  }
+  #projekte .cluster .thumb-element:hover::before {
+    transform: none !important;
+    background: var(--stack-bottom-bg) !important;
+    box-shadow: var(--shadow-stack-bottom-rest) !important;
+  }
+  #projekte .cluster .thumb-element:hover::after {
+    transform: none !important;
+    background: var(--stack-middle-bg) !important;
+    box-shadow: var(--shadow-stack-middle-rest) !important;
+  }
+  #projekte .cluster .thumb-element:hover .card {
+    transform: none !important;
+    box-shadow: var(--shadow-card-rest) !important;
+  }
 }
 
 /* ============================================================
