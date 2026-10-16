@@ -129,7 +129,7 @@ On the experiment branches `flanking-cards`/`morphing-cards` add `lib/js/project
 # Browser tests (mandatory)
 
 - **Own tab, never the user's tab.** Browser work runs in a tab of its own (`browser.tabs.open`), never in a tab of the user. Foreign tabs are never navigated. My own tab is closed at the end.
-- **Device emulation, not window size.** Widths are set through `chrome-devtools` → `emulate` with `viewport` (`<width>x<height>x<DPR>` plus optional `mobile`/`touch`). That is the equivalent of the "toggle device toolbar" button next to "Inspect": it sets the CSS width, the device pixel ratio and optionally the mobile and touch flags. Window size is **not** a substitute — `resize_page` silently does nothing when the page is not selected, and window size is not the CSS viewport.
+- **Device toolbar, not window size.** Widths are set through the device toolbar in DevTools: open DevTools with ⌥⌘I, switch the toolbar on with ⌘⇧M (both keystrokes spelled out in the rule below), then set the width in its "Dimensions" control. Window size is **not** a substitute — `resize_page` silently does nothing when the page is not selected, and window size is not the CSS viewport. The `chrome-devtools` → `emulate` viewport override is not a substitute either.
 - **Evidence.** The result names the measured `innerWidth`; it has to match the announced width. If it shows a different width, the measurement is worthless and is redone.
 - **Cleanup is part of the test.** In the same step the test ends: reset the emulation (`emulate` without `viewport`), scroll the page back to the top (`window.scrollTo(0, 0)`), close my own tab. No emulation, no scroll position and no foreign tab is left behind.
 - **DevTools first, before any mobile claim.** Every mobile check, measurement or media-query statement starts with DevTools open and the device toolbar switched on:
@@ -207,6 +207,6 @@ Every rule has a trigger, a duty, evidence. Without evidence it counts as violat
    Mechanics: none; doom_loop only catches identical repeated calls.
 11. **Gate Device check** (widths, breakpoints, mobile)
    Trigger: every claim about behaviour at a certain width (`@media`, breakpoint, "on the phone", "at 768px").
-   Duty: set the width through device emulation (`chrome-devtools` → `emulate` with `viewport`, equivalent to the "toggle device toolbar" button). It sets the CSS width, the device pixel ratio and optionally the mobile and touch flags. **Never** through the window size.
+   Duty: set the width through the device toolbar (⌥⌘I opens DevTools, ⌘⇧M toggles the toolbar). **Never** through the window size.
    Evidence: the result names the measured `innerWidth` and it matches the announced width. If a different width appears than announced, the measurement is worthless.
    Mechanics: `resize_page` silently does nothing when the page is not selected. Then all measurements return the same width and still look like valid results. Window size is also not the CSS viewport, so breakpoints do not apply reliably with it.
