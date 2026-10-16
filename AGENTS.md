@@ -138,6 +138,8 @@ On the experiment branches `flanking-cards`/`morphing-cards` add `lib/js/project
   - both need Accessibility permission for the process that runs the shell; without it osascript answers "not allowed to send keystrokes (1002)".
   - then set the width in the toolbar's "Dimensions" control and read it back from the page (`innerWidth`), naming it in the result.
   - the `chrome-devtools` → `emulate` viewport override is **not** a substitute for this; it renders a different view, and its numbers have been wrong in this project.
+  - start in a **new tab opened for this purpose**, never in a tab of the user. Only an explicit instruction from the user ("use my tab") allows working in his tab.
+  - when the measurements are done, close that tab. If it was the user's tab, put it back exactly as it was before the work: same scroll position, same DevTools state (open or closed), same device-toolbar setting, and no forced element state left behind.
 
 # Nightly audit 23:00 (verified)
 
