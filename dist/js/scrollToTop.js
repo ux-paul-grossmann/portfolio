@@ -47,6 +47,24 @@ $(document).on('hidden.bs.collapse', '#navbarToggler', function(){ positionForMe
 $(window).on('resize', function(){ if(__menuOpen && isMobile()) positionForMenu(true); else if (!isMobile()) document.body.classList.remove('menu-open'); });
 
 var __scrollChoreo = false;
+
+// Breakpoint change: the toggle's horizontal offset is layout dependent — on
+// desktop it moves aside so the arrow can take its corner, on mobile the two
+// are stacked and no offset must remain. The choreography writes that offset as
+// an inline style, which survives a viewport change (for example switching the
+// device toolbar between desktop and mobile), because the reset only runs on
+// scroll. Re-derive it whenever the breakpoint is crossed.
+var __mobileQuery = window.matchMedia('(max-width: 575.98px)');
+__mobileQuery.addEventListener('change', function () {
+    var toggle = document.getElementById('theme-toggle');
+    if (!toggle) return;
+    if (__mobileQuery.matches) {
+        toggle.style.transform = 'translateX(0)';
+    } else {
+        toggle.style.transform = __scrollChoreo ? 'translateX(-46px)' : 'translateX(0)';
+    }
+});
+
 $(window).scroll(function() {
     if (__menuOpen && isMobile()) return; // menu open → keep above menu, ignore scroll choreo
     var shouldShow = $(this).scrollTop() > 150;
