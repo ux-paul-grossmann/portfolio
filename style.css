@@ -3331,6 +3331,12 @@ a, button, .btn, .nav-link, .thumb-element, #theme-toggle, .scrolltop, #intro-bu
   }
   /* The card hovers are scoped to hover-capable devices now, so nothing in
      here has to neutralise them any more. */
+  /* Compositing hint: while the card scales back to the rest state, the tag row
+     was re-rasterised every frame, which read as a small wobble. Keeping the
+     card on its own layer removes it. */
+  #projekte .cluster .thumb-element .card {
+    will-change: transform;
+  }
 }
 
 /* ============================================================
