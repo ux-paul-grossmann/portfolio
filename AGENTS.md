@@ -139,6 +139,9 @@ On the experiment branches `flanking-cards`/`morphing-cards` add `lib/js/project
   - then set the width in the toolbar's "Dimensions" control and read it back from the page (`innerWidth`), naming it in the result.
   - the `chrome-devtools` → `emulate` viewport override is **not** a substitute for this; it renders a different view, and its numbers have been wrong in this project.
   - start in a **new tab opened for this purpose**, never in a tab of the user. Only an explicit instruction from the user ("use my tab") allows working in his tab.
+  - the width is typed into the toolbar's "Dimensions" control. Keystrokes can open DevTools and toggle the toolbar, but they **cannot enter a value**. If the width cannot be set that way, say so and ask — never substitute the window size and never an `chrome-devtools` → `emulate` override.
+  - ⌘⇧M is a **toggle**, so confirm the toolbar is actually on instead of assuming a keystroke turned it on.
+  - before measuring, verify the state from the page: `innerWidth` plus `matchMedia('(max-width: 575.98px)')` and the touch media queries — `(hover: none)`, `(pointer: coarse)`. Name all of them in the result.
   - when the measurements are done, close that tab. If it was the user's tab, put it back exactly as it was before the work: same scroll position, same DevTools state (open or closed), same device-toolbar setting, and no forced element state left behind.
 
 # Nightly audit 23:00 (verified)
