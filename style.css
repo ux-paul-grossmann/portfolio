@@ -340,12 +340,14 @@ a:visited {
     text-decoration: none !important;
 }
 
-#projekte .thumb-element:hover .card-title {
-    color: var(--collapse-card-titleFG) !important;
-}
+@media (hover: hover) and (pointer: fine) {
+    #projekte .thumb-element:hover .card-title {
+        color: var(--collapse-card-titleFG) !important;
+    }
 
-#projekte .thumb-element:hover .card-description {
-    color: var(--bodyFG) !important;
+    #projekte .thumb-element:hover .card-description {
+        color: var(--bodyFG) !important;
+    }
 }
 
 /* ============================================================
@@ -1252,26 +1254,31 @@ dd.d-flex.flex-row.align-items-center.flex-wrap.mb-5 {
     z-index: 5;
 }
 
-#projekte .cluster .thumb-element:hover {
-    transform: translateY(-40px);
-    z-index: 100 !important;
-}
+/* Hover behaviour of the card stack: hover-capable devices only. On touch the
+   first tap would otherwise be consumed by the hover state instead of clicking,
+   and a stuck hover would need resetting. */
+@media (hover: hover) and (pointer: fine) {
+    #projekte .cluster .thumb-element:hover {
+        transform: translateY(-40px);
+        z-index: 100 !important;
+    }
 
-#projekte .cluster .thumb-element:hover::before {
-    transform: translateY(40px);
-    background: var(--stack-bottom-hover-bg);
-    box-shadow: var(--shadow-stack-bottom-hover);
-}
+    #projekte .cluster .thumb-element:hover::before {
+        transform: translateY(40px);
+        background: var(--stack-bottom-hover-bg);
+        box-shadow: var(--shadow-stack-bottom-hover);
+    }
 
-#projekte .cluster .thumb-element:hover::after {
-    transform: translateY(20px) scale(1.02);
-    background: var(--stack-middle-hover-bg);
-    box-shadow: var(--shadow-stack-middle-hover);
-}
+    #projekte .cluster .thumb-element:hover::after {
+        transform: translateY(20px) scale(1.02);
+        background: var(--stack-middle-hover-bg);
+        box-shadow: var(--shadow-stack-middle-hover);
+    }
 
-#projekte .cluster .thumb-element:hover .card {
-    box-shadow: var(--shadow-card-hover);
-    transform: translateY(-2px) scale(1.05);
+    #projekte .cluster .thumb-element:hover .card {
+        box-shadow: var(--shadow-card-hover);
+        transform: translateY(-2px) scale(1.05);
+    }
 }
 
 #projekte .cluster .thumb-element:active .card,
@@ -1284,13 +1291,15 @@ dd.d-flex.flex-row.align-items-center.flex-wrap.mb-5 {
     pointer-events: none !important;
 }
 
-#projekte .thumb-element:hover {
-    background: transparent !important;
-}
+@media (hover: hover) and (pointer: fine) {
+    #projekte .thumb-element:hover {
+        background: transparent !important;
+    }
 
-#projekte .thumb-element:hover .card-title,
-#projekte .thumb-element:hover .card-text {
-    color: inherit;
+    #projekte .thumb-element:hover .card-title,
+    #projekte .thumb-element:hover .card-text {
+        color: inherit;
+    }
 }
 
 /* ============================================================
@@ -1361,11 +1370,13 @@ dd.d-flex.flex-row.align-items-center.flex-wrap.mb-5 {
     word-break: break-word;
 }
 
-a.thumb-element:hover span.badge.badge-tag {
-    background: var(--collapse-badge-hover-tagBG);
-    color: var(--collapse-badge-hover-tagFG);
-    border: var(--badge-tag-border-hover);
-    transition: 200ms all ease;
+@media (hover: hover) and (pointer: fine) {
+    a.thumb-element:hover span.badge.badge-tag {
+        background: var(--collapse-badge-hover-tagBG);
+        color: var(--collapse-badge-hover-tagFG);
+        border: var(--badge-tag-border-hover);
+        transition: 200ms all ease;
+    }
 }
 
 #projekte .card-body-thumbnail {
@@ -2011,11 +2022,13 @@ a.thumb-element:visited {
 }
 
 
-#projekte .thumb-element:hover h4,
-#projekte .thumb-element:hover h5,
-#projekte .thumb-element:hover h6 {
-    background: transparent !important;
-    background-color: transparent !important;
+@media (hover: hover) and (pointer: fine) {
+    #projekte .thumb-element:hover h4,
+    #projekte .thumb-element:hover h5,
+    #projekte .thumb-element:hover h6 {
+        background: transparent !important;
+        background-color: transparent !important;
+    }
 }
 
 #copyright {
@@ -3285,24 +3298,17 @@ a, button, .btn, .nav-link, .thumb-element, #theme-toggle, .scrolltop, #intro-bu
 
 @media (hover: none), (pointer: coarse) {
   a:hover,
-  #projekte .thumb-element:hover .card-title,
-  #projekte .thumb-element:hover .card-description,
   .navbar-light .navbar-nav .nav-link:hover,
   .dropdown-item:hover,
   .close:not(:disabled):not(.disabled):hover,
   a#ci-brand-detail-name:hover,
   #intro-button:hover,
   .submit-button:hover,
-  #projekte .thumb-element:hover .card-text,
-  a.thumb-element:hover span.badge.badge-tag,
   .carousel-control-next:hover,
   .carousel-control-prev:hover,
   .scroll:hover,
   #projekte .scroll-to-top-card:hover,
   #theme-panel-container .dropdown-item:hover,
-  #projekte .thumb-element:hover h4,
-  #projekte .thumb-element:hover h5,
-  #projekte .thumb-element:hover h6,
   #socialIconsWrap li a.social:hover,
   .btn.download-section-color:nth-child(1):hover,
   .btn.download-section-color:nth-child(2):hover,
@@ -3323,26 +3329,8 @@ a, button, .btn, .nav-link, .thumb-element, #theme-toggle, .scrolltop, #intro-bu
     opacity: initial !important;
     text-decoration: none !important;
   }
-  /* Card stack: the 40px hover lift and the shifted stack layers stuck on
-     touch, because the block above only resets colour, border and shadow.
-     Here they are explicitly returned to the rest state. */
-  #projekte .cluster .thumb-element:hover {
-    transform: none !important;
-  }
-  #projekte .cluster .thumb-element:hover::before {
-    transform: none !important;
-    background: var(--stack-bottom-bg) !important;
-    box-shadow: var(--shadow-stack-bottom-rest) !important;
-  }
-  #projekte .cluster .thumb-element:hover::after {
-    transform: none !important;
-    background: var(--stack-middle-bg) !important;
-    box-shadow: var(--shadow-stack-middle-rest) !important;
-  }
-  #projekte .cluster .thumb-element:hover .card {
-    transform: none !important;
-    box-shadow: var(--shadow-card-rest) !important;
-  }
+  /* The card hovers are scoped to hover-capable devices now, so nothing in
+     here has to neutralise them any more. */
 }
 
 /* ============================================================
