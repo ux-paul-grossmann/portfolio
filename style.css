@@ -1761,6 +1761,11 @@ label {
 #projekte .scroll-to-top-card i {
     margin-right: 8px;
     font-size: 0.9rem;
+    color: var(--actionButtonFG);
+}
+
+#projekte .scroll-to-top-card:hover i {
+    color: var(--actionButtonFG-hover);
 }
 
 #projekte .cluster {
