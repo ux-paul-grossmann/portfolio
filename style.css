@@ -163,18 +163,20 @@ h6 {
     font-size: 1rem;
 }
 
-dt {
+.project-detail {
+    color: var(--collapse-cardFG);
+}
+
+.project-detail > h3 {
     font-weight: 700;
     margin-top: 2rem;
     font-size: 120%;
 }
 
-dd {
+.project-detail-body {
     padding-top: 0.4rem;
 }
 
-article dd,
-article dt,
 article h1,
 article h2,
 article h3,
@@ -989,7 +991,7 @@ a#ci-brand-detail-name:hover {
     object-fit: contain;
 }
 
-dd.d-flex.flex-row.align-items-center.flex-wrap.mb-5 {
+.project-detail-body.d-flex.flex-row.align-items-center.flex-wrap.mb-5 {
     background: var(--designed-mit-BG);
     padding: 10px 10px 10px 15px;
     margin-top: 8px;
