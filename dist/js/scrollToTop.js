@@ -19,6 +19,14 @@ function positionForMenu(open){
     var hoch = document.querySelector('.scrolltop');
     if (open) {
         document.body.classList.add('menu-open');
+        // The CSS offsets above the menu derive from the menu's measured height,
+        // so a taller menu (a wrapping label, an extra item) cannot swallow the
+        // buttons. Only measured once the collapse is actually expanded.
+        var nav = document.querySelector('nav.navbar.fixed-bottom');
+        var collapse = document.getElementById('navbarToggler');
+        if (nav && collapse && collapse.classList.contains('show')) {
+            document.documentElement.style.setProperty('--menu-height', Math.round(nav.getBoundingClientRect().height) + 'px');
+        }
         if (hoch) { hoch.style.display = 'flex'; hoch.style.opacity = '1'; }
         var m = window.motion || window.Motion;
         var toggle = document.getElementById('theme-toggle');
@@ -28,6 +36,7 @@ function positionForMenu(open){
         }
     } else {
         document.body.classList.remove('menu-open');
+        document.documentElement.style.removeProperty('--menu-height');
         if (hoch) {
             var shouldShow = $(window).scrollTop() > 150;
             if (!shouldShow) {

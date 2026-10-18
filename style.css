@@ -1919,12 +1919,14 @@ label {
     /* Fix DevTools Desktop→Mobile switch: force nav/toggle visible */
     nav.navbar.fixed-bottom { display: flex !important; visibility: visible !important; }
     #theme-toggle { display: inline-flex !important; opacity: 1 !important; visibility: visible !important; }
-    /* menu expanded — buttons above menu to avoid overlap (orange line) */
+    /* Menu expanded — both buttons sit above the menu. The offset is derived
+       from the menu's measured height (--menu-height, set by the script), with
+       a fallback so this still works if the script never runs. */
     body.menu-open #theme-toggle {
-        bottom: 292px !important;
+        bottom: calc(var(--menu-height, 285px) + 8px) !important;
     }
     body.menu-open .scrolltop {
-        bottom: 340px !important;
+        bottom: calc(var(--menu-height, 285px) + 56px) !important;
         display: flex !important;
         opacity: 1 !important;
     }
