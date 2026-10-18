@@ -1878,11 +1878,13 @@ label {
     font-size: 1.1rem;
     width: 1em;
     text-align: center;
+    pointer-events: none;
 }
 .scrolltop i {
     font-size: 1.25rem;
     width: 1em;
     text-align: center;
+    pointer-events: none;
     /* optical compensation: arrow is linear vs. filled moon */
 }
 /* Mobile-Scroll-Top — Paper 2CK-0 / 2D2-0: bottom-right stacked, 38×38, 12px, #E9EFEF/#BEC8C9 */
