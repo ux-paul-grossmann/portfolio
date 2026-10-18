@@ -502,17 +502,6 @@ a:visited {
     z-index: 30;
 }
 
-.navbar-toggler:not(.collapsed) .fas.fa-chevron-up {
-    transition: 150ms transform ease-in;
-    transform: rotate(180deg);
-    z-index: 30;
-}
-
-.navbar-toggler.collapsed .fas.fa-chevron-up {
-    transition: 150ms transform ease-out;
-    z-index: 30;
-}
-
 .close {
     font-size: 1.5rem;
     font-weight: 700;
@@ -573,10 +562,10 @@ nav.navbar.fixed-bottom > .container {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    gap: 0.75rem;
+    gap: 0;
     width: 100%;
     max-width: 100%;
-    padding: 0 1rem;
+    padding: 0 0.5rem;
     margin: 0 auto;
     box-sizing: border-box;
     min-width: 0;
@@ -1919,6 +1908,29 @@ label {
     /* Fix DevTools Desktop→Mobile switch: force nav/toggle visible */
     nav.navbar.fixed-bottom { display: flex !important; visibility: visible !important; }
     #theme-toggle { display: inline-flex !important; opacity: 1 !important; visibility: visible !important; }
+    /* Mobile: the bar itself carries no surface — only the toggler does.
+       No backdrop blur either: it sampled the content behind the bar, which
+       made any background colour look bright on one side and dark on the other. */
+    nav.navbar.fixed-bottom.nav-bg-black {
+        background-color: transparent !important;
+        -webkit-backdrop-filter: none !important;
+        backdrop-filter: none !important;
+        box-shadow: none !important;
+    }
+    nav.navbar.fixed-bottom > .container {
+        justify-content: center !important;
+        /* the toggler sits 0.5rem from the bottom, matching the side padding */
+        padding-bottom: 0.5rem !important;
+    }
+    nav.navbar.fixed-bottom .navbar-toggler {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.1rem;
+        padding: 0.6rem 0.9rem;
+        border-radius: 0.75rem;
+        background-color: var(--navbarBG) !important;
+    }
     /* Menu expanded — both buttons sit above the menu. The offset is derived
        from the menu's measured height (--menu-height, set by the script), with
        a fallback so this still works if the script never runs. */
