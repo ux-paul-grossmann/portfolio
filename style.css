@@ -3746,3 +3746,117 @@ body.has-portrait-border #ci-profilbild #ci-picture-wrapper img {
     border: 1px solid rgb(255 255 255 / 0.16);
 }
 
+/* ============================================================
+   DEV: section reorder, only active with ?dev=1
+   Button in the nav, handle per section, insertion line, order bar.
+   ============================================================ */
+#devReorderToggle {
+    position: absolute;
+    left: 8px;
+    bottom: 8px;
+    width: 32px;
+    height: 32px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--collapse-cardBorderColor);
+    border-radius: 10px;
+    background: var(--collapse-cardBG);
+    color: var(--collapse-card-titleFG);
+    font-size: 15px;
+    line-height: 1;
+    cursor: pointer;
+    z-index: 1060;
+}
+
+#devReorderToggle[aria-pressed="true"] {
+    background: var(--md-sys-color-primary);
+    border-color: var(--md-sys-color-primary);
+    color: var(--md-sys-color-on-primary);
+}
+
+body.dev-reorder .project-detail {
+    position: relative;
+}
+
+.dev-reorder-handle {
+    display: none;
+}
+
+body.dev-reorder .dev-reorder-handle {
+    display: inline-flex;
+    position: absolute;
+    top: 2rem;
+    right: 0;
+    width: 26px;
+    height: 26px;
+    align-items: center;
+    justify-content: center;
+    border: 1px dashed var(--collapse-cardBorderColor);
+    border-radius: 6px;
+    background: var(--collapse-cardBG);
+    color: var(--collapse-card-titleFG);
+    font-size: 14px;
+    line-height: 1;
+    cursor: grab;
+    touch-action: none;
+    z-index: 5;
+}
+
+body.dev-reorder .dev-reorder-handle:active {
+    cursor: grabbing;
+}
+
+.project-detail.dev-dragging {
+    opacity: 0.4;
+}
+
+.project-detail.dev-before {
+    box-shadow: inset 0 3px 0 var(--md-sys-color-primary);
+}
+
+.project-detail.dev-after {
+    box-shadow: inset 0 -3px 0 var(--md-sys-color-primary);
+}
+
+#devReorderBar {
+    position: fixed;
+    left: 8px;
+    right: 8px;
+    bottom: 56px;
+    z-index: 1200;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 8px;
+    border: 1px solid var(--collapse-cardBorderColor);
+    border-radius: 10px;
+    background: var(--collapse-cardBG);
+    color: var(--collapse-card-titleFG);
+    font-family: 'Inter', 'Montserrat', sans-serif;
+    font-size: 11px;
+    box-shadow: 0 2px 10px rgb(0 0 0 / 0.18);
+}
+
+#devReorderBar[hidden] {
+    display: none;
+}
+
+#devReorderBar .dev-reorder-label {
+    flex: 1 1 auto;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.dev-reorder-button {
+    flex: 0 0 auto;
+    padding: 4px 8px;
+    border: 1px solid var(--collapse-cardBorderColor);
+    border-radius: 6px;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
+}
+
