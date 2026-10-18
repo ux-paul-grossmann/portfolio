@@ -127,7 +127,7 @@
 
         </div>
         <!-- Brand-Streifen: Review-Fassung, zwei Logogrößen, je still oder laufend -->
-        <section id="brandStrips" data-tone="mittel" data-edge="hauch" data-speed="mittel" aria-label="Stationen meiner Berufserfahrung">
+        <section id="brandStrips" data-tone="mittel" data-edge="hauch" data-speed="sehrlangsam" aria-label="Stationen meiner Berufserfahrung">
             <div class="brand-strip" id="brandStrip200" data-brand-size="200x120">
                 <div class="brand-panel">
                     <div class="brand-track">
@@ -327,7 +327,7 @@
         <div class="brand-lab-row">
             <label for="brandSize200">Strip 200×120</label>
             <label class="switch">
-                <input type="checkbox" id="brandSize200" checked>
+                <input type="checkbox" id="brandSize200">
                 <span class="slider"></span>
             </label>
         </div>
@@ -336,7 +336,7 @@
         <div class="brand-lab-row">
             <label for="brandSize150">Strip 150×90</label>
             <label class="switch">
-                <input type="checkbox" id="brandSize150">
+                <input type="checkbox" id="brandSize150" checked>
                 <span class="slider"></span>
             </label>
         </div>
@@ -345,7 +345,7 @@
         <div class="brand-lab-row">
             <label for="brandMove">Ticker</label>
             <label class="switch">
-                <input type="checkbox" id="brandMove">
+                <input type="checkbox" id="brandMove" checked>
                 <span class="slider"></span>
             </label>
         </div>
@@ -355,9 +355,9 @@
             <label>Speed</label>
         </div>
         <div class="brand-lab-seg" id="brandSpeed">
-            <button type="button" data-speed="sehrlangsam">Slowest</button>
+            <button type="button" data-speed="sehrlangsam" class="is-active">Slowest</button>
             <button type="button" data-speed="langsam">Slow</button>
-            <button type="button" data-speed="mittel" class="is-active">Medium</button>
+            <button type="button" data-speed="mittel">Medium</button>
             <button type="button" data-speed="schnell">Fast</button>
         </div>
         <div class="brand-hint">Seconds per round, 60 down to 15. Only while the ticker runs</div>
@@ -365,7 +365,7 @@
         <div class="brand-lab-row" style="margin-top:12px;">
             <label for="brandCells">Own containers</label>
             <label class="switch">
-                <input type="checkbox" id="brandCells">
+                <input type="checkbox" id="brandCells" checked>
                 <span class="slider"></span>
             </label>
         </div>
@@ -383,7 +383,7 @@
         <div class="brand-lab-row" style="margin-top:12px;">
             <label for="brandChip">Light chip</label>
             <label class="switch">
-                <input type="checkbox" id="brandChip" checked>
+                <input type="checkbox" id="brandChip">
                 <span class="slider"></span>
             </label>
         </div>
@@ -392,9 +392,9 @@
         <div id="brandChipTonWrap">
             <div class="brand-lab-row" style="margin-top:12px;">
                 <label for="brandChipTon">Chip lightness</label>
-                <span class="brand-perf-wert" id="brandChipTonWert">236</span>
+                <span class="brand-perf-wert" id="brandChipTonWert">200</span>
             </div>
-            <input type="range" id="brandChipTon" class="brand-lab-slider" min="110" max="255" step="1" value="236">
+            <input type="range" id="brandChipTon" class="brand-lab-slider" min="110" max="255" step="1" value="200">
             <div class="brand-hint">Dark mode only. Finetunes how bright the plate behind the logos is. 110 is a mid grey, 255 is pure white</div>
         </div>
 
@@ -457,7 +457,7 @@
         if (!strips || !strip200 || !strip150 || !size200 || !size150 || !move ||
             !cells || !chip || !lab || !closeBtn) return;
 
-        var SPEICHER = 'brandLabState';
+        var SPEICHER = 'brandLabState2';
 
         // ---------- Step groups ----------
         function segmentSetzen(wrapId, attr, wert) {
