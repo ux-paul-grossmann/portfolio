@@ -809,6 +809,15 @@ a#ci-brand-detail-name:hover {
     transition: none !important;
 }
 
+@media (max-width: 575.98px) {
+    /* At 360 CSS pixels the name box, the 16px gap and the tagline need 328px,
+       but the group only gets 320. Tighter tracking keeps the tagline on the
+       first line without shrinking the gap. */
+    #ci-brand-caption {
+        letter-spacing: 0.05rem;
+    }
+}
+
 #ci-picture-wrapper {
     padding-left: 0;
     padding-right: 0;
