@@ -430,6 +430,8 @@
         <div class="brand-perf-zeile"><span>Memory</span><span id="brandPerfHeap">–</span></div>
         <div class="brand-hint">Live. Frame time is the gap between two frames, 16.7 ms is a healthy 60 fps. Run the ticker, then flip Light chip to compare</div>
 
+        <button type="button" class="brand-lab-copy" id="brandCopy">Copy configuration</button>
+
         <div class="brand-hint" style="margin-top:10px;">Press Shift + ° to show or hide this panel</div>
     </aside>
 
@@ -451,6 +453,7 @@
         var panelTonWrap = document.getElementById('brandPanelTonWrap');
         var lab = document.getElementById('brandLab');
         var closeBtn = document.getElementById('brandLabClose');
+        var copyBtn = document.getElementById('brandCopy');
         if (!strips || !strip200 || !strip150 || !size200 || !size150 || !move ||
             !cells || !chip || !lab || !closeBtn) return;
 
@@ -517,6 +520,53 @@
             segmentSetzen('brandEdge', 'data-edge', s.rand || 'hauch');
             segmentSetzen('brandSpeed', 'data-speed', s.tempo || 'mittel');
         }
+
+        // ---------- Copy the configuration ----------
+        // The panel saves per browser, so desktop and mobile never share a state.
+        // This copies the current state as JSON, to be baked in as the code default.
+        var copyTimer = 0;
+        var COPY_LABEL = 'Copy configuration';
+
+        function copyFeedback(text, copied) {
+            if (!copyBtn) return;
+            copyBtn.textContent = text;
+            copyBtn.classList.toggle('is-copied', !!copied);
+            clearTimeout(copyTimer);
+            copyTimer = setTimeout(function () {
+                copyBtn.textContent = COPY_LABEL;
+                copyBtn.classList.remove('is-copied');
+            }, 1600);
+        }
+
+        function copyFallback(text) {
+            var area = document.createElement('textarea');
+            area.value = text;
+            area.setAttribute('readonly', '');
+            area.style.position = 'fixed';
+            area.style.top = '-1000px';
+            document.body.appendChild(area);
+            area.select();
+            var ok = false;
+            try { ok = document.execCommand('copy'); } catch (fehler) {}
+            document.body.removeChild(area);
+            if (ok) { copyFeedback('Copied', true); return; }
+            window.prompt('Copy the configuration manually:', text);
+        }
+
+        function copyConfiguration() {
+            var text = JSON.stringify(zustandLesen(), null, 2);
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(text).then(function () {
+                    copyFeedback('Copied', true);
+                }).catch(function () {
+                    copyFallback(text);
+                });
+            } else {
+                copyFallback(text);
+            }
+        }
+
+        if (copyBtn) copyBtn.addEventListener('click', copyConfiguration);
 
         // ---------- Ticker ----------
         var ABSTAND = 32; // muss zum margin-right in style.css passen

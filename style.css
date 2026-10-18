@@ -3535,6 +3535,8 @@ a, button, .btn, .nav-link, .thumb-element, #theme-toggle, .scrolltop, #intro-bu
     left: 10px;
     z-index: 1101;
     width: 260px;
+    max-height: calc(100vh - 20px);
+    overflow-y: auto;
     background: var(--brand-lab-bg);
     border: 1px solid var(--brand-lab-border);
     border-radius: 12px;
@@ -3618,6 +3620,32 @@ a, button, .btn, .nav-link, .thumb-element, #theme-toggle, .scrolltop, #intro-bu
 .brand-perf-zeile span:last-child {
     font-family: ui-monospace, Menlo, monospace;
     color: var(--brand-lab-text);
+}
+
+.brand-lab-copy {
+    width: 100%;
+    margin-top: 14px;
+    padding: 7px 8px;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 8px;
+    border: 1px solid var(--brand-lab-border);
+    background: transparent;
+    color: var(--brand-lab-text);
+    cursor: pointer;
+    transition: background 150ms ease, border-color 150ms ease, color 150ms ease;
+}
+
+.brand-lab-copy:hover {
+    border-color: var(--md-sys-color-primary);
+    color: var(--md-sys-color-primary);
+}
+
+.brand-lab-copy.is-copied {
+    background: var(--md-sys-color-primary);
+    border-color: var(--md-sys-color-primary);
+    color: var(--md-sys-color-on-primary);
 }
 
 .brand-lab-slider {
