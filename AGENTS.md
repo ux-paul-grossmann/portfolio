@@ -128,10 +128,10 @@ On the experiment branches `flanking-cards`/`morphing-cards` add `lib/js/project
 
 # Browser tests (mandatory)
 
-- **Own tab, never the user's tab.** Browser work runs in a tab of its own (`browser.tabs.open`), never in a tab of the user. Foreign tabs are never navigated. My own tab is closed at the end.
+- **Own tab, never the user's tab.** Browser work runs in a tab of its own (`browser.tabs.open`), never in a tab of the user. Foreign tabs are never navigated. My own tab stays **open** afterwards — the user may still be working in it.
 - **Device toolbar, not window size.** Widths are set through the device toolbar in DevTools: open DevTools with ⌥⌘I, switch the toolbar on with ⌘⇧M (both keystrokes spelled out in the rule below), then set the width in its "Dimensions" control. Window size is **not** a substitute — `resize_page` silently does nothing when the page is not selected, and window size is not the CSS viewport. The `chrome-devtools` → `emulate` viewport override is not a substitute either.
 - **Evidence.** The result names the measured `innerWidth`; it has to match the announced width. If it shows a different width, the measurement is worthless and is redone.
-- **Cleanup is part of the test.** In the same step the test ends: reset the emulation (`emulate` without `viewport`), scroll the page back to the top (`window.scrollTo(0, 0)`), close my own tab. No emulation, no scroll position and no foreign tab is left behind.
+- **Cleanup is part of the test.** In the same step the test ends: reset the emulation (`emulate` without `viewport`) and scroll the page back to the top (`window.scrollTo(0, 0)`). No emulation and no scroll position is left behind. The tab itself stays open.
 - **DevTools first, before any mobile claim.** Every mobile check, measurement or media-query statement starts with DevTools open and the device toolbar switched on:
   - open DevTools, ⌥⌘I: `osascript -e 'tell application "Google Chrome" to activate' -e 'delay 0.8' -e 'tell application "System Events" to keystroke "i" using {command down, option down}'`
   - toggle the device toolbar, ⌘⇧M: the same call with `keystroke "m" using {command down, shift down}`
@@ -146,7 +146,7 @@ On the experiment branches `flanking-cards`/`morphing-cards` add `lib/js/project
   - the check must test the **effect**, not the exit code, and it must not be true before the action. Compare state before and after (for a docked DevTools, `innerWidth < outerWidth - 200`) instead of a fixed threshold that happens to hold — a check that passes without the action proves nothing.
   - **focus first, then press.** Keystrokes go to whatever application is frontmost, and the user multitasks in other apps. Before any keystroke run `tools/focus-chrome.sh`, which reports the frontmost application and activates Chrome if it is not. With a docked DevTools, click once inside the pane first, so the pane holds focus rather than the page.
   - **reading DevTools state (the Changes panel, for example):** `⌘⇧P` opens the command menu, then the command name is typed into the field that already holds focus and `Enter` runs it. The text must be inserted **without re-focusing anything** — choosing a field yourself lands the text in the wrong panel. Use `tools/cdp.mjs ui-insert "<command name>"` for that, never `ui-type`.
-  - when the measurements are done, close that tab. If it was the user's tab, put it back exactly as it was before the work: same scroll position, same DevTools state (open or closed), same device-toolbar setting, and no forced element state left behind.
+  - when the measurements are done, **leave that tab open**; it is only closed on an explicit instruction. If it was the user's tab, put it back as it was before the work: same scroll position, same DevTools state (open or closed), same device-toolbar setting, and no forced element state left behind.
 
 # Nightly audit 23:00 (verified)
 
