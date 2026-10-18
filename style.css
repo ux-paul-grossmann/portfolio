@@ -1270,6 +1270,12 @@ a#ci-brand-detail-name:hover {
         box-shadow: var(--shadow-card-hover);
         transform: translateY(-2px) scale(1.05);
     }
+
+    /* Same compositing hint as on touch: the tag row was re-rasterised every
+       frame while the card scaled, which read as a wobble on desktop too. */
+    #projekte .cluster .thumb-element .card {
+        will-change: transform;
+    }
 }
 
 #projekte .cluster .thumb-element:active .card,
