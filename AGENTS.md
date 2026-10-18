@@ -142,6 +142,8 @@ On the experiment branches `flanking-cards`/`morphing-cards` add `lib/js/project
   - the width is typed into the toolbar's "Dimensions" control. Keystrokes can open DevTools and toggle the toolbar, but they **cannot enter a value**. If the width cannot be set that way, say so and ask — never substitute the window size and never an `chrome-devtools` → `emulate` override.
   - ⌘⇧M is a **toggle**, so confirm the toolbar is actually on instead of assuming a keystroke turned it on.
   - before measuring, verify the state from the page: `innerWidth` plus `matchMedia('(max-width: 575.98px)')` and the touch media queries — `(hover: none)`, `(pointer: coarse)`. Name all of them in the result.
+  - **never end the task after one failed attempt.** Keystrokes, measurements and access requests run through `tools/retry.sh <attempts> <interval> "<action>" "<check>"`: two further attempts, 5 seconds apart. The user may be on another tab or in another app and simply not see the first try.
+  - the check must test the **effect**, not the exit code, and it must not be true before the action. Compare state before and after (for a docked DevTools, `innerWidth < outerWidth - 200`) instead of a fixed threshold that happens to hold — a check that passes without the action proves nothing.
   - when the measurements are done, close that tab. If it was the user's tab, put it back exactly as it was before the work: same scroll position, same DevTools state (open or closed), same device-toolbar setting, and no forced element state left behind.
 
 # Nightly audit 23:00 (verified)
