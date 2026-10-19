@@ -642,7 +642,7 @@ nav.navbar.fixed-bottom .navbar-collapse .menu-close {
         flex-direction: column;
         align-items: center;
         width: 100%;
-        padding-bottom: 4rem;
+        padding-bottom: 0.5rem;
         background: var(--mobile-menu-navbar-navBG);
         -webkit-backdrop-filter: blur(14px) saturate(1.12);
         backdrop-filter: blur(14px) saturate(1.12);
@@ -681,7 +681,7 @@ nav.navbar.fixed-bottom .navbar-collapse .menu-close {
         left: 50%;
         bottom: 0.5rem;
         transform: translateX(-50%);
-        display: inline-flex !important;
+        display: none !important;
         align-items: center;
         justify-content: center;
         width: auto !important;
@@ -1944,6 +1944,9 @@ label {
     }
     nav.navbar.fixed-bottom > .container {
         justify-content: center !important;
+        /* the menu grows upward; the toggler stays at the bottom, where the
+           closed hamburger sits, so the close target is the same spot */
+        flex-direction: column-reverse;
         /* the toggler sits 0.5rem from the bottom, matching the side padding */
         padding-bottom: 0.5rem !important;
     }
@@ -1956,6 +1959,11 @@ label {
         padding: calc(0.6rem + 2px) 0.9rem;
         border-radius: 0.75rem;
         background-color: var(--navbarBG) !important;
+    }
+
+    /* While the menu is open the same full-width toggler is the X. */
+    nav.navbar.fixed-bottom .navbar-toggler:not(.collapsed) .navbar-toggler-bars .fa-bars::before {
+        content: "\f00d";
     }
     /* Menu expanded — both buttons sit above the menu. The offset is derived
        from the menu's measured height (--menu-height, set by the script), with
