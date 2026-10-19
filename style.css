@@ -1387,11 +1387,11 @@ a#ci-brand-detail-name:hover {
 }
 
 #projekte .card-body-thumbnail {
-    padding: 1.2rem 1.2rem 0.3rem 1.2rem;
+    padding: 1rem 1rem 0.3rem 1rem;
 }
 
 #projekte .card-footer-thumbnail {
-    padding: 0.3rem 0rem;
+    padding: 0.3rem 1rem 1rem 1rem;
     /* the base rule was absolute with right/bottom 16px; once the project card
        makes it relative, those offsets shift it into the thumbnail column */
     right: 0;
