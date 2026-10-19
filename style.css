@@ -642,11 +642,11 @@ nav.navbar.fixed-bottom .navbar-collapse .menu-close {
         flex-direction: column;
         align-items: center;
         width: 100%;
-        padding-bottom: 0.5rem;
+        padding: 0.5rem 0.5rem;
         background: var(--mobile-menu-navbar-navBG);
         -webkit-backdrop-filter: blur(14px) saturate(1.12);
         backdrop-filter: blur(14px) saturate(1.12);
-        border-radius: 0.75rem;
+        border-radius: 1rem;
     }
 
     nav.navbar.fixed-bottom .navbar-toggler {
@@ -663,7 +663,7 @@ nav.navbar.fixed-bottom .navbar-collapse .menu-close {
     nav.navbar.fixed-bottom .navbar-nav {
         justify-content: center;
         width: 100%;
-        padding: 0.75rem 0;
+        padding: 0rem;
     }
 
     nav.navbar.fixed-bottom .navbar-nav .nav-link {
@@ -1957,7 +1957,7 @@ label {
         font-size: 1.1rem;
         /* pill 44px: the previous 0.6rem padding plus 2px top and bottom */
         padding: calc(0.6rem + 2px) 0.9rem;
-        border-radius: 0.75rem;
+        border-radius: 1rem;
         background-color: var(--navbarBG) !important;
     }
 
@@ -3381,6 +3381,22 @@ a, button, .btn, .nav-link, .thumb-element, #theme-toggle, .scrolltop, #intro-bu
      card on its own layer removes it. */
   #projekte .cluster .thumb-element .card {
     will-change: transform;
+  }
+
+  /* The same reset also blacks out a non-active link that is :hover or
+     :visited after a tap; keep the menu link colours on touch too. */
+  @media (max-width: 575.98px) {
+    nav.navbar.fixed-bottom .navbar-nav .nav-link:not(.active) {
+      color: var(--mobile-menu-nav-linkFG) !important;
+      background: transparent !important;
+    }
+  }
+
+  @media (min-width: 576px) {
+    nav.navbar.fixed-bottom .navbar-nav .nav-link:not(.active) {
+      color: var(--navlinkFG) !important;
+      background: transparent !important;
+    }
   }
 
   /* A tapped nav item is also :hover on touch; the reset above must not beat
