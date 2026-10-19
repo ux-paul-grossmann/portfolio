@@ -485,7 +485,7 @@ a:visited {
     border-radius: 0;
     font-family: 'Inter', sans-serif;
     z-index: 30;
-    height: 40px;
+    height: 44px;
 }
 
 .navbar-light .navbar-toggler {
@@ -564,7 +564,7 @@ nav.navbar.fixed-bottom > .container {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    gap: 0;
+    gap: 0.5rem;
     width: 100%;
     max-width: 100%;
     padding: 0 0.5rem;
@@ -646,6 +646,7 @@ nav.navbar.fixed-bottom .navbar-collapse .menu-close {
         background: var(--mobile-menu-navbar-navBG);
         -webkit-backdrop-filter: blur(14px) saturate(1.12);
         backdrop-filter: blur(14px) saturate(1.12);
+        border-radius: 0.75rem;
     }
 
     nav.navbar.fixed-bottom .navbar-toggler {
@@ -1900,7 +1901,7 @@ label {
 @media (max-width: 575.98px) {
     #theme-toggle {
         top: auto !important;
-        bottom: 56px !important;
+        bottom: 60px !important;
         right: 16px !important;
         width: 38px !important; height: 38px !important;
         border-radius: 12px !important;
@@ -1912,7 +1913,7 @@ label {
     }
     .scrolltop {
         top: auto !important;
-        bottom: 104px !important;
+        bottom: 108px !important;
         right: 16px !important;
         width: 38px !important; height: 38px !important;
         border-radius: 12px !important;
@@ -1951,7 +1952,8 @@ label {
         align-items: center;
         justify-content: center;
         font-size: 1.1rem;
-        padding: 0.6rem 0.9rem;
+        /* pill 44px: the previous 0.6rem padding plus 2px top and bottom */
+        padding: calc(0.6rem + 2px) 0.9rem;
         border-radius: 0.75rem;
         background-color: var(--navbarBG) !important;
     }
@@ -3372,6 +3374,22 @@ a, button, .btn, .nav-link, .thumb-element, #theme-toggle, .scrolltop, #intro-bu
   #projekte .cluster .thumb-element .card {
     will-change: transform;
   }
+
+  /* A tapped nav item is also :hover on touch; the reset above must not beat
+     the active state, or the label turns black on a transparent pill. */
+  .navbar-light .navbar-nav .nav-link.active {
+    color: var(--mobile-menu-nav-active-linkFG) !important;
+    background: var(--mobile-menu-nav-active-linkBG) !important;
+  }
+}
+
+/* Same guard for a touch device at the desktop breakpoint, where the nav uses
+   the desktop active colours instead of the mobile-menu ones. */
+@media (min-width: 576px) {
+    .navbar-light .navbar-nav .nav-link.active {
+        color: var(--navlink-active-FG) !important;
+        background: var(--navlink-active-BG) !important;
+    }
 }
 
 /* ============================================================
@@ -3752,8 +3770,8 @@ body.has-portrait-border #ci-profilbild #ci-picture-wrapper img {
    ============================================================ */
 #devReorderToggle {
     position: absolute;
-    left: 8px;
-    bottom: 8px;
+    left: 16px;
+    bottom: 14px;
     width: 32px;
     height: 32px;
     display: inline-flex;
@@ -3863,8 +3881,8 @@ body.dev-reorder .dev-reorder-handle:active {
 /* Dev: preset toolbar and inline editing, only with ?dev=1 */
 #devPresetToggle {
     position: absolute;
-    left: 48px;
-    bottom: 8px;
+    left: 56px;
+    bottom: 14px;
     width: 32px;
     height: 32px;
     display: inline-flex;
