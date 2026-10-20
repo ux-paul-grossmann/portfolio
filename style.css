@@ -3936,6 +3936,17 @@ body.dev-reorder .dev-reorder-handle:active {
     color: var(--md-sys-color-on-primary);
 }
 
+#devPresetToggle.is-dirty::after {
+    content: '';
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--md-sys-color-error);
+}
+
 #devPresetBar {
     position: fixed;
     left: 8px;
@@ -3982,6 +3993,16 @@ body.dev-reorder .dev-reorder-handle:active {
     color: var(--md-sys-color-primary);
 }
 
+.dev-preset-button:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+.dev-preset-button:disabled:hover {
+    border-color: var(--collapse-cardBorderColor);
+    color: inherit;
+}
+
 .dev-preset-picker {
     position: relative;
     flex: 1 1 auto;
@@ -4001,6 +4022,16 @@ body.dev-reorder .dev-reorder-handle:active {
 
 .dev-preset-search:focus {
     border-color: var(--md-sys-color-primary);
+}
+
+@media (max-width: 575.98px) {
+    #devPresetBar {
+        flex-wrap: wrap;
+    }
+
+    .dev-preset-picker {
+        flex: 1 1 100%;
+    }
 }
 
 .dev-preset-list {
