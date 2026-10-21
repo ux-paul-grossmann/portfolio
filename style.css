@@ -4909,6 +4909,15 @@ html.glightbox-open #devPresetToggle {
         pointer-events: none;
     }
 
+    .kontext-wrap {
+        transition: padding-bottom .28s cubic-bezier(.2, 0, 0, 1);
+    }
+
+    #kontext:hover .kontext-wrap:not(.is-playing),
+    #kontext:focus-within .kontext-wrap:not(.is-playing) {
+        padding-bottom: 72px;
+    }
+
     .kontext-wrap div[class*="note-"] {
         cursor: pointer;
         transition: translate .18s ease, box-shadow .18s ease, opacity .2s ease, filter .2s ease;
@@ -5055,6 +5064,7 @@ html.glightbox-open #devPresetToggle {
     position: relative;
     padding-bottom: 250px;
     cursor: none;
+    transition: none;
 }
 
 .kontext-wrap.is-playing div[class*="note-"] {
