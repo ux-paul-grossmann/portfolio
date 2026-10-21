@@ -3962,7 +3962,7 @@ body.dev-edit .dev-media-x[hidden] {
 /* Dev: preset toolbar and inline editing, only with ?dev=1 */
 #devPresetToggle {
     position: absolute;
-    left: 56px;
+    right: 56px;
     bottom: 14px;
     width: 32px;
     height: 32px;
