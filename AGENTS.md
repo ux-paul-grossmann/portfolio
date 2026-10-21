@@ -56,6 +56,7 @@ Smallest possible diffs. When in doubt: do not touch it, ask first.
 21. **Navigation.** Persistent, always shows the user where they are.
 22. **Test method.** One user early (one is infinitely better than none); three users per round, notes, debrief; fix serious problems first, then repeat the round.
 23. **Nielsen–Norman heuristics (all 10).** 1. visibility of system status (always show loading/success/error); 2. language of the real world (never implementation jargon); 3. user control (undo/close/cancel everywhere, everything reversible); 4. consistency (same patterns everywhere; platform conventions); 5. error prevention (prevent errors instead of reporting them); 6. recognition over recall (show options instead of demanding steps); 7. flexibility (shortcuts and defaults for power users, guidance for beginners); 8. minimalist design (no element without a job); 9. error recovery (every error names what happened plus the exact next step); 10. help and documentation (help appears where the problem occurs, short and task-related).
+24. **X means an inline SVG cross.** Every request for an "x", "x close" or a close control means an inline SVG cross, never a font glyph, a text character or an icon font. Centre the cross vertically and horizontally in its hit area.
 
 Private rules (Session Helper Operator, project tags) live only in the ignored HANDOVER.md.
 
