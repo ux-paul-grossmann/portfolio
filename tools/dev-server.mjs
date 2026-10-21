@@ -9,6 +9,7 @@ import { fileURLToPath } from 'node:url';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const THUMB_DIR = path.join(ROOT, 'lib', 'images', 'thumbs');
+const MEDIA_DIR = path.join(ROOT, 'lib', 'images', 'uploads');
 const HOST = '127.0.0.1';
 const PORT = Number(process.env.PORT || 8000);
 const MAX_UPLOAD_BYTES = 12 * 1024 * 1024;
@@ -80,13 +81,13 @@ function safeName(raw) {
   return cleaned || 'thumbnail';
 }
 
-async function freeName(base, ext) {
-  let candidate = path.join(THUMB_DIR, base + '.' + ext);
+async function freeName(dir, base, ext) {
+  let candidate = path.join(dir, base + '.' + ext);
   let counter = 2;
   for (;;) {
     try {
       await fs.access(candidate);
-      candidate = path.join(THUMB_DIR, base + '-' + counter + '.' + ext);
+      candidate = path.join(dir, base + '-' + counter + '.' + ext);
       counter += 1;
     } catch (error) {
       return path.basename(candidate);
@@ -94,7 +95,7 @@ async function freeName(base, ext) {
   }
 }
 
-async function handleUpload(req, res) {
+async function handleUpload(req, res, targetDir, prefix) {
   if (req.headers['x-dev-upload'] !== '1') {
     sendJson(res, 403, { error: 'Uploads are only accepted from the local dev editor.' });
     return;
@@ -116,11 +117,11 @@ async function handleUpload(req, res) {
     sendJson(res, 415, { error: 'Only PNG, JPEG or WebP images are supported.' });
     return;
   }
-  await fs.mkdir(THUMB_DIR, { recursive: true });
-  const fileName = await freeName(safeName(req.headers['x-file-name']), type.ext);
-  await fs.writeFile(path.join(THUMB_DIR, fileName), buffer);
-  const relative = './lib/images/thumbs/' + fileName;
-  console.log('thumbnail: ' + relative);
+  await fs.mkdir(targetDir, { recursive: true });
+  const fileName = await freeName(targetDir, safeName(req.headers['x-file-name']), type.ext);
+  await fs.writeFile(path.join(targetDir, fileName), buffer);
+  const relative = prefix + fileName;
+  console.log('upload: ' + relative);
   sendJson(res, 200, { path: relative });
 }
 
@@ -180,12 +181,17 @@ const server = http.createServer((req, res) => {
     send(res, 400, 'Bad request');
     return;
   }
-  if (pathname === '/__dev/thumbnail') {
+  const uploadTarget = pathname === '/__dev/thumbnail'
+    ? { dir: THUMB_DIR, prefix: './lib/images/thumbs/' }
+    : pathname === '/__dev/media'
+      ? { dir: MEDIA_DIR, prefix: './lib/images/uploads/' }
+      : null;
+  if (uploadTarget) {
     if (req.method !== 'POST') {
       send(res, 405, 'Method not allowed', 'text/plain; charset=utf-8', { Allow: 'POST' });
       return;
     }
-    handleUpload(req, res).catch(error => {
+    handleUpload(req, res, uploadTarget.dir, uploadTarget.prefix).catch(error => {
       console.error('upload failed:', error);
       sendJson(res, 500, { error: 'Upload failed.' });
     });
@@ -200,4 +206,5 @@ const server = http.createServer((req, res) => {
 server.listen(PORT, HOST, () => {
   console.log('Portfolio: http://' + HOST + ':' + PORT + '/');
   console.log('Thumbnails: POST /__dev/thumbnail -> lib/images/thumbs/');
+  console.log('Media:      POST /__dev/media -> lib/images/uploads/');
 });

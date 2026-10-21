@@ -80,10 +80,10 @@ There is NO `package.json`, NO build, no test/lint setup. Verification = open th
 in the browser (CDN dependencies: jQuery 3.3.1, Bootstrap 4.3.1, GLightbox, slick,
 vanilla-lazyload, motion → internet required).
 Local editing uses `node tools/dev-server.mjs` (standard library only): it serves the
-site on `http://127.0.0.1:8000` and writes images picked in the dev editor's new-card
-thumbnail to `lib/images/thumbs/`. The plain `python3 -m http.server 8000` still works
-for read-only browsing, but the thumbnail upload then reports that the dev server is
-missing.
+site on `http://127.0.0.1:8000` and writes images picked in the dev editor to
+`lib/images/thumbs/` (new-card thumbnails) and `lib/images/uploads/` (section media).
+The plain `python3 -m http.server 8000` still works for read-only browsing, but the
+thumbnail and media uploads then report that the dev server is missing.
 
 Syntax smoke test for the lib/js files (only files on the current branch):
 ```bash

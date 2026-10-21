@@ -3852,6 +3852,79 @@ body.dev-edit .dev-reorder-handle:focus-visible {
     outline-offset: 2px;
 }
 
+/* DEV: add and remove media while inline editing is open */
+body.dev-edit .dev-add-media-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    width: 100%;
+    align-self: stretch;
+    margin-top: 12px;
+}
+
+body.dev-edit .dev-add-media {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 32px;
+    padding: 6px 10px;
+    border: 1px dashed var(--collapse-cardBorderColor);
+    border-radius: 8px;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+    opacity: 0.75;
+}
+
+body.dev-edit .dev-add-media:hover,
+body.dev-edit .dev-add-media:focus-visible {
+    border-color: var(--md-sys-color-primary);
+    color: var(--md-sys-color-primary);
+    opacity: 1;
+    outline: none;
+}
+
+body.dev-edit .dev-add-media:disabled {
+    opacity: 0.5;
+    cursor: wait;
+}
+
+body.dev-edit .dev-add-media-error {
+    flex: 1 1 100%;
+    color: var(--md-sys-color-error);
+    font-size: 10px;
+    line-height: 1.4;
+}
+
+body.dev-edit .dev-add-media-error:empty {
+    display: none;
+}
+
+body.dev-edit .dev-media-remove {
+    display: block;
+    margin: -0.5rem 0 0.75rem auto;
+    padding: 4px 8px;
+    border: 1px solid var(--collapse-cardBorderColor);
+    border-radius: 6px;
+    background: transparent;
+    color: var(--md-sys-color-error);
+    font: inherit;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+}
+
+body.dev-edit .dev-media-remove:hover,
+body.dev-edit .dev-media-remove:focus-visible {
+    border-color: var(--md-sys-color-error);
+    outline: none;
+}
+
 .project-detail.dev-dragging {
     opacity: 0.4;
 }
