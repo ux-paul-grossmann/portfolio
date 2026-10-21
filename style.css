@@ -3812,54 +3812,28 @@ body.has-portrait-border #ci-profilbild #ci-picture-wrapper img {
     border: 1px solid rgb(255 255 255 / 0.16);
 }
 
-/* ============================================================
-   DEV: section reorder, only active with ?dev=1
-   Button in the nav, handle per section, insertion line, order bar.
-   ============================================================ */
-#devReorderToggle {
-    position: absolute;
-    left: 16px;
-    bottom: 14px;
-    width: 32px;
-    height: 32px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid var(--collapse-cardBorderColor);
-    border-radius: 10px;
-    background: var(--collapse-cardBG);
-    color: var(--collapse-card-titleFG);
-    font-size: 15px;
-    line-height: 1;
-    cursor: pointer;
-    z-index: 1060;
-}
-
-#devReorderToggle[aria-pressed="true"] {
-    background: var(--md-sys-color-primary);
-    border-color: var(--md-sys-color-primary);
-    color: var(--md-sys-color-on-primary);
-}
-
-body.dev-reorder .project-detail {
+/* DEV: section handles, active while inline editing is open */
+body.dev-edit .project-detail {
     position: relative;
+    padding-left: 2.25rem;
 }
 
 .dev-reorder-handle {
     display: none;
 }
 
-body.dev-reorder .dev-reorder-handle {
+body.dev-edit .dev-reorder-handle {
     display: inline-flex;
     position: absolute;
-    top: 2rem;
-    right: 0;
-    width: 26px;
-    height: 26px;
+    top: 0;
+    left: 0;
+    width: 28px;
+    height: 28px;
+    padding: 0;
     align-items: center;
     justify-content: center;
     border: 1px dashed var(--collapse-cardBorderColor);
-    border-radius: 6px;
+    border-radius: 7px;
     background: var(--collapse-cardBG);
     color: var(--collapse-card-titleFG);
     font-size: 14px;
@@ -3869,8 +3843,13 @@ body.dev-reorder .dev-reorder-handle {
     z-index: 5;
 }
 
-body.dev-reorder .dev-reorder-handle:active {
+body.dev-edit .dev-reorder-handle:active {
     cursor: grabbing;
+}
+
+body.dev-edit .dev-reorder-handle:focus-visible {
+    outline: 2px solid var(--md-sys-color-primary);
+    outline-offset: 2px;
 }
 
 .project-detail.dev-dragging {
@@ -3883,47 +3862,6 @@ body.dev-reorder .dev-reorder-handle:active {
 
 .project-detail.dev-after {
     box-shadow: inset 0 -3px 0 var(--md-sys-color-primary);
-}
-
-#devReorderBar {
-    position: fixed;
-    left: 8px;
-    right: 8px;
-    bottom: 56px;
-    z-index: 1200;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 6px 8px;
-    border: 1px solid var(--collapse-cardBorderColor);
-    border-radius: 10px;
-    background: var(--collapse-cardBG);
-    color: var(--collapse-card-titleFG);
-    font-family: 'Inter', 'Montserrat', sans-serif;
-    font-size: 11px;
-    box-shadow: 0 2px 10px rgb(0 0 0 / 0.18);
-}
-
-#devReorderBar[hidden] {
-    display: none;
-}
-
-#devReorderBar .dev-reorder-label {
-    flex: 1 1 auto;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-}
-
-.dev-reorder-button {
-    flex: 0 0 auto;
-    padding: 4px 8px;
-    border: 1px solid var(--collapse-cardBorderColor);
-    border-radius: 6px;
-    background: transparent;
-    color: inherit;
-    font: inherit;
-    cursor: pointer;
 }
 
 /* Dev: preset toolbar and inline editing, only with ?dev=1 */
@@ -3975,7 +3913,7 @@ body.dev-reorder .dev-reorder-handle:active {
     gap: 6px;
     padding: 8px;
     border: 1px solid var(--collapse-cardBorderColor);
-    border-radius: 10px;
+    border-radius: 14px;
     background: var(--collapse-cardBG);
     color: var(--collapse-card-titleFG);
     font-family: 'Inter', 'Montserrat', sans-serif;
@@ -4078,11 +4016,11 @@ body.dev-reorder .dev-reorder-handle:active {
     z-index: 1211;
     padding: 10px;
     border: 1px solid var(--collapse-cardBorderColor);
-    border-radius: 10px;
+    border-radius: 18px;
     background: var(--collapse-cardBG);
     color: var(--collapse-card-titleFG);
     font-family: 'Inter', 'Montserrat', sans-serif;
-    font-size: 11px;
+    font-size: 12px;
     box-shadow: 0 2px 10px rgb(0 0 0 / 0.18);
     transform: translateY(calc(100% + 70px));
     opacity: 0;
@@ -4100,70 +4038,142 @@ body.dev-reorder .dev-reorder-handle:active {
 }
 
 .dev-sub-head {
+    font-size: 12px;
     font-weight: 600;
-    margin-bottom: 8px;
+    margin-bottom: 12px;
 }
 
 .dev-sub-row {
     display: flex;
     flex-wrap: wrap;
-    gap: 6px;
+    gap: 12px;
     align-items: flex-end;
 }
 
 .dev-sub-fields {
-    margin-bottom: 8px;
-}
-
-.dev-sub-template {
-    justify-content: center;
-    margin-bottom: 4px;
-}
-
-.dev-sub-template select {
-    flex: 1 1 240px;
-    max-width: 420px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1.3fr;
+    gap: 12px;
+    margin-bottom: 12px;
 }
 
 .dev-sub-label {
     display: flex;
     flex-direction: column;
-    gap: 3px;
+    gap: 4px;
+    min-width: 0;
     flex: 1 1 160px;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    opacity: 0.75;
 }
 
-.dev-sub-input,
-.dev-sub-template select {
+.dev-sub-input {
     min-width: 0;
-    padding: 5px 8px;
+    height: 32px;
+    padding: 6px 9px;
     border: 1px solid var(--collapse-cardBorderColor);
-    border-radius: 6px;
+    border-radius: 8px;
     background: transparent;
-    color: inherit;
-    font: inherit;
+    color: var(--collapse-card-titleFG);
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: normal;
+    text-transform: none;
     outline: none;
 }
 
-.dev-sub-input:focus,
-.dev-sub-template select:focus {
+.dev-sub-input:focus {
     border-color: var(--md-sys-color-primary);
 }
 
+.dev-sub-template-group {
+    margin-bottom: 12px;
+    text-align: center;
+}
+
+.dev-sub-template-label {
+    display: block;
+    margin-bottom: 4px;
+}
+
+.dev-template-control {
+    display: flex;
+    align-items: stretch;
+    width: min(100%, 520px);
+    margin: 0 auto;
+    border: 1px solid var(--collapse-cardBorderColor);
+    border-radius: 8px;
+    overflow: hidden;
+    text-align: left;
+}
+
+.dev-template-control:focus-within {
+    border-color: var(--md-sys-color-primary);
+}
+
+.dev-template-control .dev-preset-button {
+    flex: 0 0 36px;
+    width: 36px;
+    height: 32px;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    font-size: 14px;
+}
+
+.dev-template-control .dev-preset-button:hover,
+.dev-template-control .dev-preset-button:focus-visible {
+    background: color-mix(in srgb, var(--md-sys-color-primary) 10%, transparent);
+    color: var(--md-sys-color-primary);
+}
+
+.dev-template-control select {
+    flex: 1 1 auto;
+    min-width: 0;
+    height: 32px;
+    padding: 6px 9px;
+    border: 0;
+    border-inline: 1px solid var(--collapse-cardBorderColor);
+    border-radius: 0;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    font-weight: 400;
+    letter-spacing: normal;
+    text-transform: none;
+    outline: none;
+}
+
+#devSubBar .dev-preset-button {
+    border-radius: 8px;
+}
+
+#devSubBar .dev-sub-actions .dev-preset-button {
+    min-height: 32px;
+    padding: 6px 10px;
+}
+
 .dev-sub-error {
-    min-height: 0;
+    min-height: 16px;
     color: var(--md-sys-color-error);
-    margin-top: 2px;
+    margin-top: 4px;
+    font-size: 11px;
 }
 
 .dev-sub-actions {
     display: flex;
     justify-content: flex-end;
-    gap: 6px;
-    margin-top: 8px;
+    gap: 8px;
+    margin-top: 12px;
 }
 
 .dev-sub-help {
-    margin: 0 0 8px;
+    margin: 0 0 12px;
     padding-left: 16px;
     line-height: 1.5;
 }
@@ -4178,16 +4188,16 @@ body.dev-reorder .dev-reorder-handle:active {
 
 @container (max-width: 520px) {
     .dev-sub-fields {
+        grid-template-columns: 1fr;
+    }
+
+    .dev-sub-row {
         flex-direction: column;
         align-items: stretch;
     }
 
     .dev-sub-label {
         flex-basis: auto;
-    }
-
-    .dev-sub-template {
-        flex-wrap: nowrap;
     }
 }
 
@@ -4268,7 +4278,5 @@ body.dev-edit [contenteditable="true"]:focus {
     outline-style: solid;
 }
 
-body.dev-edit #devReorderBar {
-    bottom: 112px;
-}
+
 
