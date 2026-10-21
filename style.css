@@ -4017,7 +4017,7 @@ body.dev-edit .dev-reorder-handle:focus-visible {
     bottom: calc(56px + var(--dev-bar-height, 44px) + 6px);
     width: min(calc(100vw - 16px), max(75vw, 320px), 1920px);
     margin-inline: auto;
-    z-index: 1211;
+    z-index: 1209;
     padding: 10px;
     border: 1px solid var(--collapse-cardBorderColor);
     border-radius: 18px;
@@ -4041,10 +4041,57 @@ body.dev-edit .dev-reorder-handle:focus-visible {
     pointer-events: auto;
 }
 
+#devSubBar.is-collapsed {
+    transform: translateY(calc(100% + 56px + var(--dev-bar-height, 44px) + 6px + 10px));
+    pointer-events: none;
+}
+
 #devSubBar.is-card {
     width: min(calc(100vw - 16px), 608px);
     padding: 24px;
     max-height: calc(100vh - 140px);
+}
+
+.dev-subbar-handle {
+    position: fixed;
+    left: 50%;
+    bottom: calc(56px + var(--dev-bar-height, 44px) + 6px - 4px);
+    z-index: 1215;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 18px;
+    padding: 0;
+    border: 1px solid var(--collapse-cardBorderColor);
+    border-radius: 999px;
+    background: var(--collapse-cardBG);
+    color: var(--collapse-card-titleFG);
+    font-size: 9px;
+    line-height: 1;
+    cursor: pointer;
+    transform: translateX(-50%);
+    box-shadow: 0 1px 4px rgb(0 0 0 / 0.18);
+    transition: border-color 150ms ease, color 150ms ease;
+}
+
+.dev-subbar-handle[hidden] {
+    display: none;
+}
+
+.dev-subbar-handle i {
+    transition: transform 180ms ease;
+}
+
+.dev-subbar-handle.is-collapsed i {
+    transform: rotate(180deg);
+}
+
+.dev-subbar-handle:hover,
+.dev-subbar-handle:focus-visible {
+    border-color: var(--md-sys-color-primary);
+    color: var(--md-sys-color-primary);
+    outline: none;
 }
 
 .dev-sub-head {
