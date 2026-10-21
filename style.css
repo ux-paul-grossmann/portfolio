@@ -3947,6 +3947,49 @@ body.dev-edit .dev-media-x[hidden] {
     display: none;
 }
 
+.dev-media-undo {
+    position: fixed;
+    z-index: 1300;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 10px;
+    border: 1px solid var(--collapse-cardBorderColor);
+    border-radius: 10px;
+    background: var(--collapse-cardBG);
+    color: var(--collapse-card-titleFG);
+    font-family: 'Inter', 'Montserrat', sans-serif;
+    font-size: 11px;
+    box-shadow: 0 4px 14px rgb(0 0 0 / 0.25);
+}
+
+.dev-media-undo-text {
+    font-weight: 600;
+}
+
+.dev-media-undo-button {
+    padding: 3px 8px;
+    border: 1px solid var(--md-sys-color-primary);
+    border-radius: 6px;
+    background: var(--md-sys-color-primary);
+    color: var(--md-sys-color-on-primary);
+    font: inherit;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.dev-media-undo-button:hover,
+.dev-media-undo-button:focus-visible {
+    filter: brightness(1.08);
+    outline: none;
+}
+
+.dev-media-undo-count {
+    opacity: 0.65;
+    font-variant-numeric: tabular-nums;
+}
+
 .project-detail.dev-dragging {
     opacity: 0.4;
 }
