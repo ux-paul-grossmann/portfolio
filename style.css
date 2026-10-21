@@ -5045,6 +5045,23 @@ html.glightbox-open #devPresetToggle {
     color: var(--md-sys-color-on-surface-variant);
 }
 
+.kontext-game-status.is-waiting {
+    color: var(--md-sys-color-primary);
+    animation: kontext-status-pulse 1.3s ease-in-out infinite;
+}
+
+@keyframes kontext-status-pulse {
+    0%, 100% { opacity: .45; }
+    50% { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .kontext-game-status.is-waiting {
+        animation: none;
+        opacity: 1;
+    }
+}
+
 .kontext-game-time {
     font-variant-numeric: tabular-nums;
 }
@@ -5085,7 +5102,7 @@ html.glightbox-open #devPresetToggle {
     position: absolute;
     left: 0;
     top: 0;
-    width: 120px;
+    width: 144px;
     height: 12px;
     border-radius: 999px;
     background: var(--md-sys-color-primary);
