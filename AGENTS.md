@@ -79,6 +79,11 @@ cleaned up by hand.
 There is NO `package.json`, NO build, no test/lint setup. Verification = open the page
 in the browser (CDN dependencies: jQuery 3.3.1, Bootstrap 4.3.1, GLightbox, slick,
 vanilla-lazyload, motion → internet required).
+Local editing uses `node tools/dev-server.mjs` (standard library only): it serves the
+site on `http://127.0.0.1:8000` and writes images picked in the dev editor's new-card
+thumbnail to `lib/images/thumbs/`. The plain `python3 -m http.server 8000` still works
+for read-only browsing, but the thumbnail upload then reports that the dev server is
+missing.
 
 Syntax smoke test for the lib/js files (only files on the current branch):
 ```bash
@@ -123,7 +128,7 @@ On the experiment branches `flanking-cards`/`morphing-cards` add `lib/js/project
 - Experiments run through **branches**, never through copied folders. Branches: `master` = **live** (GitHub Pages + default branch `origin/HEAD -> origin/master`, verified via the API), `flanking-cards`/`morphing-cards` = experiments (both `origin/*` verified via `git ls-remote`; `material-theme` deleted). The live Pages branch is verified **only** via the nightly audit (`GET /pages` + live `curl`), never guessed.
 - **AGENTS.md is tracked** → do not ignore it. Changes to `AGENTS.md` are pushed and apply on all 3 Macs.
 - **Uncommitted work is lost on `git restore`/`git checkout`** → commit before switching branches.
-- Session start: `git fetch --all` → `git checkout master` → `git pull` → `git status` → `git log --oneline -5` → browser check (`python3 -m http.server 8000` → http://localhost:8000). Before sleeping: `git status` clean → `git push`.
+- Session start: `git fetch --all` → `git checkout master` → `git pull` → `git status` → `git log --oneline -5` → browser check (`node tools/dev-server.mjs` → http://127.0.0.1:8000). Before sleeping: `git status` clean → `git push`.
 - **Multi-branch sync:** if a fix concerns several branches (e.g. `AGENTS.md`, `themes.css`), run/sync it on every affected branch (otherwise drift) — announce every switch beforehand (`Switching <from> → <to>`) and at the end switch back to the original branch + report `git status`.
 
 # Browser tests (mandatory)
