@@ -4863,3 +4863,307 @@ html.glightbox-open #devPresetToggle {
     box-shadow: inset 0 0 0 2px var(--md-sys-color-primary);
     outline: none;
 }
+
+/* ============================================================
+   KOMPETENZEN: NOTE DETAIL + FRICTION MINI-GAME (DESKTOP)
+   ============================================================ */
+.kontext-note-detail,
+.kontext-game {
+    display: none;
+}
+
+.kontext-note-detail[hidden],
+.kontext-game-reward[hidden],
+.kontext-game-best[hidden],
+.kontext-game-hud[hidden] {
+    display: none !important;
+}
+
+@media (min-width: 992px) and (hover: hover) and (pointer: fine) {
+    .kontext-note-detail,
+    .kontext-game {
+        display: block;
+    }
+
+    .kontext-wrap div[class*="note-"] {
+        cursor: pointer;
+        transition: translate .18s ease, box-shadow .18s ease, opacity .2s ease, filter .2s ease;
+    }
+
+    .kontext-wrap div[class*="note-"]:hover,
+    .kontext-wrap div[class*="note-"]:focus-visible {
+        translate: 0 -4px;
+        box-shadow: 0 8px 20px rgb(0 0 0 / .18);
+        outline: none;
+    }
+
+    .kontext-wrap div[class*="note-"].is-active {
+        translate: 0 -4px;
+        box-shadow: 0 0 0 3px var(--md-sys-color-primary), 0 8px 20px rgb(0 0 0 / .18);
+        outline: none;
+    }
+}
+
+.kontext-note-detail {
+    position: relative;
+    max-width: 760px;
+    margin: 18px auto 0;
+    padding: 20px 52px 20px 24px;
+    border: 1px solid var(--collapse-cardBorderColor);
+    border-radius: var(--card-radius);
+    background: var(--collapse-cardBG);
+    color: var(--collapse-card-titleFG);
+    box-shadow: var(--shadow-card-rest);
+    text-align: left;
+}
+
+.kontext-note-heading {
+    margin: 0 0 6px;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.kontext-note-copy {
+    margin: 0 0 10px;
+    line-height: 1.6;
+}
+
+.kontext-note-seen {
+    margin: 0;
+    font-size: .85rem;
+    color: var(--md-sys-color-on-surface-variant);
+}
+
+.kontext-note-seen > span:first-child {
+    margin-right: 6px;
+    font-weight: 600;
+}
+
+.kontext-note-links a {
+    color: var(--md-sys-color-primary);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+.kontext-note-links a:hover,
+.kontext-note-links a:focus-visible {
+    text-decoration-thickness: 2px;
+}
+
+.kontext-note-sep {
+    color: var(--md-sys-color-on-surface-variant);
+}
+
+.kontext-note-close,
+.kontext-game-close {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    padding: 0;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    background: transparent;
+    color: var(--md-sys-color-on-surface-variant);
+    cursor: pointer;
+}
+
+.kontext-note-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.kontext-note-close:hover,
+.kontext-note-close:focus-visible,
+.kontext-game-close:hover,
+.kontext-game-close:focus-visible {
+    border-color: var(--md-sys-color-primary);
+    color: var(--md-sys-color-primary);
+    outline: none;
+}
+
+.kontext-note-close svg,
+.kontext-game-close svg {
+    width: 12px;
+    height: 12px;
+}
+
+/* The notes are the playfield: a compact HUD above, the paddle lane below. */
+.kontext-game-hud {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 16px 0 10px;
+    padding: 8px 12px;
+    border: 1px solid var(--collapse-cardBorderColor);
+    border-radius: 10px;
+    background: var(--collapse-cardBG);
+    color: var(--collapse-card-titleFG);
+    font-size: .78rem;
+    text-align: left;
+}
+
+.kontext-game-hud-title {
+    margin-right: auto;
+    font-weight: 700;
+}
+
+.kontext-game-status {
+    color: var(--md-sys-color-on-surface-variant);
+}
+
+.kontext-game-time {
+    font-variant-numeric: tabular-nums;
+}
+
+.kontext-game-lives {
+    color: var(--md-sys-color-primary);
+    letter-spacing: .1em;
+}
+
+.kontext-playfield {
+    position: relative;
+}
+
+.kontext-wrap.is-playing {
+    position: relative;
+    padding-bottom: 64px;
+    cursor: none;
+}
+
+.kontext-wrap.is-playing div[class*="note-"] {
+    cursor: default;
+}
+
+.kontext-wrap div[class*="note-"].is-cleared {
+    opacity: .25;
+    filter: saturate(.4);
+}
+
+.kontext-paddle {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 120px;
+    height: 12px;
+    border-radius: 999px;
+    background: var(--md-sys-color-primary);
+    box-shadow: 0 2px 8px rgb(0 0 0 / .2);
+    pointer-events: none;
+    z-index: 30;
+}
+
+.kontext-ball {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 0 0 1px rgb(0 0 0 / .15);
+    pointer-events: none;
+    z-index: 31;
+}
+
+.kontext-game {
+    margin: 28px auto 0;
+    max-width: 1000px;
+    text-align: center;
+}
+
+.kontext-game-launch {
+    padding: 10px 18px;
+    border: 1px solid var(--md-sys-color-primary);
+    border-radius: 10px;
+    background: transparent;
+    color: var(--md-sys-color-primary);
+    font: inherit;
+    font-size: .85rem;
+    font-weight: 600;
+    letter-spacing: .02em;
+    cursor: pointer;
+}
+
+.kontext-game-launch:hover,
+.kontext-game-launch:focus-visible {
+    background: var(--md-sys-color-primary);
+    color: var(--md-sys-color-on-primary);
+    outline: none;
+}
+
+.kontext-game-hint {
+    margin: 8px 0 0;
+    font-size: .75rem;
+    color: var(--md-sys-color-on-surface-variant);
+}
+
+.kontext-game-reward {
+    margin-top: 14px;
+    padding: 16px;
+    border: 1px solid var(--md-sys-color-primary);
+    border-radius: 12px;
+    background: var(--md-sys-color-primary-container);
+    color: var(--md-sys-color-on-primary-container);
+    text-align: left;
+}
+
+.kontext-game-reward p {
+    margin: 0 0 8px;
+}
+
+.kontext-game-reward-title {
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.kontext-game-link {
+    color: inherit;
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+.kontext-game-best {
+    font-variant-numeric: tabular-nums;
+}
+
+.kontext-game-again {
+    margin-top: 4px;
+    padding: 7px 12px;
+    border: 1px solid currentColor;
+    border-radius: 6px;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    font-size: .8rem;
+    cursor: pointer;
+}
+
+.kontext-game-again:hover,
+.kontext-game-again:focus-visible {
+    background: var(--md-sys-color-primary);
+    color: var(--md-sys-color-on-primary);
+    outline: none;
+}
+
+.kontext-start-label {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 12;
+    padding: 3px 8px;
+    border-radius: 6px;
+    background: var(--md-sys-color-primary);
+    color: var(--md-sys-color-on-primary);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+}
+
+#projekte .cluster.is-start-here .card {
+    box-shadow: 0 0 0 3px var(--md-sys-color-primary), var(--shadow-card-rest);
+}
