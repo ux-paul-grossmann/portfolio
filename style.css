@@ -4868,7 +4868,8 @@ html.glightbox-open #devPresetToggle {
    KOMPETENZEN: NOTE DETAIL + FRICTION MINI-GAME (DESKTOP)
    ============================================================ */
 .kontext-note-detail,
-.kontext-game {
+.kontext-game,
+.kontext-game-cta {
     display: none;
 }
 
@@ -4881,8 +4882,31 @@ html.glightbox-open #devPresetToggle {
 
 @media (min-width: 992px) and (hover: hover) and (pointer: fine) {
     .kontext-note-detail,
-    .kontext-game {
+    .kontext-game,
+    .kontext-game-cta {
         display: block;
+    }
+
+    .kontext-game-cta {
+        margin-top: 14px;
+        text-align: center;
+        opacity: 0;
+        transform: translateY(-12px);
+        pointer-events: none;
+        transition: opacity .2s ease, transform .2s ease;
+    }
+
+    #kontext:hover .kontext-game-cta,
+    #kontext:focus-within .kontext-game-cta {
+        opacity: 1;
+        transform: none;
+        pointer-events: auto;
+    }
+
+    .kontext-playfield.is-playing .kontext-game-cta {
+        opacity: 0;
+        transform: translateY(-12px);
+        pointer-events: none;
     }
 
     .kontext-wrap div[class*="note-"] {
@@ -5029,7 +5053,7 @@ html.glightbox-open #devPresetToggle {
 
 .kontext-wrap.is-playing {
     position: relative;
-    padding-bottom: 64px;
+    padding-bottom: 250px;
     cursor: none;
 }
 
@@ -5038,8 +5062,8 @@ html.glightbox-open #devPresetToggle {
 }
 
 .kontext-wrap div[class*="note-"].is-cleared {
-    opacity: .25;
-    filter: saturate(.4);
+    opacity: 0;
+    visibility: hidden;
 }
 
 .kontext-paddle {
