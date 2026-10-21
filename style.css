@@ -4322,6 +4322,12 @@ body.dev-edit .dev-media-x[hidden] {
     outline: none;
 }
 
+.dev-tag-remove svg {
+    display: block;
+    width: 8px;
+    height: 8px;
+}
+
 .dev-tag-input {
     flex: 1 1 140px;
     min-width: 100px;
@@ -4701,6 +4707,9 @@ body.dev-edit .dev-media-x[hidden] {
 
 .dev-preset-delete {
     flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     width: 24px;
     height: 24px;
     border: 0;
@@ -4710,6 +4719,12 @@ body.dev-edit .dev-media-x[hidden] {
     font-size: 14px;
     line-height: 1;
     cursor: pointer;
+}
+
+.dev-preset-delete svg {
+    display: block;
+    width: 10px;
+    height: 10px;
 }
 
 .dev-preset-delete:hover {
