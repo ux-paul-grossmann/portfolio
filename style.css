@@ -4904,9 +4904,7 @@ html.glightbox-open #devPresetToggle {
     }
 
     .kontext-playfield.is-playing .kontext-game-cta {
-        opacity: 0;
-        transform: translateY(-12px);
-        pointer-events: none;
+        display: none;
     }
 
     .kontext-wrap {
@@ -5058,6 +5056,13 @@ html.glightbox-open #devPresetToggle {
 
 .kontext-playfield {
     position: relative;
+}
+
+.kontext-playfield.is-playing {
+    padding: 16px;
+    border: 1px solid var(--collapse-cardBorderColor);
+    border-radius: var(--card-radius);
+    background: var(--collapse-cardBG);
 }
 
 .kontext-wrap.is-playing {
