@@ -5026,14 +5026,34 @@ html.glightbox-open #devPresetToggle {
     display: flex;
     align-items: center;
     gap: 12px;
-    margin: 16px 0 10px;
-    padding: 8px 12px;
-    border: 1px solid var(--collapse-cardBorderColor);
+    max-height: 0;
+    margin: 0;
+    padding: 0 12px;
+    border: 0 solid var(--collapse-cardBorderColor);
     border-radius: 10px;
     background: var(--collapse-cardBG);
     color: var(--collapse-card-titleFG);
     font-size: .78rem;
     text-align: left;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(-8px);
+    transition:
+        max-height 420ms cubic-bezier(.2, .9, .2, 1),
+        margin 420ms cubic-bezier(.2, .9, .2, 1),
+        padding 420ms cubic-bezier(.2, .9, .2, 1),
+        border-width 420ms cubic-bezier(.2, .9, .2, 1),
+        opacity 300ms ease,
+        transform 420ms cubic-bezier(.2, .9, .2, 1);
+}
+
+.kontext-game-hud.is-visible {
+    max-height: 48px;
+    margin: 16px 0 10px;
+    padding: 8px 12px;
+    border-width: 1px;
+    opacity: 1;
+    transform: none;
 }
 
 .kontext-game-hud-title {
@@ -5046,7 +5066,7 @@ html.glightbox-open #devPresetToggle {
 }
 
 .kontext-game-status.is-waiting {
-    color: var(--md-sys-color-primary);
+    color: var(--note-magenta-bg);
     animation: kontext-status-pulse 1.3s ease-in-out infinite;
 }
 
@@ -5059,6 +5079,22 @@ html.glightbox-open #devPresetToggle {
     .kontext-game-status.is-waiting {
         animation: none;
         opacity: 1;
+    }
+
+    .kontext-game-reveal {
+        transform: none;
+        opacity: 1;
+    }
+
+    .kontext-paddle-shape,
+    .kontext-ball-shape {
+        transform: none;
+        opacity: 1;
+    }
+
+    .kontext-game-hud,
+    .kontext-wrap.is-playing {
+        transition: none;
     }
 }
 
@@ -5077,20 +5113,49 @@ html.glightbox-open #devPresetToggle {
 
 .kontext-playfield.is-playing {
     padding: 16px;
+    border-radius: var(--card-radius);
+}
+
+.kontext-playfield.is-playing > .kontext-wrap,
+.kontext-playfield.is-playing > .kontext-game-cta {
+    position: relative;
+    z-index: 1;
+}
+
+.kontext-game-reveal {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
     border: 1px solid var(--collapse-cardBorderColor);
     border-radius: var(--card-radius);
     background: var(--collapse-cardBG);
+    transform-origin: bottom center;
+    transform: scaleY(0);
+    opacity: 0;
+    pointer-events: none;
+}
+
+.kontext-playfield.is-revealing .kontext-game-reveal {
+    animation: kontext-reveal-in 1100ms cubic-bezier(.22, .75, .2, 1) both;
+}
+
+@keyframes kontext-reveal-in {
+    0% { opacity: 0; transform: scaleY(0); }
+    10% { opacity: 1; }
+    82% { transform: scaleY(1.01); }
+    100% { opacity: 1; transform: scaleY(1); }
 }
 
 .kontext-wrap.is-playing {
     position: relative;
     padding-bottom: 250px;
     cursor: none;
-    transition: none;
+    transition: padding-bottom 650ms cubic-bezier(.2, 0, 0, 1);
 }
 
 .kontext-wrap.is-playing div[class*="note-"] {
     cursor: default;
+    pointer-events: none;
 }
 
 .kontext-wrap div[class*="note-"].is-cleared {
@@ -5104,11 +5169,30 @@ html.glightbox-open #devPresetToggle {
     top: 0;
     width: 144px;
     height: 12px;
+    pointer-events: none;
+    z-index: 30;
+}
+
+.kontext-paddle-shape {
+    width: 100%;
+    height: 100%;
     border-radius: 999px;
     background: var(--md-sys-color-primary);
     box-shadow: 0 2px 8px rgb(0 0 0 / .2);
-    pointer-events: none;
-    z-index: 30;
+    transform-origin: center bottom;
+    transform: scale(0);
+    opacity: 0;
+}
+
+.kontext-playfield.is-paddle-in .kontext-paddle-shape {
+    animation: kontext-paddle-pop 700ms cubic-bezier(.2, .9, .2, 1) forwards;
+}
+
+@keyframes kontext-paddle-pop {
+    0% { transform: translateY(48px) scaleX(.35); opacity: 0; }
+    55% { transform: translateY(-3px) scaleX(1.06); opacity: 1; }
+    78% { transform: translateY(1px) scaleX(.99); }
+    100% { transform: none; opacity: 1; }
 }
 
 .kontext-ball {
@@ -5117,11 +5201,30 @@ html.glightbox-open #devPresetToggle {
     top: 0;
     width: 14px;
     height: 14px;
+    pointer-events: none;
+    z-index: 31;
+}
+
+.kontext-ball-shape {
+    width: 100%;
+    height: 100%;
     border-radius: 50%;
     background: #fff;
     box-shadow: 0 0 0 1px rgb(0 0 0 / .15);
-    pointer-events: none;
-    z-index: 31;
+    transform-origin: center bottom;
+    transform: scale(0);
+    opacity: 0;
+}
+
+.kontext-playfield.is-ball-in .kontext-ball-shape {
+    animation: kontext-ball-pop 600ms cubic-bezier(.2, .9, .2, 1) forwards;
+}
+
+@keyframes kontext-ball-pop {
+    0% { transform: translateY(40px) scale(.2); opacity: 0; }
+    55% { transform: translateY(-3px) scale(1.12); opacity: 1; }
+    78% { transform: translateY(1px) scale(.98); }
+    100% { transform: none; opacity: 1; }
 }
 
 .kontext-game {
