@@ -4815,6 +4815,7 @@ html.glightbox-open #devPresetToggle {
     height: 80px;
     transform: translateY(-50%);
     background: rgb(0 0 0 / 0.55);
+    transition: box-shadow 120ms ease;
 }
 
 .glightbox-clean .gprev {
@@ -4833,4 +4834,13 @@ html.glightbox-open #devPresetToggle {
 .glightbox-clean .gnext svg {
     width: 32px;
     height: 32px;
+}
+
+/* Accent ring on hover and keyboard focus. Inset, so the viewport edge cannot clip it. */
+.glightbox-clean .gprev:not(.disabled):hover,
+.glightbox-clean .gprev:not(.disabled):focus-visible,
+.glightbox-clean .gnext:not(.disabled):hover,
+.glightbox-clean .gnext:not(.disabled):focus-visible {
+    box-shadow: inset 0 0 0 2px var(--md-sys-color-primary);
+    outline: none;
 }
