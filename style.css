@@ -3903,14 +3903,16 @@ body.dev-edit .dev-reorder-handle:focus-visible {
 
 #devPresetBar {
     position: fixed;
-    left: 8px;
-    right: 8px;
+    left: 0;
+    right: 0;
     bottom: 56px;
+    width: min(calc(100vw - 16px), max(75vw, 320px), 1920px);
+    margin-inline: auto;
     z-index: 1210;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 6px;
+    gap: 8px;
     padding: 8px;
     border: 1px solid var(--collapse-cardBorderColor);
     border-radius: 14px;
@@ -3933,7 +3935,7 @@ body.dev-edit .dev-reorder-handle:focus-visible {
 
 .dev-preset-button {
     flex: 0 0 auto;
-    padding: 5px 8px;
+    padding: 6px 10px;
     border: 1px solid var(--collapse-cardBorderColor);
     border-radius: 6px;
     background: transparent;
@@ -4010,9 +4012,11 @@ body.dev-edit .dev-reorder-handle:focus-visible {
 
 #devSubBar {
     position: fixed;
-    left: 8px;
-    right: 8px;
+    left: 0;
+    right: 0;
     bottom: calc(56px + var(--dev-bar-height, 44px) + 6px);
+    width: min(calc(100vw - 16px), max(75vw, 320px), 1920px);
+    margin-inline: auto;
     z-index: 1211;
     padding: 10px;
     border: 1px solid var(--collapse-cardBorderColor);
@@ -4040,7 +4044,7 @@ body.dev-edit .dev-reorder-handle:focus-visible {
 .dev-sub-head {
     font-size: 12px;
     font-weight: 600;
-    margin-bottom: 12px;
+    margin-bottom: 16px;
 }
 
 .dev-sub-row {
@@ -4052,9 +4056,17 @@ body.dev-edit .dev-reorder-handle:focus-visible {
 
 .dev-sub-fields {
     display: grid;
-    grid-template-columns: 1fr 1fr 1.3fr;
+    grid-template-columns: 1fr;
     gap: 12px;
-    margin-bottom: 12px;
+    margin-bottom: 16px;
+}
+
+.dev-card-fields .dev-sub-fields {
+    grid-template-columns: 1fr 1fr;
+}
+
+.dev-card-fields .dev-sub-fields .dev-sub-label:last-child {
+    grid-column: 1 / -1;
 }
 
 .dev-sub-label {
@@ -4090,63 +4102,241 @@ body.dev-edit .dev-reorder-handle:focus-visible {
     border-color: var(--md-sys-color-primary);
 }
 
-.dev-sub-template-group {
-    margin-bottom: 12px;
-    text-align: center;
+#devSubBar .dev-sub-input,
+#devPresetBar .dev-preset-search {
+    font-size: 12px !important;
+    font-weight: 400 !important;
+    color: inherit !important;
+    letter-spacing: normal !important;
 }
 
-.dev-sub-template-label {
-    display: block;
-    margin-bottom: 4px;
+#devPresetBar .dev-preset-search {
+    font-size: 11px !important;
 }
 
-.dev-template-control {
+.dev-card-form {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 300px;
+    gap: 20px;
+    align-items: start;
+}
+
+.dev-card-fields {
+    min-width: 0;
+}
+
+.dev-select-field {
+    margin-bottom: 16px;
+}
+
+.dev-select {
     display: flex;
-    align-items: stretch;
-    width: min(100%, 520px);
-    margin: 0 auto;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    width: 100%;
+    height: 32px;
+    padding: 6px 10px;
     border: 1px solid var(--collapse-cardBorderColor);
     border-radius: 8px;
-    overflow: hidden;
-    text-align: left;
-}
-
-.dev-template-control:focus-within {
-    border-color: var(--md-sys-color-primary);
-}
-
-.dev-template-control .dev-preset-button {
-    flex: 0 0 36px;
-    width: 36px;
-    height: 32px;
-    padding: 0;
-    border: 0;
-    border-radius: 0;
-    background: transparent;
-    font-size: 14px;
-}
-
-.dev-template-control .dev-preset-button:hover,
-.dev-template-control .dev-preset-button:focus-visible {
-    background: color-mix(in srgb, var(--md-sys-color-primary) 10%, transparent);
-    color: var(--md-sys-color-primary);
-}
-
-.dev-template-control select {
-    flex: 1 1 auto;
-    min-width: 0;
-    height: 32px;
-    padding: 6px 9px;
-    border: 0;
-    border-inline: 1px solid var(--collapse-cardBorderColor);
-    border-radius: 0;
     background: transparent;
     color: inherit;
     font: inherit;
+    font-size: 12px;
     font-weight: 400;
     letter-spacing: normal;
-    text-transform: none;
+    text-align: left;
+    cursor: pointer;
+}
+
+.dev-select:hover,
+.dev-select:focus-visible,
+.dev-select[aria-expanded="true"] {
+    border-color: var(--md-sys-color-primary);
     outline: none;
+}
+
+.dev-select-chevron {
+    flex: 0 0 auto;
+    width: 7px;
+    height: 7px;
+    margin-inline-start: 8px;
+    border-right: 1.5px solid currentColor;
+    border-bottom: 1.5px solid currentColor;
+    transform: rotate(45deg);
+    transition: transform 150ms ease;
+    opacity: 0.7;
+}
+
+.dev-select[aria-expanded="true"] .dev-select-chevron {
+    transform: rotate(-135deg);
+}
+
+.dev-select-menu {
+    margin-top: 4px;
+    max-height: 220px;
+    overflow-y: auto;
+    padding: 4px;
+    border: 1px solid var(--collapse-cardBorderColor);
+    border-radius: 8px;
+    background: var(--collapse-cardBG);
+    box-shadow: 0 4px 14px rgb(0 0 0 / 0.22);
+}
+
+.dev-select-menu[hidden] {
+    display: none;
+}
+
+.dev-select-option {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 8px;
+    width: 100%;
+    padding: 7px 8px;
+    border: 0;
+    border-radius: 6px;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: normal;
+    text-align: left;
+    cursor: pointer;
+}
+
+.dev-select-option small {
+    flex: 0 0 auto;
+    opacity: 0.55;
+    font-size: 10px;
+}
+
+.dev-select-option:hover,
+.dev-select-option:focus-visible,
+.dev-select-option.is-selected {
+    background: color-mix(in srgb, var(--md-sys-color-primary) 12%, transparent);
+    color: var(--md-sys-color-primary);
+    outline: none;
+}
+
+.dev-card-preview-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    max-width: 300px;
+    margin-inline: auto;
+}
+
+.dev-card-preview-head {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+}
+
+.dev-card-preview-head .dev-preset-button {
+    flex: 0 0 32px;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+}
+
+.dev-card-preview-name {
+    flex: 1 1 auto;
+    min-width: 0;
+    overflow: hidden;
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.dev-card-preview {
+    display: grid;
+    grid-template-columns: 40% 60%;
+    width: 100%;
+    min-height: 150px;
+    overflow: hidden;
+    border: 1px solid var(--collapse-cardBorderColor);
+    border-radius: 12px;
+    background: var(--collapse-cardBG);
+}
+
+.dev-preview-thumb {
+    min-height: 150px;
+    background-color: var(--collapse-cardBorderColor);
+    background-repeat: no-repeat;
+    background-position: top left;
+    background-size: cover;
+}
+
+.dev-preview-thumb.is-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-inline-end: 1px dashed var(--collapse-cardBorderColor);
+    color: var(--collapse-card-titleFG);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    opacity: 0.6;
+}
+
+.dev-preview-thumb[class*="thumbnail-"] {
+    width: 100% !important;
+    max-width: none !important;
+    height: 100% !important;
+    min-height: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+}
+
+.dev-preview-body {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 0;
+    padding: 9px;
+}
+
+.dev-preview-title {
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.25;
+}
+
+.dev-preview-desc {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    font-size: 10px;
+    line-height: 1.35;
+    opacity: 0.75;
+}
+
+.dev-preview-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3px;
+    margin-top: auto;
+}
+
+.dev-preview-tag {
+    padding: 2px 5px;
+    border: 1px solid var(--collapse-cardBorderColor);
+    border-radius: 999px;
+    font-size: 8px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    opacity: 0.75;
 }
 
 #devSubBar .dev-preset-button {
@@ -4186,11 +4376,23 @@ body.dev-edit .dev-reorder-handle:focus-visible {
     font-family: monospace;
 }
 
-@container (max-width: 520px) {
-    .dev-sub-fields {
+@container (max-width: 820px) {
+    .dev-card-form {
+        grid-template-columns: 1fr;
+    }
+}
+
+@container (max-width: 620px) {
+    .dev-card-fields .dev-sub-fields {
         grid-template-columns: 1fr;
     }
 
+    .dev-card-fields .dev-sub-fields .dev-sub-label:last-child {
+        grid-column: auto;
+    }
+}
+
+@container (max-width: 520px) {
     .dev-sub-row {
         flex-direction: column;
         align-items: stretch;
