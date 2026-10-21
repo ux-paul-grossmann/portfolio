@@ -1154,6 +1154,16 @@ a#ci-brand-detail-name:hover {
     box-shadow: inset -5px 0 20px rgba(0, 0, 0, 0.3);
 }
 
+.thumbnail-custom {
+    background-color: var(--collapse-cardBorderColor);
+    background-repeat: no-repeat;
+    background-position: top left;
+    background-size: cover;
+    max-width: 100%;
+    height: 100%;
+    box-shadow: inset -5px 0 20px rgba(0, 0, 0, 0.3);
+}
+
 #projekte .propalign {
     margin-left: -10px;
     margin-right: -10px;
@@ -2607,6 +2617,12 @@ button.btn.download-section-color:nth-child(3):active {
         background-position: top left;
         box-shadow: inset -1px 0 0px rgba(0, 0, 0, 0.1);
     }
+
+    .thumbnail-custom {
+        width: 100%;
+        height: 100%;
+        box-shadow: inset -1px 0 0px rgba(0, 0, 0, 0.1);
+    }
 }
 
 @media only screen and (min-width: 768px) {
@@ -4031,6 +4047,126 @@ body.dev-reorder .dev-reorder-handle:active {
 
     .dev-preset-picker {
         flex: 1 1 100%;
+    }
+}
+
+#devSubBar {
+    position: fixed;
+    left: 8px;
+    right: 8px;
+    bottom: calc(56px + var(--dev-bar-height, 44px) + 6px);
+    z-index: 1211;
+    padding: 10px;
+    border: 1px solid var(--collapse-cardBorderColor);
+    border-radius: 10px;
+    background: var(--collapse-cardBG);
+    color: var(--collapse-card-titleFG);
+    font-family: 'Inter', 'Montserrat', sans-serif;
+    font-size: 11px;
+    box-shadow: 0 2px 10px rgb(0 0 0 / 0.18);
+    transform: translateY(calc(100% + 70px));
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 220ms cubic-bezier(0.4, 0, 0.2, 1), opacity 180ms ease;
+    max-height: 50vh;
+    overflow-y: auto;
+}
+
+#devSubBar.is-open {
+    transform: none;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.dev-sub-head {
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.dev-sub-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    align-items: flex-end;
+}
+
+.dev-sub-fields {
+    margin-bottom: 8px;
+}
+
+.dev-sub-template {
+    justify-content: center;
+    margin-bottom: 4px;
+}
+
+.dev-sub-template select {
+    flex: 1 1 240px;
+    max-width: 420px;
+}
+
+.dev-sub-label {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    flex: 1 1 160px;
+}
+
+.dev-sub-input,
+.dev-sub-template select {
+    min-width: 0;
+    padding: 5px 8px;
+    border: 1px solid var(--collapse-cardBorderColor);
+    border-radius: 6px;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    outline: none;
+}
+
+.dev-sub-input:focus,
+.dev-sub-template select:focus {
+    border-color: var(--md-sys-color-primary);
+}
+
+.dev-sub-error {
+    min-height: 0;
+    color: var(--md-sys-color-error);
+    margin-top: 2px;
+}
+
+.dev-sub-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 6px;
+    margin-top: 8px;
+}
+
+.dev-sub-help {
+    margin: 0 0 8px;
+    padding-left: 16px;
+    line-height: 1.5;
+}
+
+.dev-sub-help li {
+    margin-bottom: 4px;
+}
+
+.dev-sub-help code {
+    font-family: monospace;
+}
+
+@media (max-width: 575.98px) {
+    .dev-sub-fields {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .dev-sub-label {
+        flex-basis: auto;
+    }
+
+    .dev-sub-template {
+        flex-wrap: nowrap;
     }
 }
 
