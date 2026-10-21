@@ -3970,6 +3970,7 @@ body.dev-reorder .dev-reorder-handle:active {
     bottom: 56px;
     z-index: 1210;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     gap: 6px;
     padding: 8px;
@@ -4019,9 +4020,38 @@ body.dev-reorder .dev-reorder-handle:active {
     color: inherit;
 }
 
+.dev-preset-button.dev-primary {
+    border-color: var(--md-sys-color-primary);
+    background: var(--md-sys-color-primary);
+    color: var(--md-sys-color-on-primary);
+}
+
+.dev-preset-button.dev-primary:hover,
+.dev-preset-button.dev-primary:focus-visible {
+    border-color: var(--md-sys-color-primary);
+    color: var(--md-sys-color-on-primary);
+    filter: brightness(1.05);
+}
+
+.dev-preset-button.dev-danger {
+    border-color: var(--md-sys-color-error);
+    color: var(--md-sys-color-error);
+}
+
+.dev-preset-button.dev-danger:hover,
+.dev-preset-button.dev-danger:focus-visible {
+    border-color: var(--md-sys-color-error);
+    color: var(--md-sys-color-error);
+}
+
+.dev-sub-message {
+    margin: 0 0 8px;
+    line-height: 1.5;
+}
+
 .dev-preset-picker {
     position: relative;
-    flex: 1 1 auto;
+    flex: 1 1 240px;
     min-width: 0;
 }
 
@@ -4038,16 +4068,6 @@ body.dev-reorder .dev-reorder-handle:active {
 
 .dev-preset-search:focus {
     border-color: var(--md-sys-color-primary);
-}
-
-@media (max-width: 575.98px) {
-    #devPresetBar {
-        flex-wrap: wrap;
-    }
-
-    .dev-preset-picker {
-        flex: 1 1 100%;
-    }
 }
 
 #devSubBar {
@@ -4070,6 +4090,7 @@ body.dev-reorder .dev-reorder-handle:active {
     transition: transform 220ms cubic-bezier(0.4, 0, 0.2, 1), opacity 180ms ease;
     max-height: 50vh;
     overflow-y: auto;
+    container-type: inline-size;
 }
 
 #devSubBar.is-open {
@@ -4155,7 +4176,7 @@ body.dev-reorder .dev-reorder-handle:active {
     font-family: monospace;
 }
 
-@media (max-width: 575.98px) {
+@container (max-width: 520px) {
     .dev-sub-fields {
         flex-direction: column;
         align-items: stretch;
