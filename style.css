@@ -4791,3 +4791,17 @@ body.dev-edit [contenteditable="true"]:focus {
 
 
 
+
+/* GLightbox hides the page scrollbar; keep the fixed UI at the same x position. */
+html.glightbox-open #theme-toggle,
+html.glightbox-open .scrolltop {
+    right: calc(10px + var(--scrollbar-width, 0px)) !important;
+}
+
+html.glightbox-open nav.navbar.fixed-bottom {
+    padding-right: var(--scrollbar-width, 0px) !important;
+}
+
+html.glightbox-open #devPresetToggle {
+    right: calc(56px + var(--scrollbar-width, 0px));
+}
