@@ -5066,7 +5066,7 @@ html.glightbox-open #devPresetToggle {
 }
 
 .kontext-game-status.is-waiting {
-    color: var(--note-magenta-bg);
+    color: var(--kontext-statusWaitFG, var(--note-magenta-bg));
     animation: kontext-status-pulse 1.3s ease-in-out infinite;
 }
 
@@ -5209,7 +5209,7 @@ html.glightbox-open #devPresetToggle {
     width: 100%;
     height: 100%;
     border-radius: 50%;
-    background: #fff;
+    background: var(--kontext-ballBG, #fff);
     box-shadow: 0 0 0 1px rgb(0 0 0 / .15);
     transform-origin: center bottom;
     transform: scale(0);
@@ -5278,13 +5278,6 @@ html.glightbox-open #devPresetToggle {
     font-weight: 700;
 }
 
-.kontext-game-link {
-    color: inherit;
-    font-weight: 600;
-    text-decoration: underline;
-    text-underline-offset: 2px;
-}
-
 .kontext-game-best {
     font-variant-numeric: tabular-nums;
 }
@@ -5306,23 +5299,4 @@ html.glightbox-open #devPresetToggle {
     background: var(--md-sys-color-primary);
     color: var(--md-sys-color-on-primary);
     outline: none;
-}
-
-.kontext-start-label {
-    position: absolute;
-    top: 12px;
-    right: 12px;
-    z-index: 12;
-    padding: 3px 8px;
-    border-radius: 6px;
-    background: var(--md-sys-color-primary);
-    color: var(--md-sys-color-on-primary);
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: .05em;
-    text-transform: uppercase;
-}
-
-#projekte .cluster.is-start-here .card {
-    box-shadow: 0 0 0 3px var(--md-sys-color-primary), var(--shadow-card-rest);
 }

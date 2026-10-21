@@ -4,6 +4,9 @@
    ============================================================ */
 
 :root {
+     /* Kontext game */
+     --kontext-ballBG: rgb(29 28 27);
+     --kontext-statusWaitFG: rgb(179 0 179);
      --md-sys-color-primary: rgb(0 105 110);
      --md-sys-color-surface-tint: rgb(0 105 110);
      --md-sys-color-on-primary: rgb(255 255 255);
@@ -246,6 +249,9 @@
    DARK THEME (Material dark)
    ============================================================ */
 .dark {
+     /* Kontext game */
+     --kontext-ballBG: #fff;
+     --kontext-statusWaitFG: var(--note-magenta-bg);
      --md-sys-color-primary: rgb(128 212 217);
      --md-sys-color-surface-tint: rgb(128 212 217);
      --md-sys-color-on-primary: rgb(0 55 57);
