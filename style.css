@@ -4140,40 +4140,6 @@ body.dev-edit .dev-media-x[hidden] {
     color: var(--md-sys-color-error);
 }
 
-/* Dev: live card-radius preview. The buttons set --card-radius on <html>. */
-#devRadiusPanel {
-    position: fixed;
-    left: 16px;
-    bottom: 108px;
-    z-index: 1205;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    padding: 6px 8px;
-    border: 1px solid var(--collapse-cardBorderColor);
-    border-radius: 10px;
-    background: var(--collapse-cardBG);
-    color: var(--collapse-card-titleFG);
-    font-family: 'Inter', 'Montserrat', sans-serif;
-    font-size: 11px;
-    box-shadow: 0 2px 10px rgb(0 0 0 / 0.18);
-}
-
-#devRadiusPanel .dev-radius-label {
-    margin-right: 2px;
-    white-space: nowrap;
-}
-
-#devRadiusPanel .dev-preset-button {
-    padding: 4px 7px;
-}
-
-#devRadiusPanel .dev-preset-button.is-active {
-    border-color: var(--md-sys-color-primary);
-    background: var(--md-sys-color-primary);
-    color: var(--md-sys-color-on-primary);
-}
-
 .dev-sub-message {
     margin: 0 0 8px;
     line-height: 1.5;
