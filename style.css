@@ -4805,3 +4805,32 @@ html.glightbox-open nav.navbar.fixed-bottom {
 html.glightbox-open #devPresetToggle {
     right: calc(56px + var(--scrollbar-width, 0px));
 }
+
+/* GLightbox: larger chevrons flush to both viewport edges. */
+.glightbox-clean .gprev,
+.glightbox-clean .gnext {
+    position: absolute;
+    top: 50%;
+    width: 56px;
+    height: 80px;
+    transform: translateY(-50%);
+    background: rgb(0 0 0 / 0.55);
+}
+
+.glightbox-clean .gprev {
+    left: 0;
+    right: auto;
+    border-radius: 0 10px 10px 0;
+}
+
+.glightbox-clean .gnext {
+    right: 0;
+    left: auto;
+    border-radius: 10px 0 0 10px;
+}
+
+.glightbox-clean .gprev svg,
+.glightbox-clean .gnext svg {
+    width: 32px;
+    height: 32px;
+}
