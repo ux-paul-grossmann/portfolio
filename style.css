@@ -4868,7 +4868,6 @@ html.glightbox-open #devPresetToggle {
    KOMPETENZEN: NOTE DETAIL + FRICTION MINI-GAME (DESKTOP)
    ============================================================ */
 .kontext-note-detail,
-.kontext-game,
 .kontext-game-cta {
     display: none;
 }
@@ -4882,7 +4881,6 @@ html.glightbox-open #devPresetToggle {
 
 @media (min-width: 992px) and (hover: hover) and (pointer: fine) {
     .kontext-note-detail,
-    .kontext-game,
     .kontext-game-cta {
         display: block;
     }
@@ -5227,12 +5225,6 @@ html.glightbox-open #devPresetToggle {
     100% { transform: none; opacity: 1; }
 }
 
-.kontext-game {
-    margin: 28px auto 0;
-    max-width: 1000px;
-    text-align: center;
-}
-
 .kontext-game-launch {
     padding: 10px 18px;
     border: 1px solid var(--md-sys-color-primary);
@@ -5260,13 +5252,26 @@ html.glightbox-open #devPresetToggle {
 }
 
 .kontext-game-reward {
-    margin-top: 14px;
-    padding: 16px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 40;
+    width: min(420px, calc(100% - 32px));
+    margin: 0;
+    padding: 20px 52px 20px 24px;
     border: 1px solid var(--md-sys-color-primary);
     border-radius: 12px;
     background: var(--md-sys-color-primary-container);
     color: var(--md-sys-color-on-primary-container);
+    box-shadow: var(--shadow-card-rest);
     text-align: left;
+    transform: translate(-50%, -50%);
+}
+
+.kontext-game-reward-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
 }
 
 .kontext-game-reward p {
