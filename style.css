@@ -1452,6 +1452,7 @@ a#ci-brand-detail-name:hover {
     display: flex;
     align-items: center;
     justify-content: center;
+    border-radius: 0.5rem;
 }
 
 /* Mobil: zwei Spalten von der ersten bis zur letzten Notiz. Flex umbricht hier
