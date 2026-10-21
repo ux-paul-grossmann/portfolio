@@ -67,6 +67,19 @@ body {
     line-height: 25px;
 }
 
+/* Every image rounds by default. Explicit component radii (for example the
+   tool-icon badges at 8px) still win, and the mobile portrait keeps its
+   deliberate 0 via its media-query override. */
+img {
+    border-radius: 16px;
+}
+
+/* The legacy Bootstrap image class is 0.3rem and marked !important; image
+   usages follow the 16px default. */
+img.rounded-lg {
+    border-radius: 16px !important;
+}
+
 ::selection {
     background: var(--selectionBG);
     color: var(--selectionFG);
@@ -2444,7 +2457,7 @@ button.btn.download-section-color:nth-child(3):active {
                     0 29px 17.9px rgba(0, 0, 0, 0.03),
                     0 54.3px 33.4px rgba(0, 0, 0, 0.036),
                     0 130px 80px rgba(0, 0, 0, 0.05);
-        border-radius: 0.75rem;
+        border-radius: 16px;
         width: 100%;
     }
 
