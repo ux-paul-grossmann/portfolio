@@ -5105,7 +5105,9 @@ html.glightbox-open #devPresetToggle {
         opacity: 0;
         transform: translateY(-12px);
         pointer-events: none;
-        transition: opacity .2s ease, transform .2s ease;
+        transition:
+            opacity 320ms cubic-bezier(.22, .61, .36, 1) var(--game-cta-delay, 40ms),
+            transform 320ms cubic-bezier(.22, .61, .36, 1) var(--game-cta-delay, 40ms);
     }
 
     #kontext:hover .kontext-game-cta,
