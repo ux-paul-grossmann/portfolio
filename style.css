@@ -2676,6 +2676,22 @@ button.btn.download-section-color:nth-child(3):active {
         border-radius: 0.75rem;
     }
 
+    /* Nav state previews. Current = no attribute (the rules above). */
+    html[data-nav-state="swap"] .navbar-light .navbar-nav .nav-link.active {
+        color: var(--md-sys-color-on-primary) !important;
+        background: var(--md-sys-color-primary) !important;
+    }
+
+    html[data-nav-state="swap"] .navbar-light .navbar-nav .nav-link:not(.active):hover {
+        color: var(--md-sys-color-primary) !important;
+        background: var(--md-sys-color-primary-container) !important;
+    }
+
+    html[data-nav-state="soft"] .navbar-light .navbar-nav .nav-link:not(.active):hover {
+        color: var(--md-sys-color-primary) !important;
+        background: var(--md-sys-color-primary-container) !important;
+    }
+
     .scrolltop {
         display: none;
         position: fixed;
@@ -4174,12 +4190,24 @@ body.dev-edit .dev-media-x[hidden] {
     line-height: 1;
     cursor: pointer;
     z-index: 1060;
+    transition: background-color 150ms ease, color 150ms ease, border-color 150ms ease;
 }
 
 #devPresetToggle[aria-pressed="true"] {
     background: var(--md-sys-color-primary);
     border-color: var(--md-sys-color-primary);
     color: var(--md-sys-color-on-primary);
+}
+
+#devPresetToggle:not([aria-pressed="true"]):hover {
+    background: var(--md-sys-color-primary-container);
+    border-color: var(--md-sys-color-primary);
+    color: var(--md-sys-color-primary);
+}
+
+#devPresetToggle:focus-visible {
+    outline: 2px solid var(--md-sys-color-primary);
+    outline-offset: 2px;
 }
 
 #devPresetToggle.is-dirty::after {
@@ -5097,16 +5125,21 @@ html.glightbox-open #devPresetToggle {
         transition: translate .18s ease, box-shadow .18s ease, opacity .2s ease, filter .2s ease;
     }
 
-    .kontext-wrap div[class*="note-"]:hover,
+    .kontext-wrap div[class*="note-"]:hover {
+        translate: 0 -4px;
+        box-shadow: var(--note-hoverShadow, 0 8px 20px rgb(0 0 0 / .18));
+    }
+
     .kontext-wrap div[class*="note-"]:focus-visible {
         translate: 0 -4px;
-        box-shadow: 0 8px 20px rgb(0 0 0 / .18);
-        outline: none;
+        box-shadow: var(--note-hoverShadow, 0 8px 20px rgb(0 0 0 / .18));
+        outline: 2px solid var(--md-sys-color-primary);
+        outline-offset: 3px;
     }
 
     .kontext-wrap div[class*="note-"].is-active {
         translate: 0 -4px;
-        box-shadow: 0 0 0 3px var(--md-sys-color-primary), 0 8px 20px rgb(0 0 0 / .18);
+        box-shadow: 0 0 0 3px var(--md-sys-color-primary), var(--note-hoverShadow, 0 8px 20px rgb(0 0 0 / .18));
         outline: none;
     }
 }
