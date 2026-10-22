@@ -1025,6 +1025,14 @@ html[data-cta-variant="jade-bright"] {
     --cta-ring: #80D4D999;
 }
 
+/* Break the friction only: a tiny delay, then a gentle ring/fill change. */
+html #kontext .kontext-game-launch {
+    transition:
+        box-shadow 320ms cubic-bezier(.22, .61, .36, 1) 40ms,
+        background 320ms cubic-bezier(.22, .61, .36, 1) 40ms,
+        color 320ms cubic-bezier(.22, .61, .36, 1) 40ms !important;
+}
+
 .button-label {
     margin-right: 0.5rem;
     padding-right: 0.5rem;
