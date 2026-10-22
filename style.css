@@ -1781,6 +1781,7 @@ label {
     padding: 0;
     border-radius: 0.75rem;
     will-change: transform, opacity;
+    transition: background-color 150ms ease, color 150ms ease, border-color 150ms ease;
     background: var(--collapse-cardBG) !important;
     border: 1px solid var(--collapse-cardBorderColor) !important;
     color: var(--collapse-card-titleFG);
@@ -2004,14 +2005,17 @@ label {
     -webkit-tap-highlight-color: transparent;
 }
 @media (hover: hover) and (pointer: fine) {
-#theme-toggle:hover {
-    background: var(--navlink-hover-BG) !important;
-    color: var(--navlink-hover-FG) !important;
+#theme-toggle:hover,
+.scrolltop:hover {
+    background: var(--md-sys-color-primary-container) !important;
+    color: var(--md-sys-color-primary) !important;
+    border-color: var(--md-sys-color-primary) !important;
 }
 }
-#theme-toggle:focus {
-    outline: none;
-    box-shadow: 0 0 0 2px var(--md-sys-color-primary-container);
+#theme-toggle:focus-visible,
+.scrolltop:focus-visible {
+    outline: 2px solid var(--md-sys-color-primary);
+    outline-offset: 2px;
 }
 #theme-toggle-icon {
     font-size: 1.1rem;
@@ -5443,7 +5447,7 @@ html.glightbox-open #devPresetToggle {
     margin-top: 4px;
     padding: 7px 12px;
     border: 1px solid currentColor;
-    border-radius: 6px;
+    border-radius: 40px;
     background: transparent;
     color: inherit;
     font: inherit;
