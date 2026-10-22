@@ -2216,14 +2216,26 @@ a.thumb-element:visited {
        Footer social media icon links.
    ============================================================ */
 #socialIconsWrap li a.social {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
     color: var(--socialIcons-linkFG) !important;
     margin-right: 0.5rem;
-    transition: 200ms all ease;
+    border-radius: 50%;
+    background: transparent;
+    text-decoration: none;
+    transition: color 150ms ease, background-color 150ms ease;
 }
 
-#socialIconsWrap li a.social:hover {
-    color: var(--socialIcons-link-hover-FG) !important;
-    transition: 150ms all ease;
+#socialIconsWrap li a.social:hover,
+#socialIconsWrap li a.social:focus-visible,
+#socialIconsWrap li a.social:visited:hover,
+#socialIconsWrap li a.social:visited:focus-visible {
+    color: var(--md-sys-color-primary) !important;
+    background: var(--md-sys-color-primary-container);
+    text-decoration: none;
 }
 
 #socialIconsWrap li a.social:active {
@@ -2232,6 +2244,11 @@ a.thumb-element:visited {
 
 #socialIconsWrap li a.social:visited {
     color: var(--socialIcons-link-visited-FG);
+}
+
+#socialIconsWrap li a.social:focus-visible {
+    outline: 2px solid var(--md-sys-color-primary);
+    outline-offset: 2px;
 }
 
 #socialIconsWrap li a i {
