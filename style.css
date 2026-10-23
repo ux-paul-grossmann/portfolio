@@ -5480,9 +5480,9 @@ html.glightbox-open #devPresetToggle {
     z-index: 40;
     width: min(420px, calc(100% - 32px));
     margin: 0;
-    padding: 20px 52px 20px 24px;
+    padding: 24px;
     border: 1px solid var(--md-sys-color-primary);
-    border-radius: 12px;
+    border-radius: 16px;
     background: var(--md-sys-color-primary-container);
     color: var(--md-sys-color-on-primary-container);
     box-shadow: var(--shadow-card-rest);
@@ -5492,25 +5492,85 @@ html.glightbox-open #devPresetToggle {
 
 .kontext-game-reward-close {
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 14px;
+    right: 14px;
 }
 
-.kontext-game-reward p {
-    margin: 0 0 8px;
+.kontext-game-eyebrow {
+    margin: 0 0 6px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--md-sys-color-primary);
 }
 
 .kontext-game-reward-title {
-    font-size: 1rem;
+    margin: 0 0 20px;
+    font-size: 20px;
+    line-height: 1.2;
     font-weight: 700;
+    letter-spacing: -.01em;
 }
 
-.kontext-game-run {
+.kontext-game-result {
+    margin: 0 0 22px;
+}
+
+.kontext-game-result-label {
+    display: block;
+    margin: 0 0 2px;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    opacity: .75;
+}
+
+.kontext-game-result-value {
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+    margin: 0;
+    font-size: 44px;
+    line-height: 1;
+    font-weight: 700;
     font-variant-numeric: tabular-nums;
+    letter-spacing: -.04em;
+}
+
+.kontext-game-result-unit {
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0;
+    opacity: .7;
 }
 
 .kontext-game-best {
-    font-variant-numeric: tabular-nums;
+    margin: 6px 0 0;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--md-sys-color-primary);
+}
+
+.kontext-game-best.is-new {
+    display: inline-flex;
+    align-items: center;
+    padding: 3px 9px;
+    border-radius: 999px;
+    background: var(--md-sys-color-primary);
+    color: var(--md-sys-color-on-primary);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+}
+
+.kontext-game-reward-copy {
+    margin: 0 0 18px;
+    font-size: 12px;
+    line-height: 1.55;
+    opacity: .72;
 }
 
 .kontext-game-again {
