@@ -5557,9 +5557,10 @@ html.glightbox-open #devPresetToggle {
     display: inline-flex;
     align-items: center;
     padding: 3px 9px;
+    border: 1px solid var(--md-sys-color-primary);
     border-radius: 999px;
-    background: var(--md-sys-color-primary);
-    color: var(--md-sys-color-on-primary);
+    background: transparent;
+    color: var(--md-sys-color-primary);
     font-size: 10px;
     font-weight: 700;
     letter-spacing: .06em;
@@ -5574,8 +5575,12 @@ html.glightbox-open #devPresetToggle {
 }
 
 .kontext-game-again {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
     margin-top: 4px;
-    padding: 7px 12px;
+    padding: 10px 12px;
     border: 1px solid currentColor;
     border-radius: 40px;
     background: transparent;
