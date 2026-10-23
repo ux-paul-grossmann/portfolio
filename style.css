@@ -80,10 +80,13 @@ img.rounded-lg {
     border-radius: 16px !important;
 }
 
-/* Content images inside expanded showcase cards follow the card radius;
-   the tool badges keep their explicit 8px. */
-#projekte .project-detail img.rounded-lg {
-    border-radius: var(--card-radius) !important;
+/* Content images inside expanded showcase cards: 20px, no border and no
+   shadow, so Final Design, Projekthintergrund and Designprozess match. The
+   tool badges keep their white border and explicit 8px radius. */
+#projekte .project-detail img:not(.iconsizing) {
+    border-radius: 20px !important;
+    border: 0 !important;
+    box-shadow: none !important;
 }
 
 ::selection {
