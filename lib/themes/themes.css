@@ -73,7 +73,7 @@
      --ci-profilbild-caption-sublineFG: var(--md-sys-color-on-surface-variant);
 
      /* 4. NAVIGATION */
-     --navbarBG: rgba(243, 237, 247, 0.85);
+     --navbarBG: rgba(233, 239, 239, 0.85);
      --navlinkFG: var(--md-sys-color-on-surface);
      --navlink-hover-FG: var(--md-sys-color-on-primary);
      --navlink-hover-BG: var(--md-sys-color-primary);
@@ -313,7 +313,7 @@
      --ci-profilbild-caption-sublineFG: var(--md-sys-color-on-surface-variant);
 
      /* 4. NAVIGATION */
-     --navbarBG: rgba(20, 18, 24, 0.85);
+     --navbarBG: rgba(26, 33, 33, 0.85);
      --navlinkFG: var(--md-sys-color-on-surface);
      --navlink-hover-FG: var(--md-sys-color-on-primary);
      --navlink-hover-BG: var(--md-sys-color-primary);
