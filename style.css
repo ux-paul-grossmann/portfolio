@@ -729,7 +729,25 @@ nav.navbar.fixed-bottom .navbar-collapse .menu-close {
     }
 
     nav.navbar.fixed-bottom.nav-bg-black {
-        border-top: 1px solid rgba(0, 0, 0, 0.06);
+        background-color: transparent;
+        -webkit-backdrop-filter: none;
+        backdrop-filter: none;
+    }
+
+    /* The bar carries no surface on desktop; the navigation itself is a pill.
+       Padding 8px all round plus the 1px border gives a 9px inset, so a 21px
+       outer radius keeps the 12px link pills concentric. */
+    nav.navbar.fixed-bottom > .container {
+        width: auto;
+        max-width: none;
+        margin: 0 auto;
+        padding: 8px;
+        background: color-mix(in srgb, var(--md-sys-color-surface-container-high) 92%, transparent);
+        -webkit-backdrop-filter: blur(14px) saturate(1.12);
+        backdrop-filter: blur(14px) saturate(1.12);
+        border: 1px solid var(--md-sys-color-outline-variant);
+        border-radius: 21px;
+        box-shadow: var(--md-sys-elevation-2);
     }
 
     nav.navbar.fixed-bottom .navbar-collapse {
@@ -2701,7 +2719,7 @@ button.btn.download-section-color:nth-child(3):active {
 
     .navbar.nav-bg-black {
         background-color: var(--navbarBG);
-        border-top: 1px solid gainsboro;
+        border-top: none;
     }
 
     .nav-link {
