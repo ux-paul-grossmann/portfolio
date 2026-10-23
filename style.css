@@ -4423,6 +4423,33 @@ body.dev-edit .dev-media-x[hidden] {
     white-space: nowrap;
 }
 
+#devCtaPanel[hidden] {
+    display: none;
+}
+
+#devCtaPanel .dev-cta-grip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 14px;
+    height: 18px;
+    margin-right: 2px;
+    border-radius: 4px;
+    color: var(--collapse-card-titleFG);
+    opacity: 0.5;
+    cursor: grab;
+    touch-action: none;
+    user-select: none;
+}
+
+#devCtaPanel .dev-cta-grip:hover {
+    opacity: 1;
+}
+
+#devCtaPanel.is-dragging .dev-cta-grip {
+    cursor: grabbing;
+}
+
 #devCtaPanel .dev-preset-button {
     padding: 4px 7px;
 }

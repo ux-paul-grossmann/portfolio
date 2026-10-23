@@ -28,7 +28,9 @@
     // Dev mode – ?dev=1 persists for every later load; ?dev=0 turns it off.
     (function(){try{
         var q=new URLSearchParams(location.search);
-        if(q.get('dev')==='0') localStorage.removeItem('portfolio-dev');
+        var devValue=q.get("dev");
+        if(devValue==="0") localStorage.removeItem("portfolio-dev");
+        else if(devValue==="review-logo-strips") return;
         else if(q.has('dev')) localStorage.setItem('portfolio-dev','1');
     }catch(e){}})();
     </script>
@@ -442,7 +444,7 @@
 
         <button type="button" class="brand-lab-copy" id="brandCopy">Copy configuration</button>
 
-        <div class="brand-hint" style="margin-top:10px;">Press Shift + ° to show or hide this panel</div>
+        <div class="brand-hint" style="margin-top:10px;">Parked behind <code>?dev=review-logo-strips</code></div>
     </aside>
 
     <script>
@@ -756,51 +758,24 @@
         }
 
         // ---------- Show and hide the panel ----------
-        // Hidden by default, revealed only by Shift + °
+        // Parked behind ?dev=review-logo-strips: hidden for every other visit.
         closeBtn.addEventListener('click', function () {
             lab.hidden = true;
             perfStoppen();
         });
 
-        // Shift + °. German keyboard: ° is the second assignment of the dead key left of 1,
-        // so code "Backquote" together with shiftKey is what matches.
-        function isTextField(target) {
-            if (!target) return false;
-            if (target.isContentEditable) return true;
-            var tag = (target.tagName || '').toLowerCase();
-            if (tag === 'textarea' || tag === 'select') return true;
-            if (tag === 'input') {
-                var type = (target.getAttribute('type') || 'text').toLowerCase();
-                return ['text', 'search', 'email', 'url', 'tel', 'password', 'number',
-                        'date', 'datetime-local', 'month', 'week', 'time'].indexOf(type) !== -1;
+        function reviewRequested() {
+            try {
+                return new URLSearchParams(location.search).get('dev') === 'review-logo-strips';
+            } catch (e) {
+                return false;
             }
-            return false;
         }
 
-        function isCaretKey(event) {
-            var code = event.code || '';
-            var key = event.key || '';
-            if (code === 'Backquote') return true;
-            if (key === '^' || key === '°') return true;
-            if (key === 'Dead' && (code === '' || code === 'Unidentified' || code === 'Backquote')) return true;
-            return false;
+        if (reviewRequested()) {
+            lab.hidden = false;
+            perfStarten();
         }
-
-        function panelUmschalten() {
-            lab.hidden = !lab.hidden;
-            if (lab.hidden) perfStoppen();
-            else perfStarten();
-        }
-
-        document.addEventListener('keydown', function (event) {
-            if (event.ctrlKey || event.metaKey || event.altKey) return;
-            if (isTextField(event.target)) return;
-            // Shift only, so a bare ^ does nothing
-            if (event.shiftKey && isCaretKey(event)) {
-                event.preventDefault();
-                panelUmschalten();
-            }
-        });
 
         // ---------- Start ----------
         // The panel stays hidden, the measurement runs only once it is visible
