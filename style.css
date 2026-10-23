@@ -5505,6 +5505,10 @@ html.glightbox-open #devPresetToggle {
     font-weight: 700;
 }
 
+.kontext-game-run {
+    font-variant-numeric: tabular-nums;
+}
+
 .kontext-game-best {
     font-variant-numeric: tabular-nums;
 }
