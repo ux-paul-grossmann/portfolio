@@ -5481,10 +5481,10 @@ html.glightbox-open #devPresetToggle {
     width: min(420px, calc(100% - 32px));
     margin: 0;
     padding: 24px;
-    border: 1px solid var(--md-sys-color-primary);
+    border: 1px solid var(--collapse-cardBorderColor);
     border-radius: 16px;
-    background: var(--md-sys-color-primary-container);
-    color: var(--md-sys-color-on-primary-container);
+    background: var(--collapse-cardBG);
+    color: var(--collapse-card-titleFG);
     box-shadow: var(--shadow-card-rest);
     text-align: left;
     transform: translate(-50%, -50%);
