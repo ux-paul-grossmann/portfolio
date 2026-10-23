@@ -1034,16 +1034,29 @@ html[data-cta-variant="jade-bright"] {
     --cta-ring: #80D4D999;
 }
 
-/* Current button with a hover ring only: idle keeps the original component
-   rules, hover adds the 10px ring (plus the simulated-hover state used by the
-   dev panel and a 4px press). */
-html[data-cta-variant="current-teal-ring"] :is(#intro-button, .kontext-game-launch, .submit-button, .kontext-game-again, .scroll-to-top-card):hover,
-html[data-cta-variant="current-teal-ring"][data-cta-state="hover"] :is(#intro-button, .kontext-game-launch, .submit-button, .kontext-game-again, .scroll-to-top-card) {
-    box-shadow: inset 0 1px 2px rgb(255 255 255 / .5), 0 0 0 10px #4392A999 !important;
+/* Current button with a hover halo: idle carries a transparent halo layer, so
+   the ring fades 0 -> 1 on hover (plus the simulated-hover state used by the
+   dev panel). The halo lives in ::after, so every button keeps its own idle
+   shadow untouched. */
+html[data-cta-variant="current-teal-ring"] :is(#intro-button, .kontext-game-launch, .submit-button, .kontext-game-again, .scroll-to-top-card) {
+    position: relative !important;
 }
 
-html[data-cta-variant="current-teal-ring"] :is(#intro-button, .kontext-game-launch, .submit-button, .kontext-game-again, .scroll-to-top-card):active {
-    box-shadow: inset 0 1px 2px rgb(255 255 255 / .25), 0 0 0 4px #4392A999 !important;
+html[data-cta-variant="current-teal-ring"] :is(#intro-button, .kontext-game-launch, .submit-button, .kontext-game-again, .scroll-to-top-card)::after {
+    content: "" !important;
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    box-shadow: 0 0 0 10px #4392A9 !important;
+    opacity: 0;
+    transition: opacity 200ms ease !important;
+    pointer-events: none;
+}
+
+html[data-cta-variant="current-teal-ring"] :is(#intro-button, .kontext-game-launch, .submit-button, .kontext-game-again, .scroll-to-top-card):hover::after,
+html[data-cta-variant="current-teal-ring"][data-cta-state="hover"] :is(#intro-button, .kontext-game-launch, .submit-button, .kontext-game-again, .scroll-to-top-card)::after,
+html[data-cta-variant="current-teal-ring"] :is(#intro-button, .kontext-game-launch, .submit-button, .kontext-game-again, .scroll-to-top-card):active::after {
+    opacity: 1;
 }
 
 /* Ring-only variants keep the idle background and text color on hover: only
@@ -1066,13 +1079,25 @@ html[data-cta-variant="current-teal-ring"][data-cta-state="hover"] :is(.kontext-
     color: inherit !important;
 }
 
-html[data-cta-variant="current-jade-ring"] :is(#intro-button, .kontext-game-launch, .submit-button, .kontext-game-again, .scroll-to-top-card):hover,
-html[data-cta-variant="current-jade-ring"][data-cta-state="hover"] :is(#intro-button, .kontext-game-launch, .submit-button, .kontext-game-again, .scroll-to-top-card) {
-    box-shadow: inset 0 1px 2px rgb(255 255 255 / .5), 0 0 0 10px #80D4D999 !important;
+html[data-cta-variant="current-jade-ring"] :is(#intro-button, .kontext-game-launch, .submit-button, .kontext-game-again, .scroll-to-top-card) {
+    position: relative !important;
 }
 
-html[data-cta-variant="current-jade-ring"] :is(#intro-button, .kontext-game-launch, .submit-button, .kontext-game-again, .scroll-to-top-card):active {
-    box-shadow: inset 0 1px 2px rgb(255 255 255 / .25), 0 0 0 4px #80D4D999 !important;
+html[data-cta-variant="current-jade-ring"] :is(#intro-button, .kontext-game-launch, .submit-button, .kontext-game-again, .scroll-to-top-card)::after {
+    content: "" !important;
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    box-shadow: 0 0 0 10px #80D4D9 !important;
+    opacity: 0;
+    transition: opacity 200ms ease !important;
+    pointer-events: none;
+}
+
+html[data-cta-variant="current-jade-ring"] :is(#intro-button, .kontext-game-launch, .submit-button, .kontext-game-again, .scroll-to-top-card):hover::after,
+html[data-cta-variant="current-jade-ring"][data-cta-state="hover"] :is(#intro-button, .kontext-game-launch, .submit-button, .kontext-game-again, .scroll-to-top-card)::after,
+html[data-cta-variant="current-jade-ring"] :is(#intro-button, .kontext-game-launch, .submit-button, .kontext-game-again, .scroll-to-top-card):active::after {
+    opacity: 1;
 }
 
 html[data-cta-variant="current-jade-ring"] :is(#intro-button, .submit-button, .scroll-to-top-card):hover,
