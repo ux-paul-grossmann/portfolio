@@ -1034,73 +1034,79 @@ html[data-cta-variant="jade-bright"] {
     --cta-ring: #80D4D999;
 }
 
-/* Current button with a hover halo, built like the Juicy reference: one
-   box-shadow layer list in every state, only the ring spread changes
-   (0 -> 10px, press 4px) over 200ms. A fixed band with a fading opacity reads
-   as a snap; an animating spread reads as the ring growing out of the button.
-   The idle spread is 0, so the idle look is exactly Current. */
-html[data-cta-variant="current-teal-ring"] :is(#intro-button, .kontext-game-launch, .submit-button, .kontext-game-again, .scroll-to-top-card) {
-    box-shadow: inset 0 1px 2px rgb(255 255 255 / .5), 0 0 0 0 rgb(67 146 169 / 0) !important;
+/* Ring variants, built like the Juicy reference: one box-shadow layer list in
+   every state, only the ring spread changes over 200ms. A fixed band with a
+   fading opacity reads as a snap; an animating spread reads as the ring growing
+   out of the button. The idle spread is a test variable (0 / 2 / 4px). */
+html[data-cta-variant="current-teal-ring"] {
+    --cta-ring-idle: 0px;
+    --cta-ring-rgb: 67 146 169;
+}
+
+html[data-cta-variant="current-jade-ring"] {
+    --cta-ring-idle: 0px;
+    --cta-ring-rgb: 128 212 217;
+}
+
+/* Dark ships the decided Solid jade surface: the light-teal primary already
+   fills the button there, so a same-colour halo would merge into it. Both ring
+   options therefore resolve to that surface in dark, with the muted ring. */
+html.dark:is([data-cta-variant="current-teal-ring"], [data-cta-variant="current-jade-ring"]) {
+    --cta-ring-rgb: 67 146 169;
+}
+
+html.dark:is([data-cta-variant="current-teal-ring"], [data-cta-variant="current-jade-ring"]) :is(#intro-button, .kontext-game-launch, .submit-button, .kontext-game-again, .scroll-to-top-card) {
+    background: #80D4D9 !important;
+    color: #003739 !important;
+    border-color: transparent !important;
+}
+
+html.dark:is([data-cta-variant="current-teal-ring"], [data-cta-variant="current-jade-ring"]) :is(.kontext-game-launch, .kontext-game-again):hover,
+html.dark:is([data-cta-variant="current-teal-ring"], [data-cta-variant="current-jade-ring"])[data-cta-state="hover"] :is(.kontext-game-launch, .kontext-game-again) {
+    background: #80D4D9 !important;
+    color: #003739 !important;
+}
+
+/* Test overrides from the dev panel; they must follow the variant blocks so an
+   equal-specificity rule wins on order. */
+html[data-cta-ring="2"] {
+    --cta-ring-idle: 2px;
+}
+
+html[data-cta-ring="4"] {
+    --cta-ring-idle: 4px;
+}
+
+html:is([data-cta-variant="current-teal-ring"], [data-cta-variant="current-jade-ring"]) :is(#intro-button, .kontext-game-launch, .submit-button, .kontext-game-again, .scroll-to-top-card) {
+    box-shadow: inset 0 1px 2px rgb(255 255 255 / .5), 0 0 0 var(--cta-ring-idle) rgb(var(--cta-ring-rgb) / .6) !important;
     transition: box-shadow 200ms cubic-bezier(.4, 0, .2, 1) !important;
 }
 
-html[data-cta-variant="current-teal-ring"] :is(#intro-button, .kontext-game-launch, .submit-button, .kontext-game-again, .scroll-to-top-card):hover,
-html[data-cta-variant="current-teal-ring"][data-cta-state="hover"] :is(#intro-button, .kontext-game-launch, .submit-button, .kontext-game-again, .scroll-to-top-card) {
-    box-shadow: inset 0 1px 2px rgb(255 255 255 / .5), 0 0 0 10px rgb(67 146 169 / .6) !important;
+html:is([data-cta-variant="current-teal-ring"], [data-cta-variant="current-jade-ring"]) :is(#intro-button, .kontext-game-launch, .submit-button, .kontext-game-again, .scroll-to-top-card):hover,
+html:is([data-cta-variant="current-teal-ring"], [data-cta-variant="current-jade-ring"])[data-cta-state="hover"] :is(#intro-button, .kontext-game-launch, .submit-button, .kontext-game-again, .scroll-to-top-card) {
+    box-shadow: inset 0 1px 2px rgb(255 255 255 / .5), 0 0 0 10px rgb(var(--cta-ring-rgb) / .6) !important;
 }
 
-html[data-cta-variant="current-teal-ring"] :is(#intro-button, .kontext-game-launch, .submit-button, .kontext-game-again, .scroll-to-top-card):active {
-    box-shadow: inset 0 1px 2px rgb(255 255 255 / .25), 0 0 0 4px rgb(67 146 169 / .6) !important;
+html:is([data-cta-variant="current-teal-ring"], [data-cta-variant="current-jade-ring"]) :is(#intro-button, .kontext-game-launch, .submit-button, .kontext-game-again, .scroll-to-top-card):active {
+    box-shadow: inset 0 1px 2px rgb(255 255 255 / .25), 0 0 0 4px rgb(var(--cta-ring-rgb) / .6) !important;
 }
 
 /* Ring-only variants keep the idle background and text color on hover: only
    the ring appears, no grey surface. */
-html[data-cta-variant="current-teal-ring"] :is(#intro-button, .submit-button, .scroll-to-top-card):hover,
-html[data-cta-variant="current-teal-ring"][data-cta-state="hover"] :is(#intro-button, .submit-button, .scroll-to-top-card) {
+html:is([data-cta-variant="current-teal-ring"], [data-cta-variant="current-jade-ring"]) :is(#intro-button, .submit-button, .scroll-to-top-card):hover,
+html:is([data-cta-variant="current-teal-ring"], [data-cta-variant="current-jade-ring"])[data-cta-state="hover"] :is(#intro-button, .submit-button, .scroll-to-top-card) {
     background: var(--actionButtonBG) !important;
     color: var(--actionButtonFG) !important;
 }
 
-html[data-cta-variant="current-teal-ring"] :is(.kontext-game-launch):hover,
-html[data-cta-variant="current-teal-ring"][data-cta-state="hover"] :is(.kontext-game-launch) {
+html:is([data-cta-variant="current-teal-ring"], [data-cta-variant="current-jade-ring"]) :is(.kontext-game-launch):hover,
+html:is([data-cta-variant="current-teal-ring"], [data-cta-variant="current-jade-ring"])[data-cta-state="hover"] :is(.kontext-game-launch) {
     background: transparent !important;
     color: var(--md-sys-color-primary) !important;
 }
 
-html[data-cta-variant="current-teal-ring"] :is(.kontext-game-again):hover,
-html[data-cta-variant="current-teal-ring"][data-cta-state="hover"] :is(.kontext-game-again) {
-    background: transparent !important;
-    color: inherit !important;
-}
-
-html[data-cta-variant="current-jade-ring"] :is(#intro-button, .kontext-game-launch, .submit-button, .kontext-game-again, .scroll-to-top-card) {
-    box-shadow: inset 0 1px 2px rgb(255 255 255 / .5), 0 0 0 0 rgb(128 212 217 / 0) !important;
-    transition: box-shadow 200ms cubic-bezier(.4, 0, .2, 1) !important;
-}
-
-html[data-cta-variant="current-jade-ring"] :is(#intro-button, .kontext-game-launch, .submit-button, .kontext-game-again, .scroll-to-top-card):hover,
-html[data-cta-variant="current-jade-ring"][data-cta-state="hover"] :is(#intro-button, .kontext-game-launch, .submit-button, .kontext-game-again, .scroll-to-top-card) {
-    box-shadow: inset 0 1px 2px rgb(255 255 255 / .5), 0 0 0 10px rgb(128 212 217 / .6) !important;
-}
-
-html[data-cta-variant="current-jade-ring"] :is(#intro-button, .kontext-game-launch, .submit-button, .kontext-game-again, .scroll-to-top-card):active {
-    box-shadow: inset 0 1px 2px rgb(255 255 255 / .25), 0 0 0 4px rgb(128 212 217 / .6) !important;
-}
-
-html[data-cta-variant="current-jade-ring"] :is(#intro-button, .submit-button, .scroll-to-top-card):hover,
-html[data-cta-variant="current-jade-ring"][data-cta-state="hover"] :is(#intro-button, .submit-button, .scroll-to-top-card) {
-    background: var(--actionButtonBG) !important;
-    color: var(--actionButtonFG) !important;
-}
-
-html[data-cta-variant="current-jade-ring"] :is(.kontext-game-launch):hover,
-html[data-cta-variant="current-jade-ring"][data-cta-state="hover"] :is(.kontext-game-launch) {
-    background: transparent !important;
-    color: var(--md-sys-color-primary) !important;
-}
-
-html[data-cta-variant="current-jade-ring"] :is(.kontext-game-again):hover,
-html[data-cta-variant="current-jade-ring"][data-cta-state="hover"] :is(.kontext-game-again) {
+html:is([data-cta-variant="current-teal-ring"], [data-cta-variant="current-jade-ring"]) :is(.kontext-game-again):hover,
+html:is([data-cta-variant="current-teal-ring"], [data-cta-variant="current-jade-ring"])[data-cta-state="hover"] :is(.kontext-game-again) {
     background: transparent !important;
     color: inherit !important;
 }
@@ -4391,11 +4397,11 @@ body.dev-edit .dev-media-x[hidden] {
     bottom: 108px;
     z-index: 1205;
     display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 6px;
-    max-width: min(640px, calc(100vw - 32px));
-    padding: 6px 8px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 4px;
+    max-width: min(560px, calc(100vw - 32px));
+    padding: 6px 8px 8px;
     border: 1px solid var(--collapse-cardBorderColor);
     border-radius: 10px;
     background: var(--collapse-cardBG);
@@ -4405,9 +4411,32 @@ body.dev-edit .dev-media-x[hidden] {
     box-shadow: 0 2px 10px rgb(0 0 0 / 0.18);
 }
 
+#devCtaPanel .dev-cta-head {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding-bottom: 2px;
+    border-bottom: 1px solid var(--collapse-cardBorderColor);
+}
+
+#devCtaPanel .dev-cta-title {
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    opacity: 0.7;
+}
+
+#devCtaPanel .dev-cta-row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 4px;
+}
+
 #devCtaPanel .dev-cta-label {
-    margin-right: 2px;
+    display: inline-block;
+    flex: 0 0 84px;
     white-space: nowrap;
+    opacity: 0.75;
 }
 
 #devCtaPanel[hidden] {
