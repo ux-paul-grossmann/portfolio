@@ -323,6 +323,7 @@
     
     <script src="./lib/js/helpers.js"></script>
     <script src="./lib/js/kontext.js"></script>
+    <script src="./lib/js/nav-glass.js"></script>
     <script src="./lib/js/dev-editor.js"></script>
 
     <button type="button" class="scrolltop no_selection" onclick="window.location.href='#profile'" aria-label="Nach oben scrollen">
@@ -786,16 +787,9 @@
 
     </script>
 
-    <!-- Navigation glass: displacement map for the refraction at the pill's
-         rim. Referenced from style.css as url(#nav-lens). Browsers that ignore
-         filter URLs in backdrop-filter fall back to plain frost. -->
-    <svg class="nav-lens-defs" width="0" height="0" aria-hidden="true" focusable="false">
-        <filter id="nav-lens" x="-10%" y="-30%" width="120%" height="160%" color-interpolation-filters="sRGB">
-            <feImage href="./lib/images/nav-lens-map.png" preserveAspectRatio="none" result="map"></feImage>
-            <feDisplacementMap in="SourceGraphic" in2="map" scale="18"
-                               xChannelSelector="R" yChannelSelector="G"></feDisplacementMap>
-        </filter>
-    </svg>
+    <!-- Navigation glass: the displacement map is generated per size by
+         lib/js/nav-glass.js into #nav-lens. Browsers without filter support in
+         backdrop-filter keep the plain frost from style.css. -->
 
     <!-- #region agent log -->
     <script>
