@@ -4156,6 +4156,9 @@ a, button, .btn, .nav-link, .thumb-element, #theme-toggle, .scrolltop, #intro-bu
     flex: 0 0 auto;
     width: 150px;
     height: 90px;
+    /* The global image default rounds every image; logos stay square and
+       the cell around them carries the rounding. */
+    border-radius: 0;
 }
 
 .brand-cell {
@@ -4179,6 +4182,14 @@ a, button, .btn, .nav-link, .thumb-element, #theme-toggle, .scrolltop, #intro-bu
     -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 26px, #000 calc(100% - 26px), transparent 100%);
     mask-image: linear-gradient(90deg, transparent 0, #000 26px, #000 calc(100% - 26px), transparent 100%);
     padding-inline: 8px;
+}
+
+/* While the cells land they fly in from 100px above, so the room inside the
+   panel grows for the flight and shrinks back afterwards. Same negative
+   margin trick, so the page around it never moves. */
+.brand-strip.is-cells.is-entering .brand-panel {
+    padding-block: 170px;
+    margin-block: -170px;
 }
 
 .brand-strip.is-cells .brand-cell {
@@ -4206,7 +4217,16 @@ a, button, .btn, .nav-link, .thumb-element, #theme-toggle, .scrolltop, #intro-bu
     animation: brand-marquee var(--brand-marquee-dauer, 30s) linear infinite;
 }
 
-.brand-strip.is-moving .brand-cell {
+/* Without the ticker the filled row still runs on one line; only the
+   motion is missing, so the row stays full in both states. */
+.brand-strip.is-cells:not(.is-moving) .brand-track {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    gap: 0;
+    width: max-content;
+}
+
+.brand-strip.is-cells .brand-cell {
     margin-right: 32px;
 }
 

@@ -650,13 +650,14 @@
                 return Array.prototype.slice.call(track.querySelectorAll('[data-clone="1"]'));
             }
 
-            if (!on) {
-                strip.classList.remove('is-moving');
+            // Fill first, motion second: the row stays full with the ticker
+            // off, and only the motion flag follows the switch.
+            var einzel = strip.classList.contains('is-cells');
+            strip.classList.toggle('is-moving', !!on);
+            if (!einzel) {
                 kopien().forEach(function (n) { track.removeChild(n); });
                 return;
             }
-
-            strip.classList.add('is-moving');
 
             var original = Array.prototype.slice.call(track.children)
                 .filter(function (n) { return n.getAttribute('data-clone') !== '1'; });
@@ -692,12 +693,17 @@
         }
 
         // ---------- Render ----------
-        function render() {
+        // Cheap state without node surgery: safe at any time, even while
+        // the entrance runs. Clone surgery lives in render() only.
+        function applyState() {
             var zeige200 = size200.checked;
             strip200.classList.toggle('is-visible', zeige200);
             strip150.classList.toggle('is-visible', !zeige200);
             strip200.classList.toggle('is-cells', cells.checked);
             strip150.classList.toggle('is-cells', cells.checked);
+        }
+        function render() {
+            applyState();
             setMoving(strip200, move.checked);
             setMoving(strip150, move.checked);
 
@@ -737,9 +743,11 @@
         segmentMischen('brandEdge', 'data-edge', 'hauch');
         segmentMischen('brandSpeed', 'data-speed', 'mittel');
 
-        // The theme switch comes from helpers.js, so watch for the class change
+        // Class changes (theme, lens, lightbox) never change the panel width,
+        // so they apply cheap state only and never rebuild the clones while
+        // the entrance runs on them.
         if (window.MutationObserver) {
-            new MutationObserver(render).observe(document.documentElement,
+            new MutationObserver(applyState).observe(document.documentElement,
                 { attributes: true, attributeFilter: ['class'] });
         }
 
