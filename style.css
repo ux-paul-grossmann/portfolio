@@ -1066,7 +1066,7 @@ a#ci-brand-detail-name:hover {
     margin-top: 16px;
 }
 
-#intro-button:hover {
+#intro-button:not(.cta):hover {
     transition: 250ms all ease;
     text-decoration: none;
     background: var(--actionButtonBG-hover) !important;
@@ -1090,7 +1090,7 @@ a#ci-brand-detail-name:hover {
     color: var(--actionButtonFG) !important;
 }
 
-.submit-button:hover {
+.submit-button:not(.cta):hover {
     box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
     transition: 200ms all ease;
     text-decoration: none;
@@ -1178,15 +1178,15 @@ html[data-cta-variant="jade-bright"] {
    movement. The dev panel only changes the ring colour and spread.
    ============================================================ */
 :root {
-    --cta-ring-rgb: 67 146 169;
+    --cta-ring-rgb: 128 212 217;
     --cta-ring-idle: 0px;
     --cta-radius: 40px;
     --cta-pad-y: 12px;
     --cta-pad-x: 24px;
 }
 
-html[data-cta-variant="current-jade-ring"] {
-    --cta-ring-rgb: 128 212 217;
+html[data-cta-variant="current-teal-ring"] {
+    --cta-ring-rgb: 67 146 169;
 }
 
 html[data-cta-ring="2"] {
@@ -2193,7 +2193,7 @@ label {
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
-#projekte .scroll-to-top-card:hover {
+#projekte .scroll-to-top-card:not(.cta):hover {
     background: var(--actionButtonBG-hover);
     color: var(--actionButtonFG-hover);
     transform: translateY(-2px);
@@ -5787,8 +5787,8 @@ html.glightbox-open #devPresetToggle {
     cursor: pointer;
 }
 
-.kontext-game-launch:hover,
-.kontext-game-launch:focus-visible {
+.kontext-game-launch:not(.cta):hover,
+.kontext-game-launch:not(.cta):focus-visible {
     background: var(--md-sys-color-primary);
     color: var(--md-sys-color-on-primary);
     outline: none;
@@ -5917,8 +5917,8 @@ html.glightbox-open #devPresetToggle {
     cursor: pointer;
 }
 
-.kontext-game-again:hover,
-.kontext-game-again:focus-visible {
+.kontext-game-again:not(.cta):hover,
+.kontext-game-again:not(.cta):focus-visible {
     background: var(--md-sys-color-primary);
     color: var(--md-sys-color-on-primary);
     outline: none;
