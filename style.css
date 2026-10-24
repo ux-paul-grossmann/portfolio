@@ -1171,41 +1171,24 @@ html[data-cta-variant="jade-bright"] {
     --cta-ring: #80D4D999;
 }
 
-/* Ring variants, built like the Juicy reference: one box-shadow layer list in
-   every state, only the ring spread changes over 200ms. A fixed band with a
-   fading opacity reads as a snap; an animating spread reads as the ring growing
-   out of the button. The idle spread is a test variable (0 / 2 / 4px). */
-html[data-cta-variant="current-teal-ring"] {
-    --cta-ring-idle: 0px;
+/* ============================================================
+   CTA system
+   Four levels share one state model: an idle ring (0 / 2 / 4 px
+   test variable), a 10 px hover ring, a 4 px press, and no
+   movement. The dev panel only changes the ring colour and spread.
+   ============================================================ */
+:root {
     --cta-ring-rgb: 67 146 169;
+    --cta-ring-idle: 0px;
+    --cta-radius: 40px;
+    --cta-pad-y: 12px;
+    --cta-pad-x: 24px;
 }
 
 html[data-cta-variant="current-jade-ring"] {
-    --cta-ring-idle: 0px;
     --cta-ring-rgb: 128 212 217;
 }
 
-/* Dark ships the decided Solid jade surface: the light-teal primary already
-   fills the button there, so a same-colour halo would merge into it. Both ring
-   options therefore resolve to that surface in dark, with the muted ring. */
-html.dark:is([data-cta-variant="current-teal-ring"], [data-cta-variant="current-jade-ring"]) {
-    --cta-ring-rgb: 67 146 169;
-}
-
-html.dark:is([data-cta-variant="current-teal-ring"], [data-cta-variant="current-jade-ring"]) :is(#intro-button, .kontext-game-launch, .submit-button, .kontext-game-again, .scroll-to-top-card, .contact-mail) {
-    background: #80D4D9 !important;
-    color: #003739 !important;
-    border-color: transparent !important;
-}
-
-html.dark:is([data-cta-variant="current-teal-ring"], [data-cta-variant="current-jade-ring"]) :is(.kontext-game-launch, .kontext-game-again):hover,
-html.dark:is([data-cta-variant="current-teal-ring"], [data-cta-variant="current-jade-ring"])[data-cta-state="hover"] :is(.kontext-game-launch, .kontext-game-again) {
-    background: #80D4D9 !important;
-    color: #003739 !important;
-}
-
-/* Test overrides from the dev panel; they must follow the variant blocks so an
-   equal-specificity rule wins on order. */
 html[data-cta-ring="2"] {
     --cta-ring-idle: 2px;
 }
@@ -1214,41 +1197,111 @@ html[data-cta-ring="4"] {
     --cta-ring-idle: 4px;
 }
 
-html:is([data-cta-variant="current-teal-ring"], [data-cta-variant="current-jade-ring"]) :is(#intro-button, .kontext-game-launch, .submit-button, .kontext-game-again, .scroll-to-top-card, .contact-mail) {
+.cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: var(--cta-pad-y) var(--cta-pad-x);
+    border: 1px solid transparent;
+    border-radius: var(--cta-radius);
+    font-weight: 700;
+    line-height: 1.2;
+    text-decoration: none;
+    cursor: pointer;
     box-shadow: inset 0 1px 2px rgb(255 255 255 / .5), 0 0 0 var(--cta-ring-idle) rgb(var(--cta-ring-rgb) / .6) !important;
-    transition: box-shadow 200ms cubic-bezier(.4, 0, .2, 1) !important;
+    transition: box-shadow 200ms cubic-bezier(.4, 0, .2, 1), background 200ms ease,
+                color 200ms ease, border-color 200ms ease;
 }
 
-html:is([data-cta-variant="current-teal-ring"], [data-cta-variant="current-jade-ring"]) :is(#intro-button, .kontext-game-launch, .submit-button, .kontext-game-again, .scroll-to-top-card, .contact-mail):hover,
-html:is([data-cta-variant="current-teal-ring"], [data-cta-variant="current-jade-ring"])[data-cta-state="hover"] :is(#intro-button, .kontext-game-launch, .submit-button, .kontext-game-again, .scroll-to-top-card, .contact-mail) {
-    /* The ring is the only hover feedback; no lift, so every call to action
-       moves the same way, which is not at all. */
+.cta:hover,
+.cta[data-state="hover"] {
     transform: none !important;
     box-shadow: inset 0 1px 2px rgb(255 255 255 / .5), 0 0 0 10px rgb(var(--cta-ring-rgb) / .6) !important;
 }
 
-html:is([data-cta-variant="current-teal-ring"], [data-cta-variant="current-jade-ring"]) :is(#intro-button, .kontext-game-launch, .submit-button, .kontext-game-again, .scroll-to-top-card, .contact-mail):active {
+.cta:active,
+.cta[data-state="active"] {
     box-shadow: inset 0 1px 2px rgb(255 255 255 / .25), 0 0 0 4px rgb(var(--cta-ring-rgb) / .6) !important;
 }
 
-/* Ring-only variants keep the idle background and text color on hover: only
-   the ring appears, no grey surface. */
-html:is([data-cta-variant="current-teal-ring"], [data-cta-variant="current-jade-ring"]) :is(#intro-button, .submit-button, .scroll-to-top-card):hover,
-html:is([data-cta-variant="current-teal-ring"], [data-cta-variant="current-jade-ring"])[data-cta-state="hover"] :is(#intro-button, .submit-button, .scroll-to-top-card) {
+.cta:focus-visible,
+.cta[data-state="focus"] {
+    outline: 3px solid rgb(var(--cta-ring-rgb) / .9);
+    outline-offset: 2px;
+}
+
+.cta:disabled,
+.cta[aria-disabled="true"] {
+    opacity: .45;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+/* Level 1: the filled action, one per section */
+.cta--primary {
     background: var(--actionButtonBG) !important;
     color: var(--actionButtonFG) !important;
 }
 
-html:is([data-cta-variant="current-teal-ring"], [data-cta-variant="current-jade-ring"]) :is(.kontext-game-launch):hover,
-html:is([data-cta-variant="current-teal-ring"], [data-cta-variant="current-jade-ring"])[data-cta-state="hover"] :is(.kontext-game-launch) {
+.cta--primary:hover,
+.cta--primary[data-state="hover"] {
+    background: var(--actionButtonBG) !important;
+    color: var(--actionButtonFG) !important;
+}
+
+/* Level 2: same weight, no fill */
+.cta--secondary {
+    background: transparent !important;
+    color: var(--md-sys-color-primary) !important;
+    border-color: var(--md-sys-color-primary);
+}
+
+.cta--secondary:hover,
+.cta--secondary[data-state="hover"] {
     background: transparent !important;
     color: var(--md-sys-color-primary) !important;
 }
 
-html:is([data-cta-variant="current-teal-ring"], [data-cta-variant="current-jade-ring"]) :is(.kontext-game-again):hover,
-html:is([data-cta-variant="current-teal-ring"], [data-cta-variant="current-jade-ring"])[data-cta-state="hover"] :is(.kontext-game-again) {
+/* Level 3: quiet action, surface only on hover; no halo, because a quiet
+   action must not shout with the same ring as the primary. */
+.cta--tertiary {
     background: transparent !important;
-    color: inherit !important;
+    color: var(--md-sys-color-primary) !important;
+    border-color: transparent !important;
+    padding: var(--cta-pad-y) 18px;
+    font-weight: 600;
+    box-shadow: none !important;
+}
+
+.cta--tertiary:hover,
+.cta--tertiary[data-state="hover"] {
+    background: color-mix(in srgb, var(--md-sys-color-primary) 14%, transparent) !important;
+    color: var(--md-sys-color-primary) !important;
+    box-shadow: none !important;
+}
+
+.cta--tertiary:active,
+.cta--tertiary[data-state="active"] {
+    box-shadow: none !important;
+    background: color-mix(in srgb, var(--md-sys-color-primary) 20%, transparent) !important;
+}
+
+/* Level 4: inline text link */
+.link-inline {
+    color: var(--md-sys-color-primary);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 200ms ease, color 200ms ease;
+}
+
+.link-inline:hover,
+.link-inline:focus-visible,
+.link-inline[data-state="hover"] {
+    color: var(--md-sys-color-primary);
+    background: transparent;
+    border-bottom-color: currentColor;
+    text-decoration: none;
 }
 
 .button-label {

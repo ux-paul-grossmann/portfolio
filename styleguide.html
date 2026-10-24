@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Portfolio — design system</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="./lib/themes/themes.css">
+    <link rel="stylesheet" href="./style.css">
+    <style>
+        /* Page shell only: everything inside the boards comes from the real
+           stylesheet, so the guide cannot drift from the site. */
+        body {
+            margin: 0;
+            padding: 48px;
+            background: var(--md-sys-color-surface);
+            color: var(--md-sys-color-on-surface);
+            font-family: 'Inter', 'Montserrat', sans-serif;
+        }
+
+        .guide-section {
+            margin-bottom: 56px;
+        }
+
+        .guide-label {
+            margin: 0 0 6px;
+            font-size: 12px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--md-sys-color-on-surface-variant);
+        }
+
+        .guide-row {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .guide-grid {
+            display: grid;
+            grid-template-columns: 120px repeat(4, minmax(160px, 1fr));
+            gap: 16px;
+            align-items: center;
+        }
+
+        .guide-grid-head {
+            font-size: 11px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--md-sys-color-on-surface-variant);
+        }
+
+        .swatch {
+            width: 104px;
+            height: 72px;
+            border-radius: 12px;
+            border: 1px solid var(--md-sys-color-outline-variant);
+            display: flex;
+            align-items: flex-end;
+            padding: 8px;
+            font-size: 10px;
+        }
+
+        .swatch-name {
+            margin-top: 6px;
+            font-size: 11px;
+            color: var(--md-sys-color-on-surface-variant);
+        }
+    </style>
+</head>
+
+<body class="thetop">
+    <main class="container-fluid">
+        <h1 class="h3 mb-1">Design system</h1>
+        <p class="guide-label mb-5">Rendered with style.css — the same rules the site uses</p>
+
+        <section class="guide-section">
+            <h2 class="h5 mb-3">Colour</h2>
+            <div class="guide-row">
+                <div>
+                    <div class="swatch" style="background: var(--md-sys-color-primary)"></div>
+                    <div class="swatch-name">primary</div>
+                </div>
+                <div>
+                    <div class="swatch" style="background: var(--md-sys-color-primary-container)"></div>
+                    <div class="swatch-name">primary-container</div>
+                </div>
+                <div>
+                    <div class="swatch" style="background: var(--md-sys-color-surface)"></div>
+                    <div class="swatch-name">surface</div>
+                </div>
+                <div>
+                    <div class="swatch" style="background: var(--md-sys-color-surface-container-high)"></div>
+                    <div class="swatch-name">surface-container-high</div>
+                </div>
+                <div>
+                    <div class="swatch" style="background: var(--md-sys-color-outline-variant)"></div>
+                    <div class="swatch-name">outline-variant</div>
+                </div>
+                <div>
+                    <div class="swatch" style="background: var(--md-sys-color-error)"></div>
+                    <div class="swatch-name">error</div>
+                </div>
+                <div>
+                    <div class="swatch" style="background: rgb(var(--cta-ring-rgb) / .6)"></div>
+                    <div class="swatch-name">ring</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="guide-section">
+            <h2 class="h5 mb-3">Call to action — four levels, four states</h2>
+            <div class="guide-grid mb-3">
+                <span class="guide-grid-head"></span>
+                <span class="guide-grid-head">Idle</span>
+                <span class="guide-grid-head">Hover</span>
+                <span class="guide-grid-head">Active</span>
+                <span class="guide-grid-head">Focus</span>
+
+                <span class="guide-grid-head">Primary</span>
+                <span><span class="cta cta--primary">Zu den Showcases</span></span>
+                <span><span class="cta cta--primary" data-state="hover">Zu den Showcases</span></span>
+                <span><span class="cta cta--primary" data-state="active">Zu den Showcases</span></span>
+                <span><span class="cta cta--primary" data-state="focus">Zu den Showcases</span></span>
+
+                <span class="guide-grid-head">Secondary</span>
+                <span><span class="cta cta--secondary">Break the friction</span></span>
+                <span><span class="cta cta--secondary" data-state="hover">Break the friction</span></span>
+                <span><span class="cta cta--secondary" data-state="active">Break the friction</span></span>
+                <span><span class="cta cta--secondary" data-state="focus">Break the friction</span></span>
+
+                <span class="guide-grid-head">Tertiary</span>
+                <span><span class="cta cta--tertiary">Adresse kopieren</span></span>
+                <span><span class="cta cta--tertiary" data-state="hover">Adresse kopieren</span></span>
+                <span><span class="cta cta--tertiary" data-state="active">Adresse kopieren</span></span>
+                <span><span class="cta cta--tertiary" data-state="focus">Adresse kopieren</span></span>
+
+                <span class="guide-grid-head">Inline</span>
+                <span><a class="link-inline" href="#kontakt">Kontakt aufnehmen</a></span>
+                <span><a class="link-inline" href="#kontakt" data-state="hover">Kontakt aufnehmen</a></span>
+                <span class="guide-label">not applicable</span>
+                <span><a class="link-inline" href="#kontakt" data-state="focus">Kontakt aufnehmen</a></span>
+
+                <span class="guide-grid-head">Disabled</span>
+                <span><span class="cta cta--primary" aria-disabled="true">Nicht verfügbar</span></span>
+                <span><span class="cta cta--secondary" aria-disabled="true">Nicht verfügbar</span></span>
+                <span><span class="cta cta--tertiary" aria-disabled="true">Nicht verfügbar</span></span>
+                <span></span>
+            </div>
+        </section>
+
+        <section class="guide-section">
+            <h2 class="h5 mb-3">Type scale</h2>
+            <p class="h1 mb-2">Display — Kompetenzen &amp; Methoden</p>
+            <p class="h3 mb-2">Heading — Ich mache komplexe Anwendungen intuitiv</p>
+            <p class="h5 mb-2">Subheading — Showcases</p>
+            <p class="mb-2">Body — Hey, ich bin Paul Großmann, UX- &amp; UI-Designer aus Aachen.</p>
+            <p class="guide-label mb-0">Caption — 12 px, gesperrt</p>
+        </section>
+
+        <section class="guide-section">
+            <h2 class="h5 mb-3">Radius</h2>
+            <div class="guide-row">
+                <div>
+                    <div style="width: 72px; height: 72px; border-radius: 8px; background: var(--md-sys-color-primary-container)"></div>
+                    <div class="swatch-name">8 — icon badge</div>
+                </div>
+                <div>
+                    <div style="width: 72px; height: 72px; border-radius: 12px; background: var(--md-sys-color-primary-container)"></div>
+                    <div class="swatch-name">12 — link pill</div>
+                </div>
+                <div>
+                    <div style="width: 72px; height: 72px; border-radius: 21px; background: var(--md-sys-color-primary-container)"></div>
+                    <div class="swatch-name">21 — nav glass</div>
+                </div>
+                <div>
+                    <div style="width: 72px; height: 72px; border-radius: 24px; background: var(--md-sys-color-primary-container)"></div>
+                    <div class="swatch-name">24 — card</div>
+                </div>
+                <div>
+                    <div style="width: 120px; height: 48px; border-radius: 40px; background: var(--md-sys-color-primary-container)"></div>
+                    <div class="swatch-name">40 — cta pill</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="guide-section">
+            <h2 class="h5 mb-3">Spacing</h2>
+            <div class="guide-row">
+                <div>
+                    <div style="width: 4px; height: 72px; background: var(--md-sys-color-primary)"></div>
+                    <div class="swatch-name">4</div>
+                </div>
+                <div>
+                    <div style="width: 8px; height: 72px; background: var(--md-sys-color-primary)"></div>
+                    <div class="swatch-name">8</div>
+                </div>
+                <div>
+                    <div style="width: 12px; height: 72px; background: var(--md-sys-color-primary)"></div>
+                    <div class="swatch-name">12</div>
+                </div>
+                <div>
+                    <div style="width: 16px; height: 72px; background: var(--md-sys-color-primary)"></div>
+                    <div class="swatch-name">16</div>
+                </div>
+                <div>
+                    <div style="width: 24px; height: 72px; background: var(--md-sys-color-primary)"></div>
+                    <div class="swatch-name">24</div>
+                </div>
+                <div>
+                    <div style="width: 40px; height: 72px; background: var(--md-sys-color-primary)"></div>
+                    <div class="swatch-name">40</div>
+                </div>
+                <div>
+                    <div style="width: 64px; height: 72px; background: var(--md-sys-color-primary)"></div>
+                    <div class="swatch-name">64</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // ?theme=dark shows the same boards in the dark palette
+        if (new URLSearchParams(location.search).get('theme') === 'dark') {
+            document.documentElement.classList.add('dark');
+            document.body.classList.add('dark');
+        }
+    </script>
+</body>
+
+</html>
