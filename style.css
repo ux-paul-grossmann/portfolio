@@ -773,6 +773,23 @@ nav.navbar.fixed-bottom .navbar-collapse .menu-close {
         z-index: 1;
     }
 
+    /* Label ink, decided by lib/js/nav-ink.js from what sits behind the pill.
+       The active link keeps its own pill and is excluded. */
+    html.nav-ink-dark nav.navbar.fixed-bottom .navbar-nav .nav-link:not(.active) {
+        color: rgb(14 20 21) !important;
+        mix-blend-mode: normal;
+    }
+
+    html.nav-ink-light nav.navbar.fixed-bottom .navbar-nav .nav-link:not(.active) {
+        color: rgb(255 255 255) !important;
+        mix-blend-mode: normal;
+    }
+
+    html.nav-ink-blend nav.navbar.fixed-bottom .navbar-nav .nav-link:not(.active) {
+        color: rgb(255 255 255) !important;
+        mix-blend-mode: difference;
+    }
+
     html.dark nav.navbar.fixed-bottom > .container {
         background: rgb(255 255 255 / .05);
         border-color: rgb(255 255 255 / .22);
