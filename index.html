@@ -34,6 +34,20 @@
         else if(q.has('dev')) localStorage.setItem('portfolio-dev','1');
     }catch(e){}})();
     </script>
+    <!-- Reloads start at the top instead of the last scroll position. An explicit
+         anchor in the URL still wins, and going back keeps its position. -->
+    <script>
+    (function () {
+        try {
+            if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+        } catch (e) {}
+        window.addEventListener('pageshow', function (event) {
+            if (event.persisted) return;
+            if (location.hash) return;
+            window.scrollTo(0, 0);
+        });
+    })();
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/motion@latest/dist/motion.js" defer></script>
     <script src="./lib/js/animations.js" defer></script>
 
