@@ -786,6 +786,17 @@
 
     </script>
 
+    <!-- Navigation glass: displacement map for the refraction at the pill's
+         rim. Referenced from style.css as url(#nav-lens). Browsers that ignore
+         filter URLs in backdrop-filter fall back to plain frost. -->
+    <svg class="nav-lens-defs" width="0" height="0" aria-hidden="true" focusable="false">
+        <filter id="nav-lens" x="-10%" y="-30%" width="120%" height="160%" color-interpolation-filters="sRGB">
+            <feImage href="./lib/images/nav-lens-map.png" preserveAspectRatio="none" result="map"></feImage>
+            <feDisplacementMap in="SourceGraphic" in2="map" scale="18"
+                               xChannelSelector="R" yChannelSelector="G"></feDisplacementMap>
+        </filter>
+    </svg>
+
     <!-- #region agent log -->
     <script>
 

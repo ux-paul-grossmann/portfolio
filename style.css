@@ -734,20 +734,45 @@ nav.navbar.fixed-bottom .navbar-collapse .menu-close {
         backdrop-filter: none;
     }
 
-    /* The bar carries no surface on desktop; the navigation itself is a pill.
-       Padding 8px all round plus the 1px border gives a 9px inset, so a 21px
-       outer radius keeps the 12px link pills concentric. */
+    /* The bar carries no surface on desktop; the navigation itself is a glass
+       pill after the Liquid Glass look: the backdrop is bent at the rim by the
+       displacement map in #nav-lens, then tinted. Padding 8px all round plus
+       the 1px border gives a 9px inset, so a 21px outer radius keeps the 12px
+       link pills concentric. Browsers without filter URLs keep the plain-frost
+       declaration above each lens one. */
     nav.navbar.fixed-bottom > .container {
+        position: relative;
         width: auto;
         max-width: none;
         margin: 0 auto;
         padding: 8px;
-        background: color-mix(in srgb, var(--md-sys-color-surface-container-high) 92%, transparent);
-        -webkit-backdrop-filter: blur(14px) saturate(1.12);
-        backdrop-filter: blur(14px) saturate(1.12);
-        border: 1px solid var(--md-sys-color-outline-variant);
+        background: color-mix(in srgb, var(--md-sys-color-surface-container-high) 74%, transparent);
+        -webkit-backdrop-filter: blur(14px) saturate(1.1);
+        backdrop-filter: blur(14px) saturate(1.1);
+        -webkit-backdrop-filter: blur(5px) saturate(0.85) url(#nav-lens);
+        backdrop-filter: blur(5px) saturate(0.85) url(#nav-lens);
+        border: 1px solid rgb(255 255 255 / .42);
         border-radius: 21px;
-        box-shadow: var(--md-sys-elevation-2);
+        box-shadow: inset 0 1px 0 rgb(255 255 255 / .7),
+                    inset 0 -1px 0 rgb(255 255 255 / .22),
+                    inset 1px 0 0 rgb(255 255 255 / .22),
+                    inset -1px 0 0 rgb(255 255 255 / .22),
+                    0 12px 36px rgb(0 0 0 / .16);
+    }
+
+    nav.navbar.fixed-bottom > .container > * {
+        position: relative;
+        z-index: 1;
+    }
+
+    html.dark nav.navbar.fixed-bottom > .container {
+        background: color-mix(in srgb, var(--md-sys-color-surface-container-high) 70%, transparent);
+        border-color: rgb(255 255 255 / .2);
+        box-shadow: inset 0 1px 0 rgb(255 255 255 / .3),
+                    inset 0 -1px 0 rgb(255 255 255 / .1),
+                    inset 1px 0 0 rgb(255 255 255 / .1),
+                    inset -1px 0 0 rgb(255 255 255 / .1),
+                    0 12px 36px rgb(0 0 0 / .45);
     }
 
     /* The shared link margin-right leaves 3.2px of dead space before the pill
