@@ -1021,13 +1021,23 @@ html[data-shadow-variant="ring"] :is(.brand-strip:not(.is-cells) .brand-panel, .
 
 /* Strip entrance as CSS, so cells cloned later by the marquee animate too.
    Position expressed per slot, not per node: --cell-index comes from nth-child. */
+/* Overshoot keyframes, matching the spring of the portrait: it drops past the
+   resting position, then settles back. */
 @keyframes intro-cell-in {
-    from {
+    0% {
         opacity: 0;
         transform: translateY(-100px) scale(1.2);
         filter: blur(15px);
     }
-    to {
+    62% {
+        opacity: 1;
+        transform: translateY(7px) scale(0.982);
+        filter: blur(0);
+    }
+    82% {
+        transform: translateY(-2px) scale(1.004);
+    }
+    100% {
         opacity: 1;
         transform: none;
         filter: blur(0);
@@ -1035,7 +1045,7 @@ html[data-shadow-variant="ring"] :is(.brand-strip:not(.is-cells) .brand-panel, .
 }
 
 .brand-strip.is-cells .brand-cell {
-    animation: intro-cell-in 900ms cubic-bezier(.2, .9, .2, 1) both;
+    animation: intro-cell-in 900ms cubic-bezier(.32, .72, .24, 1) both;
     animation-delay: calc(var(--intro-start, 2150ms) + var(--cell-index, 0) * var(--intro-step, 90ms));
 }
 
@@ -4211,7 +4221,10 @@ a, button, .btn, .nav-link, .thumb-element, #theme-toggle, .scrolltop, #intro-bu
        Negative margin keeps the outer layout height unchanged. */
     padding-block: 34px;
     margin-block: -34px;
-    /* Keeps the leading cell off the clip edge so it can land without being cut */
+    /* The ticker always slides a cell across the clip edge, so the edge fades
+       instead of slicing whatever is landing there. */
+    -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 26px, #000 calc(100% - 26px), transparent 100%);
+    mask-image: linear-gradient(90deg, transparent 0, #000 26px, #000 calc(100% - 26px), transparent 100%);
     padding-inline: 8px;
 }
 
