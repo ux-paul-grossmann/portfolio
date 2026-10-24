@@ -20,8 +20,85 @@
             font-family: 'Inter', 'Montserrat', sans-serif;
         }
 
+        .guide-shell {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .guide-layout {
+            display: grid;
+            grid-template-columns: 200px minmax(0, 1fr);
+            gap: 56px;
+            align-items: start;
+        }
+
+        .guide-toc {
+            position: sticky;
+            top: 32px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding-top: 6px;
+        }
+
+        .guide-toc a {
+            color: var(--md-sys-color-on-surface-variant);
+            text-decoration: none;
+            font-size: 11px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .guide-toc a:hover,
+        .guide-toc a:focus-visible {
+            color: var(--md-sys-color-primary);
+        }
+
+        .guide-content {
+            counter-reset: section;
+            min-width: 0;
+        }
+
         .guide-section {
-            margin-bottom: 56px;
+            counter-increment: section;
+            padding-top: 32px;
+            border-top: 1px solid var(--md-sys-color-outline-variant);
+            margin-bottom: 64px;
+        }
+
+        .guide-section:first-child {
+            padding-top: 0;
+            border-top: none;
+        }
+
+        .guide-section > h2::before {
+            content: counter(section, decimal-leading-zero);
+            margin-right: 12px;
+            color: var(--md-sys-color-primary);
+            font-variant-numeric: tabular-nums;
+        }
+
+        @media (max-width: 900px) {
+            .guide-layout {
+                grid-template-columns: minmax(0, 1fr);
+                gap: 24px;
+            }
+
+            .guide-toc {
+                position: static;
+                flex-direction: row;
+                flex-wrap: wrap;
+                gap: 16px;
+            }
+        }
+
+        /* Long explanatory copy stays readable instead of running the full width */
+        .guide-note {
+            max-width: 720px;
+            margin: 0 0 24px;
+            line-height: 1.6;
+            letter-spacing: 0.02em;
+            text-transform: none;
         }
 
         .guide-label {
@@ -124,11 +201,24 @@
 </head>
 
 <body class="thetop">
-    <main class="container-fluid">
-        <h1 class="h3 mb-1">Design system</h1>
-        <p class="guide-label mb-5">Rendered with style.css — the same rules the site uses</p>
+    <main class="container-fluid guide-shell">
+        <header class="mb-5">
+            <h1 class="h3 mb-1">Design system</h1>
+            <p class="guide-label mb-0">Rendered with style.css — the same rules the site uses</p>
+        </header>
+        <div class="guide-layout">
+        <nav class="guide-toc" aria-label="Sections">
+            <a href="#colour">01 Colour</a>
+            <a href="#cta">02 Calls to action</a>
+            <a href="#fonts">03 Fonts</a>
+            <a href="#type">04 Type scale</a>
+            <a href="#radius">05 Radius</a>
+            <a href="#spacing">06 Spacing</a>
+        </nav>
 
-        <section class="guide-section">
+        <div class="guide-content">
+
+        <section class="guide-section" id="colour">
             <h2 class="h5 mb-3">Colour</h2>
             <div class="guide-row">
                 <div>
@@ -169,7 +259,7 @@
             </div>
         </section>
 
-        <section class="guide-section">
+        <section class="guide-section" id="cta">
             <h2 class="h5 mb-3">Call to action — four levels, four states</h2>
             <div class="mb-4 d-flex align-items-center" style="gap: 12px;">
                 <span class="guide-label mb-0">Ring</span>
@@ -215,7 +305,7 @@
             </div>
         </section>
 
-        <section class="guide-section">
+        <section class="guide-section" id="fonts">
             <h2 class="h5 mb-3">Fonts</h2>
             <div class="guide-type-row">
                 <span id="font-inter" style="font-family: 'Inter', sans-serif; font-size: 20px;">Inter — UI, body, navigation, buttons</span>
@@ -235,9 +325,9 @@
             </div>
         </section>
 
-        <section class="guide-section">
+        <section class="guide-section" id="type">
             <h2 class="h5 mb-3">Type scale</h2>
-            <p class="guide-label mb-4">First row is the intro statement, styled by its own rule. The rest are Bootstrap h1 to h5. Values read as: font-size / weight / line-height. Taken from Bootstrap's h1 to h5: 2.5 / 1.75 / 1.25 / 1 / 0.75 rem, so the steps are 1.43, 1.4, 1.25 and 1.33 — a heading scale, not a modular one.</p>
+            <p class="guide-label guide-note">First row is the intro statement, styled by its own rule. The rest are Bootstrap h1 to h5. Values read as: font-size / weight / line-height. Taken from Bootstrap's h1 to h5: 2.5 / 1.75 / 1.25 / 1 / 0.75 rem, so the steps are 1.43, 1.4, 1.25 and 1.33 — a heading scale, not a modular one.</p>
             <div class="guide-type-row">
                 <p class="h4 mb-0" id="ci-profilbild-caption-main" style="color: var(--md-sys-color-on-surface);">Ich mache komplexe Anwendungen intuitiv</p>
                 <span class="guide-type-value" data-type-value="ci-profilbild-caption-main"></span>
@@ -264,7 +354,7 @@
             </div>
         </section>
 
-        <section class="guide-section">
+        <section class="guide-section" id="radius">
             <h2 class="h5 mb-3">Radius</h2>
             <div class="guide-row">
                 <div>
@@ -290,7 +380,7 @@
             </div>
         </section>
 
-        <section class="guide-section">
+        <section class="guide-section" id="spacing">
             <h2 class="h5 mb-3">Spacing</h2>
             <div class="guide-row">
                 <div>
@@ -323,6 +413,8 @@
                 </div>
             </div>
         </section>
+        </div>
+        </div>
     </main>
 
     <script>
