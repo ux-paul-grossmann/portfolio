@@ -232,31 +232,54 @@
                     <h6 id="kontaktCaption" class="mb-3">Ich freue
                         mich auf Ihre Nachricht und baldige Zusammenarbeit!</h6>
 
-                    <form action="https://submit-form.com/Ng4M69FW" target="_self" class=" mb-5">
-                        <input type="hidden" name="_language" value="de" />
+                    <div class="contact-actions">
+                        <a class="contact-mail" id="contactMail" href="mailto:pashka3k@gmail.com?subject=Kontakt%20%C3%BCber%20das%20Portfolio">
+                            <span class="contact-mail-label">E-Mail schreiben</span>
+                            <span class="contact-mail-address">pashka3k@gmail.com</span>
+                        </a>
+                        <button type="button" class="contact-copy" id="contactCopy" aria-describedby="contactHint">
+                            <span id="contactCopyLabel">Adresse kopieren</span>
+                        </button>
+                    </div>
+                    <p class="contact-hint" id="contactHint" role="status" aria-live="polite"></p>
 
-                        <div class="form-group">
-                            <label for="inputTextArea">Nachricht</label>
-                            <textarea name="message" class="form-control" id="inputTextArea" placeholder="Nachricht"
-                                required="required"></textarea>
+                    <script>
+                    // Copy the address without a dependency; the label confirms for
+                    // two seconds. Without the clipboard interface the address stays
+                    // selectable and the hint says so instead of failing silently.
+                    (function () {
+                        var button = document.getElementById('contactCopy');
+                        var label = document.getElementById('contactCopyLabel');
+                        var hint = document.getElementById('contactHint');
+                        var mail = document.getElementById('contactMail');
+                        if (!button || !label || !hint || !mail) return;
 
-                        </div>
-                        <div class="form-group">
-                            <label for="inputName">Name</label>
-                            <input type="text" name="name" class="form-control" id="inputName" placeholder="Name"
-                                required="required">
+                        var address = (mail.getAttribute('href') || '').replace(/^mailto:/, '').split('?')[0];
+                        var timer = 0;
 
-                        </div>
-                        <div class="form-group">
-                            <label for="inputEmail">Email</label>
-                            <input type="email" name="email" class="form-control" id="inputEmail"
-                                aria-describedby="emailHelp" placeholder="Email" required="required">
+                        function say(message) {
+                            hint.textContent = message;
+                            clearTimeout(timer);
+                            timer = setTimeout(function () {
+                                hint.textContent = '';
+                                label.textContent = 'Adresse kopieren';
+                            }, 2200);
+                        }
 
-                        </div>
-
-                        <button type="submit" class="mt-3 submit-button font-weight-bold" value="send" id="btn--kontakt">Abschicken</button>
-
-                    </form>
+                        button.addEventListener('click', function () {
+                            if (navigator.clipboard && navigator.clipboard.writeText) {
+                                navigator.clipboard.writeText(address).then(function () {
+                                    label.textContent = 'Kopiert';
+                                    say('Adresse kopiert: ' + address);
+                                }, function () {
+                                    say('Kopieren nicht möglich. Adresse: ' + address);
+                                });
+                                return;
+                            }
+                            say('Kopieren nicht möglich. Adresse: ' + address);
+                        });
+                    })();
+                    </script>
 
                 </div>
                 <!-- <div class="d-none d-lg-block col-lg-4">

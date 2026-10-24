@@ -777,17 +777,10 @@ nav.navbar.fixed-bottom .navbar-collapse .menu-close {
        The active link keeps its own pill and is excluded. */
     html.nav-ink-dark nav.navbar.fixed-bottom .navbar-nav .nav-link:not(.active) {
         color: rgb(14 20 21) !important;
-        mix-blend-mode: normal;
     }
 
     html.nav-ink-light nav.navbar.fixed-bottom .navbar-nav .nav-link:not(.active) {
         color: rgb(255 255 255) !important;
-        mix-blend-mode: normal;
-    }
-
-    html.nav-ink-blend nav.navbar.fixed-bottom .navbar-nav .nav-link:not(.active) {
-        color: rgb(255 255 255) !important;
-        mix-blend-mode: difference;
     }
 
     html.dark nav.navbar.fixed-bottom > .container {
@@ -979,6 +972,71 @@ a#ci-brand-detail-name:hover {
 
 #kontakt {
     margin-bottom: 4vh;
+}
+
+/* Contact affordance: mail link plus a copy button, replacing the old form. */
+.contact-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 4px;
+}
+
+.contact-mail {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 24px;
+    border-radius: 40px;
+    background: var(--actionButtonBG);
+    color: var(--actionButtonFG);
+    border: 1px solid var(--actionButtonBorderColor);
+    font-weight: 700;
+    text-decoration: none;
+    transition: 200ms all ease;
+}
+
+.contact-mail:hover,
+.contact-mail:focus-visible {
+    background: var(--actionButtonBG-hover);
+    color: var(--actionButtonFG-hover);
+    text-decoration: none;
+}
+
+.contact-mail-label {
+    padding-right: 10px;
+    border-right: 1px solid var(--actionButtonBdCol);
+    line-height: 1.3;
+}
+
+.contact-mail-address {
+    font-weight: 500;
+    letter-spacing: 0.01em;
+}
+
+.contact-copy {
+    padding: 12px 24px;
+    border-radius: 40px;
+    border: 1px solid var(--actionButtonBorderColor);
+    background: transparent;
+    color: var(--actionButtonFG);
+    font-weight: 600;
+    cursor: pointer;
+    transition: 200ms all ease;
+}
+
+.contact-copy:hover,
+.contact-copy:focus-visible {
+    background: var(--actionButtonBG-hover);
+    color: var(--actionButtonFG-hover);
+}
+
+.contact-hint {
+    min-height: 1.5em;
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--md-sys-color-on-surface-variant);
 }
 
 /* ============================================================
