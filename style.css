@@ -980,6 +980,13 @@ a#ci-brand-detail-name:hover {
     margin-bottom: 4vh;
 }
 
+/* Icons inside calls to action: inline SVG, stroke follows the label colour */
+.cta-icon {
+    width: 16px;
+    height: 16px;
+    flex: 0 0 auto;
+}
+
 /* Contact affordance: mail link plus a copy button, replacing the old form. */
 .contact-actions {
     display: flex;
@@ -2992,18 +2999,14 @@ button.btn.download-section-color:nth-child(3):active {
         border-radius: 0.75rem;
     }
 
-    /* Nav state previews. Current = no attribute (the rules above). */
-    html[data-nav-state="swap"] .navbar-light .navbar-nav .nav-link.active {
+    /* Navigation colours, settled: the current item is filled with the primary,
+       hovering another item uses the container tone. */
+    .navbar-light .navbar-nav .nav-link.active {
         color: var(--md-sys-color-on-primary) !important;
         background: var(--md-sys-color-primary) !important;
     }
 
-    html[data-nav-state="swap"] .navbar-light .navbar-nav .nav-link:not(.active):hover {
-        color: var(--md-sys-color-primary) !important;
-        background: var(--md-sys-color-primary-container) !important;
-    }
-
-    html[data-nav-state="soft"] .navbar-light .navbar-nav .nav-link:not(.active):hover {
+    .navbar-light .navbar-nav .nav-link:not(.active):hover {
         color: var(--md-sys-color-primary) !important;
         background: var(--md-sys-color-primary-container) !important;
     }
@@ -4629,11 +4632,15 @@ body.dev-edit .dev-media-x[hidden] {
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    gap: 4px;
-    max-width: min(560px, calc(100vw - 32px));
+    gap: 10px;
+    max-width: min(610px, calc(100vw - 32px));
     max-height: calc(100vh - 150px);
-    overflow-y: auto;
-    padding: 6px 8px 8px;
+    overflow: auto;
+    /* No visible scrollbar: the panel scrolls, but the track would read as UI */
+    scrollbar-width: none;
+    min-width: 320px;
+    min-height: 200px;
+    padding: 12px 14px 14px;
     border: 1px solid var(--collapse-cardBorderColor);
     border-radius: 10px;
     background: var(--collapse-cardBG);
@@ -4648,11 +4655,16 @@ body.dev-edit .dev-media-x[hidden] {
     cursor: grabbing;
 }
 
+#devCtaPanel::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
+
 #devCtaPanel .dev-cta-head {
     display: flex;
     align-items: center;
-    gap: 4px;
-    padding-bottom: 2px;
+    gap: 8px;
+    padding-bottom: 8px;
     border-bottom: 1px solid var(--collapse-cardBorderColor);
 }
 
@@ -4662,16 +4674,39 @@ body.dev-edit .dev-media-x[hidden] {
     opacity: 0.7;
 }
 
+#devCtaPanel .dev-cta-spacer {
+    flex: 1 1 auto;
+}
+
+#devCtaPanel .dev-panel-link {
+    padding: 3px 9px;
+    border: 1px solid var(--collapse-cardBorderColor);
+    border-radius: 999px;
+    color: var(--collapse-card-titleFG);
+    font-size: 10px;
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+#devCtaPanel .dev-panel-link:hover,
+#devCtaPanel .dev-panel-link:focus-visible {
+    background: var(--md-sys-color-primary);
+    border-color: transparent;
+    color: var(--md-sys-color-on-primary);
+    text-decoration: none;
+}
+
 #devCtaPanel .dev-cta-row {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    gap: 4px;
+    gap: 8px;
 }
 
 #devCtaPanel .dev-cta-label {
     display: inline-block;
-    flex: 0 0 84px;
+    flex: 0 0 92px;
     white-space: nowrap;
     opacity: 0.75;
 }
@@ -4704,8 +4739,9 @@ body.dev-edit .dev-media-x[hidden] {
 }
 
 #devCtaPanel .dev-preset-button {
-    padding: 4px 7px;
+    padding: 5px 9px;
 }
+
 
 #devCtaPanel .dev-preset-button.is-active {
     border-color: var(--md-sys-color-primary);
