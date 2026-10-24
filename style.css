@@ -998,23 +998,23 @@ a#ci-brand-detail-name:hover {
 
 /* Shadow variants, chosen in the testing panel. One attribute drives both the
    logo strip cards and the context notes so the depth language stays shared. */
-html[data-shadow-variant="none"] :is(.brand-strip .brand-panel, .kontext-wrap div[class*="note-"]) {
+html[data-shadow-variant="none"] :is(.brand-strip:not(.is-cells) .brand-panel, .brand-strip.is-cells .brand-cell, .kontext-wrap div[class*="note-"]) {
     box-shadow: none !important;
 }
 
-html[data-shadow-variant="soft"] :is(.brand-strip .brand-panel, .kontext-wrap div[class*="note-"]) {
+html[data-shadow-variant="soft"] :is(.brand-strip:not(.is-cells) .brand-panel, .brand-strip.is-cells .brand-cell, .kontext-wrap div[class*="note-"]) {
     box-shadow: 0 2px 6px rgb(0 0 0 / .08) !important;
 }
 
-html[data-shadow-variant="medium"] :is(.brand-strip .brand-panel, .kontext-wrap div[class*="note-"]) {
+html[data-shadow-variant="medium"] :is(.brand-strip:not(.is-cells) .brand-panel, .brand-strip.is-cells .brand-cell, .kontext-wrap div[class*="note-"]) {
     box-shadow: 0 6px 16px rgb(0 0 0 / .12) !important;
 }
 
-html[data-shadow-variant="lifted"] :is(.brand-strip .brand-panel, .kontext-wrap div[class*="note-"]) {
+html[data-shadow-variant="lifted"] :is(.brand-strip:not(.is-cells) .brand-panel, .brand-strip.is-cells .brand-cell, .kontext-wrap div[class*="note-"]) {
     box-shadow: 0 14px 32px rgb(0 0 0 / .18) !important;
 }
 
-html[data-shadow-variant="ring"] :is(.brand-strip .brand-panel, .kontext-wrap div[class*="note-"]) {
+html[data-shadow-variant="ring"] :is(.brand-strip:not(.is-cells) .brand-panel, .brand-strip.is-cells .brand-cell, .kontext-wrap div[class*="note-"]) {
     box-shadow: 0 0 0 1px var(--md-sys-color-outline-variant), 0 4px 12px rgb(0 0 0 / .1) !important;
 }
 
@@ -2984,8 +2984,9 @@ button.btn.download-section-color:nth-child(3):active {
         display: block;
     }
 
+    /* The footer closes the page; the old 8vh gap left a strip below it */
     #kontakt {
-        margin-bottom: 8vh;
+        margin-bottom: 0;
     }
 
     .button-label {
