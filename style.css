@@ -784,11 +784,6 @@ nav.navbar.fixed-bottom .navbar-collapse .menu-close {
         color: rgb(255 255 255) !important;
     }
 
-    nav.navbar.fixed-bottom .navbar-nav .nav-link:not(.active):hover,
-    nav.navbar.fixed-bottom .navbar-nav .nav-link:not(.active):focus-visible {
-        color: var(--navlink-hover-FG) !important;
-    }
-
     html.dark nav.navbar.fixed-bottom > .container {
         background: rgb(14 20 21 / var(--nav-glass-tint, .88));
         border-color: rgb(255 255 255 / .22);
@@ -1028,6 +1023,88 @@ html[data-shadow-variant="ring"] :is(.brand-strip .brand-panel, .kontext-wrap di
     width: 16px;
     height: 16px;
     flex: 0 0 auto;
+}
+
+/* Icon states: the copy button carries two icons that cross-fade, the mail
+   icon opens its flap on hover. Motion only on transform and opacity. */
+.cta-icon-wrap {
+    position: relative;
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    flex: 0 0 auto;
+}
+
+.cta-icon-wrap .cta-icon {
+    position: absolute;
+    inset: 0;
+    width: 16px;
+    height: 16px;
+    transition: opacity 180ms ease, transform 140ms ease;
+}
+
+.cta-icon--check {
+    opacity: 0;
+    transform: scale(.9);
+}
+
+.contact-copy.is-copied .cta-icon--copy {
+    opacity: 0;
+    transform: scale(.9);
+}
+
+.contact-copy.is-copied .cta-icon--check {
+    opacity: 1;
+    transform: none;
+}
+
+.check-path {
+    stroke-dasharray: 26;
+    stroke-dashoffset: 26;
+}
+
+.contact-copy.is-copied .check-path {
+    animation: check-draw 200ms ease forwards;
+}
+
+@keyframes check-draw {
+    to { stroke-dashoffset: 0; }
+}
+
+.contact-copy:active .cta-icon-wrap {
+    transform: scale(.92);
+}
+
+.contact-copy.is-error .cta-icon-wrap {
+    animation: icon-shake 180ms ease 2;
+}
+
+@keyframes icon-shake {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(2px); }
+}
+
+.mail-flap {
+    transform-origin: 12px 6.5px;
+    transition: transform 180ms ease;
+}
+
+.contact-mail:hover .mail-flap,
+.contact-mail:focus-visible .mail-flap {
+    transform: rotate(-12deg);
+}
+
+.contact-mail:active .cta-icon {
+    transform: translateY(1px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .cta-icon-wrap .cta-icon,
+    .mail-flap,
+    .contact-copy.is-error .cta-icon-wrap {
+        transition: none;
+        animation: none;
+    }
 }
 
 /* Contact affordance: mail link plus a copy button, replacing the old form. */
@@ -3037,8 +3114,6 @@ button.btn.download-section-color:nth-child(3):active {
     }
 
     .navbar-light .navbar-nav .nav-link:hover {
-        color: var(--navlink-hover-FG) !important;
-        background: var(--navlink-hover-BG) !important;
         transition: 350ms all ease;
         box-shadow: inset 0 0 0 0 currentColor;
         border-radius: 0.75rem;
