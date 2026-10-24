@@ -980,6 +980,28 @@ a#ci-brand-detail-name:hover {
     margin-bottom: 4vh;
 }
 
+/* Shadow variants, chosen in the testing panel. One attribute drives both the
+   logo strip cards and the context notes so the depth language stays shared. */
+html[data-shadow-variant="none"] :is(.brand-strip .brand-panel, .kontext-wrap div[class*="note-"]) {
+    box-shadow: none !important;
+}
+
+html[data-shadow-variant="soft"] :is(.brand-strip .brand-panel, .kontext-wrap div[class*="note-"]) {
+    box-shadow: 0 2px 6px rgb(0 0 0 / .08) !important;
+}
+
+html[data-shadow-variant="medium"] :is(.brand-strip .brand-panel, .kontext-wrap div[class*="note-"]) {
+    box-shadow: 0 6px 16px rgb(0 0 0 / .12) !important;
+}
+
+html[data-shadow-variant="lifted"] :is(.brand-strip .brand-panel, .kontext-wrap div[class*="note-"]) {
+    box-shadow: 0 14px 32px rgb(0 0 0 / .18) !important;
+}
+
+html[data-shadow-variant="ring"] :is(.brand-strip .brand-panel, .kontext-wrap div[class*="note-"]) {
+    box-shadow: 0 0 0 1px var(--md-sys-color-outline-variant), 0 4px 12px rgb(0 0 0 / .1) !important;
+}
+
 /* Icons inside calls to action: inline SVG, stroke follows the label colour */
 .cta-icon {
     width: 16px;
@@ -4699,9 +4721,17 @@ body.dev-edit .dev-media-x[hidden] {
 
 #devCtaPanel .dev-cta-row {
     display: flex;
-    align-items: center;
-    flex-wrap: wrap;
+    align-items: flex-start;
     gap: 8px;
+}
+
+#devCtaPanel .dev-cta-options {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    flex: 1 1 auto;
+    min-width: 0;
 }
 
 #devCtaPanel .dev-cta-label {
