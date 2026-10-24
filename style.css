@@ -750,6 +750,12 @@ nav.navbar.fixed-bottom .navbar-collapse .menu-close {
         box-shadow: var(--md-sys-elevation-2);
     }
 
+    /* The shared link margin-right leaves 3.2px of dead space before the pill
+       edge; without this the left gap is 9px and the right one 12px. */
+    nav.navbar.fixed-bottom .navbar-nav .nav-item:last-child .nav-link {
+        margin-right: 0;
+    }
+
     nav.navbar.fixed-bottom .navbar-collapse {
         display: flex !important;
         flex-direction: row !important;
