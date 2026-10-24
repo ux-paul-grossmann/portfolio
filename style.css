@@ -1221,7 +1221,8 @@ html[data-cta-ring="4"] {
 }
 
 .cta:active,
-.cta[data-state="active"] {
+.cta[data-state="active"],
+.cta[data-state="pressed"] {
     box-shadow: inset 0 1px 2px rgb(255 255 255 / .25), 0 0 0 4px rgb(var(--cta-ring-rgb) / .6) !important;
 }
 
@@ -1282,7 +1283,8 @@ html[data-cta-ring="4"] {
 }
 
 .cta--tertiary:active,
-.cta--tertiary[data-state="active"] {
+.cta--tertiary[data-state="active"],
+.cta--tertiary[data-state="pressed"] {
     box-shadow: none !important;
     background: color-mix(in srgb, var(--md-sys-color-primary) 20%, transparent) !important;
 }
