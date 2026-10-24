@@ -4171,6 +4171,8 @@ a, button, .btn, .nav-link, .thumb-element, #theme-toggle, .scrolltop, #intro-bu
        Negative margin keeps the outer layout height unchanged. */
     padding-block: 34px;
     margin-block: -34px;
+    /* Keeps the leading cell off the clip edge so it can land without being cut */
+    padding-inline: 8px;
 }
 
 .brand-strip.is-cells .brand-cell {
