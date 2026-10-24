@@ -170,6 +170,40 @@
             color: var(--md-sys-color-on-surface-variant);
         }
 
+        .guide-compare {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 56px;
+            align-items: start;
+        }
+
+        @media (max-width: 1100px) {
+            .guide-compare {
+                grid-template-columns: minmax(0, 1fr);
+                gap: 40px;
+            }
+        }
+
+        .guide-sub {
+            font-size: 11px;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--md-sys-color-on-surface-variant);
+        }
+
+        .guide-list {
+            margin: 0;
+            padding-left: 18px;
+            font-size: 13px;
+            line-height: 1.7;
+            color: var(--md-sys-color-on-surface-variant);
+        }
+
+        .guide-toc a.is-current {
+            color: var(--md-sys-color-primary);
+            font-weight: 600;
+        }
+
         .guide-type-row {
             display: flex;
             align-items: baseline;
@@ -207,9 +241,12 @@
 
 <body class="thetop">
     <main class="container-fluid guide-shell">
-        <header class="mb-5">
-            <h1 class="h3 mb-1">Design system</h1>
-            <p class="guide-label mb-0">Rendered with style.css — the same rules the site uses</p>
+        <header class="mb-5 d-flex align-items-start justify-content-between">
+            <div>
+                <h1 class="h3 mb-1">Design system</h1>
+                <p class="guide-label mb-0">Rendered with style.css — the same rules the site uses</p>
+            </div>
+            <button type="button" class="ring-choice" id="themeChoice" aria-pressed="false">Dark</button>
         </header>
         <div class="guide-layout">
         <nav class="guide-toc" aria-label="Sections">
@@ -329,58 +366,74 @@
         <section class="guide-section" id="type">
             <h2 class="h5 mb-3">Type scale</h2>
 
-            <h3 class="h6 mt-4 mb-2">Proposed ramp — tokens in style.css</h3>
-            <p class="guide-label guide-note">Five steps, roughly 1.25 apart (12, 16, 20, 25, 32, 40), one weight rule per role: Inter for text and headings, Merriweather only for the intro statement.</p>
-            <div class="guide-type-row">
-                <span style="font-family: 'Inter', sans-serif; font-size: var(--type-display); line-height: var(--leading-tight);">Display — 40</span>
-                <span class="guide-type-value">--type-display · 40 / 1.2</span>
-            </div>
-            <div class="guide-type-row">
-                <span style="font-family: 'Merriweather', serif; font-weight: 700; font-size: var(--type-statement); line-height: var(--leading-snug);">Statement — 32 · Merriweather</span>
-                <span class="guide-type-value">--type-statement · 32 / 1.3</span>
-            </div>
-            <div class="guide-type-row">
-                <span style="font-family: 'Inter', sans-serif; font-weight: 500; font-size: var(--type-heading); line-height: var(--leading-snug);">Heading — 25</span>
-                <span class="guide-type-value">--type-heading · 25 / 1.3</span>
-            </div>
-            <div class="guide-type-row">
-                <span style="font-family: 'Inter', sans-serif; font-weight: 500; font-size: var(--type-subheading); line-height: var(--leading-snug);">Subheading — 20</span>
-                <span class="guide-type-value">--type-subheading · 20 / 1.3</span>
-            </div>
-            <div class="guide-type-row">
-                <span style="font-family: 'Inter', sans-serif; font-size: var(--type-body); line-height: var(--leading-body);">Body — 16. Hey, ich bin Paul Großmann.</span>
-                <span class="guide-type-value">--type-body · 16 / 1.55</span>
-            </div>
-            <div class="guide-type-row">
-                <span style="font-family: 'Inter', sans-serif; font-size: var(--type-caption); line-height: var(--leading-body); letter-spacing: 0.02em;">Caption — 12</span>
-                <span class="guide-type-value">--type-caption · 12 / 1.55</span>
-            </div>
+            <div class="guide-compare">
+                <div>
+                    <h3 class="h6 mb-1">Proposed ramp</h3>
+                    <p class="guide-sub mb-4">Tokens in style.css</p>
 
-            <h3 class="h6 mt-5 mb-2">Today — Bootstrap heading sizes</h3>
-            <p class="guide-label guide-note">First row is the intro statement, styled by its own rule. The rest are Bootstrap h1 to h5. Values read as: font-size / weight / line-height. Taken from Bootstrap's h1 to h5: 2.5 / 1.75 / 1.25 / 1 / 0.75 rem, so the steps are 1.43, 1.4, 1.25 and 1.33 — a heading scale, not a modular one.</p>
-            <div class="guide-type-row">
-                <p class="h4 mb-0" id="ci-profilbild-caption-main" style="color: var(--md-sys-color-on-surface);">Ich mache komplexe Anwendungen intuitiv</p>
-                <span class="guide-type-value" data-type-value="ci-profilbild-caption-main"></span>
-            </div>
-            <div class="guide-type-row">
-                <span class="h1 mb-0" id="type-display">H1 — Kompetenzen &amp; Methoden</span>
-                <span class="guide-type-value" data-type-value="type-display"></span>
-            </div>
-            <div class="guide-type-row">
-                <span class="h3 mb-0" id="type-heading">Heading — Ich mache komplexe Anwendungen intuitiv</span>
-                <span class="guide-type-value" data-type-value="type-heading"></span>
-            </div>
-            <div class="guide-type-row">
-                <span class="h5 mb-0" id="type-subheading">Subheading — Showcases</span>
-                <span class="guide-type-value" data-type-value="type-subheading"></span>
-            </div>
-            <div class="guide-type-row">
-                <span class="mb-0" id="type-body">Body — Hey, ich bin Paul Großmann, UX- &amp; UI-Designer aus Aachen.</span>
-                <span class="guide-type-value" data-type-value="type-body"></span>
-            </div>
-            <div class="guide-type-row">
-                <span class="guide-label mb-0" id="type-caption">Caption — 12 px, gesperrt</span>
-                <span class="guide-type-value" data-type-value="type-caption"></span>
+                    <div class="guide-type-row">
+                        <span style="font-family: 'Inter', sans-serif; font-size: var(--type-display); line-height: var(--leading-tight);">Display</span>
+                        <span class="guide-type-value">40 / 1.2</span>
+                    </div>
+                    <div class="guide-type-row">
+                        <span style="font-family: 'Merriweather', serif; font-weight: 700; font-size: var(--type-statement); line-height: var(--leading-snug);">Statement</span>
+                        <span class="guide-type-value">32 / 1.3</span>
+                    </div>
+                    <div class="guide-type-row">
+                        <span style="font-family: 'Inter', sans-serif; font-weight: 500; font-size: var(--type-heading); line-height: var(--leading-snug);">Heading</span>
+                        <span class="guide-type-value">25 / 1.3</span>
+                    </div>
+                    <div class="guide-type-row">
+                        <span style="font-family: 'Inter', sans-serif; font-weight: 500; font-size: var(--type-subheading); line-height: var(--leading-snug);">Subheading</span>
+                        <span class="guide-type-value">20 / 1.3</span>
+                    </div>
+                    <div class="guide-type-row">
+                        <span style="font-family: 'Inter', sans-serif; font-size: var(--type-body); line-height: var(--leading-body);">Body</span>
+                        <span class="guide-type-value">16 / 1.55</span>
+                    </div>
+                    <div class="guide-type-row">
+                        <span style="font-family: 'Inter', sans-serif; font-size: var(--type-caption); line-height: var(--leading-body); letter-spacing: 0.02em;">Caption</span>
+                        <span class="guide-type-value">12 / 1.55</span>
+                    </div>
+
+                    <ul class="guide-list mt-4">
+                        <li>Steps: 12, 16, 20, 25, 32, 40</li>
+                        <li>Ratios: 1.33, 1.25, 1.25, 1.28, 1.25</li>
+                        <li>Two families: Inter for text, Merriweather for the statement only</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="h6 mb-1">Today</h3>
+                    <p class="guide-sub mb-4">Bootstrap heading sizes, still used by the site</p>
+
+                    <div class="guide-type-row">
+                        <span class="h1 mb-0" id="type-display">H1 — Kompetenzen</span>
+                        <span class="guide-type-value" data-type-value="type-display"></span>
+                    </div>
+                    <div class="guide-type-row">
+                        <span class="h3 mb-0" id="type-heading">H3 — Heading</span>
+                        <span class="guide-type-value" data-type-value="type-heading"></span>
+                    </div>
+                    <div class="guide-type-row">
+                        <span class="h5 mb-0" id="type-subheading">H5 — Subheading</span>
+                        <span class="guide-type-value" data-type-value="type-subheading"></span>
+                    </div>
+                    <div class="guide-type-row">
+                        <span class="mb-0" id="type-body">Body</span>
+                        <span class="guide-type-value" data-type-value="type-body"></span>
+                    </div>
+                    <div class="guide-type-row">
+                        <span class="guide-label mb-0" id="type-caption">Caption</span>
+                        <span class="guide-type-value" data-type-value="type-caption"></span>
+                    </div>
+
+                    <ul class="guide-list mt-4">
+                        <li>Sizes: 40, 28, 20, 16, 12</li>
+                        <li>Ratios: 1.43, 1.4, 1.25, 1.33</li>
+                        <li>The statement line sits on its own rule at 32 / 700</li>
+                    </ul>
+                </div>
             </div>
         </section>
 
@@ -448,10 +501,38 @@
     </main>
 
     <script>
-        // ?theme=dark shows the same boards in the dark palette
-        if (new URLSearchParams(location.search).get('theme') === 'dark') {
-            document.documentElement.classList.add('dark');
-            document.body.classList.add('dark');
+        // Theme: URL parameter wins, then the stored choice, then the system
+        var THEME_KEY = 'portfolio-styleguide-theme';
+        var themeButton = document.getElementById('themeChoice');
+
+        function applyTheme(mode) {
+            var dark = mode === 'dark';
+            document.documentElement.classList.toggle('dark', dark);
+            document.body.classList.toggle('dark', dark);
+            if (themeButton) {
+                themeButton.textContent = dark ? 'Light' : 'Dark';
+                themeButton.setAttribute('aria-pressed', String(dark));
+            }
+        }
+
+        function initialTheme() {
+            var param = new URLSearchParams(location.search).get('theme');
+            if (param === 'dark' || param === 'light') return param;
+            try {
+                var stored = localStorage.getItem(THEME_KEY);
+                if (stored === 'dark' || stored === 'light') return stored;
+            } catch (e) {}
+            return matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+
+        applyTheme(initialTheme());
+
+        if (themeButton) {
+            themeButton.addEventListener('click', function () {
+                var next = document.documentElement.classList.contains('dark') ? 'light' : 'dark';
+                applyTheme(next);
+                try { localStorage.setItem(THEME_KEY, next); } catch (e) {}
+            });
         }
 
         // Type values are read from the browser, so they cannot disagree with CSS
@@ -490,12 +571,66 @@
         var ringButtons = document.querySelectorAll('[data-ring-choice]');
         function applyRing(id) {
             document.documentElement.setAttribute('data-cta-variant', id);
-            ringButtons.forEach(function (button) {
+            // Section index: mark the section currently in view
+        var tocLinks = Array.prototype.slice.call(document.querySelectorAll('.guide-toc a'));
+        if ('IntersectionObserver' in window && tocLinks.length) {
+            var visible = {};
+            var observer = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    visible[entry.target.id] = entry.isIntersecting ? entry.intersectionRatio : 0;
+                });
+                var bestId = null;
+                var bestRatio = 0;
+                Object.keys(visible).forEach(function (id) {
+                    if (visible[id] > bestRatio) {
+                        bestRatio = visible[id];
+                        bestId = id;
+                    }
+                });
+                if (!bestId) return;
+                tocLinks.forEach(function (link) {
+                    link.classList.toggle('is-current', link.getAttribute('href') === '#' + bestId);
+                });
+            }, { rootMargin: '-20% 0px -60% 0px', threshold: [0, 0.25, 0.5, 1] });
+
+            document.querySelectorAll('.guide-section').forEach(function (section) {
+                observer.observe(section);
+            });
+        }
+
+        ringButtons.forEach(function (button) {
                 var active = button.getAttribute('data-ring-choice') === id;
                 button.classList.toggle('is-active', active);
                 button.setAttribute('aria-pressed', String(active));
             });
         }
+        // Section index: mark the section currently in view
+        var tocLinks = Array.prototype.slice.call(document.querySelectorAll('.guide-toc a'));
+        if ('IntersectionObserver' in window && tocLinks.length) {
+            var visible = {};
+            var observer = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    visible[entry.target.id] = entry.isIntersecting ? entry.intersectionRatio : 0;
+                });
+                var bestId = null;
+                var bestRatio = 0;
+                Object.keys(visible).forEach(function (id) {
+                    if (visible[id] > bestRatio) {
+                        bestRatio = visible[id];
+                        bestId = id;
+                    }
+                });
+                if (!bestId) return;
+                tocLinks.forEach(function (link) {
+                    link.classList.toggle('is-current', link.getAttribute('href') === '#' + bestId);
+                });
+            }, { rootMargin: '-20% 0px -60% 0px', threshold: [0, 0.25, 0.5, 1] });
+
+            document.querySelectorAll('.guide-section').forEach(function (section) {
+                observer.observe(section);
+            });
+        }
+
         ringButtons.forEach(function (button) {
             button.addEventListener('click', function () {
                 applyRing(button.getAttribute('data-ring-choice'));

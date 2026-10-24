@@ -1213,6 +1213,7 @@ html[data-cta-ring="4"] {
     align-items: center;
     justify-content: center;
     gap: 10px;
+    min-height: 48px;
     padding: var(--cta-pad-y) var(--cta-pad-x);
     border: 1px solid transparent;
     border-radius: var(--cta-radius);
