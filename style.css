@@ -773,14 +773,24 @@ nav.navbar.fixed-bottom .navbar-collapse .menu-close {
         z-index: 1;
     }
 
-    /* Label ink, decided by lib/js/nav-ink.js from what sits behind the pill.
+    /* Per-label ink from lib/js/nav-ink.js: each link samples what sits behind
+       it, so one label can stay dark while its neighbour turns light.
        The active link keeps its own pill and is excluded. */
+    nav.navbar.fixed-bottom .navbar-nav .nav-link:not(.active) {
+        color: var(--nav-ink, inherit) !important;
+    }
+
+    nav.navbar.fixed-bottom .navbar-nav .nav-link:not(.active):hover,
+    nav.navbar.fixed-bottom .navbar-nav .nav-link:not(.active):focus-visible {
+        color: var(--navlink-hover-FG) !important;
+    }
+
     html.nav-ink-dark nav.navbar.fixed-bottom .navbar-nav .nav-link:not(.active) {
-        color: rgb(14 20 21) !important;
+        color: rgb(14 20 21);
     }
 
     html.nav-ink-light nav.navbar.fixed-bottom .navbar-nav .nav-link:not(.active) {
-        color: rgb(255 255 255) !important;
+        color: rgb(255 255 255);
     }
 
     html.dark nav.navbar.fixed-bottom > .container {
@@ -990,7 +1000,7 @@ a#ci-brand-detail-name:hover {
     padding: 12px 24px;
     border-radius: 40px;
     background: var(--actionButtonBG);
-    color: var(--actionButtonFG);
+    color: var(--actionButtonFG) !important;
     border: 1px solid var(--actionButtonBorderColor);
     font-weight: 700;
     text-decoration: none;
@@ -1000,7 +1010,7 @@ a#ci-brand-detail-name:hover {
 .contact-mail:hover,
 .contact-mail:focus-visible {
     background: var(--actionButtonBG-hover);
-    color: var(--actionButtonFG-hover);
+    color: var(--actionButtonFG-hover) !important;
     text-decoration: none;
 }
 
@@ -1020,7 +1030,7 @@ a#ci-brand-detail-name:hover {
     border-radius: 40px;
     border: 1px solid var(--actionButtonBorderColor);
     background: transparent;
-    color: var(--actionButtonFG);
+    color: var(--actionButtonBG) !important;
     font-weight: 600;
     cursor: pointer;
     transition: 200ms all ease;
@@ -1028,8 +1038,8 @@ a#ci-brand-detail-name:hover {
 
 .contact-copy:hover,
 .contact-copy:focus-visible {
-    background: var(--actionButtonBG-hover);
-    color: var(--actionButtonFG-hover);
+    background: var(--actionButtonBG);
+    color: var(--actionButtonFG) !important;
 }
 
 .contact-hint {
