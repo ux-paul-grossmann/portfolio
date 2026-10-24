@@ -59,7 +59,7 @@ html {
 }
 
 body {
-    font-family: 'Inter', sans-serif, 'Montserrat', Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-family: 'Inter', sans-serif, Arial, "Helvetica Neue", Helvetica, sans-serif;
     background: var(--bodyBG);
     color: var(--bodyFG);
     -webkit-font-smoothing: antialiased;
@@ -891,7 +891,7 @@ a#ci-brand-detail-name:hover {
 }
 
 #ci-brand-caption {
-    font-family: "Montserrat", sans-serif;
+    font-family: 'Inter', sans-serif;
     font-weight: 500;
     font-size: 50%;
     letter-spacing: 0.1rem;
@@ -1178,6 +1178,17 @@ html[data-cta-variant="jade-bright"] {
    movement. The dev panel only changes the ring colour and spread.
    ============================================================ */
 :root {
+    /* Type ramp: five steps on a ~1.25 ratio, one family per role */
+    --type-caption: 0.75rem;
+    --type-body: 1rem;
+    --type-subheading: 1.25rem;
+    --type-heading: 1.5625rem;
+    --type-statement: 2rem;
+    --type-display: 2.5rem;
+    --leading-tight: 1.2;
+    --leading-snug: 1.3;
+    --leading-body: 1.55;
+
     --cta-ring-rgb: 128 212 217;
     --cta-ring-idle: 0px;
     --cta-radius: 40px;
@@ -2856,7 +2867,7 @@ button.btn.download-section-color:nth-child(3):active {
     }
 
     #ci-brand-caption {
-        font-family: "Montserrat", sans-serif;
+        font-family: 'Inter', sans-serif;
         font-weight: 500;
         font-size: 50%;
         letter-spacing: 0.1rem;
@@ -4070,7 +4081,7 @@ a, button, .btn, .nav-link, .thumb-element, #theme-toggle, .scrolltop, #intro-bu
     border-radius: 12px;
     padding: 12px;
     box-shadow: 0 2px 10px rgb(0 0 0 / 0.18);
-    font-family: 'Inter', 'Montserrat', sans-serif;
+    font-family: 'Inter', sans-serif;
 }
 
 #brandLab[hidden] {
@@ -4409,7 +4420,7 @@ body.dev-edit .dev-media-x[hidden] {
     border-radius: 10px;
     background: var(--collapse-cardBG);
     color: var(--collapse-card-titleFG);
-    font-family: 'Inter', 'Montserrat', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 11px;
     box-shadow: 0 4px 14px rgb(0 0 0 / 0.25);
 }
@@ -4519,7 +4530,7 @@ body.dev-edit .dev-media-x[hidden] {
     border-radius: 14px;
     background: var(--collapse-cardBG);
     color: var(--collapse-card-titleFG);
-    font-family: 'Inter', 'Montserrat', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 11px;
     box-shadow: 0 2px 10px rgb(0 0 0 / 0.18);
     transform: translateY(calc(100% + 70px));
@@ -4601,7 +4612,7 @@ body.dev-edit .dev-media-x[hidden] {
     border-radius: 10px;
     background: var(--collapse-cardBG);
     color: var(--collapse-card-titleFG);
-    font-family: 'Inter', 'Montserrat', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 11px;
     box-shadow: 0 2px 10px rgb(0 0 0 / 0.18);
     cursor: grab;
@@ -4722,7 +4733,7 @@ body.dev-edit .dev-media-x[hidden] {
     border-radius: 18px;
     background: var(--collapse-cardBG);
     color: var(--collapse-card-titleFG);
-    font-family: 'Inter', 'Montserrat', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 12px;
     box-shadow: 0 2px 10px rgb(0 0 0 / 0.18);
     transform: translateY(calc(100% + 70px));
