@@ -746,21 +746,20 @@ nav.navbar.fixed-bottom .navbar-collapse .menu-close {
         max-width: none;
         margin: 0 auto;
         padding: 8px;
-        background: color-mix(in srgb, var(--md-sys-color-surface-container-high) 70%, transparent);
+        background: rgb(255 255 255 / .07);
         -webkit-backdrop-filter: blur(14px) saturate(1.1);
         backdrop-filter: blur(14px) saturate(1.1);
-        border: 1px solid rgb(255 255 255 / .42);
+        border: 1px solid rgb(255 255 255 / .5);
         border-radius: 21px;
-        box-shadow: inset 0 1px 0 rgb(255 255 255 / .7),
-                    inset 0 -1px 0 rgb(255 255 255 / .22),
-                    inset 1px 0 0 rgb(255 255 255 / .22),
-                    inset -1px 0 0 rgb(255 255 255 / .22),
-                    0 12px 36px rgb(0 0 0 / .16);
+        box-shadow: inset 0 0 0 0.5px rgb(255 255 255 / .35),
+                    inset 1.5px 1.5px 1px -1px rgb(255 255 255 / .7),
+                    inset -1.5px -1.5px 1px -1px rgb(255 255 255 / .42),
+                    0 12px 36px rgb(0 0 0 / .18);
     }
 
     html.has-nav-lens nav.navbar.fixed-bottom > .container {
-        -webkit-backdrop-filter: url(#nav-lens) blur(2px) saturate(1.2);
-        backdrop-filter: url(#nav-lens) blur(2px) saturate(1.2);
+        -webkit-backdrop-filter: url(#nav-lens) blur(0.5px) saturate(1.2);
+        backdrop-filter: url(#nav-lens) blur(0.5px) saturate(1.2);
     }
 
     nav.navbar.fixed-bottom > .container > * {
@@ -769,12 +768,11 @@ nav.navbar.fixed-bottom .navbar-collapse .menu-close {
     }
 
     html.dark nav.navbar.fixed-bottom > .container {
-        background: color-mix(in srgb, var(--md-sys-color-surface-container-high) 66%, transparent);
-        border-color: rgb(255 255 255 / .2);
-        box-shadow: inset 0 1px 0 rgb(255 255 255 / .3),
-                    inset 0 -1px 0 rgb(255 255 255 / .1),
-                    inset 1px 0 0 rgb(255 255 255 / .1),
-                    inset -1px 0 0 rgb(255 255 255 / .1),
+        background: rgb(255 255 255 / .05);
+        border-color: rgb(255 255 255 / .22);
+        box-shadow: inset 0 0 0 0.5px rgb(255 255 255 / .22),
+                    inset 1.5px 1.5px 1px -1px rgb(255 255 255 / .5),
+                    inset -1.5px -1.5px 1px -1px rgb(255 255 255 / .3),
                     0 12px 36px rgb(0 0 0 / .45);
     }
 
