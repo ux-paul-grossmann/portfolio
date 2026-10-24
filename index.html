@@ -1,7 +1,8 @@
 <!doctype html>
 <html lang="de">
 
-<head><title>UX/UI-Designer • Portfolio • Paul Großmann</title>
+<head>
+    <script>window.__bootErrors = []; window.addEventListener('error', function (e) { window.__bootErrors.push((e.message || 'error') + ' @ ' + (e.filename || '') + ':' + (e.lineno || 0)); });</script><title>UX/UI-Designer • Portfolio • Paul Großmann</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="icon" href="./lib/images/icons/favicon/favicon-32.png" sizes="32x32">
@@ -217,28 +218,34 @@
         </section>
 
 
-        <footer id="kontakt" class="mt-5">
+        <footer id="kontakt">
+            <div class="footer-inner">
             <div class="row mb-3">
                 <div class="col-12 col-lg-8">
-                    <h1 class="mb-2 text-center text-lg-left d-none d-sm-block">Kontakt</h1>
+                    <h2 class="mb-2 text-center text-lg-left d-none d-sm-block">Kontakt</h2>
                     <h2 class="mb-3 text-center d-sm-none">Kontakt</h2>
-                    <h6 id="kontaktCaption" class="mb-3">Ich freue
-                        mich auf Ihre Nachricht und baldige Zusammenarbeit!</h6>
+                    <p id="kontaktCaption" class="mb-4">Ich freue
+                        mich auf Ihre Nachricht und baldige Zusammenarbeit!</p>
 
                     <div class="contact-actions">
                         <a class="contact-mail cta cta--primary" id="contactMail" href="mailto:pashka3k@gmail.com?subject=Kontakt%20%C3%BCber%20das%20Portfolio">
                             <svg class="cta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
                                 <rect x="3" y="5" width="18" height="14" rx="2"></rect>
-                                <path d="M3.5 6.5 12 13l8.5-6.5"></path>
+                                <path class="mail-flap" d="M3.5 6.5 12 13l8.5-6.5"></path>
                             </svg>
                             <span class="contact-mail-label">E-Mail schreiben</span>
                             <span class="contact-mail-address">pashka3k@gmail.com</span>
                         </a>
                         <button type="button" class="contact-copy cta cta--tertiary" id="contactCopy" aria-describedby="contactHint">
-                            <svg class="cta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-                                <rect x="9" y="9" width="11" height="11" rx="2"></rect>
-                                <path d="M5 15V6a2 2 0 0 1 2-2h9"></path>
-                            </svg>
+                            <span class="cta-icon-wrap" aria-hidden="true">
+                                <svg class="cta-icon cta-icon--copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" focusable="false">
+                                    <rect x="9" y="9" width="11" height="11" rx="2"></rect>
+                                    <path d="M5 15V6a2 2 0 0 1 2-2h9"></path>
+                                </svg>
+                                <svg class="cta-icon cta-icon--check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false">
+                                    <path class="check-path" d="M4.5 12.5 9.5 17.5 19.5 7"></path>
+                                </svg>
+                            </span>
                             <span id="contactCopyLabel">Adresse kopieren</span>
                         </button>
                     </div>
@@ -271,13 +278,22 @@
                             if (navigator.clipboard && navigator.clipboard.writeText) {
                                 navigator.clipboard.writeText(address).then(function () {
                                     label.textContent = 'Kopiert';
+                                    button.classList.add('is-copied');
                                     say('Adresse kopiert: ' + address);
+                                    setTimeout(function () { button.classList.remove('is-copied'); }, 2000);
                                 }, function () {
+                                    button.classList.add('is-error');
+                                    setTimeout(function () { button.classList.remove('is-error'); }, 400);
                                     say('Kopieren nicht möglich. Adresse: ' + address);
                                 });
                                 return;
                             }
                             say('Kopieren nicht möglich. Adresse: ' + address);
+                        });
+
+                        // The mail app takes over, so the page only confirms the handoff
+                        mail.addEventListener('click', function () {
+                            say('Mail-App wird geöffnet');
                         });
                     })();
                     </script>
@@ -292,38 +308,39 @@
             <div class="row mt-4">
                 
                 <div class="col-12 mb-2 mb-sm-2">
-                    <ul class="d-flex flex-row justify-content-center list-unstyled" id="socialIconsWrap">
+                    <ul class="d-flex flex-row list-unstyled" id="socialIconsWrap">
                         <li>
-                            <a href="https://www.pinterest.co.uk/pashka3k/" class=" social" target="_blank">
-                                <i class="fab fa-pinterest-square"></i>
+                            <a href="https://www.pinterest.co.uk/pashka3k/" class=" social" target="_blank" aria-label="Pinterest" rel="noopener">
+                                <i class="fab fa-pinterest-square" aria-hidden="true"></i>
                             </a>
                         </li>
                         <li>
-                            <a href="https://soundcloud.com/rhmpf" class=" social" target="_blank">
-                                <i class="fab fa-soundcloud"></i>
+                            <a href="https://soundcloud.com/rhmpf" class=" social" target="_blank" aria-label="SoundCloud" rel="noopener">
+                                <i class="fab fa-soundcloud" aria-hidden="true"></i>
                             </a>
                         </li>
                         <li>
-                            <a href="https://instagram.com/paul_grossmart" class=" social" target="_blank">
-                                <i class="fab fa-instagram"></i>
+                            <a href="https://instagram.com/paul_grossmart" class=" social" target="_blank" aria-label="Instagram" rel="noopener">
+                                <i class="fab fa-instagram" aria-hidden="true"></i>
                             </a>
                         </li>
                         <li>
-                            <a href="https://codepen.io/pablues/" class=" social" target="_blank">
-                                <i class="fab fa-codepen"></i>
+                            <a href="https://codepen.io/pablues/" class=" social" target="_blank" aria-label="CodePen" rel="noopener">
+                                <i class="fab fa-codepen" aria-hidden="true"></i>
                             </a>
                         </li>
                         <li>
-                            <a href="https://medium.com/@pablues" class=" social" target="_blank">
-                                <i class="fab fa-medium"></i>
+                            <a href="https://medium.com/@pablues" class=" social" target="_blank" aria-label="Medium" rel="noopener">
+                                <i class="fab fa-medium" aria-hidden="true"></i>
                             </a>
                         </li>
 
                     </ul>
                 </div>
                 <div class="col-12">
-                    <div id="copyright" class="text-center small">&copy; <span id="current-year"></span> Paul Großmann</div>
+                    <div id="copyright">&copy; <span id="current-year"></span> Paul Großmann</div>
                 </div>
+            </div>
             </div>
         </footer>
 

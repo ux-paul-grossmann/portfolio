@@ -976,8 +976,29 @@ a#ci-brand-detail-name:hover {
     margin-bottom: 20vh;
 }
 
+/* The footer closes the page: its own surface, one left axis, generous space */
 #kontakt {
-    margin-bottom: 4vh;
+    width: 100vw;
+    margin-top: 64px;
+    margin-left: calc(50% - 50vw);
+    margin-bottom: 0;
+    padding: 64px 0 40px;
+    background: var(--md-sys-color-surface-container-low);
+}
+
+/* Content stays on the page grid while the surface runs full width */
+.footer-inner {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+#kontaktCaption {
+    max-width: 56ch;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.55;
+    color: var(--md-sys-color-on-surface-variant);
 }
 
 /* Shadow variants, chosen in the testing panel. One attribute drives both the
@@ -2578,8 +2599,10 @@ a.thumb-element:visited {
 }
 
 #copyright {
-    color: var(--copyrightFG);
-    font-size: 70%;
+    margin-top: 24px;
+    color: var(--md-sys-color-on-surface-variant);
+    font-size: 12px;
+    text-align: left;
 }
 
 /* ============================================================
@@ -2590,9 +2613,9 @@ a.thumb-element:visited {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 40px;
-    height: 40px;
-    color: var(--socialIcons-linkFG) !important;
+    width: 44px;
+    height: 44px;
+    color: var(--md-sys-color-on-surface-variant) !important;
     margin-right: 0.5rem;
     border-radius: 50%;
     background: transparent;
