@@ -45,6 +45,16 @@
             row-gap: 44px;
             column-gap: 16px;
             align-items: center;
+            justify-items: center;
+        }
+
+        .guide-grid > .guide-grid-head:first-child,
+        .guide-grid > .guide-row-label {
+            justify-self: start;
+        }
+
+        .guide-grid > .guide-grid-head {
+            text-align: center;
         }
 
         .guide-grid-head {
@@ -70,6 +80,46 @@
             font-size: 11px;
             color: var(--md-sys-color-on-surface-variant);
         }
+
+        .swatch-value {
+            margin-top: 2px;
+            font-family: 'SFMono-Regular', 'Menlo', monospace;
+            font-size: 10px;
+            color: var(--md-sys-color-on-surface-variant);
+        }
+
+        .guide-type-row {
+            display: flex;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 8px;
+        }
+
+        .ring-choice {
+            padding: 8px 14px;
+            border: 1px solid var(--md-sys-color-outline-variant);
+            border-radius: 999px;
+            background: transparent;
+            color: var(--md-sys-color-on-surface);
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 200ms ease, color 200ms ease, border-color 200ms ease;
+        }
+
+        .ring-choice.is-active {
+            background: var(--md-sys-color-primary-container);
+            border-color: transparent;
+            color: var(--md-sys-color-on-primary-container);
+        }
+
+        .guide-type-value {
+            font-family: 'SFMono-Regular', 'Menlo', monospace;
+            font-size: 11px;
+            color: var(--md-sys-color-on-surface-variant);
+            white-space: nowrap;
+        }
     </style>
 </head>
 
@@ -84,36 +134,48 @@
                 <div>
                     <div class="swatch" style="background: var(--md-sys-color-primary)"></div>
                     <div class="swatch-name">primary</div>
+                    <div class="swatch-value" data-color-value></div>
                 </div>
                 <div>
                     <div class="swatch" style="background: var(--md-sys-color-primary-container)"></div>
                     <div class="swatch-name">primary-container</div>
+                    <div class="swatch-value" data-color-value></div>
                 </div>
                 <div>
                     <div class="swatch" style="background: var(--md-sys-color-surface)"></div>
                     <div class="swatch-name">surface</div>
+                    <div class="swatch-value" data-color-value></div>
                 </div>
                 <div>
                     <div class="swatch" style="background: var(--md-sys-color-surface-container-high)"></div>
                     <div class="swatch-name">surface-container-high</div>
+                    <div class="swatch-value" data-color-value></div>
                 </div>
                 <div>
                     <div class="swatch" style="background: var(--md-sys-color-outline-variant)"></div>
                     <div class="swatch-name">outline-variant</div>
+                    <div class="swatch-value" data-color-value></div>
                 </div>
                 <div>
                     <div class="swatch" style="background: var(--md-sys-color-error)"></div>
                     <div class="swatch-name">error</div>
+                    <div class="swatch-value" data-color-value></div>
                 </div>
                 <div>
                     <div class="swatch" style="background: rgb(var(--cta-ring-rgb) / .6)"></div>
                     <div class="swatch-name">ring</div>
+                    <div class="swatch-value" data-color-value></div>
                 </div>
             </div>
         </section>
 
         <section class="guide-section">
             <h2 class="h5 mb-3">Call to action — four levels, four states</h2>
+            <div class="mb-4 d-flex align-items-center" style="gap: 12px;">
+                <span class="guide-label mb-0">Ring</span>
+                <button type="button" class="ring-choice" data-ring-choice="current-teal-ring" aria-pressed="false">Teal halo ring</button>
+                <button type="button" class="ring-choice" data-ring-choice="current-jade-ring" aria-pressed="false">Solid jade ring</button>
+            </div>
             <div class="guide-grid mb-3">
                 <span class="guide-grid-head"></span>
                 <span class="guide-grid-head">Idle</span>
@@ -121,31 +183,31 @@
                 <span class="guide-grid-head">Pressed</span>
                 <span class="guide-grid-head">Focus</span>
 
-                <span class="guide-grid-head">Primary</span>
+                <span class="guide-grid-head guide-row-label">Primary</span>
                 <span><span class="cta cta--primary">Zu den Showcases</span></span>
                 <span><span class="cta cta--primary" data-state="hover">Zu den Showcases</span></span>
                 <span><span class="cta cta--primary" data-state="pressed">Zu den Showcases</span></span>
                 <span><span class="cta cta--primary" data-state="focus">Zu den Showcases</span></span>
 
-                <span class="guide-grid-head">Secondary</span>
+                <span class="guide-grid-head guide-row-label">Secondary</span>
                 <span><span class="cta cta--secondary">Break the friction</span></span>
                 <span><span class="cta cta--secondary" data-state="hover">Break the friction</span></span>
                 <span><span class="cta cta--secondary" data-state="pressed">Break the friction</span></span>
                 <span><span class="cta cta--secondary" data-state="focus">Break the friction</span></span>
 
-                <span class="guide-grid-head">Tertiary</span>
+                <span class="guide-grid-head guide-row-label">Tertiary</span>
                 <span><span class="cta cta--tertiary">Adresse kopieren</span></span>
                 <span><span class="cta cta--tertiary" data-state="hover">Adresse kopieren</span></span>
                 <span><span class="cta cta--tertiary" data-state="pressed">Adresse kopieren</span></span>
                 <span><span class="cta cta--tertiary" data-state="focus">Adresse kopieren</span></span>
 
-                <span class="guide-grid-head">Inline</span>
+                <span class="guide-grid-head guide-row-label">Inline</span>
                 <span><a class="link-inline" href="#kontakt">Kontakt aufnehmen</a></span>
                 <span><a class="link-inline" href="#kontakt" data-state="hover">Kontakt aufnehmen</a></span>
                 <span class="guide-label">not applicable</span>
                 <span><a class="link-inline" href="#kontakt" data-state="focus">Kontakt aufnehmen</a></span>
 
-                <span class="guide-grid-head">Disabled</span>
+                <span class="guide-grid-head guide-row-label">Disabled</span>
                 <span><span class="cta cta--primary" aria-disabled="true">Nicht verfügbar</span></span>
                 <span><span class="cta cta--secondary" aria-disabled="true">Nicht verfügbar</span></span>
                 <span><span class="cta cta--tertiary" aria-disabled="true">Nicht verfügbar</span></span>
@@ -154,12 +216,52 @@
         </section>
 
         <section class="guide-section">
+            <h2 class="h5 mb-3">Fonts</h2>
+            <div class="guide-type-row">
+                <span id="font-inter" style="font-family: 'Inter', sans-serif; font-size: 20px;">Inter — UI, body, navigation, buttons</span>
+                <span class="guide-type-value" data-font-weight="font-inter"></span>
+            </div>
+            <div class="guide-type-row">
+                <span id="font-montserrat" style="font-family: 'Montserrat', sans-serif; font-size: 20px; font-weight: 600;">Montserrat — headings and labels</span>
+                <span class="guide-type-value" data-font-weight="font-montserrat"></span>
+            </div>
+            <div class="guide-type-row">
+                <span id="font-merriweather" style="font-family: 'Merriweather', serif; font-size: 20px; font-weight: 700;">Merriweather — the statement line in the intro</span>
+                <span class="guide-type-value" data-font-weight="font-merriweather"></span>
+            </div>
+            <div class="guide-type-row">
+                <span id="font-icons" style="font-family: 'Font Awesome 5 Free'; font-weight: 900; font-size: 20px;">Icons — Font Awesome 5 Free</span>
+                <span class="guide-type-value" data-font-weight="font-icons"></span>
+            </div>
+        </section>
+
+        <section class="guide-section">
             <h2 class="h5 mb-3">Type scale</h2>
-            <p class="h1 mb-2">Display — Kompetenzen &amp; Methoden</p>
-            <p class="h3 mb-2">Heading — Ich mache komplexe Anwendungen intuitiv</p>
-            <p class="h5 mb-2">Subheading — Showcases</p>
-            <p class="mb-2">Body — Hey, ich bin Paul Großmann, UX- &amp; UI-Designer aus Aachen.</p>
-            <p class="guide-label mb-0">Caption — 12 px, gesperrt</p>
+            <p class="guide-label mb-4">First row is the intro statement, styled by its own rule. The rest are Bootstrap h1 to h5. Values read as: font-size / weight / line-height. Taken from Bootstrap's h1 to h5: 2.5 / 1.75 / 1.25 / 1 / 0.75 rem, so the steps are 1.43, 1.4, 1.25 and 1.33 — a heading scale, not a modular one.</p>
+            <div class="guide-type-row">
+                <p class="h4 mb-0" id="ci-profilbild-caption-main" style="color: var(--md-sys-color-on-surface);">Ich mache komplexe Anwendungen intuitiv</p>
+                <span class="guide-type-value" data-type-value="ci-profilbild-caption-main"></span>
+            </div>
+            <div class="guide-type-row">
+                <span class="h1 mb-0" id="type-display">H1 — Kompetenzen &amp; Methoden</span>
+                <span class="guide-type-value" data-type-value="type-display"></span>
+            </div>
+            <div class="guide-type-row">
+                <span class="h3 mb-0" id="type-heading">Heading — Ich mache komplexe Anwendungen intuitiv</span>
+                <span class="guide-type-value" data-type-value="type-heading"></span>
+            </div>
+            <div class="guide-type-row">
+                <span class="h5 mb-0" id="type-subheading">Subheading — Showcases</span>
+                <span class="guide-type-value" data-type-value="type-subheading"></span>
+            </div>
+            <div class="guide-type-row">
+                <span class="mb-0" id="type-body">Body — Hey, ich bin Paul Großmann, UX- &amp; UI-Designer aus Aachen.</span>
+                <span class="guide-type-value" data-type-value="type-body"></span>
+            </div>
+            <div class="guide-type-row">
+                <span class="guide-label mb-0" id="type-caption">Caption — 12 px, gesperrt</span>
+                <span class="guide-type-value" data-type-value="type-caption"></span>
+            </div>
         </section>
 
         <section class="guide-section">
@@ -229,6 +331,55 @@
             document.documentElement.classList.add('dark');
             document.body.classList.add('dark');
         }
+
+        // Type values are read from the browser, so they cannot disagree with CSS
+        document.querySelectorAll('[data-type-value]').forEach(function (slot) {
+            var sample = document.getElementById(slot.getAttribute('data-type-value'));
+            if (!sample) return;
+            var style = getComputedStyle(sample);
+            slot.textContent = style.fontSize + ' / ' + style.fontWeight + ' / ' + style.lineHeight +
+                (style.letterSpacing !== 'normal' ? ' / ' + style.letterSpacing : '');
+        });
+
+        // Colour values come from the rendered swatches, not from a second list
+        document.querySelectorAll('[data-color-value]').forEach(function (slot) {
+            var swatch = slot.parentElement.querySelector('.swatch');
+            if (!swatch) return;
+            var match = getComputedStyle(swatch).backgroundColor.match(/rgba?\(([^)]+)\)/);
+            if (!match) return;
+            var parts = match[1].split(/[,\s\/]+/).filter(Boolean).map(Number);
+            if (parts.length < 3) return;
+            var hex = '#' + parts.slice(0, 3).map(function (value) {
+                return value.toString(16).padStart(2, '0');
+            }).join('');
+            var alpha = parts.length > 3 ? parts[3] : 1;
+            slot.textContent = hex + (alpha < 1 ? ' · ' + Math.round(alpha * 100) + '%' : '') +
+                ' · ' + parts.slice(0, 3).join(' ');
+        });
+
+        // Font families as the browser resolves them
+        document.querySelectorAll('[data-font-weight]').forEach(function (slot) {
+            var sample = document.getElementById(slot.getAttribute('data-font-weight'));
+            if (!sample) return;
+            slot.textContent = getComputedStyle(sample).fontFamily;
+        });
+
+        // Ring choice: same attribute the dev panel sets on the site
+        var ringButtons = document.querySelectorAll('[data-ring-choice]');
+        function applyRing(id) {
+            document.documentElement.setAttribute('data-cta-variant', id);
+            ringButtons.forEach(function (button) {
+                var active = button.getAttribute('data-ring-choice') === id;
+                button.classList.toggle('is-active', active);
+                button.setAttribute('aria-pressed', String(active));
+            });
+        }
+        ringButtons.forEach(function (button) {
+            button.addEventListener('click', function () {
+                applyRing(button.getAttribute('data-ring-choice'));
+            });
+        });
+        applyRing('current-jade-ring');
     </script>
 </body>
 
