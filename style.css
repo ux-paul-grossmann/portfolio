@@ -4631,6 +4631,8 @@ body.dev-edit .dev-media-x[hidden] {
     align-items: stretch;
     gap: 4px;
     max-width: min(560px, calc(100vw - 32px));
+    max-height: calc(100vh - 150px);
+    overflow-y: auto;
     padding: 6px 8px 8px;
     border: 1px solid var(--collapse-cardBorderColor);
     border-radius: 10px;
