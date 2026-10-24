@@ -4167,9 +4167,10 @@ a, button, .btn, .nav-link, .thumb-element, #theme-toggle, .scrolltop, #intro-bu
     background: none;
     border-color: transparent;
     padding: 0;
-    /* The panel clips the ticker horizontally, so the cell shadows need room
-       inside it; without this they are cut at the top and bottom edge. */
-    padding-block: 16px;
+    /* The panel clips the ticker, so the cell shadow needs room inside it.
+       Negative margin keeps the outer layout height unchanged. */
+    padding-block: 34px;
+    margin-block: -34px;
 }
 
 .brand-strip.is-cells .brand-cell {
