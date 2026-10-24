@@ -1019,53 +1019,6 @@ html[data-shadow-variant="ring"] :is(.brand-strip:not(.is-cells) .brand-panel, .
 }
 
 
-/* Strip entrance as CSS, so cells cloned later by the marquee animate too.
-   Position expressed per slot, not per node: --cell-index comes from nth-child. */
-/* Overshoot keyframes, matching the spring of the portrait: it drops past the
-   resting position, then settles back. */
-@keyframes intro-cell-in {
-    0% {
-        opacity: 0;
-        transform: translateY(-100px) scale(1.2);
-        filter: blur(15px);
-    }
-    62% {
-        opacity: 1;
-        transform: translateY(7px) scale(0.982);
-        filter: blur(0);
-    }
-    82% {
-        transform: translateY(-2px) scale(1.004);
-    }
-    100% {
-        opacity: 1;
-        transform: none;
-        filter: blur(0);
-    }
-}
-
-.brand-strip.is-cells .brand-cell {
-    animation: intro-cell-in 900ms cubic-bezier(.32, .72, .24, 1) both;
-    animation-delay: calc(var(--intro-start, 2150ms) + var(--cell-index, 0) * var(--intro-step, 90ms));
-}
-
-.brand-strip.is-cells .brand-cell:nth-child(1) { --cell-index: 0; }
-.brand-strip.is-cells .brand-cell:nth-child(2) { --cell-index: 1; }
-.brand-strip.is-cells .brand-cell:nth-child(3) { --cell-index: 2; }
-.brand-strip.is-cells .brand-cell:nth-child(4) { --cell-index: 3; }
-.brand-strip.is-cells .brand-cell:nth-child(5) { --cell-index: 4; }
-.brand-strip.is-cells .brand-cell:nth-child(6) { --cell-index: 5; }
-.brand-strip.is-cells .brand-cell:nth-child(7) { --cell-index: 6; }
-.brand-strip.is-cells .brand-cell:nth-child(8) { --cell-index: 7; }
-.brand-strip.is-cells .brand-cell:nth-child(9) { --cell-index: 8; }
-.brand-strip.is-cells .brand-cell:nth-child(10) { --cell-index: 9; }
-.brand-strip.is-cells .brand-cell:nth-child(11) { --cell-index: 10; }
-.brand-strip.is-cells .brand-cell:nth-child(12) { --cell-index: 11; }
-
-@media (prefers-reduced-motion: reduce) {
-    .brand-strip.is-cells .brand-cell {
-        animation: none;
-    }
 }
 
 /* Icons inside calls to action: inline SVG, stroke follows the label colour */
