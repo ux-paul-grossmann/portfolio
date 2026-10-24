@@ -1301,6 +1301,29 @@ html[data-cta-ring="4"] {
     background: color-mix(in srgb, var(--md-sys-color-primary) 20%, transparent) !important;
 }
 
+/* Proposed type ramp, opt-in through the testing panel. Current keeps the
+   Bootstrap sizes; proposed maps page titles, card titles and detail headings
+   onto the five steps in --type-*. */
+html[data-type-scale="proposed"] h2 {
+    font-size: var(--type-display) !important;
+    line-height: var(--leading-tight) !important;
+}
+
+html[data-type-scale="proposed"] h3 {
+    font-size: var(--type-heading) !important;
+    line-height: var(--leading-snug) !important;
+}
+
+html[data-type-scale="proposed"] .project-detail > h3 {
+    font-size: var(--type-subheading) !important;
+    line-height: var(--leading-snug) !important;
+}
+
+html[data-type-scale="proposed"] #ci-profilbild-caption-main {
+    font-size: var(--type-statement) !important;
+    line-height: var(--leading-snug) !important;
+}
+
 /* Level 4: inline text link */
 .link-inline {
     color: var(--md-sys-color-primary);
