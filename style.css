@@ -752,7 +752,7 @@ nav.navbar.fixed-bottom .navbar-collapse .menu-close {
         max-width: none;
         margin: 0 auto;
         padding: 8px;
-        background: rgb(255 255 255 / var(--nav-glass-tint, .07));
+        background: rgb(255 255 255 / var(--nav-glass-tint, .88));
         -webkit-backdrop-filter: blur(14px) saturate(1.1);
         backdrop-filter: blur(14px) saturate(1.1);
         border: 1px solid rgb(255 255 255 / .5);
@@ -773,11 +773,15 @@ nav.navbar.fixed-bottom .navbar-collapse .menu-close {
         z-index: 1;
     }
 
-    /* Per-label ink from lib/js/nav-ink.js: each link samples what sits behind
-       it, so one label can stay dark while its neighbour turns light.
-       The active link keeps its own pill and is excluded. */
+    /* Label ink follows the theme, never the pixels: the surface tint is strong
+       enough to carry one ink colour per theme, so labels stay stable while
+       scrolling. The active link keeps its own pill and is excluded. */
     nav.navbar.fixed-bottom .navbar-nav .nav-link:not(.active) {
-        color: var(--nav-ink, inherit) !important;
+        color: rgb(14 20 21) !important;
+    }
+
+    html.dark nav.navbar.fixed-bottom .navbar-nav .nav-link:not(.active) {
+        color: rgb(255 255 255) !important;
     }
 
     nav.navbar.fixed-bottom .navbar-nav .nav-link:not(.active):hover,
@@ -785,16 +789,8 @@ nav.navbar.fixed-bottom .navbar-collapse .menu-close {
         color: var(--navlink-hover-FG) !important;
     }
 
-    html.nav-ink-dark nav.navbar.fixed-bottom .navbar-nav .nav-link:not(.active) {
-        color: rgb(14 20 21);
-    }
-
-    html.nav-ink-light nav.navbar.fixed-bottom .navbar-nav .nav-link:not(.active) {
-        color: rgb(255 255 255);
-    }
-
     html.dark nav.navbar.fixed-bottom > .container {
-        background: rgb(255 255 255 / .05);
+        background: rgb(14 20 21 / var(--nav-glass-tint, .88));
         border-color: rgb(255 255 255 / .22);
         box-shadow: inset 0 0 0 0.5px rgb(255 255 255 / .22),
                     inset 1.5px 1.5px 1px -1px rgb(255 255 255 / .5),
@@ -1107,7 +1103,7 @@ a#ci-brand-detail-name:hover {
 /* CTA variants: fixed surfaces with the Juicy-style ring (1px idle, 10px
    hover, 200ms, no movement). "Current" removes the attribute and keeps the
    original component rules. */
-html[data-cta-variant]:not([data-cta-variant="current-teal-ring"]):not([data-cta-variant="current-jade-ring"]) :is(#intro-button, .kontext-game-launch, .submit-button, .kontext-game-again, .scroll-to-top-card) {
+html[data-cta-variant]:not([data-cta-variant="current-teal-ring"]):not([data-cta-variant="current-jade-ring"]) :is(#intro-button, .kontext-game-launch, .submit-button, .kontext-game-again, .scroll-to-top-card, .contact-mail) {
     border-color: transparent !important;
     background: var(--cta-bg) !important;
     color: var(--cta-fg) !important;
@@ -1115,17 +1111,17 @@ html[data-cta-variant]:not([data-cta-variant="current-teal-ring"]):not([data-cta
     transition: box-shadow 200ms cubic-bezier(.4, 0, .2, 1), background 200ms ease, color 200ms ease !important;
 }
 
-html[data-cta-variant]:not([data-cta-variant="current-teal-ring"]):not([data-cta-variant="current-jade-ring"]) :is(#intro-button, .kontext-game-launch, .submit-button, .kontext-game-again, .scroll-to-top-card):hover,
-html[data-cta-variant]:not([data-cta-variant="current-teal-ring"]):not([data-cta-variant="current-jade-ring"])[data-cta-state="hover"] :is(#intro-button, .kontext-game-launch, .submit-button, .kontext-game-again, .scroll-to-top-card) {
+html[data-cta-variant]:not([data-cta-variant="current-teal-ring"]):not([data-cta-variant="current-jade-ring"]) :is(#intro-button, .kontext-game-launch, .submit-button, .kontext-game-again, .scroll-to-top-card, .contact-mail):hover,
+html[data-cta-variant]:not([data-cta-variant="current-teal-ring"]):not([data-cta-variant="current-jade-ring"])[data-cta-state="hover"] :is(#intro-button, .kontext-game-launch, .submit-button, .kontext-game-again, .scroll-to-top-card, .contact-mail) {
     transform: none !important;
     box-shadow: inset 0 1px 2px rgb(255 255 255 / .25), 0 0 0 10px var(--cta-ring) !important;
 }
 
-html[data-cta-variant]:not([data-cta-variant="current-teal-ring"]):not([data-cta-variant="current-jade-ring"]) :is(#intro-button, .kontext-game-launch, .submit-button, .kontext-game-again, .scroll-to-top-card):active {
+html[data-cta-variant]:not([data-cta-variant="current-teal-ring"]):not([data-cta-variant="current-jade-ring"]) :is(#intro-button, .kontext-game-launch, .submit-button, .kontext-game-again, .scroll-to-top-card, .contact-mail):active {
     box-shadow: inset 0 1px 2px rgb(255 255 255 / .25), 0 0 0 4px var(--cta-ring) !important;
 }
 
-html[data-cta-variant]:not([data-cta-variant="current-teal-ring"]):not([data-cta-variant="current-jade-ring"]) :is(#intro-button, .kontext-game-launch, .submit-button, .kontext-game-again, .scroll-to-top-card) i {
+html[data-cta-variant]:not([data-cta-variant="current-teal-ring"]):not([data-cta-variant="current-jade-ring"]) :is(#intro-button, .kontext-game-launch, .submit-button, .kontext-game-again, .scroll-to-top-card, .contact-mail) i {
     color: inherit !important;
 }
 
@@ -1196,7 +1192,7 @@ html.dark:is([data-cta-variant="current-teal-ring"], [data-cta-variant="current-
     --cta-ring-rgb: 67 146 169;
 }
 
-html.dark:is([data-cta-variant="current-teal-ring"], [data-cta-variant="current-jade-ring"]) :is(#intro-button, .kontext-game-launch, .submit-button, .kontext-game-again, .scroll-to-top-card) {
+html.dark:is([data-cta-variant="current-teal-ring"], [data-cta-variant="current-jade-ring"]) :is(#intro-button, .kontext-game-launch, .submit-button, .kontext-game-again, .scroll-to-top-card, .contact-mail) {
     background: #80D4D9 !important;
     color: #003739 !important;
     border-color: transparent !important;
@@ -1218,17 +1214,17 @@ html[data-cta-ring="4"] {
     --cta-ring-idle: 4px;
 }
 
-html:is([data-cta-variant="current-teal-ring"], [data-cta-variant="current-jade-ring"]) :is(#intro-button, .kontext-game-launch, .submit-button, .kontext-game-again, .scroll-to-top-card) {
+html:is([data-cta-variant="current-teal-ring"], [data-cta-variant="current-jade-ring"]) :is(#intro-button, .kontext-game-launch, .submit-button, .kontext-game-again, .scroll-to-top-card, .contact-mail) {
     box-shadow: inset 0 1px 2px rgb(255 255 255 / .5), 0 0 0 var(--cta-ring-idle) rgb(var(--cta-ring-rgb) / .6) !important;
     transition: box-shadow 200ms cubic-bezier(.4, 0, .2, 1) !important;
 }
 
-html:is([data-cta-variant="current-teal-ring"], [data-cta-variant="current-jade-ring"]) :is(#intro-button, .kontext-game-launch, .submit-button, .kontext-game-again, .scroll-to-top-card):hover,
-html:is([data-cta-variant="current-teal-ring"], [data-cta-variant="current-jade-ring"])[data-cta-state="hover"] :is(#intro-button, .kontext-game-launch, .submit-button, .kontext-game-again, .scroll-to-top-card) {
+html:is([data-cta-variant="current-teal-ring"], [data-cta-variant="current-jade-ring"]) :is(#intro-button, .kontext-game-launch, .submit-button, .kontext-game-again, .scroll-to-top-card, .contact-mail):hover,
+html:is([data-cta-variant="current-teal-ring"], [data-cta-variant="current-jade-ring"])[data-cta-state="hover"] :is(#intro-button, .kontext-game-launch, .submit-button, .kontext-game-again, .scroll-to-top-card, .contact-mail) {
     box-shadow: inset 0 1px 2px rgb(255 255 255 / .5), 0 0 0 10px rgb(var(--cta-ring-rgb) / .6) !important;
 }
 
-html:is([data-cta-variant="current-teal-ring"], [data-cta-variant="current-jade-ring"]) :is(#intro-button, .kontext-game-launch, .submit-button, .kontext-game-again, .scroll-to-top-card):active {
+html:is([data-cta-variant="current-teal-ring"], [data-cta-variant="current-jade-ring"]) :is(#intro-button, .kontext-game-launch, .submit-button, .kontext-game-again, .scroll-to-top-card, .contact-mail):active {
     box-shadow: inset 0 1px 2px rgb(255 255 255 / .25), 0 0 0 4px rgb(var(--cta-ring-rgb) / .6) !important;
 }
 
