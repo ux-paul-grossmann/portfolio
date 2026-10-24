@@ -734,6 +734,12 @@ nav.navbar.fixed-bottom .navbar-collapse .menu-close {
         backdrop-filter: none;
     }
 
+    /* The bar is only a positioning frame on desktop now: without this the old
+       overflow:hidden would cut the pill's shadow at the bar's edges. */
+    nav.navbar.fixed-bottom {
+        overflow: visible;
+    }
+
     /* The bar carries no surface on desktop; the navigation itself is a glass
        pill. lib/js/nav-glass.js generates the displacement map for #nav-lens, so
        the backdrop bends at the rim like a lens; browsers without filter
@@ -746,7 +752,7 @@ nav.navbar.fixed-bottom .navbar-collapse .menu-close {
         max-width: none;
         margin: 0 auto;
         padding: 8px;
-        background: rgb(255 255 255 / .07);
+        background: rgb(255 255 255 / var(--nav-glass-tint, .07));
         -webkit-backdrop-filter: blur(14px) saturate(1.1);
         backdrop-filter: blur(14px) saturate(1.1);
         border: 1px solid rgb(255 255 255 / .5);
@@ -758,8 +764,8 @@ nav.navbar.fixed-bottom .navbar-collapse .menu-close {
     }
 
     html.has-nav-lens nav.navbar.fixed-bottom > .container {
-        -webkit-backdrop-filter: url(#nav-lens) blur(0.5px) saturate(1.2);
-        backdrop-filter: url(#nav-lens) blur(0.5px) saturate(1.2);
+        -webkit-backdrop-filter: url(#nav-lens) blur(var(--nav-glass-blur, .5px)) saturate(1.2);
+        backdrop-filter: url(#nav-lens) blur(var(--nav-glass-blur, .5px)) saturate(1.2);
     }
 
     nav.navbar.fixed-bottom > .container > * {
