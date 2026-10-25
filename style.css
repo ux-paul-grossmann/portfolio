@@ -5759,7 +5759,7 @@ html.agent-active body::after {
     }
 
     .kontext-game-cta {
-        margin-top: 14px;
+        margin-top: 48px;
         text-align: center;
         opacity: 0;
         transform: translateY(-12px);
