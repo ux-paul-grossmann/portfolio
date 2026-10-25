@@ -977,7 +977,7 @@ a#ci-brand-detail-name:hover {
     margin-top: 64px;
     margin-left: calc(50% - 50vw);
     margin-bottom: 0;
-    padding: 64px 0 40px;
+    padding: 64px 0 160px;
     background: var(--md-sys-color-surface-container-low);
 }
 
