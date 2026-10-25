@@ -4687,6 +4687,7 @@ body.dev-edit .dev-media-x[hidden] {
     /* The trail: the position snaps, the paint catches up, so the button
        lags behind the pointer by ~a quarter second. */
     transition: transform 260ms cubic-bezier(.22, .61, .36, 1),
+                scale 160ms ease,
                 background-color 150ms ease, color 150ms ease,
                 border-color 150ms ease, box-shadow 180ms ease;
 }
