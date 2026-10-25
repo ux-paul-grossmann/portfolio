@@ -4800,7 +4800,10 @@ body.dev-edit .dev-media-x[hidden] {
     flex-direction: column;
     align-items: stretch;
     gap: 10px;
-    max-width: min(610px, calc(100vw - 32px));
+    /* One default width for both panels, so the Strips review and Testing
+       share the same frame instead of sizing to their content. */
+    width: 433px;
+    max-width: min(433px, calc(100vw - 32px));
     max-height: calc(100vh - 150px);
     overflow: auto;
     /* No visible scrollbar: the panel scrolls, but the track would read as UI */
