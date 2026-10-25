@@ -4172,9 +4172,10 @@ a, button, .btn, .nav-link, .thumb-element, #theme-toggle, .scrolltop, #intro-bu
     border-color: transparent;
     padding: 0;
     /* The panel clips the ticker, so the cell shadow needs room inside it.
-       Negative margin keeps the outer layout height unchanged. */
-    padding-block: 34px;
-    margin-block: -34px;
+       Lifted is the deepest variant (14px offset + 32px blur), so 48px holds
+       every shadow; the negative margin keeps the layout height unchanged. */
+    padding-block: 48px;
+    margin-block: -48px;
     /* The ticker always slides a cell across the clip edge, so the edge fades
        instead of slicing whatever is landing there. */
     -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 26px, #000 calc(100% - 26px), transparent 100%);
