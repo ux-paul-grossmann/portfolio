@@ -1087,20 +1087,21 @@ html[data-shadow-variant="ring"] :is(.brand-strip:not(.is-cells) .brand-panel, .
     50% { transform: translateX(2px); }
 }
 
-.mail-flap {
-    transform-origin: 12px 6.5px;
+/* The mail icon lifts 1px on hover and settles while pressed. The old flap
+   tilt swung the fold out of the envelope's outline, which read as broken. */
+.contact-mail .cta-icon {
     transition: transform 180ms ease;
 }
 
-.contact-mail:focus-visible .mail-flap {
-    transform: rotate(-12deg);
+.contact-mail:focus-visible .cta-icon {
+    transform: translateY(-1px);
 }
 
-/* Hover only where a hover exists: on touch the tap sticks and the flap
-   would stay tilted after every tap. */
+/* Hover only where a hover exists: on touch the tap sticks and the icon
+   would stay lifted after every tap. */
 @media (hover: hover) and (pointer: fine) {
-    .contact-mail:hover .mail-flap {
-        transform: rotate(-12deg);
+    .contact-mail:hover .cta-icon {
+        transform: translateY(-1px);
     }
 }
 
@@ -1110,7 +1111,7 @@ html[data-shadow-variant="ring"] :is(.brand-strip:not(.is-cells) .brand-panel, .
 
 @media (prefers-reduced-motion: reduce) {
     .cta-icon-wrap .cta-icon,
-    .mail-flap,
+    .contact-mail .cta-icon,
     .contact-copy.is-error .cta-icon-wrap {
         transition: none;
         animation: none;
