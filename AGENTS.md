@@ -134,6 +134,7 @@ On the experiment branches `flanking-cards`/`morphing-cards` add `lib/js/project
 
 # Browser tests (mandatory)
 
+- **Screenshot workflow (tools folder).** Captures never sit loose in `~/Developer/Portfolio2026/tools/`. They go to `~/Developer/Portfolio2026/tools/shots/YYYY-MM-DD/`, one folder per day, file names describe the check (`footer-align-center.png`, not `shot1.png`). Proofs that need several files keep one subfolder (`shots/2026-10-25/cache-proof/`). After a session no new file lies at the tools root; the scripts there stay flat. Deleting a capture is allowed once its finding is written into `HANDOVER.md`.
 - **Own tab, never the user's tab.** Browser work runs in a tab of its own (`browser.tabs.open`), never in a tab of the user. Foreign tabs are never navigated. My own tab stays **open** afterwards — the user may still be working in it.
 - **Device toolbar, not window size.** Widths are set through the device toolbar in DevTools: open DevTools with ⌥⌘I, switch the toolbar on with ⌘⇧M (both keystrokes spelled out in the rule below), then set the width in its "Dimensions" control. Window size is **not** a substitute — `resize_page` silently does nothing when the page is not selected, and window size is not the CSS viewport. The `chrome-devtools` → `emulate` viewport override is not a substitute either.
 - **Evidence.** The result names the measured `innerWidth`; it has to match the announced width. If it shows a different width, the measurement is worthless and is redone.
