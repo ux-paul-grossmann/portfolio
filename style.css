@@ -5776,6 +5776,15 @@ html.agent-active body::after {
         pointer-events: auto;
     }
 
+    /* Scroll variant: the same reveal follows the section entering the view,
+       chosen in the testing panel. A scroll-revealed section still reveals
+       on hover, so the two never fight. */
+    html[data-cta-reveal="scroll"] #kontext.is-revealed .kontext-game-cta {
+        opacity: 1;
+        transform: none;
+        pointer-events: auto;
+    }
+
     .kontext-playfield.is-playing .kontext-game-cta {
         display: none;
     }
@@ -5786,6 +5795,10 @@ html.agent-active body::after {
 
     #kontext:hover .kontext-wrap:not(.is-playing),
     #kontext:focus-within .kontext-wrap:not(.is-playing) {
+        padding-bottom: 72px;
+    }
+
+    html[data-cta-reveal="scroll"] #kontext.is-revealed .kontext-wrap:not(.is-playing) {
         padding-bottom: 72px;
     }
 
