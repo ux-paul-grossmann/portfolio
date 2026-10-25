@@ -6255,9 +6255,8 @@ html.agent-active body::after {
     outline: none;
 }
 
-/* Footer alignment, switched in the testing panel. It moves the text of the
-   contact block only: the social icons and the copyright stay left, as they
-   are not text blocks that benefit from centring. */
+/* Footer alignment, switched in the testing panel. Every footer element
+   follows it: heading, caption, contact buttons, social icons, copyright. */
 html[data-footer-align="center"] #kontakt .footer-inner {
     text-align: center;
 }
@@ -6273,6 +6272,11 @@ html[data-footer-align="center"] #kontakt :is(h2, #kontaktCaption) {
     text-align: center !important;
 }
 
-html[data-footer-align="center"] #kontakt .contact-actions {
+html[data-footer-align="center"] #kontakt .contact-actions,
+html[data-footer-align="center"] #kontakt #socialIconsWrap {
     justify-content: center;
+}
+
+html[data-footer-align="center"] #kontakt #copyright {
+    text-align: center !important;
 }
