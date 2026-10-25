@@ -5620,6 +5620,62 @@ html.glightbox-open #devPresetToggle {
     right: calc(56px + var(--scrollbar-width, 0px));
 }
 
+/* Agent marker: a breathing frame and a small pill, so the tab an automated
+   assistant drives is recognisable at a glance. The class is set by helpers.js
+   from a sessionStorage flag in that tab only; visitors never see it. */
+html.agent-active body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1000005;
+    box-shadow: inset 0 0 0 2px var(--md-sys-color-primary);
+    animation: agent-frame 2.6s ease-in-out infinite;
+}
+
+@keyframes agent-frame {
+    0%, 100% { opacity: 0.35; }
+    50% { opacity: 1; }
+}
+
+.agent-pill {
+    position: fixed;
+    left: 10px;
+    bottom: calc(10px + env(safe-area-inset-bottom, 0px));
+    z-index: 1000006;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 12px 7px 10px;
+    border-radius: 999px;
+    border: 1px solid rgb(255 255 255 / 0.16);
+    background: rgb(6 24 26 / 0.86);
+    color: rgb(233 253 255 / 0.95);
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    pointer-events: none;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+}
+
+.agent-pill-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--md-sys-color-primary);
+    animation: agent-frame 2.6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html.agent-active body::after,
+    .agent-pill-dot {
+        animation: none;
+    }
+}
+
+
 /* Rotate control: one button at the bottom centre of the lightbox, touch
    screens only. Screenshots of phone screens arrive sideways often enough
    that turning the image must not need a second app. */
