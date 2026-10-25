@@ -4897,10 +4897,14 @@ body.dev-edit .dev-media-x[hidden] {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 14px;
-    height: 18px;
-    margin-right: 2px;
-    border-radius: 4px;
+    /* 32px: the handle is the one visible cue that the panel can be dragged,
+       so it carries the header instead of sitting as a speck. */
+    width: 32px;
+    height: 32px;
+    font-size: 32px;
+    line-height: 1;
+    margin-right: 6px;
+    border-radius: 6px;
     color: var(--collapse-card-titleFG);
     opacity: 0.5;
     cursor: grab;
