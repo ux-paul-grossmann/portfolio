@@ -5781,7 +5781,7 @@ html.agent-active body::after {
     }
 
     .kontext-wrap {
-        transition: padding-bottom .28s cubic-bezier(.2, 0, 0, 1);
+        transition: padding-bottom .5s cubic-bezier(.4, 0, .2, 1);
     }
 
     #kontext:hover .kontext-wrap:not(.is-playing),
