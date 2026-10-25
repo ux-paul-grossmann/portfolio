@@ -5792,8 +5792,10 @@ html.agent-active body::after {
             transform var(--game-cta-duration, 320ms) cubic-bezier(.22, .61, .36, 1) var(--game-cta-delay, 40ms);
     }
 
-    #kontext:hover .kontext-game-cta,
-    #kontext:focus-within .kontext-game-cta {
+    /* Hover only while the mode is hover: with the scroll reveal active the
+       pointer must not open the button a second way. */
+    html:not([data-cta-reveal="scroll"]) #kontext:hover .kontext-game-cta,
+    html:not([data-cta-reveal="scroll"]) #kontext:focus-within .kontext-game-cta {
         opacity: 1;
         transform: none;
         pointer-events: auto;
@@ -5816,8 +5818,8 @@ html.agent-active body::after {
         transition: padding-bottom .5s cubic-bezier(.4, 0, .2, 1);
     }
 
-    #kontext:hover .kontext-wrap:not(.is-playing),
-    #kontext:focus-within .kontext-wrap:not(.is-playing) {
+    html:not([data-cta-reveal="scroll"]) #kontext:hover .kontext-wrap:not(.is-playing),
+    html:not([data-cta-reveal="scroll"]) #kontext:focus-within .kontext-wrap:not(.is-playing) {
         padding-bottom: 72px;
     }
 
