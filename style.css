@@ -6255,32 +6255,4 @@ html.agent-active body::after {
     outline: none;
 }
 
-/* Footer alignment, switched in the testing panel. Every footer element
-   follows it: heading, caption, contact buttons, social icons, copyright. */
-html[data-footer-align="center"] #kontakt .footer-inner {
-    text-align: center;
-}
 
-html[data-footer-align="center"] #kontakt #kontaktCaption {
-    margin-left: auto;
-    margin-right: auto;
-}
-
-/* Bootstrap's text utilities carry !important, so the heading and the caption
-   need the same weight to follow the switch. */
-html[data-footer-align="center"] #kontakt :is(h2, #kontaktCaption) {
-    text-align: center !important;
-}
-
-html[data-footer-align="center"] #kontakt .contact-actions {
-    justify-content: center;
-}
-
-/* The left state is explicit, so the switch always has two live buttons. */
-html[data-footer-align="left"] #kontakt :is(h2, #kontaktCaption) {
-    text-align: left !important;
-}
-
-html[data-footer-align="left"] #kontakt .contact-actions {
-    justify-content: flex-start;
-}
