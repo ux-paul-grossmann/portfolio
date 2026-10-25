@@ -1092,9 +1092,16 @@ html[data-shadow-variant="ring"] :is(.brand-strip:not(.is-cells) .brand-panel, .
     transition: transform 180ms ease;
 }
 
-.contact-mail:hover .mail-flap,
 .contact-mail:focus-visible .mail-flap {
     transform: rotate(-12deg);
+}
+
+/* Hover only where a hover exists: on touch the tap sticks and the flap
+   would stay tilted after every tap. */
+@media (hover: hover) and (pointer: fine) {
+    .contact-mail:hover .mail-flap {
+        transform: rotate(-12deg);
+    }
 }
 
 .contact-mail:active .cta-icon {
@@ -1141,14 +1148,26 @@ html[data-shadow-variant="ring"] :is(.brand-strip:not(.is-cells) .brand-panel, .
 }
 
 .contact-mail-label {
+    line-height: 1.3;
+    white-space: nowrap;
+}
+
+.contact-mail.has-address .contact-mail-label {
     padding-right: 10px;
     border-right: 1px solid var(--actionButtonBdCol);
-    line-height: 1.3;
 }
 
 .contact-mail-address {
     font-weight: 500;
     letter-spacing: 0.01em;
+}
+
+/* Sizes the mail icon at its button: the generic icon rule above no longer
+   reaches it, so the envelope collapsed to zero without this. */
+.contact-mail > .cta-icon {
+    width: 16px;
+    height: 16px;
+    flex: 0 0 auto;
 }
 
 .contact-copy {
