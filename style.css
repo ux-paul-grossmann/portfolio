@@ -4660,24 +4660,66 @@ body.dev-edit .dev-media-x[hidden] {
 
 /* Dev: preset toolbar and inline editing, only with ?dev=1 */
 #devPresetToggle {
-    position: absolute;
-    right: 56px;
-    bottom: 14px;
-    width: 32px;
-    height: 32px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: auto;
+    bottom: auto;
+    width: 44px;
+    height: 44px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid var(--collapse-cardBorderColor);
-    border-radius: 10px;
-    background: var(--collapse-cardBG);
-    color: var(--collapse-card-titleFG);
-    font-size: 15px;
-    line-height: 1;
+    padding: 0;
+    border: 1px solid rgb(255 255 255 / .45);
+    border-radius: 50%;
+    background: rgb(255 255 255 / .18);
+    color: rgb(14 20 21);
     cursor: pointer;
-    z-index: 1060;
-    transition: background-color 150ms ease, color 150ms ease, border-color 150ms ease;
+    z-index: 1206;
+    will-change: transform;
+    -webkit-backdrop-filter: blur(14px) saturate(1.2);
+    backdrop-filter: blur(14px) saturate(1.2);
+    box-shadow: inset 0 0 0 .5px rgb(255 255 255 / .35),
+                inset 1.5px 1.5px 1px -1px rgb(255 255 255 / .7),
+                inset -1.5px -1.5px 1px -1px rgb(255 255 255 / .42),
+                0 10px 30px rgb(0 0 0 / .18);
+    /* The trail: the position snaps, the paint catches up, so the button
+       lags behind the pointer by ~a quarter second. */
+    transition: transform 260ms cubic-bezier(.22, .61, .36, 1),
+                background-color 150ms ease, color 150ms ease,
+                border-color 150ms ease, box-shadow 180ms ease;
 }
+
+#devPresetToggle svg {
+    width: 20px;
+    height: 20px;
+}
+
+html.dark #devPresetToggle {
+    background: rgb(14 20 21 / .55);
+    border-color: rgb(255 255 255 / .22);
+    color: rgb(255 255 255 / .92);
+}
+
+#devPresetToggle:hover,
+#devPresetToggle:focus-visible {
+    background: rgb(255 255 255 / .32);
+    box-shadow: inset 0 0 0 .5px rgb(255 255 255 / .4),
+                inset 1.5px 1.5px 1px -1px rgb(255 255 255 / .8),
+                inset -1.5px -1.5px 1px -1px rgb(255 255 255 / .5),
+                0 14px 34px rgb(0 0 0 / .24);
+}
+
+html.dark #devPresetToggle:hover,
+html.dark #devPresetToggle:focus-visible {
+    background: rgb(14 20 21 / .72);
+}
+
+#devPresetToggle:active {
+    scale: .96;
+}
+
 
 #devPresetToggle[aria-pressed="true"] {
     background: var(--md-sys-color-primary);
