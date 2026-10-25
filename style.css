@@ -4791,7 +4791,7 @@ body.dev-edit .dev-media-x[hidden] {
 }
 
 /* Dev: CTA variant preview. The buttons set data-cta-variant on <html>. */
-#devCtaPanel {
+:is(#devCtaPanel, #devStripsPanel) {
     position: fixed;
     left: 16px;
     bottom: 108px;
@@ -4818,16 +4818,16 @@ body.dev-edit .dev-media-x[hidden] {
     cursor: grab;
 }
 
-#devCtaPanel.is-dragging {
+:is(#devCtaPanel, #devStripsPanel).is-dragging {
     cursor: grabbing;
 }
 
-#devCtaPanel::-webkit-scrollbar {
+:is(#devCtaPanel, #devStripsPanel)::-webkit-scrollbar {
     width: 0;
     height: 0;
 }
 
-#devCtaPanel .dev-cta-head {
+:is(#devCtaPanel, #devStripsPanel) .dev-cta-head {
     display: flex;
     align-items: center;
     gap: 8px;
@@ -4835,17 +4835,17 @@ body.dev-edit .dev-media-x[hidden] {
     border-bottom: 1px solid var(--collapse-cardBorderColor);
 }
 
-#devCtaPanel .dev-cta-title {
+:is(#devCtaPanel, #devStripsPanel) .dev-cta-title {
     font-weight: 600;
     letter-spacing: 0.02em;
     opacity: 0.7;
 }
 
-#devCtaPanel .dev-cta-spacer {
+:is(#devCtaPanel, #devStripsPanel) .dev-cta-spacer {
     flex: 1 1 auto;
 }
 
-#devCtaPanel .dev-panel-link {
+:is(#devCtaPanel, #devStripsPanel) .dev-panel-link {
     padding: 3px 9px;
     border: 1px solid var(--collapse-cardBorderColor);
     border-radius: 999px;
@@ -4856,21 +4856,21 @@ body.dev-edit .dev-media-x[hidden] {
     white-space: nowrap;
 }
 
-#devCtaPanel .dev-panel-link:hover,
-#devCtaPanel .dev-panel-link:focus-visible {
+:is(#devCtaPanel, #devStripsPanel) .dev-panel-link:hover,
+:is(#devCtaPanel, #devStripsPanel) .dev-panel-link:focus-visible {
     background: var(--md-sys-color-primary);
     border-color: transparent;
     color: var(--md-sys-color-on-primary);
     text-decoration: none;
 }
 
-#devCtaPanel .dev-cta-row {
+:is(#devCtaPanel, #devStripsPanel) .dev-cta-row {
     display: flex;
     align-items: flex-start;
     gap: 8px;
 }
 
-#devCtaPanel .dev-cta-options {
+:is(#devCtaPanel, #devStripsPanel) .dev-cta-options {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -4879,18 +4879,18 @@ body.dev-edit .dev-media-x[hidden] {
     min-width: 0;
 }
 
-#devCtaPanel .dev-cta-label {
+:is(#devCtaPanel, #devStripsPanel) .dev-cta-label {
     display: inline-block;
     flex: 0 0 92px;
     white-space: nowrap;
     opacity: 0.75;
 }
 
-#devCtaPanel[hidden] {
+:is(#devCtaPanel, #devStripsPanel)[hidden] {
     display: none;
 }
 
-#devCtaPanel .dev-cta-grip {
+:is(#devCtaPanel, #devStripsPanel) .dev-cta-grip {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -4905,26 +4905,26 @@ body.dev-edit .dev-media-x[hidden] {
     user-select: none;
 }
 
-#devCtaPanel .dev-cta-grip:hover {
+:is(#devCtaPanel, #devStripsPanel) .dev-cta-grip:hover {
     opacity: 1;
 }
 
-#devCtaPanel.is-dragging .dev-cta-grip {
+:is(#devCtaPanel, #devStripsPanel).is-dragging .dev-cta-grip {
     cursor: grabbing;
 }
 
-#devCtaPanel .dev-preset-button {
+:is(#devCtaPanel, #devStripsPanel) .dev-preset-button {
     padding: 5px 9px;
 }
 
 
-#devCtaPanel .dev-preset-button.is-active {
+:is(#devCtaPanel, #devStripsPanel) .dev-preset-button.is-active {
     border-color: var(--md-sys-color-primary);
     background: var(--md-sys-color-primary);
     color: var(--md-sys-color-on-primary);
 }
 
-#devCtaPanel .dev-cta-sep {
+:is(#devCtaPanel, #devStripsPanel) .dev-cta-sep {
     width: 1px;
     height: 18px;
     margin: 0 2px;
@@ -6342,13 +6342,13 @@ p, li, dd, figcaption,
 }
 
 /* External-link icon inside the panel links: opens in a new tab, says so. */
-#devCtaPanel .dev-panel-link {
+:is(#devCtaPanel, #devStripsPanel) .dev-panel-link {
     display: inline-flex;
     align-items: center;
     gap: 4px;
 }
 
-#devCtaPanel .dev-panel-link-icon {
+:is(#devCtaPanel, #devStripsPanel) .dev-panel-link-icon {
     width: 10px;
     height: 10px;
     flex: 0 0 auto;
@@ -6357,17 +6357,17 @@ p, li, dd, figcaption,
 /* Testing panel: one block per theme, so the rows are not one long pile. */
 /* Space groups first, lines last: 8px inside a group, 16px between groups,
    which is twice the inner rhythm, so the grouping reads without borders. */
-#devCtaPanel .dev-cta-row + .dev-cta-row {
+:is(#devCtaPanel, #devStripsPanel) .dev-cta-row + .dev-cta-row {
     margin-top: 8px;
 }
 
-#devCtaPanel .dev-cta-group + .dev-cta-group {
+:is(#devCtaPanel, #devStripsPanel) .dev-cta-group + .dev-cta-group {
     margin-top: 16px;
     padding-top: 16px;
     border-top: 1px solid var(--collapse-cardBorderColor);
 }
 
-#devCtaPanel .dev-cta-group-title {
+:is(#devCtaPanel, #devStripsPanel) .dev-cta-group-title {
     font-size: 10px;
     font-weight: 700;
     letter-spacing: 0.08em;
@@ -6379,15 +6379,43 @@ p, li, dd, figcaption,
 /* The Select control is a button in a link's clothing: without this the UA
    paints a light button surface, which reads white on white in the dark
    panel. It also needs a visible pressed state. */
-#devCtaPanel button.dev-panel-link {
+:is(#devCtaPanel, #devStripsPanel) button.dev-panel-link {
     background: transparent;
     font-family: inherit;
     line-height: inherit;
     cursor: pointer;
 }
 
-#devCtaPanel button.dev-panel-link.is-active {
+:is(#devCtaPanel, #devStripsPanel) button.dev-panel-link.is-active {
     background: var(--md-sys-color-primary);
     border-color: transparent;
     color: var(--md-sys-color-on-primary);
+}
+
+/* The strips review keeps its own scroll area inside the shared panel frame;
+   its floating box styling is neutralised so both panels look the same. */
+.dev-strips-body {
+    max-height: calc(100vh - 180px);
+    overflow-y: auto;
+    margin: -2px -2px 0;
+}
+
+:is(#devCtaPanel, #devStripsPanel) #brandLab {
+    position: static;
+    width: auto;
+    max-width: none;
+    max-height: none;
+    overflow: visible;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+}
+
+/* The moved review controls keep their own header; inside the shared frame
+   the panel title and Close above them already say the same. */
+:is(#devCtaPanel, #devStripsPanel) #brandLab .brand-lab-header {
+    display: none;
 }
