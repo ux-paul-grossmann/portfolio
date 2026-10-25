@@ -1087,31 +1087,8 @@ html[data-shadow-variant="ring"] :is(.brand-strip:not(.is-cells) .brand-panel, .
     50% { transform: translateX(2px); }
 }
 
-/* The mail icon lifts 1px on hover and settles while pressed. The old flap
-   tilt swung the fold out of the envelope's outline, which read as broken. */
-.contact-mail .cta-icon {
-    transition: transform 180ms ease;
-}
-
-.contact-mail:focus-visible .cta-icon {
-    transform: translateY(-1px);
-}
-
-/* Hover only where a hover exists: on touch the tap sticks and the icon
-   would stay lifted after every tap. */
-@media (hover: hover) and (pointer: fine) {
-    .contact-mail:hover .cta-icon {
-        transform: translateY(-1px);
-    }
-}
-
-.contact-mail:active .cta-icon {
-    transform: translateY(1px);
-}
-
 @media (prefers-reduced-motion: reduce) {
     .cta-icon-wrap .cta-icon,
-    .contact-mail .cta-icon,
     .contact-copy.is-error .cta-icon-wrap {
         transition: none;
         animation: none;
@@ -1182,10 +1159,11 @@ html[data-shadow-variant="ring"] :is(.brand-strip:not(.is-cells) .brand-panel, .
     transition: 200ms all ease;
 }
 
+/* Hover keeps the tertiary look: a light tint, text stays primary. Turning
+   solid on hover put white text on that tint. */
 .contact-copy:hover,
 .contact-copy:focus-visible {
-    background: var(--actionButtonBG);
-    color: var(--actionButtonFG) !important;
+    color: var(--md-sys-color-primary) !important;
 }
 
 .contact-hint {
