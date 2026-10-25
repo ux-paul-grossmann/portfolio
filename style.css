@@ -6254,3 +6254,25 @@ html.agent-active body::after {
     color: var(--md-sys-color-on-primary);
     outline: none;
 }
+
+/* Footer alignment, switched in the testing panel. It moves the text of the
+   contact block only: the social icons and the copyright stay left, as they
+   are not text blocks that benefit from centring. */
+html[data-footer-align="center"] #kontakt .footer-inner {
+    text-align: center;
+}
+
+html[data-footer-align="center"] #kontakt #kontaktCaption {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Bootstrap's text utilities carry !important, so the heading and the caption
+   need the same weight to follow the switch. */
+html[data-footer-align="center"] #kontakt :is(h2, #kontaktCaption) {
+    text-align: center !important;
+}
+
+html[data-footer-align="center"] #kontakt .contact-actions {
+    justify-content: center;
+}
