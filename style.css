@@ -6312,3 +6312,31 @@ p, li, dd, figcaption,
     accent-color: var(--md-sys-color-primary);
     margin: 0;
 }
+
+/* Golden Rule from the tracking-bar reference in kleinePreviewZeiger:
+   hovering lifts the surface a little and the shadow follows the scale,
+   deeper and softer. Origin at the bottom, so the pill grows upward and
+   never leaves the viewport edge. */
+@media (min-width: 576px) {
+    nav.navbar.fixed-bottom > .container {
+        transform-origin: 50% 100%;
+        transition: transform 180ms ease, box-shadow 180ms ease;
+    }
+
+    nav.navbar.fixed-bottom > .container:hover {
+        transform: scale(1.02);
+        box-shadow: inset 0 0 0 0.5px rgb(255 255 255 / .35),
+                    inset 1.5px 1.5px 1px -1px rgb(255 255 255 / .7),
+                    inset -1.5px -1.5px 1px -1px rgb(255 255 255 / .42),
+                    0 12px 28px rgb(0 0 0 / .2),
+                    0 2px 6px rgb(0 0 0 / .12);
+    }
+
+    html.dark nav.navbar.fixed-bottom > .container:hover {
+        box-shadow: inset 0 0 0 0.5px rgb(255 255 255 / .22),
+                    inset 1.5px 1.5px 1px -1px rgb(255 255 255 / .5),
+                    inset -1.5px -1.5px 1px -1px rgb(255 255 255 / .3),
+                    0 12px 28px rgb(0 0 0 / .5),
+                    0 2px 6px rgb(0 0 0 / .3);
+    }
+}
