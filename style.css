@@ -5620,6 +5620,49 @@ html.glightbox-open #devPresetToggle {
     right: calc(56px + var(--scrollbar-width, 0px));
 }
 
+/* Rotate control: one button at the bottom centre of the lightbox, touch
+   screens only. Screenshots of phone screens arrive sideways often enough
+   that turning the image must not need a second app. */
+.glightbox-rotate {
+    position: fixed;
+    left: 50%;
+    bottom: calc(76px + env(safe-area-inset-bottom, 0px));
+    transform: translateX(-50%);
+    z-index: 1000002;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    border: 1px solid rgb(255 255 255 / 0.24);
+    border-radius: 50%;
+    background: rgb(0 0 0 / 0.62);
+    color: rgb(255 255 255 / 0.92);
+    cursor: pointer;
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+}
+
+.glightbox-rotate.is-visible {
+    display: inline-flex;
+}
+
+.glightbox-rotate svg {
+    width: 22px;
+    height: 22px;
+}
+
+.glightbox-rotate:active {
+    background: rgb(0 0 0 / 0.78);
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .glightbox-rotate {
+        display: none !important;
+    }
+}
+
 /* GLightbox: larger chevrons flush to both viewport edges. */
 .glightbox-clean .gprev,
 .glightbox-clean .gnext {
