@@ -6126,7 +6126,7 @@ html.agent-active body::after {
 }
 
 .kontext-game-hint {
-    margin: 8px 0 0;
+    margin: 28px 0 0;
     font-size: .75rem;
     color: var(--md-sys-color-on-surface-variant);
 }
