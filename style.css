@@ -6272,21 +6272,15 @@ html[data-footer-align="center"] #kontakt :is(h2, #kontaktCaption) {
     text-align: center !important;
 }
 
-html[data-footer-align="center"] #kontakt .contact-actions,
-html[data-footer-align="center"] #kontakt #socialIconsWrap {
+html[data-footer-align="center"] #kontakt .contact-actions {
     justify-content: center;
 }
 
-html[data-footer-align="center"] #kontakt #copyright {
-    text-align: center !important;
-}
-
 /* The left state is explicit, so the switch always has two live buttons. */
-html[data-footer-align="left"] #kontakt :is(h2, #kontaktCaption, #copyright) {
+html[data-footer-align="left"] #kontakt :is(h2, #kontaktCaption) {
     text-align: left !important;
 }
 
-html[data-footer-align="left"] #kontakt .contact-actions,
-html[data-footer-align="left"] #kontakt #socialIconsWrap {
+html[data-footer-align="left"] #kontakt .contact-actions {
     justify-content: flex-start;
 }
