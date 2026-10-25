@@ -6340,3 +6340,38 @@ p, li, dd, figcaption,
                     0 2px 6px rgb(0 0 0 / .3);
     }
 }
+
+/* External-link icon inside the panel links: opens in a new tab, says so. */
+#devCtaPanel .dev-panel-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+#devCtaPanel .dev-panel-link-icon {
+    width: 10px;
+    height: 10px;
+    flex: 0 0 auto;
+}
+
+/* Testing panel: one block per theme, so the rows are not one long pile. */
+/* Space groups first, lines last: 8px inside a group, 16px between groups,
+   which is twice the inner rhythm, so the grouping reads without borders. */
+#devCtaPanel .dev-cta-row + .dev-cta-row {
+    margin-top: 8px;
+}
+
+#devCtaPanel .dev-cta-group + .dev-cta-group {
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid var(--collapse-cardBorderColor);
+}
+
+#devCtaPanel .dev-cta-group-title {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--dev-cta-muted, rgb(110 120 120));
+    margin-bottom: 10px;
+}
