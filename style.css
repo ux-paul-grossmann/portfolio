@@ -6278,3 +6278,15 @@ p, li, dd, figcaption,
 .h1, .h2, .h3, .h4, .h5, .display-5 {
     text-wrap: pretty;
 }
+
+/* The subline breaks after the comma, and the role stays in one piece. It
+   may still shrink on very narrow screens, so it never forces a scrollbar. */
+#ci-profilbild-caption-main-subline .subline-keep {
+    white-space: nowrap;
+}
+
+@media (max-width: 400px) {
+    #ci-profilbild-caption-main-subline .subline-keep {
+        white-space: normal;
+    }
+}
