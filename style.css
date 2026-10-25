@@ -6375,3 +6375,19 @@ p, li, dd, figcaption,
     color: var(--dev-cta-muted, rgb(110 120 120));
     margin-bottom: 10px;
 }
+
+/* The Select control is a button in a link's clothing: without this the UA
+   paints a light button surface, which reads white on white in the dark
+   panel. It also needs a visible pressed state. */
+#devCtaPanel button.dev-panel-link {
+    background: transparent;
+    font-family: inherit;
+    line-height: inherit;
+    cursor: pointer;
+}
+
+#devCtaPanel button.dev-panel-link.is-active {
+    background: var(--md-sys-color-primary);
+    border-color: transparent;
+    color: var(--md-sys-color-on-primary);
+}
