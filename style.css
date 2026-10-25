@@ -6280,3 +6280,13 @@ html[data-footer-align="center"] #kontakt #socialIconsWrap {
 html[data-footer-align="center"] #kontakt #copyright {
     text-align: center !important;
 }
+
+/* The left state is explicit, so the switch always has two live buttons. */
+html[data-footer-align="left"] #kontakt :is(h2, #kontaktCaption, #copyright) {
+    text-align: left !important;
+}
+
+html[data-footer-align="left"] #kontakt .contact-actions,
+html[data-footer-align="left"] #kontakt #socialIconsWrap {
+    justify-content: flex-start;
+}
