@@ -2202,12 +2202,18 @@ label {
 
 .glightbox-container.glightbox-clean .gslide-description .gslide-desc,
 .glightbox-container.glightbox-modern .gslide-description .gslide-desc {
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
+    /* GLightbox does its own truncation and appends a "See more" link; a line
+       clamp here cut that link off. The text area is bounded and scrolls
+       instead, so the band height stays put and the link stays reachable. */
+    max-height: 22vh;
+    overflow-y: auto;
     line-height: 1.5 !important;
     margin: 0;
+}
+
+.glightbox-container .gslide-description .desc-more {
+    display: inline-block;
+    margin-top: 4px;
 }
 
 .glightbox-container.glightbox-clean .gslide-description .gslide-title,
@@ -5693,8 +5699,11 @@ html.agent-active body::after {
 
 .agent-pill {
     position: fixed;
-    left: 10px;
-    bottom: calc(10px + env(safe-area-inset-bottom, 0px));
+    /* Top, beside the rotate control: a dev marker must never sit on the
+       caption band or the page content it is meant to be judged with. */
+    left: 70px;
+    top: calc(14px + env(safe-area-inset-top, 0px));
+    bottom: auto;
     z-index: 1000006;
     display: inline-flex;
     align-items: center;
