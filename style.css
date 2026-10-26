@@ -5790,6 +5790,21 @@ html.agent-active body::after {
     height: 22px;
 }
 
+/* Turned lightbox images: the script turns the pixels, so the zoom library
+   keeps its screen-axis pinch and pan. Only the fit box and the lift above
+   the caption band stay in CSS; the values live on the slide, because the
+   library wipes the image's inline style when a pinch returns to scale 1. */
+.gslide.lb-rotated .gslide-image img {
+    width: auto;
+    height: auto;
+    max-width: var(--lb-max-w, 100%);
+    max-height: var(--lb-max-h, 97vh);
+}
+
+.gslide.lb-rotated .gslide-image {
+    translate: 0 calc(var(--lb-band, 0px) / -2);
+}
+
 .glightbox-rotate:active {
     background: rgb(0 0 0 / 0.78);
 }
