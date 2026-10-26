@@ -4048,12 +4048,11 @@ a, button, .btn, .nav-link, .thumb-element, #theme-toggle, .scrolltop, #intro-bu
   .dropdown-item:hover,
   .close:not(:disabled):not(.disabled):hover,
   a#ci-brand-detail-name:hover,
-  #intro-button:hover,
-  .submit-button:hover,
+  /* The CTA hovers live inside (hover: hover) now, so they need no reset; the
+     blanket reset here painted them black on black after a tap. */
   .carousel-control-next:hover,
   .carousel-control-prev:hover,
   .scroll:hover,
-  #projekte .scroll-to-top-card:hover,
   #theme-panel-container .dropdown-item:hover,
   #socialIconsWrap li a.social:hover,
   .btn.download-section-color:nth-child(1):hover,
