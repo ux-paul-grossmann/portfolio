@@ -2186,10 +2186,35 @@ label {
     color: gainsboro;
 }
 
-.glightbox-clean .gslide-description,
-.glightbox-modern .gslide-description {
-    background: #1b1b1b;
-    border-left: 1px solid gainsboro;
+/* Description band: same surface as the lightbox instead of a darker plate,
+   no left rule (it sits under the image, not beside it), fixed rhythm so the
+   image area does not jump between captions. The doubled class beats the
+   lightbox stylesheet, which is loaded after this file. */
+.glightbox-container.glightbox-clean .gslide-description,
+.glightbox-container.glightbox-modern .gslide-description {
+    background: rgb(27 27 27 / 0.96) !important;
+    border-left: 0 !important;
+    border-right: 0 !important;
+    padding: 12px 16px calc(12px + env(safe-area-inset-bottom, 0px)) !important;
+    max-height: 32vh;
+    overflow: hidden;
+}
+
+.glightbox-container.glightbox-clean .gslide-description .gslide-desc,
+.glightbox-container.glightbox-modern .gslide-description .gslide-desc {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    line-height: 1.5 !important;
+    margin: 0;
+}
+
+.glightbox-container.glightbox-clean .gslide-description .gslide-title,
+.glightbox-container.glightbox-modern .gslide-description .gslide-title {
+    margin-bottom: 6px !important;
+    font-size: 14px !important;
+    line-height: 1.3 !important;
 }
 
 /* ============================================================
@@ -5709,9 +5734,9 @@ html.agent-active body::after {
    that turning the image must not need a second app. */
 .glightbox-rotate {
     position: fixed;
-    left: 50%;
-    bottom: calc(76px + env(safe-area-inset-bottom, 0px));
-    transform: translateX(-50%);
+    left: 12px;
+    top: calc(12px + env(safe-area-inset-top, 0px));
+    bottom: auto;
     z-index: 1000002;
     display: none;
     align-items: center;
@@ -5778,12 +5803,33 @@ html.agent-active body::after {
 }
 
 /* Accent ring on hover and keyboard focus. Inset, so the viewport edge cannot clip it. */
-.glightbox-clean .gprev:not(.disabled):hover,
+@media (hover: hover) and (pointer: fine) {
+    .glightbox-clean .gprev:not(.disabled):hover,
+    .glightbox-clean .gnext:not(.disabled):hover {
+        box-shadow: inset 0 0 0 2px var(--md-sys-color-primary);
+        outline: none;
+    }
+}
+
+/* Keyboard focus keeps the ring on every device, so it is reachable without
+   a pointer. */
 .glightbox-clean .gprev:not(.disabled):focus-visible,
-.glightbox-clean .gnext:not(.disabled):hover,
 .glightbox-clean .gnext:not(.disabled):focus-visible {
     box-shadow: inset 0 0 0 2px var(--md-sys-color-primary);
     outline: none;
+}
+
+/* Pressed state for every lightbox control: touch screens get no hover, so
+   the tap itself has to answer. */
+/* Press feedback: the tapped control scales a hair, nothing else. The
+   standalone scale property keeps the chevrons' own translate intact. */
+.glightbox-clean .gbtn:active,
+.glightbox-clean .gprev:not(.disabled):active,
+.glightbox-clean .gnext:not(.disabled):active,
+.glightbox-clean .gclose:active,
+.glightbox-rotate:active {
+    scale: 0.99;
+    transition: scale 90ms ease;
 }
 
 /* ============================================================
@@ -6453,4 +6499,31 @@ p, li, dd, figcaption,
    the panel title and Close above them already say the same. */
 :is(#devCtaPanel, #devStripsPanel) #brandLab .brand-lab-header {
     display: none;
+}
+
+/* Phones: lightbox images sit flush, no rounded corners. */
+@media (max-width: 575.98px) {
+    .gslide-image,
+    .gslide-image img,
+    .gslide-media,
+    .gslide-media img,
+    .gslide-inner-content img {
+        border-radius: 0 !important;
+    }
+}
+
+/* No caption, no band: an empty block would reserve height and read broken. */
+.gslide-description.is-empty {
+    display: none;
+}
+
+/* Tapped picture: the chrome steps back so the image is alone. The rotate
+   button lives outside the lightbox container, so the state sits on <html>. */
+html.lb-ui-hidden .gbtn,
+html.lb-ui-hidden .gclose,
+html.lb-ui-hidden .glightbox-rotate,
+html.lb-ui-hidden .gslide-description {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 180ms ease;
 }
