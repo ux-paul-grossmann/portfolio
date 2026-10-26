@@ -26,13 +26,14 @@
     }catch(e){}})();
     </script>
     <script>
-    // Dev mode – ?dev=1 persists for every later load; ?dev=0 turns it off.
+    // Dev mode – only while the URL carries ?dev=1; ?dev=0 clears it too.
+    // A missing parameter clears the flag, so a reload without it leaves dev.
     (function(){try{
         var q=new URLSearchParams(location.search);
         var devValue=q.get("dev");
-        if(devValue==="0") localStorage.removeItem("portfolio-dev");
-        else if(devValue==="review-logo-strips") return;
-        else if(q.has('dev')) localStorage.setItem('portfolio-dev','1');
+        if(devValue==="review-logo-strips") return;
+        if(devValue==="1") localStorage.setItem("portfolio-dev","1");
+        else localStorage.removeItem("portfolio-dev");
     }catch(e){}})();
     </script>
     <!-- Reloads start at the top instead of the last scroll position. An explicit
