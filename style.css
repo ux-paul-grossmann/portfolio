@@ -4671,6 +4671,9 @@ body.dev-edit .dev-media-x[hidden] {
     align-items: center;
     justify-content: center;
     padding: 0;
+    /* Scale must pivot on the button itself. Without this the press scale
+       pivoted on the viewport corner and threw the button ~100px up-left. */
+    transform-origin: 50% 50%;
     border: 1px solid rgb(255 255 255 / .45);
     border-radius: 50%;
     background: rgb(255 255 255 / .18);
@@ -4718,7 +4721,6 @@ html.dark #devPresetToggle:focus-visible {
 }
 
 #devPresetToggle.is-ready {
-    scale: 1.08;
     box-shadow: inset 0 0 0 .5px rgb(255 255 255 / .45),
                 inset 1.5px 1.5px 1px -1px rgb(255 255 255 / .85),
                 inset -1.5px -1.5px 1px -1px rgb(255 255 255 / .55),
@@ -4726,7 +4728,11 @@ html.dark #devPresetToggle:focus-visible {
 }
 
 #devPresetToggle:active {
-    scale: .96;
+    background: rgb(255 255 255 / .42);
+}
+
+html.dark #devPresetToggle:active {
+    background: rgb(14 20 21 / .85);
 }
 
 
