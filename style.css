@@ -1133,7 +1133,14 @@ html[data-shadow-variant="ring"] :is(.brand-strip:not(.is-cells) .brand-panel, .
     transition: 200ms all ease;
 }
 
-.contact-mail:hover,
+@media (hover: hover) and (pointer: fine) {
+    .contact-mail:hover {
+        background: var(--actionButtonBG-hover);
+        color: var(--actionButtonFG-hover) !important;
+        text-decoration: none;
+    }
+}
+
 .contact-mail:focus-visible {
     background: var(--actionButtonBG-hover);
     color: var(--actionButtonFG-hover) !important;
@@ -1176,7 +1183,12 @@ html[data-shadow-variant="ring"] :is(.brand-strip:not(.is-cells) .brand-panel, .
 
 /* Hover keeps the tertiary look: a light tint, text stays primary. Turning
    solid on hover put white text on that tint. */
-.contact-copy:hover,
+@media (hover: hover) and (pointer: fine) {
+    .contact-copy:hover {
+        color: var(--md-sys-color-primary) !important;
+    }
+}
+
 .contact-copy:focus-visible {
     color: var(--md-sys-color-primary) !important;
 }
@@ -1369,7 +1381,15 @@ html[data-cta-ring="4"] {
                 color 200ms ease, border-color 200ms ease;
 }
 
-.cta:hover,
+@media (hover: hover) and (pointer: fine) {
+    .cta:hover {
+        transform: none !important;
+        box-shadow: inset 0 1px 2px rgb(255 255 255 / .5), 0 0 0 10px rgb(var(--cta-ring-rgb) / .6) !important;
+    }
+}
+
+/* The dev panel forces the hover look through this attribute, so it stays
+   outside the pointer query. */
 .cta[data-state="hover"] {
     transform: none !important;
     box-shadow: inset 0 1px 2px rgb(255 255 255 / .5), 0 0 0 10px rgb(var(--cta-ring-rgb) / .6) !important;
@@ -6535,4 +6555,32 @@ html.lb-ui-hidden .gslide-description {
     opacity: 0;
     pointer-events: none;
     transition: opacity 180ms ease;
+}
+
+/* Phones: the contact block is a single centred axis, and both actions take
+   the full width instead of hugging their labels. */
+@media (max-width: 575.98px) {
+    #kontakt h2,
+    #kontakt #kontaktCaption,
+    #kontakt .contact-hint,
+    #kontakt #copyright {
+        text-align: center !important;
+    }
+
+    #kontakt .contact-actions {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+    }
+
+    #kontakt .contact-mail,
+    #kontakt .contact-copy {
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+    }
+
+    #kontakt #socialIconsWrap {
+        justify-content: center;
+    }
 }
