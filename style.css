@@ -776,7 +776,7 @@ nav.navbar.fixed-bottom .navbar-collapse .menu-close {
         box-shadow: inset 0 0 0 0.5px rgb(255 255 255 / .35),
                     inset 1.5px 1.5px 1px -1px rgb(255 255 255 / .7),
                     inset -1.5px -1.5px 1px -1px rgb(255 255 255 / .42),
-                    0 12px 36px rgb(0 0 0 / .18);
+                    0 12px 36px rgb(0 0 0 / calc(.18 * var(--nav-shadow, 1)));
     }
 
     html.has-nav-lens nav.navbar.fixed-bottom > .container {
@@ -806,7 +806,7 @@ nav.navbar.fixed-bottom .navbar-collapse .menu-close {
         box-shadow: inset 0 0 0 0.5px rgb(255 255 255 / .22),
                     inset 1.5px 1.5px 1px -1px rgb(255 255 255 / .5),
                     inset -1.5px -1.5px 1px -1px rgb(255 255 255 / .3),
-                    0 12px 36px rgb(0 0 0 / .45);
+                    0 12px 36px rgb(0 0 0 / calc(.45 * var(--nav-shadow, 1)));
     }
 
     /* Inner pills derive their radius from the outer pill, so the curve stays
