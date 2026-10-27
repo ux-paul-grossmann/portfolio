@@ -5718,42 +5718,8 @@ html.agent-active body::after {
     50% { opacity: 1; }
 }
 
-.agent-pill {
-    position: fixed;
-    /* Top, beside the rotate control: a dev marker must never sit on the
-       caption band or the page content it is meant to be judged with. */
-    left: 70px;
-    top: calc(14px + env(safe-area-inset-top, 0px));
-    bottom: auto;
-    z-index: 1000006;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 7px 12px 7px 10px;
-    border-radius: 999px;
-    border: 1px solid rgb(255 255 255 / 0.16);
-    background: rgb(6 24 26 / 0.86);
-    color: rgb(233 253 255 / 0.95);
-    font-family: 'Inter', sans-serif;
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 0.01em;
-    pointer-events: none;
-    -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
-}
-
-.agent-pill-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--md-sys-color-primary);
-    animation: agent-frame 2.6s ease-in-out infinite;
-}
-
 @media (prefers-reduced-motion: reduce) {
-    html.agent-active body::after,
-    .agent-pill-dot {
+    html.agent-active body::after {
         animation: none;
     }
 }
