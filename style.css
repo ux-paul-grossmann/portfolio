@@ -687,8 +687,11 @@ nav.navbar.fixed-bottom .navbar-collapse .menu-close {
         width: 100% !important;
         border-radius: 12px 12px 0 0;
         background: var(--mobile-menu-navbar-togglerBG);
-        -webkit-backdrop-filter: blur(12px) saturate(1.1);
-        backdrop-filter: blur(12px) saturate(1.1);
+        /* Frost fallback for engines without SVG-in-backdrop-filter (all iOS
+           browsers, Safari). It follows the panel's Blur with a 6px floor, so
+           the configuration still reaches the phone instead of a flat bar. */
+        -webkit-backdrop-filter: blur(max(6px, var(--nav-glass-blur, 0.5px))) saturate(1.2);
+        backdrop-filter: blur(max(6px, var(--nav-glass-blur, 0.5px))) saturate(1.2);
         border-top: 1px solid rgba(255, 255, 255, 0.08);
         justify-content: center;
     }
