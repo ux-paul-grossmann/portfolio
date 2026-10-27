@@ -6711,3 +6711,15 @@ html.no-lens nav.navbar.fixed-bottom .navbar-toggler {
     backdrop-filter: blur(calc(10px + var(--nav-glass-blur, .5px))) saturate(1.35) contrast(1.03);
 }
 
+
+/* Phones: the pointer trail cannot exist; park the edit button above the
+   theme toggle where a tap reaches it. */
+@media (hover: none), (pointer: coarse) {
+    #devPresetToggle {
+        left: auto;
+        right: 16px;
+        top: auto;
+        bottom: 108px;
+        transform: none !important;
+    }
+}
