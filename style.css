@@ -4724,19 +4724,21 @@ body.dev-edit .dev-media-x[hidden] {
     /* Scale must pivot on the button itself. Without this the press scale
        pivoted on the viewport corner and threw the button ~100px up-left. */
     transform-origin: 50% 50%;
-    border: 1px solid rgb(255 255 255 / .45);
+    border: 1px solid rgb(255 255 255 / .5);
     border-radius: 50%;
-    background: rgb(255 255 255 / .18);
+    /* Same glass recipe as the navigation pill: the testing panel's tint and
+       blur drive both, so the button cannot drift from the nav surface. */
+    background: rgb(255 255 255 / var(--nav-glass-tint, .25));
     color: rgb(14 20 21);
     cursor: pointer;
     z-index: 1206;
     will-change: transform;
-    -webkit-backdrop-filter: blur(14px) saturate(1.2);
-    backdrop-filter: blur(14px) saturate(1.2);
+    -webkit-backdrop-filter: blur(14px) saturate(1.1);
+    backdrop-filter: blur(14px) saturate(1.1);
     box-shadow: inset 0 0 0 .5px rgb(255 255 255 / .35),
                 inset 1.5px 1.5px 1px -1px rgb(255 255 255 / .7),
                 inset -1.5px -1.5px 1px -1px rgb(255 255 255 / .42),
-                0 10px 30px rgb(0 0 0 / .18);
+                0 12px 36px rgb(0 0 0 / .18);
     /* The trail: the position snaps, the paint catches up, so the button
        lags behind the pointer by ~a quarter second. */
     transition: transform 260ms cubic-bezier(.22, .61, .36, 1),
@@ -4751,14 +4753,14 @@ body.dev-edit .dev-media-x[hidden] {
 }
 
 html.dark #devPresetToggle {
-    background: rgb(14 20 21 / .55);
+    background: rgb(14 20 21 / var(--nav-glass-tint, .88));
     border-color: rgb(255 255 255 / .22);
     color: rgb(255 255 255 / .92);
 }
 
 #devPresetToggle:hover,
 #devPresetToggle:focus-visible {
-    background: rgb(255 255 255 / .32);
+    background: rgb(255 255 255 / calc(var(--nav-glass-tint, .25) + .12));
     box-shadow: inset 0 0 0 .5px rgb(255 255 255 / .4),
                 inset 1.5px 1.5px 1px -1px rgb(255 255 255 / .8),
                 inset -1.5px -1.5px 1px -1px rgb(255 255 255 / .5),
@@ -4767,7 +4769,7 @@ html.dark #devPresetToggle {
 
 html.dark #devPresetToggle:hover,
 html.dark #devPresetToggle:focus-visible {
-    background: rgb(14 20 21 / .72);
+    background: rgb(14 20 21 / calc(var(--nav-glass-tint, .88) + .06));
 }
 
 #devPresetToggle.is-ready {
@@ -6569,6 +6571,45 @@ html.lb-ui-hidden .gslide-description {
     opacity: 0;
     pointer-events: none;
     transition: opacity 180ms ease;
+}
+
+/* Phones: the up arrow is obsolete in the fixed bar; the theme toggle
+   keeps its place. The vendored script writes inline display:flex, so the
+   guard needs !important. */
+@media (max-width: 575.98px) {
+    .scrolltop {
+        display: none !important;
+    }
+}
+
+/* Brand strip: cells are furniture, never a text selection. */
+#brandStrips,
+.brand-strip,
+.brand-strip * {
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+/* ============================================================
+   NAV STATE — SWAP, the visitor default (chosen 23.10.)
+   The current page is the solid primary; hovering another item
+   uses the container tone. This replaces Current, where both
+   states carried the same container fill.
+   ============================================================ */
+nav.navbar.fixed-bottom .navbar-nav .nav-link.active {
+    color: var(--md-sys-color-on-primary) !important;
+    background: var(--md-sys-color-primary) !important;
+}
+
+html:not(.dark) nav.navbar.fixed-bottom .navbar-nav .nav-link:not(.active):hover {
+    color: var(--md-sys-color-primary) !important;
+    background: var(--md-sys-color-primary-container) !important;
+}
+
+html.dark nav.navbar.fixed-bottom .navbar-nav .nav-link:not(.active):hover {
+    color: var(--md-sys-color-primary) !important;
+    background: var(--md-sys-color-primary-container) !important;
 }
 
 /* Phones: the contact block is a single centred axis, and both actions take
