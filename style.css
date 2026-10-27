@@ -6706,8 +6706,10 @@ svg {
 html.no-lens nav.navbar.fixed-bottom > .container,
 html.no-lens nav.navbar.fixed-bottom .navbar-toggler {
     position: relative;
-    -webkit-backdrop-filter: blur(max(6px, var(--nav-glass-blur, .5px))) saturate(1.35) contrast(1.03);
-    backdrop-filter: blur(max(6px, var(--nav-glass-blur, .5px))) saturate(1.35) contrast(1.03);
+    /* Frosted, not a lens: the panel's Blur adds on top of a 10px base, so the
+       slider still changes the frost from 10.5 to 18px. */
+    -webkit-backdrop-filter: blur(calc(10px + var(--nav-glass-blur, .5px))) saturate(1.35) contrast(1.03);
+    backdrop-filter: blur(calc(10px + var(--nav-glass-blur, .5px))) saturate(1.35) contrast(1.03);
 }
 
 html.no-lens nav.navbar.fixed-bottom > .container::after,
