@@ -6654,3 +6654,36 @@ html.dark nav.navbar.fixed-bottom .navbar-nav .nav-link:not(.active):hover {
         justify-content: center;
     }
 }
+
+/* ============================================================
+   SELECTION — running text only
+   Dragging the interface must never paint a selection over images,
+   buttons, labels or icons. Paragraphs, headings and reading copy
+   opt back in; form fields stay selectable for editing.
+   ============================================================ */
+html,
+body {
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+p, h1, h2, h3, h4, h5, h6, li, blockquote, figcaption, dd, dt, pre, code,
+.project-detail-text, .card-description, .kontext-note-detail, .gslide-description,
+.contact-mail-address, #copyright,
+input, textarea, select, [contenteditable="true"] {
+    -webkit-user-select: text;
+    user-select: text;
+}
+
+/* Chrome for the interface stays out, even inside a selectable block. */
+button, .btn, label, .badge-tag, .nav-link, .navbar-toggler, .theme-toggle, .scrolltop {
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+img,
+svg {
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-user-drag: none;
+}
