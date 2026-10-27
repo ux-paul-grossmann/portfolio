@@ -739,7 +739,7 @@ nav.navbar.fixed-bottom .navbar-collapse .menu-close {
         --nav-inset: 9px;
         justify-content: flex-start !important;
         padding-top: 0.625rem !important;
-        padding-bottom: calc(var(--nav-bottom, 0.625rem) + env(safe-area-inset-bottom, 0px)) !important;
+        padding-bottom: env(safe-area-inset-bottom, 0px) !important;
         padding-left: 0 !important;
         padding-right: 0 !important;
     }
@@ -768,6 +768,9 @@ nav.navbar.fixed-bottom .navbar-collapse .menu-close {
         max-width: none;
         margin: 0 auto;
         padding: 8px;
+        /* The offset is a translate, not padding: padding cannot be negative,
+           and the slider must go below the viewport edge. */
+        translate: 0 calc(-1 * var(--nav-bottom, 0.625rem));
         background: rgb(255 255 255 / var(--nav-glass-tint, .25));
         -webkit-backdrop-filter: blur(14px) saturate(1.1);
         backdrop-filter: blur(14px) saturate(1.1);
