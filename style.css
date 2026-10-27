@@ -6716,7 +6716,11 @@ html.no-lens nav.navbar.fixed-bottom .navbar-toggler {
    does not create the button on touch, and this hides it if a desktop session
    is switched to a mobile viewport later. */
 @media (hover: none), (pointer: coarse) {
-    #devPresetToggle {
+    #devPresetToggle,
+    #devPresetBar,
+    #devSubBar,
+    #devCtaPanel,
+    #devStripsPanel {
         display: none !important;
     }
 }
