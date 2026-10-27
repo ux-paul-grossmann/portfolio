@@ -6712,14 +6712,11 @@ html.no-lens nav.navbar.fixed-bottom .navbar-toggler {
 }
 
 
-/* Phones: the pointer trail cannot exist; park the edit button above the
-   theme toggle where a tap reaches it. */
+/* Phones: no edit button. The mobile edit workflow is parked; dev-editor.js
+   does not create the button on touch, and this hides it if a desktop session
+   is switched to a mobile viewport later. */
 @media (hover: none), (pointer: coarse) {
     #devPresetToggle {
-        left: auto;
-        right: 16px;
-        top: auto;
-        bottom: 108px;
-        transform: none !important;
+        display: none !important;
     }
 }
