@@ -6724,3 +6724,44 @@ html.no-lens nav.navbar.fixed-bottom .navbar-toggler {
         display: none !important;
     }
 }
+
+/* Apple-style steppers in the testing panel: a −/+ pair, the value stays the
+   row's readout; disabled at the current range limits. */
+:is(#devCtaPanel, #devStripsPanel) .dev-stepper {
+    display: inline-flex;
+    flex: 0 0 auto;
+    height: 24px;
+    border: 1px solid var(--collapse-cardBorderColor);
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+:is(#devCtaPanel, #devStripsPanel) .dev-stepper-button {
+    width: 24px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--collapse-card-titleFG);
+    font: inherit;
+    font-size: 14px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+:is(#devCtaPanel, #devStripsPanel) .dev-stepper-button + .dev-stepper-button {
+    border-left: 1px solid var(--collapse-cardBorderColor);
+}
+
+:is(#devCtaPanel, #devStripsPanel) .dev-stepper-button:hover,
+:is(#devCtaPanel, #devStripsPanel) .dev-stepper-button:focus-visible {
+    background: var(--md-sys-color-primary-container);
+    color: var(--md-sys-color-primary);
+    outline: none;
+}
+
+:is(#devCtaPanel, #devStripsPanel) .dev-stepper-button:disabled {
+    opacity: 0.35;
+    cursor: default;
+    background: transparent;
+    color: inherit;
+}
