@@ -4600,6 +4600,42 @@ body.dev-edit .dev-reorder-handle:focus-visible {
     outline-offset: 2px;
 }
 
+/* DEV: remove a whole section. Sits under the drag handle, same footprint. */
+.dev-section-remove {
+    display: none;
+}
+
+body.dev-edit .dev-section-remove {
+    display: inline-flex;
+    position: absolute;
+    top: 32px;
+    left: 0;
+    width: 28px;
+    height: 28px;
+    padding: 0;
+    align-items: center;
+    justify-content: center;
+    border: 1px dashed var(--collapse-cardBorderColor);
+    border-radius: 7px;
+    background: var(--collapse-cardBG);
+    color: var(--collapse-card-titleFG);
+    cursor: pointer;
+    z-index: 5;
+}
+
+body.dev-edit .dev-section-remove svg {
+    display: block;
+    width: 10px;
+    height: 10px;
+}
+
+body.dev-edit .dev-section-remove:hover,
+body.dev-edit .dev-section-remove:focus-visible {
+    border-color: var(--md-sys-color-error);
+    color: var(--md-sys-color-error);
+    outline: none;
+}
+
 /* DEV: add and remove media while inline editing is open */
 body.dev-edit .dev-add-media-row {
     display: flex;
@@ -4610,7 +4646,14 @@ body.dev-edit .dev-add-media-row {
     margin-top: 12px;
 }
 
-body.dev-edit .dev-add-media {
+body.dev-edit .dev-add-section-row {
+    display: flex;
+    width: 100%;
+    margin-top: 16px;
+}
+
+body.dev-edit .dev-add-media,
+body.dev-edit .dev-add-section {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -4629,7 +4672,9 @@ body.dev-edit .dev-add-media {
 }
 
 body.dev-edit .dev-add-media:hover,
-body.dev-edit .dev-add-media:focus-visible {
+body.dev-edit .dev-add-media:focus-visible,
+body.dev-edit .dev-add-section:hover,
+body.dev-edit .dev-add-section:focus-visible {
     border-color: var(--md-sys-color-primary);
     color: var(--md-sys-color-primary);
     opacity: 1;
@@ -4693,6 +4738,21 @@ body.dev-edit .dev-media-x svg {
 
 body.dev-edit .dev-media-x[hidden] {
     display: none;
+}
+
+/* DEV: a section with a title but no content yet. The hint is a pseudo-
+   element, so it can never be saved into the data. */
+.dev-empty-section {
+    min-height: 44px;
+    padding: 6px 0;
+    outline: 1px dashed var(--collapse-cardBorderColor);
+    outline-offset: 4px;
+    border-radius: 6px;
+}
+
+.dev-empty-section:empty::before {
+    content: attr(data-placeholder);
+    opacity: 0.5;
 }
 
 .dev-media-undo {
