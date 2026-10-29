@@ -4915,15 +4915,20 @@ html.dark #devPresetToggle:active {
     outline-offset: 2px;
 }
 
+/* Unsaved changes: a thin primary ring around the button, no dot. */
 #devPresetToggle.is-dirty::after {
     content: '';
     position: absolute;
-    top: 5px;
-    right: 5px;
-    width: 7px;
-    height: 7px;
+    inset: -3px;
     border-radius: 50%;
-    background: var(--md-sys-color-error);
+    border: 2px solid var(--md-sys-color-primary);
+    pointer-events: none;
+}
+
+/* Alt + drag: follow the pointer exactly, no trail lag. */
+body.dev-toggle-drag #devPresetToggle {
+    cursor: grabbing;
+    transition: none;
 }
 
 #devPresetBar {
@@ -4932,53 +4937,273 @@ html.dark #devPresetToggle:active {
     top: 0;
     z-index: 1210;
     display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 8px;
-    width: min(560px, calc(100vw - 32px));
-    max-height: min(70vh, 640px);
+    flex-direction: column;
+    width: min(340px, calc(100vw - 24px));
+    max-height: min(76vh, 720px);
     overflow-y: auto;
-    padding: 12px;
+    scrollbar-width: none;
+    padding: 8px;
     border: 1px solid var(--collapse-cardBorderColor);
-    border-radius: 14px;
-    background: var(--collapse-cardBG);
+    border-radius: 22px;
+    background: color-mix(in srgb, var(--collapse-cardBG) 92%, transparent);
+    -webkit-backdrop-filter: blur(24px) saturate(1.25);
+    backdrop-filter: blur(24px) saturate(1.25);
     color: var(--collapse-card-titleFG);
     font-family: 'Inter', sans-serif;
     font-size: 11px;
-    box-shadow: 0 12px 36px rgb(0 0 0 / .28);
+    box-shadow: 0 18px 44px rgb(0 0 0 / .3), 0 2px 8px rgb(0 0 0 / .12);
     opacity: 0;
     pointer-events: none;
-    transform: translateY(6px);
+    transform: translateY(6px) scale(.98);
+    transform-origin: 50% 100%;
     transition: transform 220ms cubic-bezier(0.4, 0, 0.2, 1), opacity 180ms ease;
 }
 
-/* Arrow toward the Edit button that opened it. */
-#devPresetBar::before {
-    content: '';
-    position: absolute;
-    left: var(--dev-pop-arrow-x, 24px);
-    width: 12px;
-    height: 12px;
-    background: var(--collapse-cardBG);
-    transform: translateX(-50%) rotate(45deg);
+/* The card scrolls when a tall sheet needs it, but never shows a bar. */
+#devPresetBar::-webkit-scrollbar {
+    width: 0;
+    height: 0;
 }
 
-#devPresetBar[data-side="above"]::before {
-    bottom: -7px;
-    border-right: 1px solid var(--collapse-cardBorderColor);
-    border-bottom: 1px solid var(--collapse-cardBorderColor);
-}
-
-#devPresetBar[data-side="below"]::before {
-    top: -7px;
-    border-left: 1px solid var(--collapse-cardBorderColor);
-    border-top: 1px solid var(--collapse-cardBorderColor);
-}
-
+/* Every sheet stays on the compact 340 card, the new-card form included. */
 #devPresetBar.is-open {
     transform: none;
     opacity: 1;
     pointer-events: auto;
+}
+
+#devPresetBar.is-dragging {
+    transition: none;
+}
+
+/* Control-card header: drag anywhere here, close on the right. */
+.dev-cc-head {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 2px 4px 8px;
+    cursor: grab;
+    touch-action: none;
+    user-select: none;
+}
+
+#devPresetBar.is-dragging .dev-cc-head {
+    cursor: grabbing;
+}
+
+.dev-cc-grip {
+    width: 30px;
+    height: 4px;
+    border-radius: 2px;
+    background: currentColor;
+    opacity: 0.22;
+}
+
+.dev-cc-title {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    opacity: 0.55;
+}
+
+.dev-cc-close {
+    margin-left: auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: color-mix(in srgb, currentColor 8%, transparent);
+    color: inherit;
+    cursor: pointer;
+}
+
+.dev-cc-close svg {
+    display: block;
+    width: 10px;
+    height: 10px;
+}
+
+.dev-cc-close:hover,
+.dev-cc-close:focus-visible {
+    background: color-mix(in srgb, currentColor 16%, transparent);
+    outline: none;
+}
+
+/* Two-column tile grid, the Control Center shape. */
+.dev-cc-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+}
+
+.dev-cc-tile {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 2px;
+    min-height: 62px;
+    padding: 9px 10px;
+    border: 0;
+    border-radius: 16px;
+    background: color-mix(in srgb, currentColor 7%, transparent);
+    color: inherit;
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+    transition: background 140ms ease, transform 120ms ease;
+}
+
+.dev-cc-tile:hover {
+    background: color-mix(in srgb, currentColor 13%, transparent);
+}
+
+.dev-cc-tile:active {
+    transform: scale(.98);
+}
+
+.dev-cc-tile:disabled {
+    opacity: 0.45;
+    cursor: default;
+}
+
+.dev-cc-tile:disabled:hover {
+    background: color-mix(in srgb, currentColor 7%, transparent);
+}
+
+.dev-cc-tile:focus-visible {
+    outline: 2px solid var(--md-sys-color-primary);
+    outline-offset: 2px;
+}
+
+.dev-cc-icon {
+    width: 18px;
+    height: 18px;
+    margin-bottom: 2px;
+}
+
+.dev-cc-label {
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.dev-cc-value {
+    max-width: 100%;
+    overflow: hidden;
+    font-size: 10px;
+    opacity: 0.6;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Save is the one filled tile: the action the card exists for. */
+.dev-cc-tile.dev-cc-save:not(:disabled) {
+    background: var(--md-sys-color-primary);
+    color: var(--md-sys-color-on-primary);
+}
+
+.dev-cc-tile.dev-cc-save:not(:disabled):hover {
+    filter: brightness(1.04);
+}
+
+/* Sheet header inside the card: back, title. */
+.dev-cc-sheetbar {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 2px 4px 4px;
+}
+
+.dev-cc-back {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: color-mix(in srgb, currentColor 8%, transparent);
+    color: inherit;
+    cursor: pointer;
+}
+
+.dev-cc-back svg {
+    display: block;
+    width: 14px;
+    height: 14px;
+}
+
+.dev-cc-back:hover,
+.dev-cc-back:focus-visible {
+    background: color-mix(in srgb, currentColor 16%, transparent);
+    outline: none;
+}
+
+.dev-cc-sheet-title {
+    font-size: 12px;
+    font-weight: 600;
+}
+
+#devPresetBar[data-sheet] .dev-cc-grid {
+    display: none;
+}
+
+/* Action card: docked under the control card, always visible. */
+#devActionBar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 1209;
+    display: flex;
+    gap: 8px;
+    padding: 6px;
+    border: 1px solid var(--collapse-cardBorderColor);
+    border-radius: 18px;
+    background: color-mix(in srgb, var(--collapse-cardBG) 92%, transparent);
+    -webkit-backdrop-filter: blur(24px) saturate(1.25);
+    backdrop-filter: blur(24px) saturate(1.25);
+    box-shadow: 0 12px 30px rgb(0 0 0 / .24);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-4px);
+    transition: opacity 160ms ease, transform 200ms cubic-bezier(.4, 0, .2, 1);
+}
+
+#devActionBar.is-open {
+    opacity: 1;
+    pointer-events: auto;
+    transform: none;
+}
+
+#devActionBar .dev-sub-actions {
+    display: flex;
+    flex: 1 1 auto;
+    gap: 8px;
+    margin: 0;
+}
+
+#devActionBar .dev-preset-button {
+    flex: 1 1 0;
+    min-height: 36px;
+    padding: 8px 12px;
+    border-radius: 12px;
+}
+
+#devActionBar .dev-preset-button.dev-primary {
+    border-color: var(--md-sys-color-primary);
+    background: var(--md-sys-color-primary);
+    color: var(--md-sys-color-on-primary);
+}
+
+#devActionBar .dev-preset-button.dev-primary:hover,
+#devActionBar .dev-preset-button.dev-primary:focus-visible {
+    filter: brightness(1.04);
 }
 
 .dev-preset-button {
@@ -5207,11 +5432,9 @@ html.dark #devPresetToggle:active {
 }
 
 #devSubBar {
-    flex: 1 1 100%;
     display: none;
-    margin-top: 4px;
-    padding: 10px 2px 2px;
-    border-top: 1px solid var(--collapse-cardBorderColor);
+    margin-top: 0;
+    padding: 2px;
     font-size: 12px;
     container-type: inline-size;
 }
@@ -5221,8 +5444,36 @@ html.dark #devPresetToggle:active {
 }
 
 #devSubBar.is-card {
-    padding: 20px 4px 4px;
+    padding: 2px;
     max-height: none;
+}
+
+/* Inside the control card the sheet head is a caption, not a title bar. */
+#devPresetBar .dev-sub-head {
+    margin: 4px 4px 10px;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0;
+    text-transform: none;
+    opacity: 0.6;
+}
+
+#devPresetBar .dev-preset-picker {
+    flex: 1 1 auto;
+}
+
+#devPresetBar .dev-preset-list {
+    margin-top: 4px;
+    max-height: 42vh;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+}
+
+#devPresetBar .dev-preset-row {
+    border-radius: 10px;
 }
 
 /* The trailing edit button hides while the friction game runs: it would
@@ -5259,6 +5510,7 @@ body.kontext-game-on #devPresetToggle {
 
 .dev-card-fields .dev-sub-fields {
     grid-template-columns: 1fr;
+    gap: 8px;
 }
 
 .dev-sub-label {
@@ -5406,20 +5658,60 @@ body.kontext-game-on #devPresetToggle {
 }
 
 #devPresetBar .dev-preset-search {
-    font-size: 11px !important;
+    height: 32px;
+    border-radius: 10px;
+    font-size: 12px !important;
 }
 
 .dev-card-form {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 10px;
     width: 100%;
-    max-width: 560px;
     margin-inline: auto;
 }
 
 .dev-card-fields {
     min-width: 0;
+}
+
+.dev-card-extra {
+    margin-top: 2px;
+}
+
+.dev-card-extra summary {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 0;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    opacity: 0.6;
+    cursor: pointer;
+    list-style: none;
+}
+
+.dev-card-extra summary::-webkit-details-marker {
+    display: none;
+}
+
+.dev-card-extra summary::after {
+    content: '›';
+    margin-left: auto;
+    font-size: 14px;
+    line-height: 1;
+    transform: rotate(90deg);
+    transition: transform 150ms ease;
+}
+
+.dev-card-extra[open] summary::after {
+    transform: rotate(-90deg);
+}
+
+.dev-card-extra .dev-sub-fields {
+    margin-top: 2px;
 }
 
 .dev-card-preview-wrap {
@@ -5453,10 +5745,10 @@ body.kontext-game-on #devPresetToggle {
 
 .dev-card-preview-stage {
     display: grid;
-    grid-template-columns: 36px minmax(0, 440px) 36px;
+    grid-template-columns: 26px minmax(0, 1fr) 26px;
     align-items: center;
     justify-content: center;
-    gap: 12px;
+    gap: 6px;
     width: 100%;
 }
 
@@ -5464,15 +5756,15 @@ body.kontext-game-on #devPresetToggle {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 36px;
-    height: 36px;
+    width: 26px;
+    height: 26px;
     padding: 0;
     border: 1px solid var(--collapse-cardBorderColor);
     border-radius: 50%;
     background: transparent;
     color: inherit;
     font: inherit;
-    font-size: 18px;
+    font-size: 15px;
     line-height: 1;
     cursor: pointer;
     transition: border-color 150ms ease, background 150ms ease, color 150ms ease;
@@ -6778,6 +7070,7 @@ html.no-lens nav.navbar.fixed-bottom .navbar-toggler {
 @media (hover: none), (pointer: coarse) {
     #devPresetToggle,
     #devPresetBar,
+    #devActionBar,
     #devSubBar,
     #devCtaPanel,
     #devStripsPanel {
