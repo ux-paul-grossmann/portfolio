@@ -6820,10 +6820,10 @@ html.agent-active body::after {
 
 .kontext-game-bow {
     position: absolute;
-    top: -26px;
+    top: -27px;
     left: 50%;
     width: 64px;
-    height: 34px;
+    height: 36px;
     color: var(--md-sys-color-primary);
     transform: translateX(-50%);
 }
