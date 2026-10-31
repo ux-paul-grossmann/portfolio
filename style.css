@@ -6249,6 +6249,94 @@ html.agent-active body::after {
    KOMPETENZEN: NOTE DETAIL + FRICTION MINI-GAME (DESKTOP)
    ============================================================ */
 .kontext-note-detail,
+.kontext-rider-track {
+    position: relative;
+    width: 100%;
+    height: 110px;
+    margin: 0 auto;
+}
+
+.kontext-rider-unit {
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    will-change: transform;
+}
+
+.kontext-rider {
+    flex: 0 0 110px;
+    width: 110px;
+    height: 110px;
+    background-image: url('./lib/images/kontext/jigsaw-ride-1x.webp');
+    background-image: image-set(url('./lib/images/kontext/jigsaw-ride-1x.webp') 1x,
+            url('./lib/images/kontext/jigsaw-ride-2x.webp') 2x);
+    background-repeat: no-repeat;
+    background-size: 1600% 100%;
+    background-position: 0 0;
+    filter: drop-shadow(0 10px 14px rgb(0 0 0 / .3));
+    transform-origin: 50% 50%;
+    pointer-events: none;
+}
+
+.kontext-rider-unit.is-reverse {
+    flex-direction: row-reverse;
+}
+
+.kontext-rider.is-flipped {
+    transform: scaleX(-1);
+}
+
+.kontext-rider-leash {
+    flex: 0 0 72px;
+    width: 72px;
+    height: 18px;
+    color: var(--md-sys-color-primary);
+    opacity: 0.65;
+}
+
+.kontext-rider-bubble {
+    position: absolute;
+    left: 0;
+    bottom: calc(100% + 10px);
+    margin: 0;
+    padding: 8px 12px;
+    border: 1px solid var(--collapse-cardBorderColor);
+    border-radius: 12px;
+    background: var(--collapse-cardBG);
+    color: var(--collapse-card-titleFG);
+    font-size: 0.8rem;
+    font-weight: 600;
+    line-height: 1.3;
+    white-space: nowrap;
+    box-shadow: 0 8px 20px rgb(0 0 0 / 0.18);
+    opacity: 0;
+    transform: translateY(4px) scale(0.96);
+    transform-origin: 20% 100%;
+    transition: opacity 180ms ease, transform 220ms cubic-bezier(0.22, 0.61, 0.36, 1);
+    pointer-events: none;
+}
+
+.kontext-rider-bubble::after {
+    content: '';
+    position: absolute;
+    left: 22px;
+    bottom: -6px;
+    width: 10px;
+    height: 10px;
+    background: var(--collapse-cardBG);
+    border-right: 1px solid var(--collapse-cardBorderColor);
+    border-bottom: 1px solid var(--collapse-cardBorderColor);
+    transform: rotate(45deg);
+}
+
+.kontext-rider-unit.is-arrived .kontext-rider-bubble {
+    opacity: 1;
+    transform: none;
+}
+
 .kontext-game-cta {
     display: none;
 }
