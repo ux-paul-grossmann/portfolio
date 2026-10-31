@@ -6954,6 +6954,10 @@ html.agent-active body::after {
     outline: none;
 }
 
+.kontext-game-reward .kontext-game-quit {
+    margin-top: 8px;
+}
+
 /* Game over: blur and desaturate the notes and the field behind the card. */
 .kontext-game-over {
     position: absolute;
