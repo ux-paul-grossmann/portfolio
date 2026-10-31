@@ -6603,6 +6603,10 @@ html.agent-active body::after {
         opacity: 1;
     }
 
+    .kontext-rider {
+        transition: none;
+    }
+
     .kontext-game-present,
     .kontext-game-launch-label {
         transition: none;
