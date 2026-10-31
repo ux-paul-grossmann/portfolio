@@ -6800,13 +6800,16 @@ html.agent-active body::after {
     position: absolute;
     inset: -1px;
     border: 1px solid var(--md-sys-color-primary);
-    border-radius: 10px;
+    border-radius: 0;
     background-color: var(--md-sys-color-primary-container);
     background-image:
         linear-gradient(var(--md-sys-color-primary), var(--md-sys-color-primary)),
+        linear-gradient(var(--md-sys-color-primary), var(--md-sys-color-primary)),
+        linear-gradient(color-mix(in srgb, var(--md-sys-color-primary) 16%, transparent),
+            color-mix(in srgb, var(--md-sys-color-primary) 16%, transparent)),
         linear-gradient(var(--md-sys-color-primary), var(--md-sys-color-primary));
-    background-size: 16px 100%, 100% 16px;
-    background-position: center, center;
+    background-size: 16px 100%, 100% 16px, 100% 34%, 100% 1px;
+    background-position: center, center, top, 0 34%;
     background-repeat: no-repeat;
     box-shadow: 0 8px 18px rgb(0 0 0 / .18);
     opacity: 1;
@@ -6817,10 +6820,10 @@ html.agent-active body::after {
 
 .kontext-game-bow {
     position: absolute;
-    top: -13px;
+    top: -18px;
     left: 50%;
-    width: 46px;
-    height: 24px;
+    width: 64px;
+    height: 34px;
     color: var(--md-sys-color-primary);
     transform: translateX(-50%);
 }
