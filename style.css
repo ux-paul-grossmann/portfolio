@@ -6596,25 +6596,14 @@ html.agent-active body::after {
     font-weight: 700;
 }
 
-.kontext-game-status {
-    color: var(--md-sys-color-on-surface-variant);
-}
-
-.kontext-game-status.is-waiting {
-    color: var(--kontext-statusWaitFG, var(--note-magenta-bg));
-    animation: kontext-status-pulse 1.3s ease-in-out infinite;
-}
-
-@keyframes kontext-status-pulse {
-    0%, 100% { opacity: .45; }
-    50% { opacity: 1; }
-}
-
 @media (prefers-reduced-motion: reduce) {
-    .kontext-game-status.is-waiting,
     .kontext-game-tip {
         animation: none;
         opacity: 1;
+    }
+
+    .kontext-game-over {
+        animation: none;
     }
 
     .kontext-game-reveal {
@@ -6639,8 +6628,21 @@ html.agent-active body::after {
 }
 
 .kontext-game-lives {
-    color: var(--md-sys-color-primary);
-    letter-spacing: .1em;
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    color: var(--kontext-heart);
+}
+
+.kontext-game-heart {
+    display: block;
+    flex: 0 0 auto;
+    width: 16px;
+    height: 16px;
+}
+
+.kontext-game-heart.is-lost {
+    opacity: .22;
 }
 
 .kontext-playfield {
@@ -6824,6 +6826,10 @@ html.agent-active body::after {
     box-shadow: 0 1px 0 var(--collapse-cardBorderColor);
 }
 
+.kontext-game-tip.is-retry {
+    color: var(--kontext-statusWaitFG);
+}
+
 .kontext-game-reward {
     position: absolute;
     top: 50%;
@@ -6946,6 +6952,77 @@ html.agent-active body::after {
     background: var(--md-sys-color-primary);
     color: var(--md-sys-color-on-primary);
     outline: none;
+}
+
+/* Game over: blur and desaturate the notes and the field behind the card. */
+.kontext-game-over {
+    position: absolute;
+    inset: 0;
+    z-index: 60;
+    display: grid;
+    place-items: center;
+    padding: 24px;
+    border-radius: var(--card-radius);
+    background: rgb(0 0 0 / .18);
+    backdrop-filter: blur(6px) grayscale(.9);
+    animation: kontext-game-over-in 220ms ease-out both;
+}
+
+.kontext-game-over[hidden] {
+    display: none;
+}
+
+.kontext-game-over-card {
+    width: min(340px, 100%);
+    padding: 24px;
+    border: 1px solid var(--collapse-cardBorderColor);
+    border-radius: 16px;
+    background: var(--collapse-cardBG);
+    color: var(--collapse-card-titleFG);
+    box-shadow: var(--shadow-card-rest);
+    text-align: center;
+}
+
+.kontext-game-over-title {
+    margin: 0 0 20px;
+    font-size: 28px;
+    line-height: 1.1;
+    font-weight: 700;
+    letter-spacing: -.02em;
+}
+
+.kontext-game-over-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.kontext-game-over-again {
+    width: 100%;
+}
+
+.kontext-game-quit {
+    width: 100%;
+    padding: 8px 12px;
+    border: 0;
+    border-radius: 40px;
+    background: transparent;
+    color: var(--md-sys-color-on-surface-variant);
+    font: inherit;
+    font-size: .8rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.kontext-game-quit:hover,
+.kontext-game-quit:focus-visible {
+    color: var(--md-sys-color-on-surface);
+    outline: none;
+}
+
+@keyframes kontext-game-over-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
 
