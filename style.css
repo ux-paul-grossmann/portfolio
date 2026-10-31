@@ -6602,6 +6602,11 @@ html.agent-active body::after {
         opacity: 1;
     }
 
+    .kontext-game-present,
+    .kontext-game-launch-label {
+        transition: none;
+    }
+
     .kontext-game-over {
         animation: none;
     }
@@ -6766,6 +6771,7 @@ html.agent-active body::after {
 }
 
 .kontext-game-launch {
+    position: relative;
     padding: 10px 18px;
     border: 1px solid var(--md-sys-color-primary);
     border-radius: 40px;
@@ -6783,6 +6789,49 @@ html.agent-active body::after {
     background: var(--md-sys-color-primary);
     color: var(--md-sys-color-on-primary);
     outline: none;
+}
+
+.kontext-game-launch-label {
+    opacity: 0;
+    transition: opacity 220ms ease;
+}
+
+.kontext-game-present {
+    position: absolute;
+    inset: -1px;
+    border: 1px solid var(--md-sys-color-primary);
+    border-radius: 10px;
+    background-color: var(--md-sys-color-primary-container);
+    background-image:
+        linear-gradient(var(--md-sys-color-primary), var(--md-sys-color-primary)),
+        linear-gradient(var(--md-sys-color-primary), var(--md-sys-color-primary));
+    background-size: 16px 100%, 100% 16px;
+    background-position: center, center;
+    background-repeat: no-repeat;
+    box-shadow: 0 8px 18px rgb(0 0 0 / .18);
+    opacity: 1;
+    transform: none;
+    transition: opacity 220ms ease, transform 220ms ease;
+    pointer-events: none;
+}
+
+.kontext-game-bow {
+    position: absolute;
+    top: -13px;
+    left: 50%;
+    width: 46px;
+    height: 24px;
+    color: var(--md-sys-color-primary);
+    transform: translateX(-50%);
+}
+
+.kontext-rider-unit.is-cta .kontext-game-present {
+    opacity: 0;
+    transform: scale(.96);
+}
+
+.kontext-rider-unit.is-cta .kontext-game-launch-label {
+    opacity: 1;
 }
 
 .kontext-game-tip {
