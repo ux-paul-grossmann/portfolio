@@ -7196,12 +7196,48 @@ p, li, dd, figcaption,
 }
 
 :is(#devCtaPanel, #devStripsPanel) .dev-cta-group-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    width: 100%;
+    margin: 0 0 10px;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: var(--dev-cta-muted, rgb(110 120 120));
+    font: inherit;
     font-size: 10px;
     font-weight: 700;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--dev-cta-muted, rgb(110 120 120));
-    margin-bottom: 10px;
+    text-align: left;
+    cursor: pointer;
+}
+
+:is(#devCtaPanel, #devStripsPanel) .dev-cta-group-title:hover,
+:is(#devCtaPanel, #devStripsPanel) .dev-cta-group-title:focus-visible {
+    color: var(--collapse-card-titleFG);
+    outline: none;
+}
+
+:is(#devCtaPanel, #devStripsPanel) .dev-cta-group-chevron {
+    width: 14px;
+    height: 14px;
+    flex: 0 0 auto;
+    transition: transform 180ms ease;
+}
+
+:is(#devCtaPanel, #devStripsPanel) .dev-cta-group.is-collapsed .dev-cta-group-chevron {
+    transform: rotate(-90deg);
+}
+
+:is(#devCtaPanel, #devStripsPanel) .dev-cta-group.is-collapsed .dev-cta-group-title {
+    margin-bottom: 0;
+}
+
+:is(#devCtaPanel, #devStripsPanel) .dev-cta-group.is-collapsed .dev-cta-group-body {
+    display: none;
 }
 
 /* The Select control is a button in a link's clothing: without this the UA
