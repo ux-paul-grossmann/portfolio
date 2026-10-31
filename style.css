@@ -5298,10 +5298,15 @@ body.dev-toggle-drag #devPresetToggle {
 }
 
 :is(#devCtaPanel, #devStripsPanel) .dev-cta-head {
+    position: sticky;
+    top: -12px;
+    z-index: 2;
     display: flex;
     align-items: center;
     gap: 8px;
-    padding-bottom: 8px;
+    margin: -12px -14px 0;
+    padding: 12px 14px 8px;
+    background: var(--collapse-cardBG);
     border-bottom: 1px solid var(--collapse-cardBorderColor);
 }
 
@@ -5334,6 +5339,25 @@ body.dev-toggle-drag #devPresetToggle {
     text-decoration: none;
 }
 
+#devCtaPanel .dev-panel-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+#devCtaPanel .dev-panel-toggle-icon {
+    width: 12px;
+    height: 12px;
+    transition: transform 180ms ease;
+}
+
+#devCtaPanel.is-closed .dev-panel-toggle-icon {
+    transform: rotate(180deg);
+}
+
 :is(#devCtaPanel, #devStripsPanel) .dev-cta-row {
     display: flex;
     align-items: flex-start;
@@ -5358,6 +5382,22 @@ body.dev-toggle-drag #devPresetToggle {
 
 :is(#devCtaPanel, #devStripsPanel)[hidden] {
     display: none;
+}
+
+/* The Testing bar stays on screen when the panel body is closed: only the head
+   remains, so the panel can be reopened with the shortcut. */
+#devCtaPanel.is-closed {
+    height: auto !important;
+    min-height: 0;
+}
+
+#devCtaPanel.is-closed > :not(.dev-cta-head) {
+    display: none;
+}
+
+#devCtaPanel.is-closed .dev-cta-head {
+    padding-bottom: 0;
+    border-bottom: 0;
 }
 
 :is(#devCtaPanel, #devStripsPanel) .dev-cta-grip {
@@ -6249,6 +6289,171 @@ html.agent-active body::after {
    KOMPETENZEN: NOTE DETAIL + FRICTION MINI-GAME (DESKTOP)
    ============================================================ */
 .kontext-note-detail,
+.kontext-rider-track {
+    position: relative;
+    width: 100%;
+    height: 130px;
+    margin: 0 auto;
+}
+
+.kontext-rider-unit {
+    position: absolute;
+    left: 0;
+    top: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    will-change: transform;
+}
+
+.kontext-rider {
+    flex: 0 0 110px;
+    width: 110px;
+    height: 110px;
+    background-image: url('./lib/images/kontext/jigsaw-ride-1x.webp');
+    background-image: image-set(url('./lib/images/kontext/jigsaw-ride-1x.webp') 1x,
+            url('./lib/images/kontext/jigsaw-ride-2x.webp') 2x);
+    background-repeat: no-repeat;
+    background-size: 1600% 100%;
+    background-position: 0 0;
+    filter: drop-shadow(0 10px 14px rgb(0 0 0 / .3));
+    transform-origin: 50% 50%;
+    pointer-events: none;
+}
+
+.kontext-rider-unit.is-reverse {
+    flex-direction: row-reverse;
+}
+
+.kontext-rider.is-flipped {
+    transform: scaleX(-1);
+}
+
+/* U-turn: the rider slides while flipping, the CTA arcs over him to the other
+   side, then the reversed row order takes over. */
+.kontext-rider-unit.is-turning .kontext-rider {
+    animation: kontext-rider-turn 400ms cubic-bezier(.4, 0, .2, 1) both;
+}
+
+.kontext-rider-unit.is-turning .kontext-game-launch {
+    animation: kontext-cta-turn 400ms cubic-bezier(.4, 0, .2, 1) both;
+}
+
+.kontext-rider-unit.is-turning .kontext-rider-leash {
+    opacity: 0;
+    transition: none;
+}
+
+@keyframes kontext-rider-turn {
+    0% { transform: translateX(var(--turn-rider-dx, 0px)) scaleX(var(--turn-rider-start, 1)); }
+    100% { transform: translateX(0) scaleX(var(--turn-rider-end, 1)); }
+}
+
+@keyframes kontext-cta-turn {
+    0% { transform: translateX(var(--turn-cta-dx, 0px)); }
+    45% { transform: translateX(calc(var(--turn-cta-dx, 0px) * .5)) translateY(-36px); }
+    100% { transform: translateX(0); }
+}
+
+.kontext-rider-leash {
+    flex: 0 0 72px;
+    width: 72px;
+    height: 18px;
+    color: var(--md-sys-color-primary);
+    opacity: 0.65;
+    transition: opacity 200ms ease;
+}
+
+.kontext-rider-bubble {
+    position: absolute;
+    left: 0;
+    bottom: calc(100% + 10px);
+    margin: 0;
+    padding: 8px 12px;
+    border: 1px solid var(--collapse-cardBorderColor);
+    border-radius: 12px;
+    background: var(--collapse-cardBG);
+    color: var(--collapse-card-titleFG);
+    font-size: 0.8rem;
+    font-weight: 600;
+    line-height: 1.3;
+    white-space: nowrap;
+    box-shadow: 0 8px 20px rgb(0 0 0 / 0.18);
+    opacity: 0;
+    transform: translateY(4px) scale(0.96);
+    transform-origin: 20% 100%;
+    transition: opacity 180ms ease, transform 220ms cubic-bezier(0.22, 0.61, 0.36, 1);
+    pointer-events: none;
+}
+
+.kontext-rider-bubble::after {
+    content: '';
+    position: absolute;
+    left: 22px;
+    bottom: -6px;
+    width: 10px;
+    height: 10px;
+    background: var(--collapse-cardBG);
+    border-right: 1px solid var(--collapse-cardBorderColor);
+    border-bottom: 1px solid var(--collapse-cardBorderColor);
+    transform: rotate(45deg);
+}
+
+.kontext-rider-unit.is-arrived .kontext-rider-bubble {
+    opacity: 1;
+    transform: none;
+}
+
+/* Dev: the rider's scroll band, its start/end lines and the live track top. */
+#riderBandOverlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1200;
+    display: none;
+    pointer-events: none;
+}
+
+#riderBandOverlay.is-visible {
+    display: block;
+}
+
+.rider-band-zone {
+    position: absolute;
+    left: 0;
+    right: 0;
+    background: rgb(0 105 110 / 0.07);
+}
+
+.rider-band-line {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 0;
+    border-top: 1px solid var(--md-sys-color-primary);
+    opacity: 0.85;
+}
+
+.rider-band-line span {
+    position: absolute;
+    right: 12px;
+    top: 2px;
+    padding: 2px 6px;
+    border-radius: 6px;
+    background: var(--collapse-cardBG);
+    color: var(--md-sys-color-primary);
+    font-size: 10px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.rider-band-line.is-track {
+    border-top: 1px dashed var(--md-sys-color-error);
+}
+
+.rider-band-line.is-track span {
+    color: var(--md-sys-color-error);
+}
+
 .kontext-game-cta {
     display: none;
 }
@@ -6295,21 +6500,17 @@ html.agent-active body::after {
         pointer-events: auto;
     }
 
+    /* The rider band reveals the pair itself: once the track crosses the
+       start line, the CTA must be visible even if the separate reveal band
+       has not fired yet. */
+    html[data-cta-reveal="scroll"] #kontext.is-rider-visible .kontext-game-cta {
+        opacity: 1;
+        transform: none;
+        pointer-events: auto;
+    }
+
     .kontext-playfield.is-playing .kontext-game-cta {
         display: none;
-    }
-
-    .kontext-wrap {
-        transition: padding-bottom .5s cubic-bezier(.4, 0, .2, 1);
-    }
-
-    html:not([data-cta-reveal="scroll"]) #kontext:hover .kontext-wrap:not(.is-playing),
-    html:not([data-cta-reveal="scroll"]) #kontext:focus-within .kontext-wrap:not(.is-playing) {
-        padding-bottom: 72px;
-    }
-
-    html[data-cta-reveal="scroll"] #kontext.is-revealed .kontext-wrap:not(.is-playing) {
-        padding-bottom: 72px;
     }
 
     .kontext-wrap div[class*="note-"] {
@@ -6462,24 +6663,19 @@ html.agent-active body::after {
     font-weight: 700;
 }
 
-.kontext-game-status {
-    color: var(--md-sys-color-on-surface-variant);
-}
-
-.kontext-game-status.is-waiting {
-    color: var(--kontext-statusWaitFG, var(--note-magenta-bg));
-    animation: kontext-status-pulse 1.3s ease-in-out infinite;
-}
-
-@keyframes kontext-status-pulse {
-    0%, 100% { opacity: .45; }
-    50% { opacity: 1; }
-}
-
 @media (prefers-reduced-motion: reduce) {
-    .kontext-game-status.is-waiting {
+    .kontext-game-tip {
         animation: none;
         opacity: 1;
+    }
+
+    .kontext-game-present,
+    .kontext-game-launch-label {
+        transition: none;
+    }
+
+    .kontext-game-over {
+        animation: none;
     }
 
     .kontext-game-reveal {
@@ -6504,8 +6700,21 @@ html.agent-active body::after {
 }
 
 .kontext-game-lives {
-    color: var(--md-sys-color-primary);
-    letter-spacing: .1em;
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    color: var(--kontext-heart);
+}
+
+.kontext-game-heart {
+    display: block;
+    flex: 0 0 auto;
+    width: 16px;
+    height: 16px;
+}
+
+.kontext-game-heart.is-lost {
+    opacity: .22;
 }
 
 .kontext-playfield {
@@ -6629,6 +6838,7 @@ html.agent-active body::after {
 }
 
 .kontext-game-launch {
+    position: relative;
     padding: 10px 18px;
     border: 1px solid var(--md-sys-color-primary);
     border-radius: 40px;
@@ -6648,10 +6858,94 @@ html.agent-active body::after {
     outline: none;
 }
 
-.kontext-game-hint {
-    margin: 28px 0 0;
-    font-size: .75rem;
+.kontext-game-launch-label {
+    opacity: 0;
+    transition: opacity 220ms ease;
+}
+
+.kontext-game-present {
+    position: absolute;
+    inset: -1px;
+    border: 1px solid var(--md-sys-color-primary);
+    border-radius: 0;
+    background-color: var(--md-sys-color-primary-container);
+    background-image:
+        linear-gradient(var(--md-sys-color-primary), var(--md-sys-color-primary)),
+        linear-gradient(var(--md-sys-color-primary), var(--md-sys-color-primary)),
+        linear-gradient(color-mix(in srgb, var(--md-sys-color-primary) 16%, transparent),
+            color-mix(in srgb, var(--md-sys-color-primary) 16%, transparent)),
+        linear-gradient(var(--md-sys-color-primary), var(--md-sys-color-primary));
+    background-size: 16px 100%, 100% 16px, 100% 34%, 100% 1px;
+    background-position: center, center, top, 0 34%;
+    background-repeat: no-repeat;
+    box-shadow: 0 8px 18px rgb(0 0 0 / .18);
+    opacity: 1;
+    transform: none;
+    transition: opacity 220ms ease, transform 220ms ease;
+    pointer-events: none;
+}
+
+.kontext-game-bow {
+    position: absolute;
+    top: -19px;
+    left: 50%;
+    width: 64px;
+    height: 36px;
+    color: var(--md-sys-color-primary);
+    transform: translateX(-50%);
+}
+
+.kontext-rider-unit.is-cta .kontext-game-present {
+    opacity: 0;
+    transform: scale(.96);
+}
+
+.kontext-rider-unit.is-cta .kontext-game-launch-label {
+    opacity: 1;
+}
+
+.kontext-game-tip {
+    position: absolute;
+    left: 50%;
+    bottom: 146px;
+    z-index: 32;
+    margin: 0;
     color: var(--md-sys-color-on-surface-variant);
+    font-size: 1rem;
+    text-align: center;
+    transform: translateX(-50%);
+    animation: kontext-tip-shake 3s ease-in-out 1s infinite;
+    pointer-events: none;
+}
+
+@keyframes kontext-tip-shake {
+    0%, 100% { transform: translateX(-50%); }
+    3% { transform: translateX(calc(-50% - 5px)); }
+    6% { transform: translateX(calc(-50% + 5px)); }
+    9% { transform: translateX(calc(-50% - 4px)); }
+    12% { transform: translateX(calc(-50% + 4px)); }
+    15% { transform: translateX(-50%); }
+}
+
+.kontext-game-tip kbd {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 1.6em;
+    margin: 0 1px;
+    padding: 1px 5px;
+    border: 1px solid var(--collapse-cardBorderColor);
+    border-radius: 5px;
+    background: var(--collapse-cardBG);
+    color: var(--collapse-card-titleFG);
+    font: inherit;
+    font-weight: 600;
+    line-height: 1.3;
+    box-shadow: 0 1px 0 var(--collapse-cardBorderColor);
+}
+
+.kontext-game-tip.is-retry {
+    color: var(--kontext-statusWaitFG);
 }
 
 .kontext-game-reward {
@@ -6778,6 +7072,81 @@ html.agent-active body::after {
     outline: none;
 }
 
+.kontext-game-reward .kontext-game-quit {
+    margin-top: 8px;
+}
+
+/* Game over: blur and desaturate the notes and the field behind the card. */
+.kontext-game-over {
+    position: absolute;
+    inset: 0;
+    z-index: 60;
+    display: grid;
+    place-items: center;
+    padding: 24px;
+    border-radius: var(--card-radius);
+    background: rgb(0 0 0 / .18);
+    backdrop-filter: blur(6px) grayscale(.9);
+    animation: kontext-game-over-in 220ms ease-out both;
+}
+
+.kontext-game-over[hidden] {
+    display: none;
+}
+
+.kontext-game-over-card {
+    width: min(340px, 100%);
+    padding: 24px;
+    border: 1px solid var(--collapse-cardBorderColor);
+    border-radius: 16px;
+    background: var(--collapse-cardBG);
+    color: var(--collapse-card-titleFG);
+    box-shadow: var(--shadow-card-rest);
+    text-align: center;
+}
+
+.kontext-game-over-title {
+    margin: 0 0 20px;
+    font-size: 28px;
+    line-height: 1.1;
+    font-weight: 700;
+    letter-spacing: -.02em;
+}
+
+.kontext-game-over-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.kontext-game-over-again {
+    width: 100%;
+}
+
+.kontext-game-quit {
+    width: 100%;
+    padding: 8px 12px;
+    border: 0;
+    border-radius: 40px;
+    background: transparent;
+    color: var(--md-sys-color-on-surface-variant);
+    font: inherit;
+    font-size: .8rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.kontext-game-quit:hover,
+.kontext-game-quit:focus-visible {
+    color: var(--md-sys-color-on-surface);
+    outline: none;
+}
+
+@keyframes kontext-game-over-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
 
 
 /* No single-word last lines: running text avoids orphans, headings get a
@@ -6867,12 +7236,111 @@ p, li, dd, figcaption,
 }
 
 :is(#devCtaPanel, #devStripsPanel) .dev-cta-group-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    width: 100%;
+    margin: 0 0 10px;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: var(--dev-cta-muted, rgb(110 120 120));
+    font: inherit;
     font-size: 10px;
     font-weight: 700;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--dev-cta-muted, rgb(110 120 120));
-    margin-bottom: 10px;
+    text-align: left;
+    cursor: pointer;
+}
+
+:is(#devCtaPanel, #devStripsPanel) .dev-cta-group-title:hover {
+    color: var(--collapse-card-titleFG);
+}
+
+:is(#devCtaPanel, #devStripsPanel) .dev-cta-group-title:focus-visible {
+    color: var(--collapse-card-titleFG);
+    outline: 2px solid var(--md-sys-color-primary);
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+:is(#devCtaPanel, #devStripsPanel) .dev-cta-group-chevron {
+    width: 14px;
+    height: 14px;
+    flex: 0 0 auto;
+    transition: transform 180ms ease;
+}
+
+:is(#devCtaPanel, #devStripsPanel) .dev-cta-group.is-collapsed .dev-cta-group-chevron {
+    transform: rotate(-90deg);
+}
+
+:is(#devCtaPanel, #devStripsPanel) .dev-cta-group.is-collapsed .dev-cta-group-title {
+    margin-bottom: 0;
+}
+
+:is(#devCtaPanel, #devStripsPanel) .dev-band-toggle:focus-visible {
+    outline: none;
+}
+
+:is(#devCtaPanel, #devStripsPanel) .dev-band-toggle:focus-visible .dev-cta-group-switch {
+    box-shadow: 0 0 0 2px var(--md-sys-color-primary);
+}
+
+:is(#devCtaPanel, #devStripsPanel) .dev-cta-group-switch {
+    position: relative;
+    width: 32px;
+    height: 18px;
+    flex: 0 0 auto;
+    border-radius: 999px;
+    background: var(--md-sys-color-primary);
+    transition: background-color 180ms ease;
+}
+
+:is(#devCtaPanel, #devStripsPanel) .dev-cta-group-switch::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--collapse-cardBG);
+    box-shadow: 0 1px 2px rgb(0 0 0 / .28);
+    transform: translateX(14px);
+    transition: transform 180ms ease;
+}
+
+:is(#devCtaPanel, #devStripsPanel) [role="switch"][aria-checked="false"] .dev-cta-group-switch {
+    background: color-mix(in srgb, var(--collapse-card-titleFG) 22%, transparent);
+}
+
+:is(#devCtaPanel, #devStripsPanel) [role="switch"][aria-checked="false"] .dev-cta-group-switch::after {
+    transform: none;
+}
+
+:is(#devCtaPanel, #devStripsPanel) .dev-cta-group.is-collapsed .dev-cta-group-body {
+    display: none;
+}
+
+:is(#devCtaPanel, #devStripsPanel) .dev-band-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: inherit;
+    font: inherit;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+:is(#devCtaPanel, #devStripsPanel) .dev-band-toggle-label {
+    min-width: 2ch;
 }
 
 /* The Select control is a button in a link's clothing: without this the UA
