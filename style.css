@@ -6794,13 +6794,17 @@ html.agent-active body::after {
     font-weight: 700;
     text-align: center;
     transform: translateX(-50%);
-    animation: kontext-tip-pulse 2.6s ease-in-out infinite;
+    animation: kontext-tip-shake 3s ease-in-out 1s infinite;
     pointer-events: none;
 }
 
-@keyframes kontext-tip-pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0; }
+@keyframes kontext-tip-shake {
+    0%, 100% { transform: translateX(-50%); }
+    3% { transform: translateX(calc(-50% - 5px)); }
+    6% { transform: translateX(calc(-50% + 5px)); }
+    9% { transform: translateX(calc(-50% - 4px)); }
+    12% { transform: translateX(calc(-50% + 4px)); }
+    15% { transform: translateX(-50%); }
 }
 
 .kontext-game-tip kbd {
