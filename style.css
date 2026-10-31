@@ -5299,12 +5299,13 @@ body.dev-toggle-drag #devPresetToggle {
 
 :is(#devCtaPanel, #devStripsPanel) .dev-cta-head {
     position: sticky;
-    top: 0;
+    top: -12px;
     z-index: 2;
     display: flex;
     align-items: center;
     gap: 8px;
-    padding-bottom: 8px;
+    margin: -12px -14px 0;
+    padding: 12px 14px 8px;
     background: var(--collapse-cardBG);
     border-bottom: 1px solid var(--collapse-cardBorderColor);
 }
