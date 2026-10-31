@@ -6289,12 +6289,39 @@ html.agent-active body::after {
     transform: scaleX(-1);
 }
 
+/* U-turn: the rider slides while flipping, the CTA arcs over him to the other
+   side, then the reversed row order takes over. */
+.kontext-rider-unit.is-turning .kontext-rider {
+    animation: kontext-rider-turn 400ms cubic-bezier(.4, 0, .2, 1) both;
+}
+
+.kontext-rider-unit.is-turning .kontext-game-launch {
+    animation: kontext-cta-turn 400ms cubic-bezier(.4, 0, .2, 1) both;
+}
+
+.kontext-rider-unit.is-turning .kontext-rider-leash {
+    opacity: 0;
+    transition: none;
+}
+
+@keyframes kontext-rider-turn {
+    0% { transform: translateX(var(--turn-rider-dx, 0px)) scaleX(var(--turn-rider-start, 1)); }
+    100% { transform: translateX(0) scaleX(var(--turn-rider-end, 1)); }
+}
+
+@keyframes kontext-cta-turn {
+    0% { transform: translateX(var(--turn-cta-dx, 0px)); }
+    45% { transform: translateX(calc(var(--turn-cta-dx, 0px) * .5)) translateY(-36px); }
+    100% { transform: translateX(0); }
+}
+
 .kontext-rider-leash {
     flex: 0 0 72px;
     width: 72px;
     height: 18px;
     color: var(--md-sys-color-primary);
     opacity: 0.65;
+    transition: opacity 200ms ease;
 }
 
 .kontext-rider-bubble {
