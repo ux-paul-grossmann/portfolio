@@ -6790,7 +6790,7 @@ html.agent-active body::after {
     transition: opacity 220ms ease;
 }
 
-.kontext-game-cta.is-arrived .kontext-game-hint {
+.kontext-game-cta.is-hint .kontext-game-hint {
     opacity: 1;
 }
 
