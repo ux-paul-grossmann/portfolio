@@ -7216,21 +7216,13 @@ p, li, dd, figcaption,
     border-top: 1px solid var(--collapse-cardBorderColor);
 }
 
-:is(#devCtaPanel, #devStripsPanel) .dev-cta-group-head {
+:is(#devCtaPanel, #devStripsPanel) .dev-cta-group-title {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     gap: 8px;
+    width: 100%;
     margin: 0 0 10px;
-}
-
-:is(#devCtaPanel, #devStripsPanel) .dev-cta-group.is-collapsed .dev-cta-group-head {
-    margin-bottom: 0;
-}
-
-:is(#devCtaPanel, #devStripsPanel) .dev-cta-group-title {
-    flex: 1 1 auto;
-    min-width: 0;
-    margin: 0;
     padding: 0;
     border: 0;
     background: none;
@@ -7250,22 +7242,25 @@ p, li, dd, figcaption,
     outline: none;
 }
 
-:is(#devCtaPanel, #devStripsPanel) .dev-cta-group-switch-button {
-    display: inline-flex;
-    align-items: center;
+:is(#devCtaPanel, #devStripsPanel) .dev-cta-group-chevron {
+    width: 14px;
+    height: 14px;
     flex: 0 0 auto;
-    padding: 0;
-    border: 0;
-    background: none;
-    cursor: pointer;
+    transition: transform 180ms ease;
 }
 
-:is(#devCtaPanel, #devStripsPanel) .dev-cta-group-switch-button:focus-visible,
+:is(#devCtaPanel, #devStripsPanel) .dev-cta-group.is-collapsed .dev-cta-group-chevron {
+    transform: rotate(-90deg);
+}
+
+:is(#devCtaPanel, #devStripsPanel) .dev-cta-group.is-collapsed .dev-cta-group-title {
+    margin-bottom: 0;
+}
+
 :is(#devCtaPanel, #devStripsPanel) .dev-band-toggle:focus-visible {
     outline: none;
 }
 
-:is(#devCtaPanel, #devStripsPanel) .dev-cta-group-switch-button:focus-visible .dev-cta-group-switch,
 :is(#devCtaPanel, #devStripsPanel) .dev-band-toggle:focus-visible .dev-cta-group-switch {
     box-shadow: 0 0 0 2px var(--md-sys-color-primary);
 }
