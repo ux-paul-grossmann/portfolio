@@ -5298,10 +5298,14 @@ body.dev-toggle-drag #devPresetToggle {
 }
 
 :is(#devCtaPanel, #devStripsPanel) .dev-cta-head {
+    position: sticky;
+    top: 0;
+    z-index: 2;
     display: flex;
     align-items: center;
     gap: 8px;
     padding-bottom: 8px;
+    background: var(--collapse-cardBG);
     border-bottom: 1px solid var(--collapse-cardBorderColor);
 }
 
@@ -5358,6 +5362,22 @@ body.dev-toggle-drag #devPresetToggle {
 
 :is(#devCtaPanel, #devStripsPanel)[hidden] {
     display: none;
+}
+
+/* The Testing bar stays on screen when the panel body is closed: only the head
+   remains, so the panel can be reopened with the shortcut. */
+#devCtaPanel.is-closed {
+    height: auto !important;
+    min-height: 0;
+}
+
+#devCtaPanel.is-closed > :not(.dev-cta-head) {
+    display: none;
+}
+
+#devCtaPanel.is-closed .dev-cta-head {
+    padding-bottom: 0;
+    border-bottom: 0;
 }
 
 :is(#devCtaPanel, #devStripsPanel) .dev-cta-grip {
@@ -7195,13 +7215,21 @@ p, li, dd, figcaption,
     border-top: 1px solid var(--collapse-cardBorderColor);
 }
 
-:is(#devCtaPanel, #devStripsPanel) .dev-cta-group-title {
+:is(#devCtaPanel, #devStripsPanel) .dev-cta-group-head {
     display: flex;
     align-items: center;
-    justify-content: space-between;
     gap: 8px;
-    width: 100%;
     margin: 0 0 10px;
+}
+
+:is(#devCtaPanel, #devStripsPanel) .dev-cta-group.is-collapsed .dev-cta-group-head {
+    margin-bottom: 0;
+}
+
+:is(#devCtaPanel, #devStripsPanel) .dev-cta-group-title {
+    flex: 1 1 auto;
+    min-width: 0;
+    margin: 0;
     padding: 0;
     border: 0;
     background: none;
@@ -7221,23 +7249,78 @@ p, li, dd, figcaption,
     outline: none;
 }
 
-:is(#devCtaPanel, #devStripsPanel) .dev-cta-group-chevron {
+:is(#devCtaPanel, #devStripsPanel) .dev-cta-group-switch-button {
+    display: inline-flex;
+    align-items: center;
+    flex: 0 0 auto;
+    padding: 0;
+    border: 0;
+    background: none;
+    cursor: pointer;
+}
+
+:is(#devCtaPanel, #devStripsPanel) .dev-cta-group-switch-button:focus-visible,
+:is(#devCtaPanel, #devStripsPanel) .dev-band-toggle:focus-visible {
+    outline: none;
+}
+
+:is(#devCtaPanel, #devStripsPanel) .dev-cta-group-switch-button:focus-visible .dev-cta-group-switch,
+:is(#devCtaPanel, #devStripsPanel) .dev-band-toggle:focus-visible .dev-cta-group-switch {
+    box-shadow: 0 0 0 2px var(--md-sys-color-primary);
+}
+
+:is(#devCtaPanel, #devStripsPanel) .dev-cta-group-switch {
+    position: relative;
+    width: 32px;
+    height: 18px;
+    flex: 0 0 auto;
+    border-radius: 999px;
+    background: var(--md-sys-color-primary);
+    transition: background-color 180ms ease;
+}
+
+:is(#devCtaPanel, #devStripsPanel) .dev-cta-group-switch::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
     width: 14px;
     height: 14px;
-    flex: 0 0 auto;
+    border-radius: 50%;
+    background: var(--collapse-cardBG);
+    box-shadow: 0 1px 2px rgb(0 0 0 / .28);
+    transform: translateX(14px);
     transition: transform 180ms ease;
 }
 
-:is(#devCtaPanel, #devStripsPanel) .dev-cta-group.is-collapsed .dev-cta-group-chevron {
-    transform: rotate(-90deg);
+:is(#devCtaPanel, #devStripsPanel) [role="switch"][aria-checked="false"] .dev-cta-group-switch {
+    background: color-mix(in srgb, var(--collapse-card-titleFG) 22%, transparent);
 }
 
-:is(#devCtaPanel, #devStripsPanel) .dev-cta-group.is-collapsed .dev-cta-group-title {
-    margin-bottom: 0;
+:is(#devCtaPanel, #devStripsPanel) [role="switch"][aria-checked="false"] .dev-cta-group-switch::after {
+    transform: none;
 }
 
 :is(#devCtaPanel, #devStripsPanel) .dev-cta-group.is-collapsed .dev-cta-group-body {
     display: none;
+}
+
+:is(#devCtaPanel, #devStripsPanel) .dev-band-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: inherit;
+    font: inherit;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+:is(#devCtaPanel, #devStripsPanel) .dev-band-toggle-label {
+    min-width: 2ch;
 }
 
 /* The Select control is a button in a link's clothing: without this the UA
