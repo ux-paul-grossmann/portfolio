@@ -6845,7 +6845,6 @@ html.agent-active body::after {
     margin: 0;
     color: var(--md-sys-color-on-surface-variant);
     font-size: 1rem;
-    font-weight: 700;
     text-align: center;
     transform: translateX(-50%);
     animation: kontext-tip-shake 3s ease-in-out 1s infinite;
