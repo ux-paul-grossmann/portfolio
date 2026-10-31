@@ -6696,9 +6696,7 @@ html.agent-active body::after {
 
 .kontext-wrap.is-playing {
     position: relative;
-    padding-bottom: 250px;
     cursor: none;
-    transition: padding-bottom 650ms cubic-bezier(.2, 0, 0, 1);
 }
 
 .kontext-wrap.is-playing div[class*="note-"] {
@@ -6799,6 +6797,12 @@ html.agent-active body::after {
     margin: 28px 0 0;
     font-size: .75rem;
     color: var(--md-sys-color-on-surface-variant);
+    opacity: 0;
+    transition: opacity 220ms ease;
+}
+
+.kontext-game-cta.is-arrived .kontext-game-hint {
+    opacity: 1;
 }
 
 .kontext-game-reward {
