@@ -6446,19 +6446,6 @@ html.agent-active body::after {
         display: none;
     }
 
-    .kontext-wrap {
-        transition: padding-bottom .5s cubic-bezier(.4, 0, .2, 1);
-    }
-
-    html:not([data-cta-reveal="scroll"]) #kontext:hover .kontext-wrap:not(.is-playing),
-    html:not([data-cta-reveal="scroll"]) #kontext:focus-within .kontext-wrap:not(.is-playing) {
-        padding-bottom: 72px;
-    }
-
-    html[data-cta-reveal="scroll"] #kontext.is-revealed .kontext-wrap:not(.is-playing) {
-        padding-bottom: 72px;
-    }
-
     .kontext-wrap div[class*="note-"] {
         cursor: pointer;
         transition: translate .18s ease, box-shadow .18s ease, opacity .2s ease, filter .2s ease;
@@ -6696,7 +6683,9 @@ html.agent-active body::after {
 
 .kontext-wrap.is-playing {
     position: relative;
+    padding-bottom: 250px;
     cursor: none;
+    transition: padding-bottom 650ms cubic-bezier(.2, 0, 0, 1);
 }
 
 .kontext-wrap.is-playing div[class*="note-"] {
