@@ -5339,6 +5339,25 @@ body.dev-toggle-drag #devPresetToggle {
     text-decoration: none;
 }
 
+#devCtaPanel .dev-panel-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+#devCtaPanel .dev-panel-toggle-icon {
+    width: 12px;
+    height: 12px;
+    transition: transform 180ms ease;
+}
+
+#devCtaPanel.is-closed .dev-panel-toggle-icon {
+    transform: rotate(180deg);
+}
+
 :is(#devCtaPanel, #devStripsPanel) .dev-cta-row {
     display: flex;
     align-items: flex-start;
@@ -7236,10 +7255,15 @@ p, li, dd, figcaption,
     cursor: pointer;
 }
 
-:is(#devCtaPanel, #devStripsPanel) .dev-cta-group-title:hover,
+:is(#devCtaPanel, #devStripsPanel) .dev-cta-group-title:hover {
+    color: var(--collapse-card-titleFG);
+}
+
 :is(#devCtaPanel, #devStripsPanel) .dev-cta-group-title:focus-visible {
     color: var(--collapse-card-titleFG);
-    outline: none;
+    outline: 2px solid var(--md-sys-color-primary);
+    outline-offset: 2px;
+    border-radius: 4px;
 }
 
 :is(#devCtaPanel, #devStripsPanel) .dev-cta-group-chevron {
