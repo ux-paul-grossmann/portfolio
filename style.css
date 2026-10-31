@@ -6252,40 +6252,14 @@ html.agent-active body::after {
 .kontext-rider-track {
     position: relative;
     width: 100%;
-    height: var(--rider-band-height, 110px);
+    height: 110px;
     margin: 0 auto;
-}
-
-.kontext-rider-band {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    border: 1px dashed var(--md-sys-color-primary);
-    border-radius: 10px;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 150ms ease;
-}
-
-.kontext-rider-band::before {
-    content: '';
-    position: absolute;
-    left: 50%;
-    top: 0;
-    bottom: 0;
-    border-left: 1px dashed var(--md-sys-color-primary);
-    opacity: 0.7;
-}
-
-html[data-rider-band="1"] .kontext-rider-band {
-    opacity: 0.8;
 }
 
 .kontext-rider-unit {
     position: absolute;
     left: 0;
-    top: calc((var(--rider-band-height, 110px) - 110px) / 2);
-    z-index: 1;
+    top: 0;
     display: flex;
     align-items: center;
     gap: 8px;
@@ -6361,6 +6335,56 @@ html[data-rider-band="1"] .kontext-rider-band {
 .kontext-rider-unit.is-arrived .kontext-rider-bubble {
     opacity: 1;
     transform: none;
+}
+
+/* Dev: the rider's scroll band, its start/end lines and the live track top. */
+#riderBandOverlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1200;
+    display: none;
+    pointer-events: none;
+}
+
+#riderBandOverlay.is-visible {
+    display: block;
+}
+
+.rider-band-zone {
+    position: absolute;
+    left: 0;
+    right: 0;
+    background: rgb(0 105 110 / 0.07);
+}
+
+.rider-band-line {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 0;
+    border-top: 1px solid var(--md-sys-color-primary);
+    opacity: 0.85;
+}
+
+.rider-band-line span {
+    position: absolute;
+    right: 12px;
+    top: 2px;
+    padding: 2px 6px;
+    border-radius: 6px;
+    background: var(--collapse-cardBG);
+    color: var(--md-sys-color-primary);
+    font-size: 10px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.rider-band-line.is-track {
+    border-top: 1px dashed var(--md-sys-color-error);
+}
+
+.rider-band-line.is-track span {
+    color: var(--md-sys-color-error);
 }
 
 .kontext-game-cta {
