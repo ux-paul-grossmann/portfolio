@@ -6433,6 +6433,15 @@ html.agent-active body::after {
         pointer-events: auto;
     }
 
+    /* The rider band reveals the pair itself: once the track crosses the
+       start line, the CTA must be visible even if the separate reveal band
+       has not fired yet. */
+    html[data-cta-reveal="scroll"] #kontext.is-rider-visible .kontext-game-cta {
+        opacity: 1;
+        transform: none;
+        pointer-events: auto;
+    }
+
     .kontext-playfield.is-playing .kontext-game-cta {
         display: none;
     }
