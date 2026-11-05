@@ -1372,6 +1372,12 @@ html[data-cta-variant="current-teal-ring"] {
     --cta-ring-rgb: 67 146 169;
 }
 
+/* Visitor default: Solid jade in light, Teal halo in dark. The dev variants
+   keep their own colour, so the attribute must be absent for this to apply. */
+html.dark:not([data-cta-variant]) {
+    --cta-ring-rgb: 67 146 169;
+}
+
 html[data-cta-ring="2"] {
     --cta-ring-idle: 2px;
 }
