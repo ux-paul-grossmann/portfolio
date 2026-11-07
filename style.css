@@ -6290,7 +6290,6 @@ html.agent-active body::after {
 /* ============================================================
    KOMPETENZEN: NOTE DETAIL + FRICTION MINI-GAME (DESKTOP)
    ============================================================ */
-.kontext-note-detail,
 .kontext-rider-track {
     position: relative;
     width: 100%;
@@ -6460,7 +6459,7 @@ html.agent-active body::after {
     display: none;
 }
 
-.kontext-note-detail[hidden],
+.kontext-note-bubble[hidden],
 .kontext-game-reward[hidden],
 .kontext-game-best[hidden],
 .kontext-game-hud[hidden] {
@@ -6468,7 +6467,6 @@ html.agent-active body::after {
 }
 
 @media (min-width: 992px) and (hover: hover) and (pointer: fine) {
-    .kontext-note-detail,
     .kontext-game-cta {
         display: block;
     }
@@ -6539,17 +6537,29 @@ html.agent-active body::after {
     }
 }
 
-.kontext-note-detail {
-    position: relative;
-    max-width: 760px;
-    margin: 18px auto 0;
-    padding: 20px 52px 20px 24px;
-    border: 1px solid var(--collapse-cardBorderColor);
-    border-radius: var(--card-radius);
-    background: var(--collapse-cardBG);
-    color: var(--collapse-card-titleFG);
-    box-shadow: var(--shadow-card-rest);
+.kontext-rider-invite {
+    margin: 0;
+    white-space: nowrap;
+}
+
+.kontext-rider-bubble.is-note {
+    width: min(320px, calc(100vw - 48px));
+    padding: 14px 16px;
+    white-space: normal;
     text-align: left;
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+}
+
+.kontext-note-bubble {
+    position: relative;
+    padding-right: 34px;
+}
+
+.kontext-note-bubble .kontext-note-close {
+    top: 0;
+    right: 0;
 }
 
 .kontext-note-heading {
@@ -7496,7 +7506,7 @@ body {
 }
 
 p, h1, h2, h3, h4, h5, h6, li, blockquote, figcaption, dd, dt, pre, code,
-.project-detail-text, .card-description, .kontext-note-detail, .gslide-description,
+.project-detail-text, .card-description, .kontext-note-bubble, .gslide-description,
 .contact-mail-address, #copyright,
 input, textarea, select, [contenteditable="true"] {
     -webkit-user-select: text;
