@@ -6592,7 +6592,14 @@ html.agent-active body::after {
 
 .kontext-note-links a:hover,
 .kontext-note-links a:focus-visible {
+    background: transparent;
+    color: var(--md-sys-color-primary);
     text-decoration-thickness: 2px;
+}
+
+.kontext-note-links a:focus-visible {
+    outline: 2px solid var(--md-sys-color-primary);
+    outline-offset: 2px;
 }
 
 .kontext-note-sep {
