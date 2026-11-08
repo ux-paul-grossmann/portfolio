@@ -5589,6 +5589,25 @@ body.kontext-game-on #devPresetToggle {
     align-items: flex-end;
 }
 
+.dev-media-order-buttons {
+    display: inline-flex;
+    gap: 6px;
+}
+
+.dev-media-move-group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.dev-media-move-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    opacity: 0.75;
+}
+
 .dev-sub-fields {
     display: grid;
     grid-template-columns: 1fr;
