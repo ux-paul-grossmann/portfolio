@@ -4739,10 +4739,6 @@ body.dev-edit .dev-image-drop:focus-visible {
     outline: none;
 }
 
-body.dev-edit .dev-image-path {
-    width: 100%;
-}
-
 body.dev-edit .dev-image-actions {
     display: flex;
     justify-content: flex-end;
@@ -6023,21 +6019,6 @@ body.kontext-game-on #devPresetToggle {
     background: var(--md-sys-color-primary);
     color: var(--md-sys-color-on-primary);
     outline: none;
-}
-
-.dev-thumb-path-row {
-    display: flex;
-    gap: 8px;
-    margin-top: 8px;
-}
-
-.dev-thumb-path-row[hidden] {
-    display: none;
-}
-
-.dev-thumb-path-row .dev-sub-input {
-    flex: 1 1 auto;
-    min-width: 0;
 }
 
 .dev-thumb-slot.is-dragover {
