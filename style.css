@@ -4638,6 +4638,59 @@ body.dev-edit .dev-section-remove:focus-visible {
     outline: none;
 }
 
+/* DEV: block order for a section. Third button in the left control stack. */
+.dev-section-blocks {
+    display: none;
+}
+
+body.dev-edit .dev-section-blocks {
+    display: inline-flex;
+    position: absolute;
+    top: 64px;
+    left: 0;
+    width: 28px;
+    height: 28px;
+    padding: 0;
+    align-items: center;
+    justify-content: center;
+    border: 1px dashed var(--collapse-cardBorderColor);
+    border-radius: 7px;
+    background: var(--collapse-cardBG);
+    color: var(--collapse-card-titleFG);
+    font: inherit;
+    font-size: 14px;
+    line-height: 1;
+    cursor: pointer;
+    z-index: 5;
+}
+
+body.dev-edit .dev-section-blocks:hover,
+body.dev-edit .dev-section-blocks:focus-visible {
+    border-color: var(--md-sys-color-primary);
+    color: var(--md-sys-color-primary);
+    outline: none;
+}
+
+.dev-block-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.dev-block-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.dev-block-name {
+    flex: 1 1 auto;
+    min-width: 0;
+    font-size: 12px;
+    font-weight: 600;
+}
+
 /* DEV: add and remove media while inline editing is open */
 body.dev-edit .dev-add-media-row {
     display: flex;
