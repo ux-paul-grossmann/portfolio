@@ -4691,6 +4691,17 @@ body.dev-edit .dev-section-blocks:focus-visible {
     font-weight: 600;
 }
 
+.dev-data-write {
+    margin-bottom: 16px;
+}
+
+.dev-data-status {
+    margin: 8px 0 0;
+    font-size: 11px;
+    line-height: 1.5;
+    opacity: 0.8;
+}
+
 /* DEV: add and remove media while inline editing is open */
 body.dev-edit .dev-add-media-row {
     display: flex;
