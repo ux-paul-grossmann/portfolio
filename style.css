@@ -4702,6 +4702,13 @@ body.dev-edit .dev-section-blocks:focus-visible {
     opacity: 0.8;
 }
 
+.dev-media-note {
+    margin: 0 0 10px;
+    font-size: 11px;
+    line-height: 1.45;
+    opacity: 0.75;
+}
+
 /* DEV: add and remove media while inline editing is open */
 body.dev-edit .dev-add-media-row {
     display: flex;
