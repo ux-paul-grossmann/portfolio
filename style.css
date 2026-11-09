@@ -6315,6 +6315,36 @@ body.kontext-game-on #devPresetToggle {
     gap: 1px;
 }
 
+.dev-preset-preview-list li.is-changed {
+    margin-left: -6px;
+    padding: 4px 6px 4px 8px;
+    border-left: 2px solid var(--md-sys-color-primary);
+    border-radius: 0 6px 6px 0;
+    background: color-mix(in srgb, var(--md-sys-color-primary) 9%, transparent);
+}
+
+.dev-preset-preview-list li.is-changed .dev-preset-preview-meta {
+    color: var(--md-sys-color-primary);
+    opacity: 1;
+}
+
+.dev-preset-preview-list li.is-new {
+    margin-left: -6px;
+    padding: 4px 6px 4px 8px;
+    border-left: 2px solid var(--md-sys-color-tertiary);
+    border-radius: 0 6px 6px 0;
+    background: color-mix(in srgb, var(--md-sys-color-tertiary) 9%, transparent);
+}
+
+.dev-preset-preview-list li.is-new .dev-preset-preview-meta {
+    color: var(--md-sys-color-tertiary);
+    opacity: 1;
+}
+
+.dev-preset-preview-list li.is-same .dev-preset-preview-meta {
+    opacity: 0.55;
+}
+
 .dev-preset-preview-title {
     font-weight: 600;
     color: var(--collapse-card-titleFG);
