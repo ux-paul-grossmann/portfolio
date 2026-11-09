@@ -4816,7 +4816,7 @@ body.dev-edit .dev-media-overlay {
     pointer-events: none;
 }
 
-body.dev-edit .dev-media-x {
+body.dev-edit .dev-media-control {
     position: absolute;
     width: 24px;
     height: 24px;
@@ -4824,32 +4824,72 @@ body.dev-edit .dev-media-x {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid rgb(255 255 255 / 0.7);
+    border: 1px dashed var(--collapse-cardBorderColor);
     border-radius: 50%;
-    background: var(--dev-remove-bg, var(--md-sys-color-error));
-    color: #fff;
+    background: var(--collapse-cardBG);
+    color: var(--collapse-card-titleFG);
     font: inherit;
-    font-size: 14px;
+    font-size: 13px;
     line-height: 1;
     cursor: pointer;
     pointer-events: auto;
     box-shadow: 0 1px 4px rgb(0 0 0 / 0.35);
 }
 
-body.dev-edit .dev-media-x:hover,
-body.dev-edit .dev-media-x:focus-visible {
+body.dev-edit .dev-media-control.dev-media-x {
+    border: 1px solid rgb(255 255 255 / 0.7);
+    background: var(--dev-remove-bg, var(--md-sys-color-error));
+    color: #fff;
+    font-size: 14px;
+}
+
+body.dev-edit .dev-media-control:hover,
+body.dev-edit .dev-media-control:focus-visible {
     outline: 2px solid #fff;
     outline-offset: 1px;
 }
 
-body.dev-edit .dev-media-x svg {
+body.dev-edit .dev-media-control[disabled] {
+    opacity: 0.45;
+    cursor: default;
+}
+
+body.dev-edit .dev-media-control[disabled]:hover,
+body.dev-edit .dev-media-control[disabled]:focus-visible {
+    outline: none;
+}
+
+body.dev-edit .dev-media-control[data-slot="drag"] {
+    cursor: grab;
+    font-size: 12px;
+}
+
+body.dev-edit .dev-media-control[data-slot="drag"]:active {
+    cursor: grabbing;
+}
+
+body.dev-edit .dev-media-control svg {
     display: block;
     width: 10px;
     height: 10px;
 }
 
-body.dev-edit .dev-media-x[hidden] {
+body.dev-edit .dev-media-control[hidden] {
     display: none;
+}
+
+body.dev-edit [data-media-key].dev-media-dragging {
+    opacity: 0.45;
+}
+
+body.dev-edit .dev-media-drop-line {
+    position: fixed;
+    z-index: 60;
+    height: 2px;
+    border-radius: 1px;
+    background: var(--md-sys-color-primary);
+    pointer-events: none;
+    box-shadow: 0 0 0 1px rgb(0 0 0 / 0.25);
 }
 
 /* DEV: a section with a title but no content yet. The hint is a pseudo-
