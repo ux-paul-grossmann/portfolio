@@ -1569,49 +1569,6 @@ html[data-type-scale="proposed"] #ci-profilbild-caption-main {
     box-shadow: 0 1px 3px rgba(0,0,0,0.06);
 }
 
-/* Inline links inside expanded showcase cards: a drawn rule instead of the
-   filled global hover. No surface, no colour flip, icon nudges. */
-#projekte .project-detail a:not(.glightbox) {
-    color: var(--md-sys-color-primary);
-    background-color: transparent;
-    background-image: linear-gradient(currentColor, currentColor);
-    background-repeat: no-repeat;
-    background-position: 0 calc(100% - 1px);
-    background-size: 0 1.5px;
-    padding-bottom: 1px;
-    text-decoration: none;
-    transition: background-size 180ms cubic-bezier(.4, 0, .2, 1);
-}
-
-#projekte .project-detail a:not(.glightbox):hover,
-#projekte .project-detail a:not(.glightbox):focus-visible {
-    color: var(--md-sys-color-primary);
-    background-color: transparent;
-    background-image: linear-gradient(currentColor, currentColor);
-    background-position: 0 calc(100% - 1px);
-    background-size: 100% 1.5px;
-    text-decoration: none;
-}
-
-#projekte .project-detail a:not(.glightbox) i {
-    display: inline-block;
-    font-size: .8em;
-    opacity: .65;
-    transition: opacity 180ms ease, transform 180ms ease;
-}
-
-#projekte .project-detail a:not(.glightbox):hover i,
-#projekte .project-detail a:not(.glightbox):focus-visible i {
-    opacity: 1;
-    transform: translate(1px, -1px);
-}
-
-#projekte .project-detail a:not(.glightbox):focus-visible {
-    outline: 2px solid var(--md-sys-color-primary);
-    outline-offset: 3px;
-    border-radius: 2px;
-}
-
 #projekte .project-detail .d-flex.flex-row.align-items-center.flex-wrap {
     row-gap: 8px;
 }
@@ -6697,24 +6654,6 @@ html.agent-active body::after {
 .kontext-note-seen > span:first-child {
     margin-right: 6px;
     font-weight: 600;
-}
-
-.kontext-note-links a {
-    color: var(--md-sys-color-primary);
-    text-decoration: underline;
-    text-underline-offset: 2px;
-}
-
-.kontext-note-links a:hover,
-.kontext-note-links a:focus-visible {
-    background: transparent;
-    color: var(--md-sys-color-primary);
-    text-decoration-thickness: 2px;
-}
-
-.kontext-note-links a:focus-visible {
-    outline: 2px solid var(--md-sys-color-primary);
-    outline-offset: 2px;
 }
 
 .kontext-note-sep {
