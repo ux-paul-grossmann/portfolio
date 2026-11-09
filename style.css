@@ -2821,9 +2821,37 @@ a.thumb-element:visited {
 
 /* ============================================================
    21. PHONE PROTOTYPE FRAME
-       Minimal bezel around embedded prototypes. No device chrome,
-       no colour picker.
+       Minimal bezel around embedded prototypes. The testing panel
+       switches the outer shell and the inner screen size.
    ============================================================ */
+:root {
+    --proto-shell-pad: 10px;
+    --proto-shell-radius: 40px;
+    --proto-shell-shadow: var(--md-sys-elevation-4);
+    --proto-screen-radius: 30px;
+}
+
+html[data-proto-shell="bare"] {
+    --proto-shell-pad: 0px;
+    --proto-shell-radius: 28px;
+    --proto-shell-shadow: var(--md-sys-elevation-3);
+    --proto-screen-radius: 27px;
+}
+
+html[data-proto-shell="minimal"] {
+    --proto-shell-pad: 6px;
+    --proto-shell-radius: 34px;
+    --proto-shell-shadow: var(--md-sys-elevation-3);
+    --proto-screen-radius: 28px;
+}
+
+html[data-proto-shell="slab"] {
+    --proto-shell-pad: 10px;
+    --proto-shell-radius: 40px;
+    --proto-shell-shadow: var(--md-sys-elevation-4);
+    --proto-screen-radius: 30px;
+}
+
 #projekte .proto-frame-wrap {
     display: flex;
     justify-content: center;
@@ -2831,11 +2859,11 @@ a.thumb-element:visited {
 }
 
 #projekte .proto-frame {
-    padding: 10px;
+    padding: var(--proto-shell-pad, 10px);
     border: 1px solid var(--collapse-cardBorderColor);
-    border-radius: 40px;
+    border-radius: var(--proto-shell-radius, 40px);
     background: var(--collapse-cardBG);
-    box-shadow: var(--md-sys-elevation-4);
+    box-shadow: var(--proto-shell-shadow, var(--md-sys-elevation-4));
 }
 
 #projekte .proto-frame-screen {
@@ -2843,9 +2871,14 @@ a.thumb-element:visited {
     width: 375px;
     height: 667px;
     overflow: hidden;
-    border-radius: 30px;
+    border-radius: var(--proto-screen-radius, 30px);
     background: var(--md-sys-color-surface);
     line-height: 0;
+}
+
+html[data-proto-screen="native"] #projekte .proto-frame-screen {
+    width: var(--proto-native-w, 375px);
+    height: var(--proto-native-h, 667px);
 }
 
 #projekte .proto-frame iframe {
@@ -2854,6 +2887,10 @@ a.thumb-element:visited {
     background: var(--md-sys-color-surface);
     transform: scale(var(--proto-scale, 1));
     transform-origin: top left;
+}
+
+html[data-proto-screen="native"] #projekte .proto-frame iframe {
+    transform: none;
 }
 
 /* ============================================================
