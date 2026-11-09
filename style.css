@@ -4819,6 +4819,12 @@ body.dev-edit .dev-media-control svg {
     height: 10px;
 }
 
+body.dev-edit .dev-media-control[data-slot="top"] svg,
+body.dev-edit .dev-media-control[data-slot="bottom"] svg {
+    width: 12px;
+    height: 12px;
+}
+
 body.dev-edit .dev-media-control[hidden] {
     display: none;
 }
