@@ -5204,15 +5204,6 @@ body.dev-toggle-drag #devPresetToggle {
     white-space: nowrap;
 }
 
-/* Save is the one filled tile: the action the card exists for. */
-.dev-cc-tile.dev-cc-save:not(:disabled) {
-    background: var(--md-sys-color-primary);
-    color: var(--md-sys-color-on-primary);
-}
-
-.dev-cc-tile.dev-cc-save:not(:disabled):hover {
-    filter: brightness(1.04);
-}
 
 /* Sheet header inside the card: back, title. */
 .dev-cc-sheetbar {
