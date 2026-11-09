@@ -2820,93 +2820,36 @@ a.thumb-element:visited {
 }
 
 /* ============================================================
-   21. DEVICE COLOR CHOOSER
-       Color selection buttons for device mockups.
+   21. PHONE PROTOTYPE FRAME
+       Minimal bezel around embedded prototypes. No device chrome,
+       no colour picker.
    ============================================================ */
-.btn.download-section-color {
-    font-size: 50%;
-    box-shadow: inset 0 0 1.2px 0 rgba(255, 255, 255, 0.5),
-                inset 0 0 4px rgba(0, 0, 0, 0.1),
-                0 0 4px 0 rgba(0, 0, 0, 0.2),
-                0 4px 6px rgba(100, 100, 100, 0.14) !important;
-    border-radius: 10px;
-    margin: 0.1rem 0 0.1rem 0 !important;
-    letter-spacing: 0.005rem;
-    transition: 350ms all ease;
+#projekte .proto-frame-wrap {
+    display: flex;
+    justify-content: center;
+    margin: 24px 0;
 }
 
-.btn.download-section-color:nth-child(1) {
-    background: var(--color-choose-btn-1-BG);
-    color: var(--color-choose-btn-1-FG);
-    transition: 250ms all ease;
+#projekte .proto-frame {
+    padding: 10px;
+    border: 1px solid var(--collapse-cardBorderColor);
+    border-radius: 40px;
+    background: var(--collapse-cardBG);
+    box-shadow: var(--md-sys-elevation-4);
 }
 
-button.btn.download-section-color:nth-child(1):active {
-    color: var(--color-choose-btn-1-active-FG);
-    transform: translateY(0);
-    background: var(--color-choose-btn-1-active-BG);
-    margin: 0 10px 0 0 !important;
-    transition: 20ms all ease;
+#projekte .proto-frame-screen {
+    overflow: hidden;
+    border-radius: 30px;
+    background: var(--md-sys-color-surface);
+    line-height: 0;
 }
 
-.btn.download-section-color:nth-child(1):hover {
-    background: var(--color-choose-btn-1-hover-BG);
-    color: var(--color-choose-btn-1-hover-FG);
-    box-shadow: inset 0 0 2px 2px rgba(255, 255, 255, 0.3),
-                inset 0 0 10px rgba(0, 0, 0, 0.1),
-                0 0 4px 0.5px rgba(0, 0, 0, 0.2),
-                0 16px 16px rgba(100, 100, 100, 0.2) !important;
-    transition: 250ms all ease;
-}
-
-.btn.download-section-color:nth-child(2) {
-    background: var(--color-choose-btn-2-BG);
-    color: var(--color-choose-btn-2-FG);
-    transition: 250ms all ease;
-}
-
-button.btn.download-section-color:nth-child(2):active {
-    color: var(--color-choose-btn-2-active-FG);
-    background: var(--color-choose-btn-2-active-BG);
-    transform: translateY(0);
-    transform: scale(1.1);
-    margin: 0 10px 0 10px !important;
-    transition: 20ms all ease;
-}
-
-.btn.download-section-color:nth-child(2):hover {
-    background: var(--color-choose-btn-2-hover-BG);
-    color: var(--color-choose-btn-2-hover-FG);
-    box-shadow: inset 0 0 2px 2px rgba(255, 255, 255, 0.3),
-                inset 0 0 10px rgba(0, 0, 0, 0.1),
-                0 0 4px 0.5px rgba(0, 0, 0, 0.2),
-                0 16px 16px rgba(100, 100, 100, 0.2) !important;
-    transition: 250ms all ease;
-}
-
-.btn.download-section-color:nth-child(3) {
-    background: var(--color-choose-btn-3-BG);
-    color: var(--color-choose-btn-3-FG);
-    transition: 250ms all ease;
-}
-
-button.btn.download-section-color:nth-child(3):active {
-    background: var(--color-choose-btn-3-active-BG);
-    color: var(--color-choose-btn-3-active-FG);
-    transform: translateY(0);
-    transition: 20ms all ease;
-    margin: 0 0 0 10px !important;
-    transform: scale(1.1);
-}
-
-.btn.download-section-color:nth-child(3):hover {
-    background: var(--color-choose-btn-3-hover-BG);
-    color: var(--color-choose-btn-3-hover-FG);
-    box-shadow: inset 0 0 2px 2px rgba(255, 255, 255, 0.3),
-                inset 0 0 10px rgba(0, 0, 0, 0.1),
-                0 0 4px 0.5px rgba(0, 0, 0, 0.2),
-                0 16px 16px rgba(100, 100, 100, 0.2) !important;
-    transition: 250ms all ease;
+#projekte .proto-frame iframe {
+    display: block;
+    border: 0;
+    max-width: 100%;
+    background: var(--md-sys-color-surface);
 }
 
 /* ============================================================
@@ -4056,9 +3999,6 @@ a, button, .btn, .nav-link, .thumb-element, #theme-toggle, .scrolltop, #intro-bu
   .scroll:hover,
   #theme-panel-container .dropdown-item:hover,
   #socialIconsWrap li a.social:hover,
-  .btn.download-section-color:nth-child(1):hover,
-  .btn.download-section-color:nth-child(2):hover,
-  .btn.download-section-color:nth-child(3):hover,
   .morph-card:hover:not(.selected):not(.expanded),
   .close-detail:hover,
   .back-btn:hover,
