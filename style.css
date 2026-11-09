@@ -2839,6 +2839,9 @@ a.thumb-element:visited {
 }
 
 #projekte .proto-frame-screen {
+    position: relative;
+    width: 375px;
+    height: 667px;
     overflow: hidden;
     border-radius: 30px;
     background: var(--md-sys-color-surface);
@@ -2848,8 +2851,9 @@ a.thumb-element:visited {
 #projekte .proto-frame iframe {
     display: block;
     border: 0;
-    max-width: 100%;
     background: var(--md-sys-color-surface);
+    transform: scale(var(--proto-scale, 1));
+    transform-origin: top left;
 }
 
 /* ============================================================
