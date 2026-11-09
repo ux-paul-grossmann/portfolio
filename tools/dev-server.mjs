@@ -10,9 +10,11 @@ import { fileURLToPath } from 'node:url';
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const THUMB_DIR = path.join(ROOT, 'lib', 'images', 'thumbs');
 const MEDIA_DIR = path.join(ROOT, 'lib', 'images', 'uploads');
+const DATA_FILE = path.join(ROOT, 'lib', 'js', 'projects-data.js');
 const HOST = '127.0.0.1';
 const PORT = Number(process.env.PORT || 8000);
 const MAX_UPLOAD_BYTES = 12 * 1024 * 1024;
+const MAX_DATA_BYTES = 2 * 1024 * 1024;
 
 const MIME = {
   '.html': 'text/html; charset=utf-8',
@@ -125,6 +127,55 @@ async function handleUpload(req, res, targetDir, prefix) {
   sendJson(res, 200, { path: relative });
 }
 
+async function handleDataWrite(req, res) {
+  if (req.headers['x-dev-upload'] !== '1') {
+    sendJson(res, 403, { error: 'Writes are only accepted from the local dev editor.' });
+    return;
+  }
+  const chunks = [];
+  let size = 0;
+  for await (const chunk of req) {
+    size += chunk.length;
+    if (size > MAX_DATA_BYTES) {
+      req.destroy();
+      sendJson(res, 413, { error: 'Data is larger than 2 MB.' });
+      return;
+    }
+    chunks.push(chunk);
+  }
+  let data;
+  try {
+    data = JSON.parse(Buffer.concat(chunks).toString('utf8'));
+  } catch (error) {
+    sendJson(res, 400, { error: 'Body is not valid JSON.' });
+    return;
+  }
+  if (!Array.isArray(data) || !data.length || data.some(entry => !entry || typeof entry !== 'object' || typeof entry.id !== 'string')) {
+    sendJson(res, 400, { error: 'Expected a non-empty array of projects, each with an id.' });
+    return;
+  }
+  const source = await fs.readFile(DATA_FILE, 'utf8');
+  const marker = 'const projectsData = ';
+  const at = source.indexOf(marker);
+  if (at === -1) {
+    sendJson(res, 500, { error: 'projects-data.js does not contain the projectsData literal.' });
+    return;
+  }
+  const next = source.slice(0, at) + marker + JSON.stringify(data, null, 2) + ';\n';
+  try {
+    // A parse check before the write: a bad literal must never reach the file.
+    new Function(next);
+  } catch (error) {
+    sendJson(res, 500, { error: 'Generated file would not parse; nothing was written.' });
+    return;
+  }
+  const temp = DATA_FILE + '.tmp';
+  await fs.writeFile(temp, next);
+  await fs.rename(temp, DATA_FILE);
+  console.log('data: wrote lib/js/projects-data.js (' + data.length + ' projects)');
+  sendJson(res, 200, { path: 'lib/js/projects-data.js', projects: data.length });
+}
+
 async function handleStatic(req, res) {
   if (req.method !== 'GET' && req.method !== 'HEAD') {
     send(res, 405, 'Method not allowed', 'text/plain; charset=utf-8', { Allow: 'GET, HEAD' });
@@ -197,6 +248,17 @@ const server = http.createServer((req, res) => {
     });
     return;
   }
+  if (pathname === '/__dev/data') {
+    if (req.method !== 'POST') {
+      send(res, 405, 'Method not allowed', 'text/plain; charset=utf-8', { Allow: 'POST' });
+      return;
+    }
+    handleDataWrite(req, res).catch(error => {
+      console.error('data write failed:', error);
+      sendJson(res, 500, { error: 'Write failed.' });
+    });
+    return;
+  }
   handleStatic(req, res).catch(error => {
     console.error('request failed:', error);
     send(res, 500, 'Internal server error');
@@ -207,4 +269,5 @@ server.listen(PORT, HOST, () => {
   console.log('Portfolio: http://' + HOST + ':' + PORT + '/');
   console.log('Thumbnails: POST /__dev/thumbnail -> lib/images/thumbs/');
   console.log('Media:      POST /__dev/media -> lib/images/uploads/');
+  console.log('Data:       POST /__dev/data -> lib/js/projects-data.js');
 });

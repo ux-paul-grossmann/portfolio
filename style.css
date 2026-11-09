@@ -4648,6 +4648,24 @@ body.dev-edit .dev-section-blocks:focus-visible {
     font-weight: 600;
 }
 
+.dev-data-write {
+    margin-bottom: 16px;
+}
+
+.dev-data-status {
+    margin: 8px 0 0;
+    font-size: 11px;
+    line-height: 1.5;
+    opacity: 0.8;
+}
+
+.dev-media-note {
+    margin: 0 0 10px;
+    font-size: 11px;
+    line-height: 1.45;
+    opacity: 0.75;
+}
+
 /* DEV: add and remove media while inline editing is open */
 body.dev-edit .dev-add-media-row {
     display: flex;
@@ -4762,7 +4780,7 @@ body.dev-edit .dev-media-overlay {
     pointer-events: none;
 }
 
-body.dev-edit .dev-media-x {
+body.dev-edit .dev-media-control {
     position: absolute;
     width: 24px;
     height: 24px;
@@ -4770,32 +4788,72 @@ body.dev-edit .dev-media-x {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid rgb(255 255 255 / 0.7);
+    border: 1px dashed var(--collapse-cardBorderColor);
     border-radius: 50%;
-    background: var(--dev-remove-bg, var(--md-sys-color-error));
-    color: #fff;
+    background: var(--collapse-cardBG);
+    color: var(--collapse-card-titleFG);
     font: inherit;
-    font-size: 14px;
+    font-size: 13px;
     line-height: 1;
     cursor: pointer;
     pointer-events: auto;
     box-shadow: 0 1px 4px rgb(0 0 0 / 0.35);
 }
 
-body.dev-edit .dev-media-x:hover,
-body.dev-edit .dev-media-x:focus-visible {
+body.dev-edit .dev-media-control.dev-media-x {
+    border: 1px solid rgb(255 255 255 / 0.7);
+    background: var(--dev-remove-bg, var(--md-sys-color-error));
+    color: #fff;
+    font-size: 14px;
+}
+
+body.dev-edit .dev-media-control:hover,
+body.dev-edit .dev-media-control:focus-visible {
     outline: 2px solid #fff;
     outline-offset: 1px;
 }
 
-body.dev-edit .dev-media-x svg {
+body.dev-edit .dev-media-control[disabled] {
+    opacity: 0.45;
+    cursor: default;
+}
+
+body.dev-edit .dev-media-control[disabled]:hover,
+body.dev-edit .dev-media-control[disabled]:focus-visible {
+    outline: none;
+}
+
+body.dev-edit .dev-media-control[data-slot="drag"] {
+    cursor: grab;
+    font-size: 12px;
+}
+
+body.dev-edit .dev-media-control[data-slot="drag"]:active {
+    cursor: grabbing;
+}
+
+body.dev-edit .dev-media-control svg {
     display: block;
     width: 10px;
     height: 10px;
 }
 
-body.dev-edit .dev-media-x[hidden] {
+body.dev-edit .dev-media-control[hidden] {
     display: none;
+}
+
+body.dev-edit [data-media-key].dev-media-dragging {
+    opacity: 0.45;
+}
+
+body.dev-edit .dev-media-drop-line {
+    position: fixed;
+    z-index: 60;
+    height: 2px;
+    border-radius: 1px;
+    background: var(--md-sys-color-primary);
+    pointer-events: none;
+    box-shadow: 0 0 0 1px rgb(0 0 0 / 0.25);
 }
 
 /* DEV: a section with a title but no content yet. The hint is a pseudo-
@@ -6141,16 +6199,123 @@ body.kontext-game-on #devPresetToggle {
 .dev-preset-name {
     flex: 1 1 auto;
     min-width: 0;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    padding: 6px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1px;
+    padding: 5px 6px;
     border: 0;
     background: transparent;
     color: inherit;
     font: inherit;
     text-align: left;
     cursor: pointer;
+}
+
+.dev-preset-name-text {
+    max-width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.dev-preset-time {
+    font-size: 10px;
+    line-height: 1.2;
+    opacity: 0.6;
+}
+
+.dev-preset-preview {
+    position: fixed;
+    z-index: 1215;
+    width: min(300px, calc(100vw - 24px));
+    max-height: 50vh;
+    overflow-y: auto;
+    padding: 12px;
+    border: 1px solid var(--collapse-cardBorderColor);
+    border-radius: 12px;
+    background: var(--collapse-cardBG);
+    color: var(--collapse-cardFG);
+    box-shadow: var(--md-sys-elevation-3);
+    font-size: 11px;
+    line-height: 1.45;
+    pointer-events: none;
+}
+
+.dev-preset-preview[hidden] {
+    display: none;
+}
+
+.dev-preset-preview-head {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--collapse-card-titleFG);
+}
+
+.dev-preset-preview-time {
+    margin-top: 2px;
+    opacity: 0.65;
+}
+
+.dev-preset-preview-totals {
+    margin: 8px 0;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--collapse-cardBorderColor);
+    opacity: 0.8;
+}
+
+.dev-preset-preview-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.dev-preset-preview-list li {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+
+.dev-preset-preview-list li.is-changed {
+    margin-left: -6px;
+    padding: 4px 6px 4px 8px;
+    border-left: 2px solid var(--md-sys-color-primary);
+    border-radius: 0 6px 6px 0;
+    background: color-mix(in srgb, var(--md-sys-color-primary) 9%, transparent);
+}
+
+.dev-preset-preview-list li.is-changed .dev-preset-preview-meta {
+    color: var(--md-sys-color-primary);
+    opacity: 1;
+}
+
+.dev-preset-preview-list li.is-new {
+    margin-left: -6px;
+    padding: 4px 6px 4px 8px;
+    border-left: 2px solid var(--md-sys-color-tertiary);
+    border-radius: 0 6px 6px 0;
+    background: color-mix(in srgb, var(--md-sys-color-tertiary) 9%, transparent);
+}
+
+.dev-preset-preview-list li.is-new .dev-preset-preview-meta {
+    color: var(--md-sys-color-tertiary);
+    opacity: 1;
+}
+
+.dev-preset-preview-list li.is-same .dev-preset-preview-meta {
+    opacity: 0.55;
+}
+
+.dev-preset-preview-title {
+    font-weight: 600;
+    color: var(--collapse-card-titleFG);
+}
+
+.dev-preset-preview-meta {
+    opacity: 0.7;
 }
 
 .dev-preset-row.is-current .dev-preset-name {
