@@ -4740,9 +4740,10 @@ body.dev-edit .dev-add-media {
    that fit there. The menu is the choice, the gap is the slot. */
 body.dev-edit .dev-insert-point {
     display: flex;
+    justify-content: center;
     align-items: flex-start;
     gap: 8px;
-    margin: 2px 0;
+    margin: 4px 0;
 }
 
 body.dev-edit .dev-insert-point-button {
@@ -4750,32 +4751,28 @@ body.dev-edit .dev-insert-point-button {
     align-items: center;
     justify-content: center;
     flex: 0 0 auto;
-    width: 24px;
-    height: 24px;
+    width: 34px;
+    height: 30px;
     padding: 0;
     border: 1px dashed var(--collapse-cardBorderColor);
-    border-radius: 6px;
+    border-radius: 8px;
     background: transparent;
     color: var(--collapse-cardFG);
-    opacity: 0;
+    opacity: 0.65;
     cursor: pointer;
     transition: opacity 120ms ease;
 }
 
 body.dev-edit .dev-insert-point-button svg {
     display: block;
-    width: 12px;
-    height: 12px;
-}
-
-body.dev-edit .project-detail:hover .dev-insert-point-button,
-body.dev-edit .dev-insert-point-button:focus-visible {
-    opacity: 0.55;
+    width: 16px;
+    height: 16px;
 }
 
 body.dev-edit .dev-insert-point-button:hover,
 body.dev-edit .dev-insert-point-button:focus-visible {
     border-color: var(--md-sys-color-primary);
+    border-style: solid;
     color: var(--md-sys-color-primary);
     opacity: 1;
     outline: none;
@@ -4824,6 +4821,58 @@ body.dev-edit .project-detail-body.flex-row > .dev-insert-point-inline {
     margin: 0 2px;
 }
 
+body.dev-edit .dev-insert-point-inline .dev-insert-point-button {
+    width: 24px;
+    height: 24px;
+    border-radius: 6px;
+}
+
+body.dev-edit .dev-insert-point-inline .dev-insert-point-button svg {
+    width: 12px;
+    height: 12px;
+}
+
+/* DEV: mode transitions. The card and action bar ease through .is-open; the
+   in-page chrome eases in on creation and out on close. The entering class is
+   short-lived so re-renders, which rebuild the same nodes, never replay it.
+   The leaving class holds the layout while fading the chrome, and the delayed
+   DOM cleanup removes it. */
+@keyframes devChromeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-4px);
+    }
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+body.dev-edit-entering .dev-section-tools,
+body.dev-edit-entering .dev-insert-point,
+body.dev-edit-entering .dev-media-control {
+    animation: devChromeIn 200ms ease-out backwards;
+}
+
+body.dev-edit-leaving .dev-section-tools,
+body.dev-edit-leaving .dev-insert-point-button,
+body.dev-edit-leaving .dev-media-control {
+    opacity: 0 !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    body.dev-edit-entering .dev-section-tools,
+    body.dev-edit-entering .dev-insert-point,
+    body.dev-edit-entering .dev-media-control {
+        animation: none;
+    }
+    body.dev-edit-leaving .dev-section-tools,
+    body.dev-edit-leaving .dev-insert-point-button,
+    body.dev-edit-leaving .dev-media-control {
+        transition: none;
+    }
+}
+
 /* DEV: per-block remove control; appears on hover of the block it removes. */
 body.dev-edit .dev-block-remove {
     position: absolute;
@@ -4834,7 +4883,7 @@ body.dev-edit .dev-block-remove {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    border: 1px dashed var(--collapse-cardBorderColor);
+    border: 1px solid var(--collapse-cardBorderColor);
     border-radius: 50%;
     background: var(--collapse-cardBG);
     color: var(--collapse-card-titleFG);
@@ -4983,7 +5032,7 @@ body.dev-edit .dev-media-control {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    border: 1px dashed var(--collapse-cardBorderColor);
+    border: 1px solid var(--collapse-cardBorderColor);
     border-radius: 50%;
     background: var(--collapse-cardBG);
     color: var(--collapse-card-titleFG);
@@ -4993,6 +5042,7 @@ body.dev-edit .dev-media-control {
     cursor: pointer;
     pointer-events: auto;
     box-shadow: 0 1px 4px rgb(0 0 0 / 0.35);
+    transition: opacity 160ms ease;
 }
 
 body.dev-edit .dev-media-control.dev-media-x {
