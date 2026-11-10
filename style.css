@@ -5120,6 +5120,63 @@ body.dev-edit .dev-media-control[disabled]:focus-visible {
     outline: none;
 }
 
+/* DEV: per-fragment controls inside a text stream. Every heading, paragraph,
+   list or raw image gets a rail with + (paragraph before it) and × (remove). */
+body.dev-edit .dev-frag-controls {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 7;
+    pointer-events: none;
+}
+
+body.dev-edit .dev-frag-row {
+    position: absolute;
+    right: 0;
+    display: flex;
+    gap: 4px;
+    pointer-events: auto;
+}
+
+body.dev-edit .dev-frag-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    padding: 0;
+    border: 1px solid var(--collapse-cardBorderColor);
+    border-radius: 50%;
+    background: var(--collapse-cardBG);
+    color: var(--collapse-card-titleFG);
+    cursor: pointer;
+    box-shadow: 0 1px 4px rgb(0 0 0 / 0.3);
+    transition: scale 100ms ease-out, color 120ms ease, border-color 120ms ease;
+}
+
+body.dev-edit .dev-frag-button:active {
+    scale: 0.96;
+}
+
+body.dev-edit .dev-frag-button svg {
+    display: block;
+    width: 10px;
+    height: 10px;
+}
+
+body.dev-edit .dev-frag-button:hover,
+body.dev-edit .dev-frag-button:focus-visible {
+    border-color: var(--md-sys-color-primary);
+    color: var(--md-sys-color-primary);
+    outline: none;
+}
+
+body.dev-edit .dev-frag-remove:hover,
+body.dev-edit .dev-frag-remove:focus-visible {
+    border-color: var(--md-sys-color-error);
+    color: var(--md-sys-color-error);
+}
+
 /* Small artwork keeps its surface clear: the remove control parks above it. */
 body.dev-edit .dev-media-control.dev-media-control-icon {
     width: 18px;
