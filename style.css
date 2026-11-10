@@ -4647,6 +4647,54 @@ body.dev-edit .dev-section-blocks:focus-visible {
     opacity: 0.75;
 }
 
+.dev-text-toolbar {
+    position: fixed;
+    z-index: 1216;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px;
+    border: 1px solid var(--collapse-cardBorderColor);
+    border-radius: 8px;
+    background: var(--collapse-cardBG);
+    box-shadow: var(--md-sys-elevation-3);
+}
+
+.dev-text-toolbar[hidden] {
+    display: none;
+}
+
+.dev-text-toolbar button {
+    height: 28px;
+    min-width: 28px;
+    padding: 0 8px;
+    border: 0;
+    border-radius: 5px;
+    background: transparent;
+    color: var(--collapse-card-titleFG);
+    font: inherit;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.dev-text-toolbar button:hover,
+.dev-text-toolbar button:focus-visible {
+    background: color-mix(in srgb, var(--md-sys-color-primary) 12%, transparent);
+    outline: none;
+}
+
+.dev-text-toolbar input {
+    width: 140px;
+    height: 28px;
+    padding: 0 6px;
+    border: 1px solid var(--collapse-cardBorderColor);
+    border-radius: 5px;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    font-size: 11px;
+}
+
 /* DEV: add and remove media while inline editing is open */
 body.dev-edit .dev-add-media-row {
     display: flex;
