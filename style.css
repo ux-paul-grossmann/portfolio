@@ -199,13 +199,12 @@ h6 {
     padding-top: 0.4rem;
 }
 
-/* A text block inside a flex-row body (the tool icon rows) takes its own line
-   below the icons instead of sitting beside them; the same holds for the
-   full-width insertion rows. Inline gaps between two icons stay in the row. */
-.project-detail-body.flex-row > .project-detail-text,
-.project-detail-body.flex-row > .dev-insert-point:not(.dev-insert-point-inline) {
-    flex: 0 0 100%;
-    width: 100%;
+/* The icon tray holds only media; text and lists render as full-width
+   siblings beside it, so inserted text never inherits the tray inset. */
+.dev-tray > .dev-insert-point-inline {
+    flex: 0 0 auto;
+    align-items: center;
+    margin: 0 2px;
 }
 
 article h1,
@@ -1596,7 +1595,8 @@ html[data-type-scale="proposed"] #ci-profilbild-caption-main {
     object-fit: contain;
 }
 
-.project-detail-body.d-flex.flex-row.align-items-center.flex-wrap.mb-5 {
+.project-detail-body.d-flex.flex-row.align-items-center.flex-wrap.mb-5,
+.dev-tray {
     background: var(--designed-mit-BG);
     padding: 10px 10px 10px 15px;
     margin-top: 8px;
@@ -4558,6 +4558,11 @@ body.dev-edit .dev-section-tools > button {
     font-size: 14px;
     line-height: 1;
     cursor: pointer;
+    transition: opacity 120ms ease, color 120ms ease, border-color 120ms ease, scale 100ms ease-out;
+}
+
+body.dev-edit .dev-section-tools > button:active {
+    scale: 0.96;
 }
 
 body.dev-edit .dev-section-tools > .dev-reorder-handle {
@@ -4737,13 +4742,22 @@ body.dev-edit .dev-add-media {
 }
 
 /* DEV: insertion points. One [+] per gap; clicking it offers the elements
-   that fit there. The menu is the choice, the gap is the slot. */
+   that fit there. The menu is the choice, the gap is the slot. Rows grow and
+   shrink with the mode transition instead of popping the layout. */
 body.dev-edit .dev-insert-point {
+    display: grid;
+    grid-template-rows: 1fr;
+    position: relative;
+    margin: 4px 0;
+    transition: grid-template-rows 200ms ease-out, opacity 160ms ease;
+}
+
+body.dev-edit .dev-insert-inner {
+    min-height: 0;
+    overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    gap: 8px;
-    margin: 4px 0;
 }
 
 body.dev-edit .dev-insert-point-button {
@@ -4751,8 +4765,8 @@ body.dev-edit .dev-insert-point-button {
     align-items: center;
     justify-content: center;
     flex: 0 0 auto;
-    width: 34px;
-    height: 30px;
+    width: 32px;
+    height: 32px;
     padding: 0;
     border: 1px dashed var(--collapse-cardBorderColor);
     border-radius: 8px;
@@ -4760,7 +4774,11 @@ body.dev-edit .dev-insert-point-button {
     color: var(--collapse-cardFG);
     opacity: 0.65;
     cursor: pointer;
-    transition: opacity 120ms ease;
+    transition: opacity 120ms ease, color 120ms ease, border-color 120ms ease, scale 100ms ease-out;
+}
+
+body.dev-edit .dev-insert-point-button:active {
+    scale: 0.96;
 }
 
 body.dev-edit .dev-insert-point-button svg {
@@ -4779,10 +4797,23 @@ body.dev-edit .dev-insert-point-button:focus-visible {
 }
 
 body.dev-edit .dev-insert-menu {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 30;
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     align-items: center;
-    gap: 6px;
+    gap: 8px;
+    max-width: min(320px, 80vw);
+    min-width: max-content;
+    padding: 8px;
+    border: 1px solid var(--collapse-cardBorderColor);
+    border-radius: 10px;
+    background: var(--collapse-cardBG);
+    box-shadow: 0 8px 24px rgb(0 0 0 / 0.3);
 }
 
 body.dev-edit .dev-insert-menu[hidden] {
@@ -4792,15 +4823,20 @@ body.dev-edit .dev-insert-menu[hidden] {
 body.dev-edit .dev-insert-choice {
     display: inline-flex;
     align-items: center;
-    padding: 4px 10px;
+    padding: 4px 8px;
     border: 1px solid var(--collapse-cardBorderColor);
     border-radius: 6px;
-    background: var(--collapse-cardBG);
+    background: transparent;
     color: var(--collapse-cardFG);
     font: inherit;
     font-size: 11px;
     font-weight: 600;
     cursor: pointer;
+    transition: opacity 120ms ease, color 120ms ease, border-color 120ms ease, scale 100ms ease-out;
+}
+
+body.dev-edit .dev-insert-choice:active {
+    scale: 0.96;
 }
 
 body.dev-edit .dev-insert-choice:hover,
@@ -4812,13 +4848,6 @@ body.dev-edit .dev-insert-choice:focus-visible {
 
 body.dev-edit .dev-insert-menu .dev-icon-grid {
     flex: 1 1 100%;
-}
-
-/* Inline gaps sit between two icons in a flex row instead of breaking it. */
-body.dev-edit .project-detail-body.flex-row > .dev-insert-point-inline {
-    flex: 0 0 auto;
-    align-items: center;
-    margin: 0 2px;
 }
 
 body.dev-edit .dev-insert-point-inline .dev-insert-point-button {
@@ -4836,7 +4865,8 @@ body.dev-edit .dev-insert-point-inline .dev-insert-point-button svg {
    in-page chrome eases in on creation and out on close. The entering class is
    short-lived so re-renders, which rebuild the same nodes, never replay it.
    The leaving class holds the layout while fading the chrome, and the delayed
-   DOM cleanup removes it. */
+   DOM cleanup removes it. Insertion rows grow and shrink instead of popping:
+   the row is the transition, the menu floats above it. */
 @keyframes devChromeIn {
     from {
         opacity: 0;
@@ -4848,15 +4878,33 @@ body.dev-edit .dev-insert-point-inline .dev-insert-point-button svg {
     }
 }
 
+@keyframes devRowGrow {
+    from {
+        grid-template-rows: 0fr;
+        opacity: 0;
+    }
+    to {
+        grid-template-rows: 1fr;
+        opacity: 1;
+    }
+}
+
 body.dev-edit-entering .dev-section-tools,
-body.dev-edit-entering .dev-insert-point,
 body.dev-edit-entering .dev-media-control {
     animation: devChromeIn 200ms ease-out backwards;
 }
 
+body.dev-edit-entering .dev-insert-point {
+    animation: devRowGrow 200ms ease-out backwards;
+}
+
 body.dev-edit-leaving .dev-section-tools,
-body.dev-edit-leaving .dev-insert-point-button,
 body.dev-edit-leaving .dev-media-control {
+    opacity: 0 !important;
+}
+
+body.dev-edit-leaving .dev-insert-point {
+    grid-template-rows: 0fr;
     opacity: 0 !important;
 }
 
@@ -4867,7 +4915,7 @@ body.dev-edit-leaving .dev-media-control {
         animation: none;
     }
     body.dev-edit-leaving .dev-section-tools,
-    body.dev-edit-leaving .dev-insert-point-button,
+    body.dev-edit-leaving .dev-insert-point,
     body.dev-edit-leaving .dev-media-control {
         transition: none;
     }
@@ -4926,7 +4974,7 @@ body.dev-edit .dev-icon-picker[hidden] {
 body.dev-edit .dev-icon-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
-    gap: 6px;
+    gap: 8px;
 }
 
 body.dev-edit .dev-icon-choice {
@@ -5042,7 +5090,11 @@ body.dev-edit .dev-media-control {
     cursor: pointer;
     pointer-events: auto;
     box-shadow: 0 1px 4px rgb(0 0 0 / 0.35);
-    transition: opacity 160ms ease;
+    transition: opacity 150ms ease, scale 100ms ease-out;
+}
+
+body.dev-edit .dev-media-control:active {
+    scale: 0.96;
 }
 
 body.dev-edit .dev-media-control.dev-media-x {
@@ -5068,10 +5120,18 @@ body.dev-edit .dev-media-control[disabled]:focus-visible {
     outline: none;
 }
 
-/* Icons are small: their remove control appears while the icon is hovered
-   instead of covering the artwork all the time. */
-body.dev-edit .dev-media-control.dev-media-control-icon {
+/* Per-item controls appear on hover or focus of their target, so they never
+   sit permanently on top of the artwork. */
+body.dev-edit .dev-media-control.dev-hover-only {
     display: none;
+}
+
+body.dev-edit .dev-media-control.dev-hover-only.is-visible {
+    display: inline-flex;
+}
+
+/* Icons are small: their remove control parks above the artwork. */
+body.dev-edit .dev-media-control.dev-media-control-icon {
     width: 18px;
     height: 18px;
 }
@@ -5079,10 +5139,6 @@ body.dev-edit .dev-media-control.dev-media-control-icon {
 body.dev-edit .dev-media-control.dev-media-control-icon svg {
     width: 8px;
     height: 8px;
-}
-
-body.dev-edit .dev-media-control.dev-media-control-icon.is-visible {
-    display: inline-flex;
 }
 
 body.dev-edit .dev-media-control[data-slot="drag"] {
