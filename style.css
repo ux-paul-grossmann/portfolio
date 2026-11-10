@@ -199,6 +199,14 @@ h6 {
     padding-top: 0.4rem;
 }
 
+/* A text block inside a flex-row body (the tool icon rows) takes its own line
+   below the icons instead of sitting beside them. */
+.project-detail-body.flex-row > .project-detail-text,
+.project-detail-body.flex-row > .dev-text-placeholder {
+    flex: 0 0 100%;
+    width: 100%;
+}
+
 article h1,
 article h2,
 article h3,
@@ -4738,6 +4746,79 @@ body.dev-edit .dev-add-section:focus-visible {
     color: var(--md-sys-color-primary);
     opacity: 1;
     outline: none;
+}
+
+/* Image and icon share one row; only the section button spans the full width. */
+body.dev-edit .dev-add-media {
+    flex: 1 1 0;
+    width: auto;
+}
+
+body.dev-edit .dev-text-placeholder {
+    min-height: 44px;
+    margin-top: 12px;
+    padding: 12px 0 6px;
+    border-radius: 6px;
+    outline: 1px dashed var(--collapse-cardBorderColor);
+    outline-offset: 4px;
+    color: var(--collapse-cardFG);
+    font-size: 11px;
+    opacity: 0.55;
+    cursor: text;
+}
+
+body.dev-edit .dev-text-placeholder:hover,
+body.dev-edit .dev-text-placeholder:focus-visible {
+    outline-color: var(--md-sys-color-primary);
+    color: var(--md-sys-color-primary);
+    opacity: 1;
+}
+
+body.dev-edit .dev-icon-picker {
+    display: grid;
+    gap: 8px;
+    width: 100%;
+    margin-top: 8px;
+    padding: 10px;
+    border: 1px solid var(--collapse-cardBorderColor);
+    border-radius: 8px;
+    background: var(--collapse-cardBG);
+}
+
+body.dev-edit .dev-icon-picker[hidden] {
+    display: none;
+}
+
+body.dev-edit .dev-icon-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
+    gap: 6px;
+}
+
+body.dev-edit .dev-icon-choice {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    background: transparent;
+    cursor: pointer;
+}
+
+body.dev-edit .dev-icon-choice:hover,
+body.dev-edit .dev-icon-choice:focus-visible {
+    border-color: var(--md-sys-color-primary);
+    background: color-mix(in srgb, var(--md-sys-color-primary) 10%, transparent);
+    outline: none;
+}
+
+body.dev-edit .dev-icon-choice img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
 }
 
 body.dev-edit .dev-add-media:disabled {
