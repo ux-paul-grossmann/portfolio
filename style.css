@@ -201,9 +201,9 @@ h6 {
 
 /* A text block inside a flex-row body (the tool icon rows) takes its own line
    below the icons instead of sitting beside them; the same holds for the
-   insertion rows. */
+   full-width insertion rows. Inline gaps between two icons stay in the row. */
 .project-detail-body.flex-row > .project-detail-text,
-.project-detail-body.flex-row > .dev-insert-point {
+.project-detail-body.flex-row > .dev-insert-point:not(.dev-insert-point-inline) {
     flex: 0 0 100%;
     width: 100%;
 }
@@ -4582,8 +4582,13 @@ body.dev-edit .dev-section-tools > .dev-section-remove:focus-visible {
     color: var(--md-sys-color-error);
 }
 
-body.dev-edit .dev-section-tools > .dev-section-remove svg {
+body.dev-edit .dev-section-tools > button svg {
     display: block;
+    width: 14px;
+    height: 14px;
+}
+
+body.dev-edit .dev-section-tools > .dev-section-remove svg {
     width: 10px;
     height: 10px;
 }
@@ -4656,6 +4661,12 @@ body.dev-edit .dev-section-tools > .dev-section-remove svg {
     cursor: pointer;
 }
 
+.dev-text-toolbar button svg {
+    display: block;
+    width: 14px;
+    height: 14px;
+}
+
 .dev-text-toolbar button:hover,
 .dev-text-toolbar button:focus-visible {
     background: color-mix(in srgb, var(--md-sys-color-primary) 12%, transparent);
@@ -4725,29 +4736,36 @@ body.dev-edit .dev-add-media {
     width: auto;
 }
 
-/* DEV: insertion points for a text block. A thin row between blocks; the "+"
-   puts the block into exactly that slot. */
+/* DEV: insertion points. One [+] per gap; clicking it offers the elements
+   that fit there. The menu is the choice, the gap is the slot. */
 body.dev-edit .dev-insert-point {
     display: flex;
-    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 8px;
     margin: 2px 0;
 }
 
 body.dev-edit .dev-insert-point-button {
     display: inline-flex;
     align-items: center;
-    gap: 4px;
-    padding: 2px 8px;
-    border: 1px dashed transparent;
+    justify-content: center;
+    flex: 0 0 auto;
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    border: 1px dashed var(--collapse-cardBorderColor);
     border-radius: 6px;
     background: transparent;
     color: var(--collapse-cardFG);
-    font: inherit;
-    font-size: 10px;
-    font-weight: 600;
     opacity: 0;
     cursor: pointer;
     transition: opacity 120ms ease;
+}
+
+body.dev-edit .dev-insert-point-button svg {
+    display: block;
+    width: 12px;
+    height: 12px;
 }
 
 body.dev-edit .project-detail:hover .dev-insert-point-button,
@@ -4761,6 +4779,49 @@ body.dev-edit .dev-insert-point-button:focus-visible {
     color: var(--md-sys-color-primary);
     opacity: 1;
     outline: none;
+}
+
+body.dev-edit .dev-insert-menu {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+}
+
+body.dev-edit .dev-insert-menu[hidden] {
+    display: none;
+}
+
+body.dev-edit .dev-insert-choice {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 10px;
+    border: 1px solid var(--collapse-cardBorderColor);
+    border-radius: 6px;
+    background: var(--collapse-cardBG);
+    color: var(--collapse-cardFG);
+    font: inherit;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+body.dev-edit .dev-insert-choice:hover,
+body.dev-edit .dev-insert-choice:focus-visible {
+    border-color: var(--md-sys-color-primary);
+    color: var(--md-sys-color-primary);
+    outline: none;
+}
+
+body.dev-edit .dev-insert-menu .dev-icon-grid {
+    flex: 1 1 100%;
+}
+
+/* Inline gaps sit between two icons in a flex row instead of breaking it. */
+body.dev-edit .project-detail-body.flex-row > .dev-insert-point-inline {
+    flex: 0 0 auto;
+    align-items: center;
+    margin: 0 2px;
 }
 
 /* DEV: per-block remove control; appears on hover of the block it removes. */
@@ -4992,7 +5053,10 @@ body.dev-edit .dev-media-control svg {
 body.dev-edit .dev-media-control[data-slot="top"] svg,
 body.dev-edit .dev-media-control[data-slot="up"] svg,
 body.dev-edit .dev-media-control[data-slot="down"] svg,
-body.dev-edit .dev-media-control[data-slot="bottom"] svg {
+body.dev-edit .dev-media-control[data-slot="bottom"] svg,
+body.dev-edit .dev-media-control[data-slot="drag"] svg,
+body.dev-edit .dev-media-control[data-slot="move"] svg,
+body.dev-edit .dev-media-control[data-slot="edit"] svg {
     width: 12px;
     height: 12px;
 }
@@ -5674,8 +5738,6 @@ body.dev-toggle-drag #devPresetToggle {
        so it carries the header instead of sitting as a speck. */
     width: 32px;
     height: 32px;
-    font-size: 32px;
-    line-height: 1;
     margin-right: 6px;
     border-radius: 6px;
     color: var(--collapse-card-titleFG);
@@ -5683,6 +5745,12 @@ body.dev-toggle-drag #devPresetToggle {
     cursor: grab;
     touch-action: none;
     user-select: none;
+}
+
+:is(#devCtaPanel, #devStripsPanel) .dev-cta-grip svg {
+    display: block;
+    width: 18px;
+    height: 18px;
 }
 
 :is(#devCtaPanel, #devStripsPanel) .dev-cta-grip:hover {
