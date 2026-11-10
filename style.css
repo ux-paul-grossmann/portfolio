@@ -5120,17 +5120,7 @@ body.dev-edit .dev-media-control[disabled]:focus-visible {
     outline: none;
 }
 
-/* Per-item controls appear on hover or focus of their target, so they never
-   sit permanently on top of the artwork. */
-body.dev-edit .dev-media-control.dev-hover-only {
-    display: none;
-}
-
-body.dev-edit .dev-media-control.dev-hover-only.is-visible {
-    display: inline-flex;
-}
-
-/* Icons are small: their remove control parks above the artwork. */
+/* Small artwork keeps its surface clear: the remove control parks above it. */
 body.dev-edit .dev-media-control.dev-media-control-icon {
     width: 18px;
     height: 18px;
