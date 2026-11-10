@@ -5072,6 +5072,13 @@ body.dev-edit .dev-media-overlay {
     pointer-events: none;
 }
 
+/* Floating gutter layer: controls sit outside the card, never over content. */
+body.dev-edit .dev-media-overlay-floating {
+    position: fixed;
+    inset: 0;
+    z-index: 1100;
+}
+
 body.dev-edit .dev-media-control {
     position: absolute;
     width: 24px;
@@ -6725,14 +6732,10 @@ body.kontext-game-on #devPresetToggle {
     opacity: 0.7;
 }
 
-body.dev-edit [contenteditable="true"] {
-    outline: 1px dashed var(--md-sys-color-primary);
+body.dev-edit [contenteditable="true"]:focus {
+    outline: 1px solid var(--md-sys-color-primary);
     outline-offset: 2px;
     border-radius: 3px;
-}
-
-body.dev-edit [contenteditable="true"]:focus {
-    outline-style: solid;
 }
 
 
@@ -8194,4 +8197,12 @@ html.no-lens nav.navbar.fixed-bottom .navbar-toggler {
     cursor: default;
     background: transparent;
     color: inherit;
+}
+
+/* DEV: the selected block is the only thing marked in the content column.
+   Its actions live in the control card, never on top of the text. */
+body.dev-edit .is-node-selected {
+    outline: 1px solid var(--md-sys-color-primary);
+    outline-offset: 4px;
+    border-radius: 4px;
 }
