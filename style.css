@@ -4526,15 +4526,9 @@ body.dev-edit .dev-section-tools {
     top: 0;
     right: 0;
     gap: 6px;
-    opacity: 0;
+    opacity: 1;
     transition: opacity 120ms ease;
     z-index: 5;
-}
-
-body.dev-edit .project-detail:hover > .dev-section-tools,
-body.dev-edit .project-detail:focus-within > .dev-section-tools,
-body.dev-edit .dev-section-tools:focus-within {
-    opacity: 1;
 }
 
 body.dev-edit .project-detail:has(> .dev-section-tools:hover) {
