@@ -4660,8 +4660,10 @@ body.dev-edit .dev-section-tools > .dev-section-remove svg {
     position: fixed;
     z-index: 1216;
     display: inline-flex;
+    flex-wrap: wrap;
     align-items: center;
     gap: 4px;
+    max-width: calc(100vw - 16px);
     padding: 4px;
     border: 1px solid var(--collapse-cardBorderColor);
     border-radius: 8px;
