@@ -4509,49 +4509,81 @@ body.has-portrait-border #ci-profilbild #ci-picture-wrapper img {
     border: 1px solid rgb(255 255 255 / 0.16);
 }
 
-/* DEV: section controls, active while inline editing is open. The cluster sits
-   on the title line at the right edge, and hovering it outlines the section it
-   acts on. */
+/* DEV: editor chrome. Controls sit at the top-right corner of the element they
+   act on, inside the section's own chrome layer. The editor measures and sets
+   left/top. */
 body.dev-edit .project-detail {
     position: relative;
 }
 
-.dev-section-tools {
-    display: none;
+/* One chrome layer per section. It is absolute inside the section, so every
+   control is placed in section-local coordinates — no transformed ancestor can
+   shift it, and nothing is positioned outside the card. */
+body.dev-edit .dev-section-chrome {
+    position: absolute;
+    inset: 0;
+    z-index: 6;
+    pointer-events: none;
+}
+
+body.dev-edit .dev-section-chrome > * {
+    pointer-events: none;
+}
+
+body.dev-edit .dev-section-chrome button {
+    pointer-events: auto;
+}
+
+body.dev-edit .dev-rail-target {
+    outline: 2px solid var(--md-sys-color-primary);
+    outline-offset: 3px;
+    border-radius: 6px;
+}
+
+/* The section's own boundary stays visible while editing, so the structure of
+   the card reads as editable instead of looking like finished copy. */
+body.dev-edit .project-detail[data-section]::before {
+    content: "";
+    position: absolute;
+    inset: -10px;
+    border: 1px dashed var(--md-sys-color-primary);
+    border-radius: 10px;
+    opacity: 0.25;
+    pointer-events: none;
+    transition: opacity 120ms ease;
+}
+
+body.dev-edit .project-detail[data-section].dev-section-focus::before {
+    opacity: 1;
 }
 
 body.dev-edit .dev-section-tools {
-    display: flex;
+    display: block;
     position: absolute;
     top: 0;
-    right: 0;
-    gap: 6px;
+    left: 0;
+    width: 0;
+    height: 0;
     opacity: 1;
-    transition: opacity 120ms ease;
-    z-index: 5;
-}
-
-body.dev-edit .project-detail:has(> .dev-section-tools:hover) {
-    outline: 1px dashed var(--md-sys-color-primary);
-    outline-offset: 6px;
-    border-radius: 6px;
 }
 
 body.dev-edit .dev-section-tools > button {
     display: inline-flex;
+    position: absolute;
     align-items: center;
     justify-content: center;
-    width: 28px;
-    height: 28px;
+    width: 24px;
+    height: 24px;
     padding: 0;
-    border: 1px dashed var(--collapse-cardBorderColor);
-    border-radius: 7px;
+    border: 1px solid var(--collapse-cardBorderColor);
+    border-radius: 50%;
     background: var(--collapse-cardBG);
     color: var(--collapse-card-titleFG);
     font: inherit;
     font-size: 14px;
     line-height: 1;
     cursor: pointer;
+    box-shadow: 0 1px 4px rgb(0 0 0 / 0.35);
     transition: opacity 120ms ease, color 120ms ease, border-color 120ms ease, scale 100ms ease-out;
 }
 
@@ -4575,16 +4607,10 @@ body.dev-edit .dev-section-tools > button:focus-visible {
     outline: none;
 }
 
-body.dev-edit .dev-section-tools > .dev-section-remove:hover,
-body.dev-edit .dev-section-tools > .dev-section-remove:focus-visible {
-    border-color: var(--md-sys-color-error);
-    color: var(--md-sys-color-error);
-}
-
 body.dev-edit .dev-section-tools > button svg {
     display: block;
-    width: 14px;
-    height: 14px;
+    width: 11px;
+    height: 11px;
 }
 
 body.dev-edit .dev-section-tools > .dev-section-remove svg {
@@ -4738,6 +4764,7 @@ body.dev-edit .dev-add-media {
 /* DEV: insertion points. One [+] per gap; clicking it offers the elements
    that fit there. The menu is the choice, the gap is the slot. Rows grow and
    shrink with the mode transition instead of popping the layout. */
+/* The gaps are part of the editing surface: always visible, never hidden. */
 body.dev-edit .dev-insert-point {
     display: grid;
     grid-template-rows: 1fr;
@@ -4748,10 +4775,15 @@ body.dev-edit .dev-insert-point {
 
 body.dev-edit .dev-insert-inner {
     min-height: 0;
-    overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: flex-start;
+}
+
+body.dev-edit .dev-tray > .dev-insert-point-inline {
+    width: 32px;
+    margin: 0 2px;
+    flex: 0 0 auto;
 }
 
 body.dev-edit .dev-insert-point-button {
@@ -4875,11 +4907,9 @@ body.dev-edit .dev-insert-point-inline .dev-insert-point-button svg {
 @keyframes devRowGrow {
     from {
         grid-template-rows: 0fr;
-        opacity: 0;
     }
     to {
         grid-template-rows: 1fr;
-        opacity: 1;
     }
 }
 
@@ -4918,7 +4948,7 @@ body.dev-edit-leaving .dev-insert-point {
 /* DEV: per-block remove control; appears on hover of the block it removes. */
 body.dev-edit .dev-block-remove {
     position: absolute;
-    right: 0;
+    right: auto;
     width: 24px;
     height: 24px;
     padding: 0;
@@ -4945,8 +4975,8 @@ body.dev-edit .dev-block-remove svg {
 
 body.dev-edit .dev-block-remove:hover,
 body.dev-edit .dev-block-remove:focus-visible {
-    border-color: var(--md-sys-color-error);
-    color: var(--md-sys-color-error);
+    border-color: var(--md-sys-color-primary);
+    color: var(--md-sys-color-primary);
     outline: none;
 }
 
@@ -5066,13 +5096,6 @@ body.dev-edit .dev-media-overlay {
     pointer-events: none;
 }
 
-/* Floating gutter layer: controls sit outside the card, never over content. */
-body.dev-edit .dev-media-overlay-floating {
-    position: fixed;
-    inset: 0;
-    z-index: 1100;
-}
-
 body.dev-edit .dev-media-control {
     position: absolute;
     width: 24px;
@@ -5096,13 +5119,6 @@ body.dev-edit .dev-media-control {
 
 body.dev-edit .dev-media-control:active {
     scale: 0.96;
-}
-
-body.dev-edit .dev-media-control.dev-media-x {
-    border: 1px solid rgb(255 255 255 / 0.7);
-    background: var(--dev-remove-bg, var(--md-sys-color-error));
-    color: #fff;
-    font-size: 14px;
 }
 
 body.dev-edit .dev-media-control:hover,
@@ -5174,8 +5190,8 @@ body.dev-edit .dev-frag-button:focus-visible {
 
 body.dev-edit .dev-frag-remove:hover,
 body.dev-edit .dev-frag-remove:focus-visible {
-    border-color: var(--md-sys-color-error);
-    color: var(--md-sys-color-error);
+    border-color: var(--md-sys-color-primary);
+    color: var(--md-sys-color-primary);
 }
 
 /* Small artwork keeps its surface clear: the remove control parks above it. */
