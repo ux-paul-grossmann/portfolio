@@ -4540,6 +4540,14 @@ body.dev-edit .dev-rail-target {
     border-radius: 6px;
 }
 
+/* Hovering a remove control marks its element in the error tone, including
+   the focus outline a text block already carries. */
+body.dev-edit .dev-rail-danger {
+    outline: 1px solid var(--md-sys-color-error) !important;
+    outline-offset: 2px;
+    border-radius: 3px;
+}
+
 /* The section's own boundary stays visible while editing, so the structure of
    the card reads as editable instead of looking like finished copy. */
 body.dev-edit .project-detail[data-section]::before {
@@ -4554,6 +4562,14 @@ body.dev-edit .project-detail[data-section]::before {
 }
 
 body.dev-edit .project-detail[data-section].dev-section-focus::before {
+    opacity: 1;
+}
+
+/* Pointing at a destructive control marks the whole target in the error tone,
+   so the section about to be removed is unmistakable. */
+body.dev-edit .project-detail:has(.dev-section-remove:hover)::before,
+body.dev-edit .project-detail:has(.dev-section-remove:focus-visible)::before {
+    border-color: var(--md-sys-color-error);
     opacity: 1;
 }
 
@@ -4618,8 +4634,8 @@ body.dev-edit .dev-section-tools > .dev-section-remove svg {
     height: 10px;
 }
 
-/* Destructive controls hint in the error tone on the icon and its border. The
-   surface stays neutral, and the section's own dashed outline never turns red. */
+/* Destructive controls stay neutral at rest and hint in the error tone while
+   the pointer or the keyboard is on them. */
 body.dev-edit .dev-section-tools > .dev-section-remove:hover,
 body.dev-edit .dev-section-tools > .dev-section-remove:focus-visible,
 body.dev-edit .dev-block-remove:hover,
@@ -4629,8 +4645,8 @@ body.dev-edit .dev-media-control.dev-media-x:focus-visible,
 body.dev-edit .dev-frag-remove:hover,
 body.dev-edit .dev-frag-remove:focus-visible {
     border-color: var(--md-sys-color-error);
-    background: var(--collapse-cardBG);
     color: var(--md-sys-color-error);
+    background: color-mix(in srgb, var(--md-sys-color-error) 14%, var(--collapse-cardBG));
     outline: none;
 }
 
@@ -6193,8 +6209,7 @@ body.kontext-game-on #devPresetToggle {
     width: 16px;
     height: 16px;
     padding: 0;
-    border: 1px solid transparent;
-    box-sizing: border-box;
+    border: 0;
     border-radius: 50%;
     background: transparent;
     color: inherit;
@@ -6207,7 +6222,7 @@ body.kontext-game-on #devPresetToggle {
 
 .dev-tag-remove:hover,
 .dev-tag-remove:focus-visible {
-    border-color: var(--md-sys-color-error);
+    background: color-mix(in srgb, var(--md-sys-color-error) 24%, transparent);
     color: var(--md-sys-color-error);
     opacity: 1;
     outline: none;
