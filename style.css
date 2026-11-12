@@ -4618,6 +4618,22 @@ body.dev-edit .dev-section-tools > .dev-section-remove svg {
     height: 10px;
 }
 
+/* Destructive controls stay neutral at rest and hint in the error tone while
+   the pointer or the keyboard is on them. */
+body.dev-edit .dev-section-tools > .dev-section-remove:hover,
+body.dev-edit .dev-section-tools > .dev-section-remove:focus-visible,
+body.dev-edit .dev-block-remove:hover,
+body.dev-edit .dev-block-remove:focus-visible,
+body.dev-edit .dev-media-control.dev-media-x:hover,
+body.dev-edit .dev-media-control.dev-media-x:focus-visible,
+body.dev-edit .dev-frag-remove:hover,
+body.dev-edit .dev-frag-remove:focus-visible {
+    border-color: var(--md-sys-color-error);
+    color: var(--md-sys-color-error);
+    background: color-mix(in srgb, var(--md-sys-color-error) 14%, var(--collapse-cardBG));
+    outline: none;
+}
+
 .dev-block-list {
     display: flex;
     flex-direction: column;
@@ -4992,12 +5008,7 @@ body.dev-edit .dev-block-remove svg {
     height: 10px;
 }
 
-body.dev-edit .dev-block-remove:hover,
-body.dev-edit .dev-block-remove:focus-visible {
-    border-color: var(--md-sys-color-primary);
-    color: var(--md-sys-color-primary);
-    outline: none;
-}
+
 
 body.dev-edit .dev-icon-picker {
     display: grid;
@@ -5207,11 +5218,7 @@ body.dev-edit .dev-frag-button:focus-visible {
     outline: none;
 }
 
-body.dev-edit .dev-frag-remove:hover,
-body.dev-edit .dev-frag-remove:focus-visible {
-    border-color: var(--md-sys-color-primary);
-    color: var(--md-sys-color-primary);
-}
+
 
 /* Small artwork keeps its surface clear: the remove control parks above it. */
 body.dev-edit .dev-media-control.dev-media-control-icon {
@@ -6199,7 +6206,8 @@ body.kontext-game-on #devPresetToggle {
 
 .dev-tag-remove:hover,
 .dev-tag-remove:focus-visible {
-    background: color-mix(in srgb, var(--md-sys-color-primary) 20%, transparent);
+    background: color-mix(in srgb, var(--md-sys-color-error) 24%, transparent);
+    color: var(--md-sys-color-error);
     opacity: 1;
     outline: none;
 }
