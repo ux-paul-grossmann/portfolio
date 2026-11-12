@@ -4618,8 +4618,8 @@ body.dev-edit .dev-section-tools > .dev-section-remove svg {
     height: 10px;
 }
 
-/* Destructive controls hint in the error tone on the icon only; the control's
-   surface and its outline stay neutral, so the box never reads as the danger. */
+/* Destructive controls hint in the error tone on the icon and its border. The
+   surface stays neutral, and the section's own dashed outline never turns red. */
 body.dev-edit .dev-section-tools > .dev-section-remove:hover,
 body.dev-edit .dev-section-tools > .dev-section-remove:focus-visible,
 body.dev-edit .dev-block-remove:hover,
@@ -4628,7 +4628,7 @@ body.dev-edit .dev-media-control.dev-media-x:hover,
 body.dev-edit .dev-media-control.dev-media-x:focus-visible,
 body.dev-edit .dev-frag-remove:hover,
 body.dev-edit .dev-frag-remove:focus-visible {
-    border-color: var(--collapse-cardBorderColor);
+    border-color: var(--md-sys-color-error);
     background: var(--collapse-cardBG);
     color: var(--md-sys-color-error);
     outline: none;
@@ -6193,7 +6193,8 @@ body.kontext-game-on #devPresetToggle {
     width: 16px;
     height: 16px;
     padding: 0;
-    border: 0;
+    border: 1px solid transparent;
+    box-sizing: border-box;
     border-radius: 50%;
     background: transparent;
     color: inherit;
@@ -6206,6 +6207,7 @@ body.kontext-game-on #devPresetToggle {
 
 .dev-tag-remove:hover,
 .dev-tag-remove:focus-visible {
+    border-color: var(--md-sys-color-error);
     color: var(--md-sys-color-error);
     opacity: 1;
     outline: none;
