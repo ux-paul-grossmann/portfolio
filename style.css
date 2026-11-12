@@ -4766,13 +4766,30 @@ body.dev-edit .dev-add-media {
 /* DEV: insertion points. One [+] per gap; clicking it offers the elements
    that fit there. The menu is the choice, the gap is the slot. Rows grow and
    shrink with the mode transition instead of popping the layout. */
-/* The gaps are part of the editing surface: always visible, never hidden. */
+/* The gaps keep their space, so nothing jumps, but the button only shows
+   while the section is hovered or a gap holds focus. */
 body.dev-edit .dev-insert-point {
     display: grid;
     grid-template-rows: 1fr;
     position: relative;
     margin: 4px 0;
+    opacity: 0;
     transition: grid-template-rows 200ms ease-out, opacity 160ms ease;
+}
+
+body.dev-edit .project-detail:hover .dev-insert-point,
+body.dev-edit .dev-insert-point:focus-within,
+body.dev-edit .dev-insert-point:has(.dev-insert-menu:not([hidden])) {
+    opacity: 1;
+}
+
+/* Before a block: left. After the last block: right. */
+body.dev-edit .dev-insert-point.dev-insert-before .dev-insert-inner {
+    justify-content: flex-start;
+}
+
+body.dev-edit .dev-insert-point.dev-insert-after .dev-insert-inner {
+    justify-content: flex-end;
 }
 
 body.dev-edit .dev-insert-inner {
