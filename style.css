@@ -4509,6 +4509,64 @@ body.has-portrait-border #ci-profilbild #ci-picture-wrapper img {
     border: 1px solid rgb(255 255 255 / 0.16);
 }
 
+/* Numbered section headlines inside an expanded card. Numbers come from the
+   document order, so reordering sections keeps them correct. */
+#projekte .multi-collapse article {
+    counter-reset: card-section;
+}
+
+#projekte .project-detail {
+    counter-increment: card-section;
+}
+
+#projekte .project-detail > h3::before {
+    content: counter(card-section, decimal-leading-zero);
+    margin-right: 12px;
+    color: var(--md-sys-color-primary);
+    font-variant-numeric: tabular-nums;
+}
+
+/* Floating section index beside an open card, same language as the
+   styleguide's index: uppercase labels, primary when current. */
+.card-index {
+    position: fixed;
+    z-index: 1090;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 0;
+    pointer-events: none;
+}
+
+.card-index a {
+    pointer-events: auto;
+    display: grid;
+    grid-template-columns: 22px minmax(0, 1fr);
+    gap: 8px;
+    color: var(--md-sys-color-on-surface-variant);
+    text-decoration: none;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.card-index .ci-num {
+    font-variant-numeric: tabular-nums;
+}
+
+.card-index a:hover,
+.card-index a:focus-visible {
+    background: transparent;
+    color: var(--md-sys-color-primary);
+    text-decoration: none;
+    outline: none;
+}
+
+.card-index a.is-current {
+    color: var(--md-sys-color-primary);
+    font-weight: 600;
+}
+
 /* DEV: editor chrome. Controls sit at the top-right corner of the element they
    act on, inside the section's own chrome layer. The editor measures and sets
    left/top. */
@@ -4550,6 +4608,15 @@ body.dev-edit .dev-rail-danger {
 
 /* The section's own boundary stays visible while editing, so the structure of
    the card reads as editable instead of looking like finished copy. */
+/* Narrow cards have no gutter between content and card edge, so editing
+   reserves a strip on the right; the section controls sit in it instead of on
+   the title's last glyphs. */
+@media (max-width: 575.98px) {
+    body.dev-edit .project-detail {
+        padding-right: 32px;
+    }
+}
+
 body.dev-edit .project-detail[data-section]::before {
     content: "";
     position: absolute;
