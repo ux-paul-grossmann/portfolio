@@ -4526,16 +4526,22 @@ body.has-portrait-border #ci-profilbild #ci-picture-wrapper img {
     font-variant-numeric: tabular-nums;
 }
 
-/* Floating section index beside an open card, same language as the
-   styleguide's index: uppercase labels, primary when current. */
-.card-index {
-    position: fixed;
+/* Section index beside an open card. The rail spans the card's height in
+   document coordinates and the column inside it is sticky, so sticking is done
+   by the browser instead of a scroll handler. */
+.card-index-rail {
+    position: absolute;
     z-index: 1090;
+    pointer-events: none;
+}
+
+.card-index {
+    position: sticky;
+    top: 112px;
     display: flex;
     flex-direction: column;
     gap: 10px;
     padding: 0;
-    pointer-events: none;
 }
 
 .card-index a {
