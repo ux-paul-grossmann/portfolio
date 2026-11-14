@@ -4537,7 +4537,7 @@ body.has-portrait-border #ci-profilbild #ci-picture-wrapper img {
 
 .card-index {
     position: sticky;
-    top: 112px;
+    top: var(--ci-top, 112px);
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -4558,6 +4558,19 @@ body.has-portrait-border #ci-profilbild #ci-picture-wrapper img {
 
 .card-index .ci-num {
     font-variant-numeric: tabular-nums;
+}
+
+/* Panel switches: plain labels, or no index at all. */
+body.ci-no-numbers .card-index a {
+    grid-template-columns: minmax(0, 1fr);
+}
+
+body.ci-no-numbers .card-index .ci-num {
+    display: none;
+}
+
+body.ci-hidden .card-index-rail {
+    display: none;
 }
 
 .card-index a:hover,
