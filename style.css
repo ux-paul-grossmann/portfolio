@@ -4569,8 +4569,13 @@ body.has-portrait-border #ci-profilbild #ci-picture-wrapper img {
 }
 
 /* Panel switches: plain labels, or no index at all. */
+/* The switch governs both sides: the column entries and the card headings. */
 body.ci-no-numbers .card-index a {
     grid-template-columns: minmax(0, 1fr);
+}
+
+body.ci-no-numbers #projekte .project-detail > h3::before {
+    content: none;
 }
 
 body.ci-no-numbers .card-index .ci-num {
