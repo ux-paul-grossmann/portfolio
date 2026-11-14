@@ -4542,6 +4542,10 @@ body.has-portrait-border #ci-profilbild #ci-picture-wrapper img {
     flex-direction: column;
     gap: 10px;
     padding: 0;
+    /* Cards with dozens of sections must not push the column off-screen. */
+    max-height: calc(100vh - var(--ci-top, 112px) - 32px);
+    overflow-y: auto;
+    scrollbar-width: thin;
 }
 
 .card-index a {
@@ -4584,6 +4588,12 @@ body.ci-hidden .card-index-rail {
 .card-index a.is-current {
     color: var(--md-sys-color-primary);
     font-weight: 600;
+}
+
+.card-index a:focus-visible {
+    outline: 1px solid var(--md-sys-color-primary);
+    outline-offset: 2px;
+    border-radius: 2px;
 }
 
 /* DEV: editor chrome. Controls sit at the top-right corner of the element they
