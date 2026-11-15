@@ -89,6 +89,14 @@ img.rounded-lg {
     box-shadow: none !important;
 }
 
+/* Showcase content is not a drag source. The images sit inside anchors, so a
+   native drag ghosts the card or the image and swallows the click that opens
+   the lightbox. */
+#projekte a,
+#projekte img {
+    -webkit-user-drag: none;
+}
+
 ::selection {
     background: var(--selectionBG);
     color: var(--selectionFG);
