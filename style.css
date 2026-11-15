@@ -2620,6 +2620,9 @@ label {
                     inset 1.5px 1.5px 1px -1px rgb(255 255 255 / .7),
                     inset -1.5px -1.5px 1px -1px rgb(255 255 255 / .42),
                     0 12px 36px rgb(0 0 0 / .18);
+        /* Own compositor layer, so the backdrop frost is ready with the first
+           frame instead of popping in after the pill draws. */
+        will-change: backdrop-filter;
     }
 
     html.dark nav.navbar.fixed-bottom .navbar-toggler {
