@@ -8185,14 +8185,7 @@ html.lb-ui-hidden .gslide-description {
     transition: opacity 180ms ease;
 }
 
-/* Phones: the up arrow is obsolete in the fixed bar; the theme toggle
-   keeps its place. The vendored script writes inline display:flex, so the
-   guard needs !important. */
-@media (max-width: 575.98px) {
-    .scrolltop {
-        display: none !important;
-    }
-}
+/* Phones: the up arrow sits above the theme toggle in the fixed bar. */
 
 /* Brand strip: cells are furniture, never a text selection. */
 #brandStrips,
