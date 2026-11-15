@@ -2651,10 +2651,10 @@ label {
         overflow: visible !important;
     }
     nav.navbar.fixed-bottom > .container {
-        width: auto !important;
+        width: 100% !important;
         max-width: 100% !important;
         margin: 0 auto !important;
-        padding: 8px !important;
+        padding: 8px 32px !important;
         background: rgb(255 255 255 / var(--nav-glass-tint, .25)) !important;
         -webkit-backdrop-filter: blur(14px) saturate(1.1) !important;
         backdrop-filter: blur(14px) saturate(1.1) !important;
