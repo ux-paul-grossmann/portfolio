@@ -21,6 +21,21 @@
         if(s==='material'||s==='lightPlus'||s===':root'){localStorage.removeItem(k);s=null;}
         var dark= s==='dark' ? true : s==='light' ? false : window.matchMedia('(prefers-color-scheme: dark)').matches;
         if(dark) document.documentElement.classList.add('dark');
+        // Glass settings before first paint: nav-glass.js applies them later,
+        // and until then the CSS fallbacks (.88 tint in dark) paint a denser
+        // surface that visibly changes once the script runs. The defaults here
+        // mirror nav-glass.js, so a missing key still yields the final value.
+        var glass={tint:['--nav-glass-tint',25,100],blur:['--nav-glass-blur',0.5,1],depth:['--nav-glass-depth',2,1],spectrum:['--nav-glass-spectrum',0.6,1]};
+        Object.keys(glass).forEach(function(key){
+            try{
+                var def=glass[key];
+                var raw=localStorage.getItem('portfolio-glass-'+key);
+                var n=raw===null?def[1]:Number(raw);
+                if(!isFinite(n)) n=def[1];
+                var unit = key==='tint' ? (n/def[2]) : key==='blur' ? n+'px' : String(n);
+                document.documentElement.style.setProperty(def[0], unit);
+            }catch(e){}
+        });
         // body not yet parsed – will be synced on DOMContentLoaded and by helpers.js
         document.addEventListener('DOMContentLoaded',function(){if(dark)document.body.classList.add('dark');});
     }catch(e){}})();
