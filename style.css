@@ -2559,7 +2559,10 @@ label {
         border: 1px solid #BEC8C9 !important;
         box-shadow: #0000000F 0px 1px 3px, #0000000A 0px 1px 2px !important;
         color: #161D1D !important;
-        transition: bottom 0.32s cubic-bezier(0.4,0,0.2,1), transform 0.32s cubic-bezier(0.4,0,0.2,1);
+        /* Only `bottom` transitions in CSS: the entrance tween from
+           scrollToTop.js owns `transform`, and letting CSS interpolate the same
+           property made the move run twice. */
+        transition: bottom 0.32s cubic-bezier(0.4,0,0.2,1);
     }
     .scrolltop {
         top: auto !important;
@@ -2620,6 +2623,11 @@ label {
                     inset 1.5px 1.5px 1px -1px rgb(255 255 255 / .7),
                     inset -1.5px -1.5px 1px -1px rgb(255 255 255 / .42),
                     0 12px 36px rgb(0 0 0 / .18);
+        /* Frost declared here, not only under html.no-lens: that class arrives
+           with nav-glass.js after DOMContentLoaded, so the pill painted bare
+           first and turned frosted a beat later. */
+        -webkit-backdrop-filter: blur(calc(10px + var(--nav-glass-blur, .5px))) saturate(1.35) contrast(1.03);
+        backdrop-filter: blur(calc(10px + var(--nav-glass-blur, .5px))) saturate(1.35) contrast(1.03);
         /* Own compositor layer, so the backdrop frost is ready with the first
            frame instead of popping in after the pill draws. */
         will-change: backdrop-filter;
