@@ -2171,13 +2171,88 @@ label {
    14. LIGHTBOX (GLightbox)
        Medium-style image zoom overlay.
    ============================================================ */
-.glightbox img {
-    transform: scale(1);
-    transition: all 150ms ease-out;
+/* GLightbox caps the slide at 100vw - 160px, which leaves about 25 px between
+   a wide image and the close button — the × then reads as part of the picture.
+   The image and its caption share one width and keep a fixed gutter for the
+   close button and both chevrons. */
+.glightbox-container .gslide-media,
+.glightbox-container .gslide-description {
+    max-width: calc(100vw - 240px);
+    margin-left: auto !important;
+    margin-right: auto !important;
 }
 
-.glightbox:hover img {
+/* The × sits in the top-right row; the image must not share that row, so the
+   block starts below it. The height cap shrinks by the same amount, otherwise
+   the caption would be pushed out of the viewport. */
+.glightbox-container .gslide-media {
+    margin-top: 64px !important;
+}
+
+.glightbox-container .gslide-media img {
+    max-height: calc(100vh - 291px) !important;
+}
+
+/* Image and caption read as one block: square at the seam, the radius closes
+   at the top of the image and at the bottom of the caption. */
+.glightbox-container .ginner-container:has(.gslide-description.description-bottom .gslide-title:not(:empty)) .gslide-media img,
+.glightbox-container .ginner-container:has(.gslide-description.description-bottom .gslide-desc:not(:empty)) .gslide-media img {
+    border-radius: 16px 16px 0 0;
+}
+
+.glightbox-container .gslide-description.description-bottom:has(.gslide-title:not(:empty)),
+.glightbox-container .gslide-description.description-bottom:has(.gslide-desc:not(:empty)) {
+    border-radius: 0 0 16px 16px;
+    overflow: hidden;
+}
+/* Image hover inside the showcase cards. The anchor is the mask: it clips the
+   zoom to the image's rounded corners, so the picture grows inside a fixed
+   frame instead of moving. Variant, scale and duration come from the testing
+   panel (html[data-img-hover], --img-hover-scale, --img-hover-duration); the
+   CSS defaults are the visitor values. */
+#projekte .project-detail a.glightbox {
+    display: block;
+    border-radius: 20px;
+    /* The mask must be exactly the image box. `overflow: hidden` would make the
+       anchor a block formatting context, keeping the image's 16 px margins
+       inside the mask — 32 px of empty mask above and below the picture.
+       clip-path does not create one, so the margins collapse through and the
+       mask equals the image. */
+    clip-path: inset(0 round 20px);
+}
+
+/* The anchor is only the mask here. The global a:hover fill would paint it in
+   the primary tone and show as a teal frame around the picture. */
+#projekte .project-detail a.glightbox:hover,
+#projekte .project-detail a.glightbox:focus-visible {
+    background: transparent;
+    text-decoration: none;
+}
+
+#projekte .project-detail a.glightbox img {
+    transform: scale(1);
+    transition: transform var(--img-hover-duration, 400ms) cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+#projekte .project-detail a.glightbox:hover img,
+#projekte .project-detail a.glightbox:focus-visible img {
+    transform: scale(var(--img-hover-scale, 1.06));
+}
+
+html[data-img-hover="none"] #projekte .project-detail a.glightbox:hover img,
+html[data-img-hover="none"] #projekte .project-detail a.glightbox:focus-visible img {
+    transform: none;
+}
+
+html[data-img-hover="lift"] #projekte .project-detail a.glightbox:hover img,
+html[data-img-hover="lift"] #projekte .project-detail a.glightbox:focus-visible img {
     transform: translateY(-3px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #projekte .project-detail a.glightbox img {
+        transition: none;
+    }
 }
 
 .glightbox-clean .gslide-title,
